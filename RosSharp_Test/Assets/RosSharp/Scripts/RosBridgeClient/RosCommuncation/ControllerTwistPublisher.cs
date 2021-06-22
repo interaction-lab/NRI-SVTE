@@ -57,7 +57,11 @@ namespace RosSharp.RosBridgeClient
         {
             //gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z + 1);
             message.angular.z = 0;
+            message.angular.x = 0;
+            message.angular.y = 0;
             message.linear.x = 1;
+            message.linear.z = 0;
+            message.linear.y = 0;
             Publish(message);
 
         }
@@ -65,7 +69,11 @@ namespace RosSharp.RosBridgeClient
         public void moveDown()
         {
             message.angular.z = 0;
+            message.angular.x = 0;
+            message.angular.y = 0;
             message.linear.x = -1;
+            message.linear.z = 0;
+            message.linear.y = 0;
             Publish(message);
         }
 
