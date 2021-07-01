@@ -1,4 +1,5 @@
 using UnityEngine;
+using RosSharp.RosBridgeClient.MessageTypes.Vision;
 
 namespace RosSharp.RosBridgeClient
 {
