@@ -4,7 +4,7 @@ namespace RosSharp.RosBridgeClient
 {
     public class FaceDetectionSubscriber : UnitySubscriber<MessageTypes.Vision.FaceArray>
     {
-        public MeshRenderer meshRenderer;
+        //public MeshRenderer meshRenderer;
         public Transform PublishedTransform;
         private Vector3 position;
 
