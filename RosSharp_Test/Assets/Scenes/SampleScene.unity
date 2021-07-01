@@ -557,7 +557,6 @@ GameObject:
   - component: {fileID: 890915797}
   - component: {fileID: 890915805}
   - component: {fileID: 890915798}
-  - component: {fileID: 890915799}
   m_Layer: 0
   m_Name: ROS
   m_TagString: Untagged
@@ -623,21 +622,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Topic: /mobile_base/commands/velocity
---- !u!114 &890915799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 890915794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8792f4727b553ae46bed4e07d2f9f93d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Topic: /vision_msgs/FaceArray
-  TimeStep: 0.05
-  meshRenderer: {fileID: 70792589}
 --- !u!114 &890915805
 MonoBehaviour:
   m_ObjectHideFlags: 0
