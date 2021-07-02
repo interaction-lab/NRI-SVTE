@@ -2,13 +2,13 @@ using UnityEngine;
 using RosSharp.RosBridgeClient.MessageTypes.Vision;
 namespace RosSharp.RosBridgeClient
 {
-    public class FaceDetectionSubscriber : UnitySubscriber<MessageTypes.Vision.FaceArray>
+    public class FaceDetectionSubscriber : UnitySubscriber<MessageTypes.Vision.FrameResults>
     {
         //public MeshRenderer meshRenderer;
         public Transform PublishedTransform;
         private Vector3 position;
 
-        private MessageTypes.Vision.Face[] faces;
+        private MessageTypes.Vision.FaceArray faces;
         private bool isMessageReceived;
 
         protected override void Start()
@@ -17,21 +17,25 @@ namespace RosSharp.RosBridgeClient
     }
         private void Update()
         {
+            //Debug.Log("test");
             if (isMessageReceived)
                 ProcessMessage();
         }
 
-        protected override void ReceiveMessage(MessageTypes.Vision.FaceArray faceArray)
+        protected override void ReceiveMessage(MessageTypes.Vision.FrameResults message)
         {
-            this.faces = faceArray.faces;
+            Debug.Log("got a message!");
+            this.faces = message.faces;
             isMessageReceived = true;
         }
 
         private void ProcessMessage()
         {
-            if(faces.Length > 0)
+            Debug.Log("pm");
+            if (faces.faces.Length > 0)
             {
-                position = GetPosition(faces[0]).Ros2Unity();
+                Debug.Log("I see a face!");
+                position = GetPosition(faces.faces[0]).Ros2Unity();
                 PublishedTransform.position = position;
             }
             isMessageReceived = false;
