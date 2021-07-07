@@ -5,7 +5,10 @@ namespace RosSharp.RosBridgeClient
     public class MobileSensorSubscriber : UnitySubscriber<MessageTypes.MobileBaseDriver.Sensors>
     {
         //public MeshRenderer meshRenderer;
-        public Transform PublishedTransform;
+        //public Transform PublishedTransform;
+        public MeshRenderer meshRenderer;
+        public Material off;
+        public Material on;
         private Vector3 position;
 
         private MessageTypes.MobileBaseDriver.Touch touch;
@@ -35,6 +38,10 @@ namespace RosSharp.RosBridgeClient
             if (touch.electrodes[0])
             {
                 Debug.Log("FL");
+                meshRenderer.material = on;
+            }else
+            {
+                meshRenderer.material = off;
             }
             if (touch.electrodes[1])
             {
