@@ -24,18 +24,18 @@ namespace RosSharp.RosBridgeClient
 
         protected override void ReceiveMessage(MessageTypes.Vision.FrameResults message)
         {
-            Debug.Log("got a message!");
+            //Debug.Log("got a message!");
             this.faces = message.faces;
             isMessageReceived = true;
         }
 
         private void ProcessMessage()
         {
-            Debug.Log("pm");
+            //Debug.Log("pm");
             if (faces.faces.Length > 0)
             {
                 Debug.Log("I see a face!");
-                position = GetPosition(faces.faces[0]).Ros2Unity();
+                position = GetPosition(faces.faces[0]);
                 PublishedTransform.position = position;
             }
             isMessageReceived = false;
@@ -44,9 +44,10 @@ namespace RosSharp.RosBridgeClient
         private Vector3 GetPosition(MessageTypes.Vision.Face message)
         {
             return new Vector3(
-                (float)message.center.x,
-                (float)message.center.y,
-                (float)message.center.z);
+                 10 + (5 * (float)message.center.x),
+                5 + (-5 * (float)message.center.y),
+                //(float)message.center.z);
+                PublishedTransform.position.z);
         }
     }
 }
