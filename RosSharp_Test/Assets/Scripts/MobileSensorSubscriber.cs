@@ -4,9 +4,14 @@ namespace RosSharp.RosBridgeClient
 {
     public class MobileSensorSubscriber : UnitySubscriber<MessageTypes.MobileBaseDriver.Sensors>
     {
-        //public MeshRenderer meshRenderer;
-        //public Transform PublishedTransform;
-        public MeshRenderer meshRenderer;
+        public MeshRenderer meshFrontLeft;
+        public MeshRenderer meshLeft;
+        public MeshRenderer meshRearLeft;
+        public MeshRenderer meshCenter;
+        public MeshRenderer meshFront;
+        public MeshRenderer meshRearRight;
+        public MeshRenderer meshRight;
+        public MeshRenderer meshFrontRight;
         public Material off;
         public Material on;
         private Vector3 position;
@@ -17,48 +22,61 @@ namespace RosSharp.RosBridgeClient
         protected override void Start()
         {
             base.Start();
-    }
+        }
         private void Update()
         {
-            //Debug.Log("test");
             if (isMessageReceived)
                 ProcessMessage();
         }
 
         protected override void ReceiveMessage(MessageTypes.MobileBaseDriver.Sensors message)
         {
-            //Debug.Log("got a message!");
             this.touch = message.touch;
             isMessageReceived = true;
         }
 
         private void ProcessMessage()
         {
-            //Debug.Log("pm");
             if (touch.electrodes[0])
-            {
-                Debug.Log("FL");
-                meshRenderer.material = on;
-            }else
-            {
-                meshRenderer.material = off;
-            }
+                meshFrontLeft.material = on;
+            else
+                meshFrontLeft.material = off;
+
             if (touch.electrodes[1])
-            {
-                Debug.Log("F");
-            }
+                meshLeft.material = on;
+            else
+                meshLeft.material = off;
+
             if (touch.electrodes[2])
-            {
-                Debug.Log("RL");
-            }
+                meshRearLeft.material = on;
+            else
+                meshRearLeft.material = off;
+
             if (touch.electrodes[3])
-            {
-                Debug.Log("C");
-            }
-            if (touch.electrodes[0])
-            {
-                Debug.Log("FL");
-            }
+                meshCenter.material = on;
+            else
+                meshCenter.material = off;
+
+            if (touch.electrodes[4])
+                meshFront.material = on;
+            else
+                meshFront.material = off;
+
+            if (touch.electrodes[5])
+                meshRearRight.material = on;
+            else
+                meshRearRight.material = off;
+
+            if (touch.electrodes[6])
+                meshRight.material = on;
+            else
+                meshRight.material = off;
+
+            if (touch.electrodes[6])
+                meshFrontRight.material = on;
+            else
+                meshFrontRight.material = off;
+
             isMessageReceived = false;
         }
     }
