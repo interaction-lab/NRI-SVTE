@@ -269,7 +269,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &163994218
 RectTransform:
   m_ObjectHideFlags: 0
@@ -960,6 +960,7 @@ GameObject:
   - component: {fileID: 890915798}
   - component: {fileID: 890915799}
   - component: {fileID: 890915800}
+  - component: {fileID: 890915801}
   m_Layer: 0
   m_Name: ROS
   m_TagString: Untagged
@@ -1063,6 +1064,23 @@ MonoBehaviour:
   meshRight: {fileID: 444253593}
   meshFrontRight: {fileID: 684847454}
   off: {fileID: 2100000, guid: 9ddf1f04bbec89e49b53668161db113f, type: 2}
+  on: {fileID: 2100000, guid: d4a7a04bb1b636342a370106e111f933, type: 2}
+--- !u!114 &890915801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890915794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c3427c8dd2940418093991384ba47b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Topic: /mobile_base/sensors
+  TimeStep: 0.05
+  meshBumper: {fileID: 1216693805}
+  off: {fileID: 5439048487759106184, guid: bfa6ef3aafae47642b982a5babca023f, type: 3}
   on: {fileID: 2100000, guid: d4a7a04bb1b636342a370106e111f933, type: 2}
 --- !u!114 &890915805
 MonoBehaviour:
@@ -1564,6 +1582,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1048119330}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &1216693805 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1819523887675545704, guid: bfa6ef3aafae47642b982a5babca023f, type: 3}
+  m_PrefabInstance: {fileID: 1394569188}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1241785515
 PrefabInstance:
   m_ObjectHideFlags: 0
