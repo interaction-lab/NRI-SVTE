@@ -1,4 +1,3 @@
-﻿
 using UnityEngine;
 
 namespace RosSharp.RosBridgeClient
@@ -33,7 +32,7 @@ namespace RosSharp.RosBridgeClient
 
             //Vector3 linearVelocity = (PublishedTransform.position - previousPosition)/deltaTime;
             //Vector3 angularVelocity = (PublishedTransform.rotation.eulerAngles - previousRotation.eulerAngles)/deltaTime;
-                
+
             //message.linear = GetGeometryVector3(linearVelocity.Unity2Ros()); ;
             //message.angular = GetGeometryVector3(- angularVelocity.Unity2Ros());
 
