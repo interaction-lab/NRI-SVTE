@@ -29,12 +29,9 @@ namespace RosSharp.RosBridgeClient
 
         private void ProcessMessage()
         {
-            if (wheeldrop[0].state == 0)
+            if (wheeldrop[0].state == 1)
                 mesh.material = on;
-            else
-                mesh.material = off;
-
-            if (wheeldrop[1].state == 0)
+            else if (wheeldrop[1].state == 1)
                 mesh.material = on;
             else
                 mesh.material = off;
