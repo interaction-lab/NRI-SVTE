@@ -2,7 +2,7 @@ using UnityEngine;
 using RosSharp.RosBridgeClient.MessageTypes.MobileBaseDriver;
 namespace RosSharp.RosBridgeClient
 {
-    public class MobileSensorSubscriber : UnitySubscriber<MessageTypes.MobileBaseDriver.Sensors>
+    public class CapTouchSubscriber : UnitySubscriber<MessageTypes.MobileBaseDriver.Sensors>
     {
         public MeshRenderer meshFrontLeft;
         public MeshRenderer meshLeft;
