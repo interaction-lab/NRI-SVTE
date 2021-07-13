@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 
 namespace RosSharp_Test
@@ -39,14 +37,6 @@ namespace RosSharp_Test
         void Start()
         {
             currentTaskLoc = 0;
-        }
-
-
-        void Update()
-        {
-            /* if (Input.GetKey(KeyCode.Space))
-            {    
-            } */
         }
 
         public void CycleToNextPrompt()
