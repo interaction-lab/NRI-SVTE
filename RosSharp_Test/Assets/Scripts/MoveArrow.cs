@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class MoveArrow : MonoBehaviour
 {
-    //private Rigidbody arrowRb;
+    private Rigidbody arrowRb;
+    private Rigidbody obstacleRb;
     public float speed = 1.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        //// get the arrow's rigidbody
-        //arrowRb = GetComponent<Rigidbody>();
+        // get the arrow's rigidbody
+        arrowRb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -30,5 +31,15 @@ public class MoveArrow : MonoBehaviour
         // move arrow forward or backward
         transform.Translate(Vector3.up * Time.deltaTime * speed * forwardInput);
 
+        //transform.Rotate(0, 0, Time.deltaTime * speed * horizontalInput);
+
+
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        obstacleRb = collision.gameObject.GetComponent<Rigidbody>();
+
+        Debug.Log("Collided with " + collision.gameObject.name);
     }
 }
