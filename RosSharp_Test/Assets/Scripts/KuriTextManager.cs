@@ -48,12 +48,24 @@ public class KuriTextManager : MonoBehaviour
                 currentTaskLoc++;
             else
                 currentTaskLoc = 0;
-            ChangeText();
+            PrintTask(currentTaskLoc);
         }
     }
 
-    public void ChangeText()
+    public void PrintTask(int loc)
     {
-        kuriText.GetComponent<TextMeshPro>().text = tasks[currentTaskLoc];
+        kuriText.GetComponent<TextMeshPro>().text = tasks[loc];
     }
+
+    public void PrintEnc(int loc)
+    {
+        kuriText.GetComponent<TextMeshPro>().text = encouragement[loc];
+    }
+
+    public void PrintCong(int loc)
+    {
+        kuriText.GetComponent<TextMeshPro>().text = congratulation[loc];
+    }
+
+
 }
