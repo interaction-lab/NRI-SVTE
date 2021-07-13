@@ -44,27 +44,50 @@ namespace RosSharp_Test
 
         void Update()
         {
-            if (Input.GetKey(KeyCode.Space))
-            {
-                if (currentTaskLoc + 1 < tasks.Length)
-                    currentTaskLoc++;
-                else
-                    currentTaskLoc = 0;
-                PrintTask(currentTaskLoc);
-            }
+            /* if (Input.GetKey(KeyCode.Space))
+            {    
+            } */
         }
 
-        public void PrintTask(int loc)
+        public void CycleToNextPrompt()
+        {
+            if (currentTaskLoc + 1 < tasks.Length)
+                currentTaskLoc++;
+            else
+                currentTaskLoc = 0;
+            PrintTask(currentTaskLoc);
+        }
+
+        public void CycleToNextPrompt(int choice)
+        {
+            if (currentTaskLoc + 1 < tasks.Length)
+                currentTaskLoc++;
+            else
+                currentTaskLoc = 0;
+            PrintPrompt(choice);
+        }
+
+        public void PrintPrompt(int choice)
+        {
+            if (choice == 0)
+                PrintTask(currentTaskLoc);
+            else if (choice == 1)
+                PrintCong(currentTaskLoc);
+            else if (choice == 2)
+                PrintEnc(currentTaskLoc);
+        }
+
+        private void PrintTask(int loc)
         {
             kuriText.GetComponent<TextMeshPro>().text = tasks[loc];
         }
 
-        public void PrintEnc(int loc)
+        private void PrintEnc(int loc)
         {
             kuriText.GetComponent<TextMeshPro>().text = encouragement[loc];
         }
 
-        public void PrintCong(int loc)
+        private void PrintCong(int loc)
         {
             kuriText.GetComponent<TextMeshPro>().text = congratulation[loc];
         }
