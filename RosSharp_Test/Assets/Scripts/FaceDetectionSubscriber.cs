@@ -8,6 +8,7 @@ namespace RosSharp.RosBridgeClient
         private Vector3 position;
         private Vector3 targetPosition;
         private Vector3 scale;
+        private Vector3 targetScale;
 
         private MessageTypes.Vision.FaceArray faces;
         private bool isMessageReceived;
@@ -23,30 +24,24 @@ namespace RosSharp.RosBridgeClient
     }
         private void Update()
         {
-            //Debug.Log("test");
             if (isMessageReceived)
                 ProcessMessage();
             LerpPosition(targetPosition, 5);
-
+            LerpScale(targetScale, 5);
         }
 
         protected override void ReceiveMessage(MessageTypes.Vision.FrameResults message)
         {
-            //Debug.Log("got a message!");
             this.faces = message.faces;
             isMessageReceived = true;
         }
 
         private void ProcessMessage()
         {
-            //Debug.Log("pm");
             if (faces.faces.Length > 0)
             {
-                Debug.Log("I see a face!");
                 targetPosition = GetPosition(faces.faces[0]);
-                scale = GetScale(faces.faces[0]);
-                
-                PublishedTransform.localScale = scale;
+                targetScale = GetScale(faces.faces[0]);                
             }
             isMessageReceived = false;
         }
@@ -54,7 +49,6 @@ namespace RosSharp.RosBridgeClient
         private void Lerp(float timeElapsed)
         {
             valueToLerp = Mathf.Lerp(startValue, endValue, 1);
-                //timeElapsed / lerpDuration);
         }
 
         private void LerpPosition(Vector3 targetPosition, float duration)
@@ -66,12 +60,20 @@ namespace RosSharp.RosBridgeClient
             PublishedTransform.position = position;
         }
 
+        private void LerpScale (Vector3 targetScale, float duration)
+        {
+            Vector3 startScale = PublishedTransform.localScale;
+
+            scale = Vector3.Lerp(startScale, targetScale, 1);
+            scale.z = PublishedTransform.localScale.z;
+            PublishedTransform.localScale = scale;
+        }
+
         private Vector3 GetPosition(MessageTypes.Vision.Face message)
         {
             return new Vector3(
                  10 + (5 * (float)message.center.x),
                 5 + (-5 * (float)message.center.y),
-                //(float)message.center.z);
                 PublishedTransform.position.z);
         }
 
