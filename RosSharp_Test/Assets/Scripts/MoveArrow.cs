@@ -31,7 +31,11 @@ public class MoveArrow : MonoBehaviour
         // move arrow forward or backward
         transform.Translate(Vector3.up * Time.deltaTime * speed * forwardInput);
 
-        //transform.Rotate(0, 0, Time.deltaTime * speed * horizontalInput);
+        //transform.Rotate(Vector3.forward * Time.deltaTime * speed * horizontalInput);
+
+        //Vector3 movement = arrowRb.transform.rotation * Vector3.forward;
+
+        //transform.Translate(movement * Time.deltaTime * speed * horizontalInput);
 
 
     }
