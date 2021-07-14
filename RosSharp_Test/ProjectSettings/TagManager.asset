@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Obstacle
   - Arrow
+  - RightSensor
+  - MiddleSensor
+  - LeftSensor
   layers:
   - Default
   - TransparentFX

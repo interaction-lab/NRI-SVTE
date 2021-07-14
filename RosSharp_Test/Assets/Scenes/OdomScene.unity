@@ -265,9 +265,11 @@ GameObject:
   - component: {fileID: 108199926}
   - component: {fileID: 108199925}
   - component: {fileID: 108199924}
+  - component: {fileID: 108199927}
+  - component: {fileID: 108199928}
   m_Layer: 0
   m_Name: MiddleSensor
-  m_TagString: Untagged
+  m_TagString: MiddleSensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -294,7 +296,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 108199922}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -348,6 +350,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 108199922}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &108199927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108199922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdbf1c6740b7c41db8ec3f55af4f0302, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensorOn: {r: 0.22745097, g: 0.73333335, b: 0.2873002, a: 0}
+  sensorOff: {r: 0.3882353, g: 0.38039216, b: 0.38039216, a: 0}
+--- !u!54 &108199928
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108199922}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 14
+  m_CollisionDetection: 0
 --- !u!1 &163994217
 GameObject:
   m_ObjectHideFlags: 0
@@ -2385,9 +2417,11 @@ GameObject:
   - component: {fileID: 1301309668}
   - component: {fileID: 1301309667}
   - component: {fileID: 1301309666}
+  - component: {fileID: 1301309669}
+  - component: {fileID: 1301309670}
   m_Layer: 0
   m_Name: RightSensor
-  m_TagString: Untagged
+  m_TagString: RightSensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2414,7 +2448,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1301309664}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -2468,6 +2502,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1301309664}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1301309669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301309664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdbf1c6740b7c41db8ec3f55af4f0302, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensorOn: {r: 0.22745098, g: 0.73333335, b: 0.28627452, a: 0}
+  sensorOff: {r: 0.3882353, g: 0.38039216, b: 0.38039216, a: 0}
+--- !u!54 &1301309670
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301309664}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 14
+  m_CollisionDetection: 0
 --- !u!1 &1302082537
 GameObject:
   m_ObjectHideFlags: 0
@@ -3515,9 +3579,11 @@ GameObject:
   - component: {fileID: 2035283942}
   - component: {fileID: 2035283941}
   - component: {fileID: 2035283940}
+  - component: {fileID: 2035283943}
+  - component: {fileID: 2035283944}
   m_Layer: 0
   m_Name: LeftSensor
-  m_TagString: Untagged
+  m_TagString: LeftSensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3544,7 +3610,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2035283938}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -3598,6 +3664,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2035283938}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2035283943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2035283938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdbf1c6740b7c41db8ec3f55af4f0302, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensorOn: {r: 0.22745098, g: 0.73333335, b: 0.28627452, a: 0}
+  sensorOff: {r: 0.3882353, g: 0.38039216, b: 0.38039216, a: 0}
+--- !u!54 &2035283944
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2035283938}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 14
+  m_CollisionDetection: 0
 --- !u!1 &2036913157
 GameObject:
   m_ObjectHideFlags: 0
