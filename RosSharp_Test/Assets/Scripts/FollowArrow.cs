@@ -14,8 +14,9 @@ public class FollowArrow : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
+        // follow arrow as it moves and have the camera offset so it is behind the arrow
         transform.position = arrow.transform.position + offset;
     }
 }

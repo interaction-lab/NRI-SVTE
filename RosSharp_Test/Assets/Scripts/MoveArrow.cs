@@ -7,6 +7,7 @@ public class MoveArrow : MonoBehaviour
     private Rigidbody arrowRb;
     private Rigidbody obstacleRb;
     public float speed = 1.0f;
+    public float turnSpeed = 15.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -24,19 +25,11 @@ public class MoveArrow : MonoBehaviour
         // get input from left and right arrow keys
         float horizontalInput = Input.GetAxis("Horizontal");
 
-
-        // move arrow left or right
-        transform.Translate(Vector3.left * Time.deltaTime * speed * horizontalInput);
+        // turn arrow left or right
+        transform.Rotate(Vector3.forward * Time.deltaTime * turnSpeed * horizontalInput);
 
         // move arrow forward or backward
         transform.Translate(Vector3.up * Time.deltaTime * speed * forwardInput);
-
-        //transform.Rotate(Vector3.forward * Time.deltaTime * speed * horizontalInput);
-
-        //Vector3 movement = arrowRb.transform.rotation * Vector3.forward;
-
-        //transform.Translate(movement * Time.deltaTime * speed * horizontalInput);
-
 
     }
 
