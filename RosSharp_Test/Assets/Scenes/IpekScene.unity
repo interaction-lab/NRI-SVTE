@@ -1249,6 +1249,7 @@ MonoBehaviour:
   CapTouch: {fileID: 937759016}
   KuriCamera: {fileID: 70792591}
   KuriText: {fileID: 299205951}
+  Controller: {fileID: 677641136}
 --- !u!4 &834053478
 Transform:
   m_ObjectHideFlags: 0
@@ -1278,9 +1279,6 @@ GameObject:
   - component: {fileID: 890915798}
   - component: {fileID: 890915799}
   - component: {fileID: 890915800}
-  - component: {fileID: 890915801}
-  - component: {fileID: 890915803}
-  - component: {fileID: 890915802}
   m_Layer: 0
   m_Name: ROS
   m_TagString: Untagged
@@ -1385,56 +1383,6 @@ MonoBehaviour:
   meshFrontRight: {fileID: 684847454}
   off: {fileID: 2100000, guid: 9ddf1f04bbec89e49b53668161db113f, type: 2}
   on: {fileID: 2100000, guid: d4a7a04bb1b636342a370106e111f933, type: 2}
---- !u!114 &890915801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 890915794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb64e2e126e45a841b84bdd797701aff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Topic: 
-  TimeStep: 0.05
-  laserScanWriter: {fileID: 890915802}
---- !u!114 &890915802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 890915794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa4d78f1d9cef6948b0f87fdc8eee025, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &890915803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 890915794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c87b3c7b7739511498b2993d8daf6c51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  samples: 360
-  update_rate: 1800
-  angle_min: 0
-  angle_max: 6.28
-  angle_increment: 0.0174533
-  time_increment: 0
-  scan_time: 0
-  range_min: 0.12
-  range_max: 3.5
-  ranges: []
-  intensities: []
 --- !u!114 &890915805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2970,7 +2918,7 @@ PrefabInstance:
       objectReference: {fileID: 2800000, guid: 8d0274d8bc6a17844a08b493920d9491, type: 3}
     - target: {fileID: 2243437068443470798, guid: e1e3746d5067a614683084937319e0ba, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2243437068443470798, guid: e1e3746d5067a614683084937319e0ba, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -2986,6 +2934,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2243437068443470798, guid: e1e3746d5067a614683084937319e0ba, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2243437068443470798, guid: e1e3746d5067a614683084937319e0ba, type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2243437068443470798, guid: e1e3746d5067a614683084937319e0ba, type: 3}
@@ -3005,6 +2957,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 834053477}
     - target: {fileID: 2243437068443470798, guid: e1e3746d5067a614683084937319e0ba, type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 834053477}
+    - target: {fileID: 2243437068443470798, guid: e1e3746d5067a614683084937319e0ba, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -3018,6 +2974,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2243437068443470798, guid: e1e3746d5067a614683084937319e0ba, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2243437068443470798, guid: e1e3746d5067a614683084937319e0ba, type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2243437068443470798, guid: e1e3746d5067a614683084937319e0ba, type: 3}
@@ -3037,6 +2997,10 @@ PrefabInstance:
       value: toggleNext
       objectReference: {fileID: 0}
     - target: {fileID: 2243437068443470798, guid: e1e3746d5067a614683084937319e0ba, type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: toggleController
+      objectReference: {fileID: 0}
+    - target: {fileID: 2243437068443470798, guid: e1e3746d5067a614683084937319e0ba, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: RosSharp_Test.VisualizationManager, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -3053,6 +3017,10 @@ PrefabInstance:
       value: RosSharp_Test.VisualizationManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2243437068443470798, guid: e1e3746d5067a614683084937319e0ba, type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
+      value: RosSharp_Test.VisualizationManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2243437068443470798, guid: e1e3746d5067a614683084937319e0ba, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
@@ -3066,6 +3034,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2243437068443470798, guid: e1e3746d5067a614683084937319e0ba, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2243437068443470798, guid: e1e3746d5067a614683084937319e0ba, type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6414827836461462228, guid: e1e3746d5067a614683084937319e0ba, type: 3}
