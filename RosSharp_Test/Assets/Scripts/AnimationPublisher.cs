@@ -22,6 +22,12 @@ namespace RosSharp.RosBridgeClient {
             Publish(msg);
         }
 
+        public void PublishStringAnim(string command)
+        {
+            msg.data = command;
+            Publish(msg);
+        }
+
         public enum ANIMATION_CMD {
             // DockingSupportAnimations,
             docking_complete_asleep,

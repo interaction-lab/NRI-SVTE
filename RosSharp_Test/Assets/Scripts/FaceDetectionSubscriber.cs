@@ -72,16 +72,16 @@ namespace RosSharp.RosBridgeClient
         private Vector3 GetPosition(MessageTypes.Vision.Face message)
         {
             return new Vector3(
-                 10 + (5 * (float)message.center.x),
-                5 + (-5 * (float)message.center.y),
+                (float)message.center.x,
+                (float)message.center.y,
                 PublishedTransform.position.z);
         }
 
         private Vector3 GetScale(MessageTypes.Vision.Face message)
         {
             return new Vector3(
-                (float)(message.bb[3] * 0.01),
-                (float)(message.bb[2] * 0.01),
+                (float)(message.bb[3] * 0.001),
+                (float)(message.bb[2] * 0.001),
                 PublishedTransform.localScale.z);
         }
     }
