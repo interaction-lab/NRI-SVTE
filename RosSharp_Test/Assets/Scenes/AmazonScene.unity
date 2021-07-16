@@ -2363,7 +2363,6 @@ MonoBehaviour:
   p4: {fileID: 764554136}
   p5: {fileID: 664711864}
   pictures: []
-  currentImage: 0
 --- !u!4 &905246287 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4093808206893841460, guid: daa0726e9f4321044bc455f2849304f1, type: 3}
@@ -2772,7 +2771,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2243437068443470798, guid: e1e3746d5067a614683084937319e0ba, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2243437068443470798, guid: e1e3746d5067a614683084937319e0ba, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

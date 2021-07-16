@@ -51,6 +51,7 @@ namespace RosSharp.RosBridgeClient
             for(int i = 0; i < 5; i++)
             {
                 pictures[i].material = new Material(Shader.Find("Standard"));
+                pictures[i].enabled = false;
             }
         }
         private void Update()
@@ -78,6 +79,7 @@ namespace RosSharp.RosBridgeClient
             canvasTexture.LoadImage(canvasImageData);
             canvasTexture.Apply();
             pictures[currentImage].material.SetTexture("_MainTex", canvasTexture);
+            pictures[currentImage].enabled = true;
             nextImage();
         }
 
