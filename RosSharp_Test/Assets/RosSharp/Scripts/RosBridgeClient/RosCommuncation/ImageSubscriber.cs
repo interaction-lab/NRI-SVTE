@@ -33,6 +33,7 @@ namespace RosSharp.RosBridgeClient
         private bool isMessageReceived;
 
         private Texture2D canvasTexture;
+        private Texture2D[] pictureTextures;
         private byte[] canvasImageData;
         private int currentImage = 0;
 
@@ -41,6 +42,7 @@ namespace RosSharp.RosBridgeClient
 			base.Start();
             texture2D = new Texture2D(1, 1);
             canvasTexture = new Texture2D(1, 1);
+            pictureTextures = new Texture2D[5];
             pictures = new MeshRenderer[5];
             pictures[0] = p1;
             pictures[1] = p2;
@@ -52,6 +54,8 @@ namespace RosSharp.RosBridgeClient
             {
                 pictures[i].material = new Material(Shader.Find("Standard"));
                 pictures[i].enabled = false;
+                pictureTextures[i] = new Texture2D(1, 1);
+
             }
         }
         private void Update()
@@ -63,6 +67,7 @@ namespace RosSharp.RosBridgeClient
         protected override void ReceiveMessage(MessageTypes.Sensor.CompressedImage compressedImage)
         {
             imageData = compressedImage.data;
+            canvasImageData = compressedImage.data;
             isMessageReceived = true;
         }
 
@@ -76,9 +81,9 @@ namespace RosSharp.RosBridgeClient
 
         public void SaveImage()
         {
-            canvasTexture.LoadImage(canvasImageData);
-            canvasTexture.Apply();
-            pictures[currentImage].material.SetTexture("_MainTex", canvasTexture);
+            pictureTextures[currentImage].LoadImage(canvasImageData);
+            pictureTextures[currentImage].Apply();
+            pictures[currentImage].material.SetTexture("_MainTex", pictureTextures[currentImage]);
             pictures[currentImage].enabled = true;
             nextImage();
         }
