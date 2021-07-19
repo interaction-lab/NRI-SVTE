@@ -6,12 +6,17 @@ public class CollisionColorChange : MonoBehaviour
 {
     public Color sensorOn;
     public Color sensorOff;
+    public int bumperPosition;  // right = 0, middle = 1, left = 2
+    public bool pressedStatus;
+
 
     // Start is called before the first frame update
     void Start()
     {
         // default is sensor off
         transform.GetComponent<Renderer>().material.color = sensorOff;
+
+        pressedStatus = false;
     }
 
     // Update is called once per frame
@@ -30,6 +35,17 @@ public class CollisionColorChange : MonoBehaviour
 
             // change the color of the sensor to green 
             transform.GetComponent<Renderer>().material.color = sensorOn;
+            pressedStatus = true;
         }
+
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        // default is sensor off
+        transform.GetComponent<Renderer>().material.color = sensorOff;
+
+        pressedStatus = false;
+    }
+
 }

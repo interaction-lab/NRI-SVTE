@@ -364,6 +364,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensorOn: {r: 0.22745097, g: 0.73333335, b: 0.2873002, a: 0}
   sensorOff: {r: 0.3882353, g: 0.38039216, b: 0.38039216, a: 0}
+  bumperPosition: 1
+  pressedStatus: 0
 --- !u!54 &108199928
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2516,6 +2518,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensorOn: {r: 0.22745098, g: 0.73333335, b: 0.28627452, a: 0}
   sensorOff: {r: 0.3882353, g: 0.38039216, b: 0.38039216, a: 0}
+  bumperPosition: 0
+  pressedStatus: 0
 --- !u!54 &1301309670
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3678,6 +3682,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensorOn: {r: 0.22745098, g: 0.73333335, b: 0.28627452, a: 0}
   sensorOff: {r: 0.3882353, g: 0.38039216, b: 0.38039216, a: 0}
+  bumperPosition: 2
+  pressedStatus: 0
 --- !u!54 &2035283944
 Rigidbody:
   m_ObjectHideFlags: 0
