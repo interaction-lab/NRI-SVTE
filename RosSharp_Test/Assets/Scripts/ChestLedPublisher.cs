@@ -8,8 +8,12 @@ namespace RosSharp.RosBridgeClient
     public class ChestLedPublisher : UnityPublisher<MessageTypes.MobileBaseDriver.ChestLeds>
     {
         private MessageTypes.MobileBaseDriver.ChestLeds message;
-        public PinchSlider slider;
+        public PinchSlider redSlider;
+        public PinchSlider greenSlider;
+        public PinchSlider blueSlider;
         private int r;
+        private int g;
+        private int b;
 
         protected override void Start()
         {
@@ -19,8 +23,24 @@ namespace RosSharp.RosBridgeClient
 
         private void FixedUpdate()
         {
-            r = (int) (slider.SliderValue * 225) ;
-            setRed(r);
+            if(r != (int)(redSlider.SliderValue * 225))
+            {
+                r = (int)(redSlider.SliderValue * 225);
+                setRed(r);
+            }
+
+            if (g != (int)(greenSlider.SliderValue * 225))
+            {
+                g = (int)(greenSlider.SliderValue * 225);
+                setGreen(g);
+            }
+
+            if (b != (int)(blueSlider.SliderValue * 225))
+            {
+                b = (int)(blueSlider.SliderValue * 225);
+                setBlue(b);
+            }
+
         }
 
         private void InitializeMessage()
