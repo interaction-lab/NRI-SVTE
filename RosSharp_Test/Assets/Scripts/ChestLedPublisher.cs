@@ -1,11 +1,15 @@
 using UnityEngine;
 using RosSharp.RosBridgeClient.MessageTypes.MobileBaseDriver;
+using Microsoft.MixedReality.Toolkit.Input;
+using Microsoft.MixedReality.Toolkit.UI;
 
 namespace RosSharp.RosBridgeClient
 {
     public class ChestLedPublisher : UnityPublisher<MessageTypes.MobileBaseDriver.ChestLeds>
     {
         private MessageTypes.MobileBaseDriver.ChestLeds message;
+        public PinchSlider slider;
+        private int r;
 
         protected override void Start()
         {
@@ -15,11 +19,13 @@ namespace RosSharp.RosBridgeClient
 
         private void FixedUpdate()
         {
-            
+            r = (int) (slider.SliderValue * 225) ;
+            setRed(r);
         }
 
         private void InitializeMessage()
         {
+            r = 0;
             message = new MessageTypes.MobileBaseDriver.ChestLeds();
             for (int i = 0; i < message.leds.Length; i++)
             {
