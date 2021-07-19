@@ -21,18 +21,49 @@ namespace RosSharp.RosBridgeClient
         private void InitializeMessage()
         {
             message = new MessageTypes.MobileBaseDriver.ChestLeds();
+            for (int i = 0; i < message.leds.Length; i++)
+            {
+                message.leds[i] = new Led();
+            }
             setColor(0, 0, 0);
         }
 
-        private void setColor(byte red, byte green, byte blue)
+        public void setColor(int red, int green, int blue)
         {
             for (int i = 0; i < message.leds.Length; i++)
             {
-                message.leds[i].red = red;
-                message.leds[i].green = green;
-                message.leds[i].blue = blue;
+                Debug.Log(message.leds[i]);
+                message.leds[i].red = (byte)red;
+                message.leds[i].green = (byte)green;
+                message.leds[i].blue = (byte)blue;
             }
+            Publish(message);
+        }
 
+        public void setBlue(int b)
+        {
+            for (int i = 0; i < message.leds.Length; i++)
+            {
+                message.leds[i].blue = (byte)b;
+            }
+            Publish(message);
+        }
+
+        public void setRed(int r)
+        {
+            for (int i = 0; i < message.leds.Length; i++)
+            {
+                message.leds[i].red = (byte)r;
+            }
+            Publish(message);
+        }
+
+        public void setGreen(int g)
+        {
+            for (int i = 0; i < message.leds.Length; i++)
+            {
+                message.leds[i].green = (byte)g;
+            }
             Publish(message);
         }
     }
