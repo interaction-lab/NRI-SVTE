@@ -1,16 +1,12 @@
 using UnityEngine;
 using RosSharp.RosBridgeClient.MessageTypes.MobileBaseDriver;
-using Microsoft.MixedReality.Toolkit.Input;
-using Microsoft.MixedReality.Toolkit.UI;
 using Microsoft.MixedReality.Toolkit.Experimental.ColorPicker;
 
 namespace RosSharp.RosBridgeClient {
     public class ChestLedPublisher : UnityPublisher<MessageTypes.MobileBaseDriver.ChestLeds> {
         private MessageTypes.MobileBaseDriver.ChestLeds message;
         public ColorPicker colorPicker;
-        private int r;
-        private int g;
-        private int b;
+
 
         protected override void Start() {
             base.Start();
