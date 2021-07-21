@@ -11,7 +11,7 @@ namespace KuriSVTE
         List<GameObject> PictureList { get; set; } = new List<GameObject>();
 
         private ImageSubscriber _imageSubscriber;
-        private AnimationPublisher animPub;
+        private AnimationPublisher animPub = new AnimationPublisher();
         public ImageSubscriber ImageSubscriber
         {
             get
@@ -26,7 +26,7 @@ namespace KuriSVTE
 
         public void TakePicture()
         {
-            animPub.PublishAnim(AnimationPublisher.ANIMATION_CMD.gotit);
+            //animPub.PublishAnim(AnimationPublisher.ANIMATION_CMD.gotit);
             PictureList.Add(Instantiate(Resources.Load<GameObject>(ResourcePathConstants.PictureObject)));
             GameObject curPic = PictureList[PictureList.Count - 1];
             curPic.transform.SetParent(transform);

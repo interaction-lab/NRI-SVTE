@@ -385,6 +385,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PhotoButton
       objectReference: {fileID: 0}
+    - target: {fileID: 8674287671906198893, guid: e1e3746d5067a614683084937319e0ba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9003627748057373110, guid: e1e3746d5067a614683084937319e0ba, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -4308,6 +4312,10 @@ PrefabInstance:
     - target: {fileID: 8674287671906198893, guid: e1e3746d5067a614683084937319e0ba, type: 3}
       propertyPath: m_Name
       value: BlinkButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674287671906198893, guid: e1e3746d5067a614683084937319e0ba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9003627748057373110, guid: e1e3746d5067a614683084937319e0ba, type: 3}
       propertyPath: m_IsActive
