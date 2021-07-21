@@ -36,7 +36,7 @@ namespace KuriSVTE {
             curPic.transform.localPosition = Vector3.forward; // maybe we can aim this at where the person is looking...
             // curPic.transform.Rotate(new Vector3(0, 0, 180)); // fixes inversion issue TODO: move this down
 
-            MeshRenderer rend = curPic.transform.GetChild(1).GetComponent<MeshRenderer>(); // TODO: get rid of child
+            MeshRenderer rend = curPic.transform.GetChild(0).GetComponent<MeshRenderer>(); // TODO: get rid of child
             Texture2D canvasTexture = new Texture2D(1, 1);
             canvasTexture.LoadImage(ImageSubscriber.ImageData);
             canvasTexture.Apply();
