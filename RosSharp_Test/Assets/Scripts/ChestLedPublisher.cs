@@ -19,7 +19,7 @@ namespace RosSharp.RosBridgeClient {
 
         private void FixedUpdate() {
             if (colorPicker != null && colorPicker.isActiveAndEnabled) {
-                Color c = colorPicker.CustomColor;
+                Color c = new Color();
                 setColor((int)(c.r * 255), (int)(c.g * 255), (int)(c.b * 255));
             }
 
