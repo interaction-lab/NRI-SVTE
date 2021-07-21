@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1042,7 +1042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83d9acc7968244a8886f3af591305bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeProfile: {fileID: 11400000, guid: 31a611a779d3499e8e35f1a2018ca841, type: 2}
+  activeProfile: {fileID: 11400000, guid: aafed175dd13fcd48b374b2890332e8d, type: 2}
 --- !u!4 &571994341
 Transform:
   m_ObjectHideFlags: 0
@@ -2415,8 +2415,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SecondsTimeout: 10
-  Serializer: 0
-  protocol: 0
+  Serializer: 1
+  protocol: 2
   RosBridgeServerUrl: ws://192.168.1.250:9090
 --- !u!4 &890915796
 Transform:
@@ -2964,7 +2964,6 @@ GameObject:
   - component: {fileID: 963194226}
   - component: {fileID: 963194231}
   - component: {fileID: 963194230}
-  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3042,29 +3041,6 @@ Transform:
   m_Father: {fileID: 408931366}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &963194229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf98dd1206224111a38765365e98e207, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lockCursorWhenFocusLocked: 1
-  setCursorInvisibleWhenFocusLocked: 0
-  maxGazeCollisionDistance: 10
-  raycastLayerMasks:
-  - serializedVersion: 2
-    m_Bits: 4294967291
-  stabilizer:
-    storedStabilitySamples: 60
-  gazeTransform: {fileID: 0}
-  minHeadVelocityThreshold: 0.5
-  maxHeadVelocityThreshold: 2
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26468,6 +26444,11 @@ MonoBehaviour:
   TextHue: {fileID: 6710558438514123042}
   TextSaturation: {fileID: 3577734412868318994}
   TextBrightness: {fileID: 7606077001299596031}
+  CustomColor: {r: 0, g: 0, b: 0, a: 0}
+  Hue: 0
+  Saturation: 0
+  Brightness: 0
+  Alpha: 0.3
 --- !u!33 &4105283184600398378
 MeshFilter:
   m_ObjectHideFlags: 0
