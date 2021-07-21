@@ -6,6 +6,7 @@ namespace RosSharp.RosBridgeClient {
     public class ChestLedPublisher : UnityPublisher<MessageTypes.MobileBaseDriver.ChestLeds> {
         private MessageTypes.MobileBaseDriver.ChestLeds message;
         public ColorPicker colorPicker;
+        private AnimationPublisher animPub;
 
 
         protected override void Start() {
@@ -18,14 +19,13 @@ namespace RosSharp.RosBridgeClient {
 
         private void FixedUpdate() {
             if (colorPicker != null && colorPicker.isActiveAndEnabled) {
-                Color c = colorPicker.CustomColor;
+                Color c = new Color();
                 setColor((int)(c.r * 255), (int)(c.g * 255), (int)(c.b * 255));
             }
 
         }
 
         private void InitializeMessage() {
-            r = 0;
             message = new MessageTypes.MobileBaseDriver.ChestLeds();
             for (int i = 0; i < message.leds.Length; i++) {
                 message.leds[i] = new Led();
@@ -34,6 +34,7 @@ namespace RosSharp.RosBridgeClient {
         }
 
         public void setColor(int red, int green, int blue) {
+            //animPub.PublishAnim(AnimationPublisher.ANIMATION_CMD.smile);
             for (int i = 0; i < message.leds.Length; i++) {
                 message.leds[i].red = (byte)red;
                 message.leds[i].green = (byte)green;

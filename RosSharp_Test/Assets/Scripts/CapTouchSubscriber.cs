@@ -1,5 +1,6 @@
 using UnityEngine;
 using RosSharp.RosBridgeClient.MessageTypes.MobileBaseDriver;
+
 namespace RosSharp.RosBridgeClient
 {
     public class CapTouchSubscriber : UnitySubscriber<MessageTypes.MobileBaseDriver.Sensors>
@@ -15,9 +16,11 @@ namespace RosSharp.RosBridgeClient
         public Material off;
         public Material on;
         private Vector3 position;
+        private bool react;
 
         private MessageTypes.MobileBaseDriver.Touch touch;
         private bool isMessageReceived;
+        private AnimationPublisher animPub;
 
         protected override void Start()
         {
@@ -37,6 +40,9 @@ namespace RosSharp.RosBridgeClient
 
         private void ProcessMessage()
         {
+            if (touch.electrodes[0] || touch.electrodes[1] || touch.electrodes[2] || touch.electrodes[3] || touch.electrodes[4] || touch.electrodes[5] || touch.electrodes[6])
+                animPub.PublishAnim(AnimationPublisher.ANIMATION_CMD.smile);
+
             if (touch.electrodes[0])
                 meshFrontLeft.material = on;
             else

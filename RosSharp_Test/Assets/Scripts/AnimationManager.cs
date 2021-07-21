@@ -7,21 +7,27 @@ namespace RosSharp_Test
 {
     public class AnimationManager : Singleton<AnimationManager>
     {
-        //private ANIMATION_CMD currentAnim;
+        //private AnimationPublisher.ANIMATION_CMD currentAnim;
+        //private AnimationPublisher.ANIMATION_CMD prevAnim;
+
         void Start()
         {
-
+            //currentAnim = AnimationPublisher.ANIMATION_CMD.wakeup_auto;
+            //prevAnim = currentAnim;
         }
 
         void Update()
         {
-
+            //if(currentAnim != prevAnim)
+            //{
+                //animPub.PublishAnim(currentAnim);
+                //prevAnim = currentAnim;
+            //}
         }
 
         public void greet()
         {
-            //currentAnim = greeting_face_sound;
-            //PublishAnim(currentAnim);
+            //currentAnim = AnimationPublisher.ANIMATION_CMD.greeting_face_sound;
         }
     }
 }

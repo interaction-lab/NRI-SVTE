@@ -10,6 +10,7 @@ namespace RosSharp.RosBridgeClient
 
         private MessageTypes.MobileBaseDriver.Bumper[] bumper;
         private bool isMessageReceived;
+        private AnimationPublisher animPub;
 
         protected override void Start()
         {
@@ -29,20 +30,14 @@ namespace RosSharp.RosBridgeClient
 
         private void ProcessMessage()
         {
-            if (bumper[0].state == 1)
+            if (bumper[0].state == 1 || bumper[1].state == 1 || bumper[2].state == 1)
+            {
                 meshBumper.material = on;
-            else
+                animPub.PublishAnim(AnimationPublisher.ANIMATION_CMD.bump);
+            } else
+            { 
                 meshBumper.material = off;
-
-            if (bumper[1].state == 1)
-                meshBumper.material = on;
-            else
-                meshBumper.material = off;
-
-            if (bumper[2].state == 1)
-                meshBumper.material = on;
-            else
-                meshBumper.material = off;
+            }
 
             isMessageReceived = false;
         }

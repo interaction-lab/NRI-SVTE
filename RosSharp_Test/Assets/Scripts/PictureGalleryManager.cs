@@ -9,6 +9,7 @@ namespace KuriSVTE {
         List<GameObject> PictureList { get; set; } = new List<GameObject>();
 
         private ImageSubscriber _imageSubscriber;
+        private AnimationPublisher animPub;
         public ImageSubscriber ImageSubscriber {
             get {
                 if (!_imageSubscriber) {
@@ -19,6 +20,7 @@ namespace KuriSVTE {
         } // TODO: replace inspector public variable with better getter
 
         public void TakePicture() {
+            animPub.PublishAnim(AnimationPublisher.ANIMATION_CMD.gotit);
             PictureList.Add(Instantiate(Resources.Load<GameObject>(ResourcePathConstants.PictureFrame)));
             GameObject curPic = PictureList[PictureList.Count - 1];
             curPic.transform.SetParent(transform);

@@ -12,16 +12,21 @@ namespace RosSharp.RosBridgeClient
 
         private MessageTypes.Vision.FaceArray faces;
         private bool isMessageReceived;
+        private AnimationPublisher animPub;
 
         private float lerpDuration = 3;
         private float startValue = 0;
         private float endValue = 10;
         private float valueToLerp;
+        private bool userThere;
+        private bool prevUserThere;
 
         protected override void Start()
         {
             base.Start();
-    }
+            userThere = false;
+            prevUserThere = false;
+        }
         private void Update()
         {
             if (isMessageReceived)
@@ -40,9 +45,18 @@ namespace RosSharp.RosBridgeClient
         {
             if (faces.faces.Length > 0)
             {
+                userThere = true;
+                if(!prevUserThere)
+                    animPub.PublishAnim(AnimationPublisher.ANIMATION_CMD.face_detected);
                 targetPosition = GetPosition(faces.faces[0]);
                 targetScale = GetScale(faces.faces[0]);                
+            }else
+            {
+                userThere = false;
+                if (prevUserThere)
+                    animPub.PublishAnim(AnimationPublisher.ANIMATION_CMD.face_lost);
             }
+            prevUserThere = userThere;
             isMessageReceived = false;
         }
 
