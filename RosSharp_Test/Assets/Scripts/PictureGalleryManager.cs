@@ -4,29 +4,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace KuriSVTE
-{
-    public class PictureGalleryManager : Singleton<PictureGalleryManager>
-    {
+namespace KuriSVTE {
+    public class PictureGalleryManager : Singleton<PictureGalleryManager> {
         List<GameObject> PictureList { get; set; } = new List<GameObject>();
 
         private ImageSubscriber _imageSubscriber;
-        private AnimationPublisher animPub;
-        public ImageSubscriber ImageSubscriber
-        {
-            get
-            {
-                if (!_imageSubscriber)
-                {
+        private AnimationPublisher _animPub;
+        public ImageSubscriber ImageSubscriber {
+            get {
+                if (!_imageSubscriber) {
                     _imageSubscriber = FindObjectOfType<ImageSubscriber>();
                 }
                 return _imageSubscriber;
             }
         } // TODO: replace inspector public variable with better getter
 
-        public void TakePicture()
-        {
-            animPub.PublishAnim(AnimationPublisher.ANIMATION_CMD.gotit);
+        public AnimationPublisher AnimPublisher {
+            get {
+                if (!_animPub) {
+                    _animPub = FindObjectOfType<AnimationPublisher>();
+                }
+                return _animPub;
+            }
+        } // TODO: replace inspector public variable with better getter
+
+        public void TakePicture() {
+            AnimPublisher.PublishAnim(AnimationPublisher.ANIMATION_CMD.gotit);
             PictureList.Add(Instantiate(Resources.Load<GameObject>(ResourcePathConstants.PictureObject)));
             GameObject curPic = PictureList[PictureList.Count - 1];
             curPic.transform.SetParent(transform);
