@@ -2939,7 +2939,7 @@ MonoBehaviour:
   SecondsTimeout: 10
   Serializer: 2
   protocol: 2
-  RosBridgeServerUrl: ws://192.168.1.250:9090
+  RosBridgeServerUrl: ws://192.168.1.146:9090
 --- !u!4 &890915796
 Transform:
   m_ObjectHideFlags: 0
@@ -27382,10 +27382,6 @@ MonoBehaviour:
   TextSaturation: {fileID: 3577734412868318994}
   TextBrightness: {fileID: 7606077001299596031}
   CustomColor: {r: 0, g: 0, b: 0, a: 0}
-  Hue: 0
-  Saturation: 0
-  Brightness: 0
-  Alpha: 0.3
 --- !u!33 &4105283184600398378
 MeshFilter:
   m_ObjectHideFlags: 0
