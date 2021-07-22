@@ -24,63 +24,69 @@ namespace RosSharp.RosBridgeClient {
         private float startValue = 0;
         private float endValue = 10;
         private float valueToLerp;
+        private float speed = 0.0025f;
         private bool userThere;
-        private bool prevUserThere;
 
         protected override void Start() {
             base.Start();
             userThere = false;
-            prevUserThere = false;
         }
         private void Update() {
             if (isMessageReceived)
                 ProcessMessage();
-            LerpPosition(targetPosition, 5);
-            LerpScale(targetScale, 5);
+            LerpPosition(targetPosition, speed);
+            LerpScale(targetScale, speed);
         }
 
         protected override void ReceiveMessage(MessageTypes.Vision.FrameResults message) {
-            Debug.Log("test");
             this.faces = message.faces;
             isMessageReceived = true;
         }
 
         private void ProcessMessage() {
             if (faces.faces.Length > 0) {
-                Debug.Log("face!");
-                userThere = true;
-                if (!prevUserThere)
+                if (!userThere)
+                {
                     AnimPublisher.PublishAnim(AnimationPublisher.ANIMATION_CMD.face_detected);
+                }
+                userThere = true;
                 targetPosition = GetPosition(faces.faces[0]);
                 targetScale = GetScale(faces.faces[0]);
             }
             else {
-                userThere = false;
-                if (prevUserThere)
+                if (userThere)
+                {
                     AnimPublisher.PublishAnim(AnimationPublisher.ANIMATION_CMD.face_lost);
+                }
+                userThere = false;
             }
-            prevUserThere = userThere;
             isMessageReceived = false;
         }
 
-        private void Lerp(float timeElapsed) {
-            valueToLerp = Mathf.Lerp(startValue, endValue, 1);
+        private void LerpPosition(Vector3 targetPosition, float speed) {
+            Vector3 myPos = PublishedTransform.localPosition;
+            myPos.z = 0;
+            targetPosition.z = 0;
+            if (Vector3.Distance(myPos, targetPosition) > speed)
+            {
+                Vector3 addition = Vector3.Normalize(targetPosition - myPos) * speed;
+                position = PublishedTransform.localPosition + addition;
+                position.z = PublishedTransform.localPosition.z;
+                PublishedTransform.localPosition = position;
+            }
         }
 
-        private void LerpPosition(Vector3 targetPosition, float duration) {
-            Vector3 startPosition = PublishedTransform.position;
-
-            position = Vector3.Lerp(startPosition, targetPosition, 1);
-            position.z = PublishedTransform.position.z;
-            PublishedTransform.position = position;
-        }
-
-        private void LerpScale(Vector3 targetScale, float duration) {
-            Vector3 startScale = PublishedTransform.localScale;
-
-            scale = Vector3.Lerp(startScale, targetScale, 1);
-            scale.z = PublishedTransform.localScale.z;
-            PublishedTransform.localScale = scale;
+        private void LerpScale(Vector3 targetScale, float speed) {
+            Vector3 myScale = PublishedTransform.localScale;
+            myScale.z = 0;
+            targetScale.z = 0;
+            if (Vector3.Distance(myScale, targetScale) > speed)
+            {
+                Vector3 addition = Vector3.Normalize(targetScale - myScale) * speed;
+                scale = PublishedTransform.localScale + addition;
+                scale.z = PublishedTransform.localScale.z;
+                PublishedTransform.localScale = scale;
+            }
         }
 
         private Vector3 GetPosition(MessageTypes.Vision.Face message) {
