@@ -51,7 +51,6 @@ namespace RosSharp.RosBridgeClient
 
         private void ProcessMessage()
         {
-            Debug.Log(touch);
             if (touch.electrodes[0] || touch.electrodes[1] || touch.electrodes[2] || touch.electrodes[3] || touch.electrodes[4] || touch.electrodes[5] || touch.electrodes[6])
                 AnimPublisher.PublishAnim(AnimationPublisher.ANIMATION_CMD.smile);
 

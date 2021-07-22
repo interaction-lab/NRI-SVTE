@@ -40,12 +40,14 @@ namespace RosSharp.RosBridgeClient {
         }
 
         protected override void ReceiveMessage(MessageTypes.Vision.FrameResults message) {
+            Debug.Log("test");
             this.faces = message.faces;
             isMessageReceived = true;
         }
 
         private void ProcessMessage() {
             if (faces.faces.Length > 0) {
+                Debug.Log("face!");
                 userThere = true;
                 if (!prevUserThere)
                     AnimPublisher.PublishAnim(AnimationPublisher.ANIMATION_CMD.face_detected);

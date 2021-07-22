@@ -2443,7 +2443,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &704420578
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2495,7 +2495,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1d266c47bb39f8543b447c322eaa86ff, type: 2}
+  - {fileID: 2100000, guid: 424eb69381634e044ad58588df8dc8ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3093,7 +3093,7 @@ MonoBehaviour:
   SecondsTimeout: 10
   Serializer: 2
   protocol: 0
-  RosBridgeServerUrl: ws://192.168.1.146:9090
+  RosBridgeServerUrl: ws://192.168.1.212:9090
 --- !u!4 &890915796
 Transform:
   m_ObjectHideFlags: 0

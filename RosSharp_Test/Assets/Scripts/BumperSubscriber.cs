@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using RosSharp.RosBridgeClient.MessageTypes.MobileBaseDriver;
 namespace RosSharp.RosBridgeClient
 {
@@ -11,6 +12,7 @@ namespace RosSharp.RosBridgeClient
         private MessageTypes.MobileBaseDriver.Bumper[] bumper;
         private bool isMessageReceived;
         private AnimationPublisher _animPub;
+        bool animating = false;
 
         public AnimationPublisher AnimPublisher
         {
@@ -34,6 +36,19 @@ namespace RosSharp.RosBridgeClient
                 ProcessMessage();
         }
 
+        IEnumerator BumpSound()
+        {
+            if (animating)
+            {
+                yield return null;
+            }
+
+            animating = true;
+            AnimPublisher.PublishAnim(AnimationPublisher.ANIMATION_CMD.bump);
+            yield return new WaitForSeconds(1.0f);
+            animating = false;
+        }
+
         protected override void ReceiveMessage(MessageTypes.MobileBaseDriver.Sensors message)
         {
             this.bumper = message.bumper;
@@ -45,7 +60,8 @@ namespace RosSharp.RosBridgeClient
             if (bumper[0].state == 1 || bumper[1].state == 1 || bumper[2].state == 1)
             {
                 meshBumper.material = on;
-                AnimPublisher.PublishAnim(AnimationPublisher.ANIMATION_CMD.bump);
+                StartCoroutine(BumpSound());
+          
             } else
             { 
                 meshBumper.material = off;
