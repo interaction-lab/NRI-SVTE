@@ -10,9 +10,21 @@ namespace RosSharp.RosBridgeClient
 
         private MessageTypes.MobileBaseDriver.WheelDrop[] wheeldrop;
         private bool isMessageReceived;
-        private AnimationPublisher animPub;
+        private AnimationPublisher _animPub;
         bool pickup;
         bool prevPickup;
+
+        public AnimationPublisher AnimPublisher
+        {
+            get
+            {
+                if (!_animPub)
+                {
+                    _animPub = FindObjectOfType<AnimationPublisher>();
+                }
+                return _animPub;
+            }
+        } // TODO: replace inspector public variable with better getter
 
         protected override void Start()
         {
@@ -46,9 +58,9 @@ namespace RosSharp.RosBridgeClient
             if(pickup != prevPickup)
             {
                 if(pickup)
-                    animPub.PublishAnim(AnimationPublisher.ANIMATION_CMD.pickup);
+                    AnimPublisher.PublishAnim(AnimationPublisher.ANIMATION_CMD.pickup);
                 else
-                    animPub.PublishAnim(AnimationPublisher.ANIMATION_CMD.putdown);
+                    AnimPublisher.PublishAnim(AnimationPublisher.ANIMATION_CMD.putdown);
             }
             prevPickup = pickup;
 

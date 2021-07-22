@@ -10,7 +10,19 @@ namespace RosSharp.RosBridgeClient
 
         private MessageTypes.MobileBaseDriver.Bumper[] bumper;
         private bool isMessageReceived;
-        private AnimationPublisher animPub;
+        private AnimationPublisher _animPub;
+
+        public AnimationPublisher AnimPublisher
+        {
+            get
+            {
+                if (!_animPub)
+                {
+                    _animPub = FindObjectOfType<AnimationPublisher>();
+                }
+                return _animPub;
+            }
+        } // TODO: replace inspector public variable with better getter
 
         protected override void Start()
         {
@@ -33,7 +45,7 @@ namespace RosSharp.RosBridgeClient
             if (bumper[0].state == 1 || bumper[1].state == 1 || bumper[2].state == 1)
             {
                 meshBumper.material = on;
-                animPub.PublishAnim(AnimationPublisher.ANIMATION_CMD.bump);
+                AnimPublisher.PublishAnim(AnimationPublisher.ANIMATION_CMD.bump);
             } else
             { 
                 meshBumper.material = off;
