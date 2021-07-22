@@ -11,7 +11,9 @@ namespace RosSharp_Test
         public Transform CapTouch;
         public Transform KuriCamera;
         public Transform KuriText;
-        public Transform Controller;
+        public Transform smallController;
+        public Transform mediumController;
+        public Transform largeController;
 
         void Start()
         {
@@ -39,9 +41,19 @@ namespace RosSharp_Test
             NextStepButton.gameObject.SetActive(!NextStepButton.gameObject.activeSelf);
         }
 
-        public void toggleController()
+        public void toggleSmallController()
         {
-            Controller.gameObject.SetActive(!Controller.gameObject.activeSelf);
+            smallController.gameObject.SetActive(!smallController.gameObject.activeSelf);
+        }
+
+        public void toggleMediumController()
+        {
+            mediumController.gameObject.SetActive(!mediumController.gameObject.activeSelf);
+        }
+
+        public void toggleLargeController()
+        {
+            largeController.gameObject.SetActive(!largeController.gameObject.activeSelf);
         }
     }
 }
