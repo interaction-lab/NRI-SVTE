@@ -15,31 +15,32 @@ namespace RosSharp_Test
         public Transform mediumController;
         public Transform largeController;
         public GameObject photoButton;
+        public ColorVisualizer colorVis;
 
-        void Start()
+
+        public void ToggleKuriColorVizMesh(bool on)
         {
-            //CapTouch.enabled = false;
+            colorVis.enabled = on;
         }
 
-        public void toggleCapTouch()
+        public void toggleCapTouch(bool? on = null)
         {
-            CapTouch.gameObject.SetActive(!CapTouch.gameObject.activeSelf);
+            Toggle(CapTouch, on);
         }
 
-        public void toggleKuriText()
+        public void toggleKuriText(bool? on = null)
         {
-            KuriText.gameObject.SetActive(!KuriText.gameObject.activeSelf);
+            Toggle(KuriText, on);
         }
 
-        public void toggleKuriCameraManager()
+        public void toggleKuriCameraManager(bool? on = null)
         {
-
-            KuriCamera.gameObject.SetActive(!KuriCamera.gameObject.activeSelf);
+            Toggle(KuriCamera, on);
         }
 
-        public void toggleNext()
+        public void toggleNext(bool? on = null)
         {
-            NextStepButton.gameObject.SetActive(!NextStepButton.gameObject.activeSelf);
+            Toggle(NextStepButton, on);
         }
 
         public void toggleSmallController(bool? on = null)
@@ -47,36 +48,39 @@ namespace RosSharp_Test
             Toggle(smallController, on);
         }
 
-        public void toggleMediumController()
+        public void toggleMediumController(bool? on = null)
         {
-            mediumController.gameObject.SetActive(!mediumController.gameObject.activeSelf);
+            Toggle(mediumController, on);
         }
 
-        public void toggleLargeController()
+        public void toggleLargeController(bool? on = null)
         {
-            largeController.gameObject.SetActive(!largeController.gameObject.activeSelf);
+            Toggle(largeController, on);
         }
+
+
+        public void togglePhotoButton(bool? on = null)
+        {
+            Toggle(photoButton, on);
+        }
+
 
         void Toggle(Transform t, bool? on)
         {
             Toggle(t.gameObject, on);
+
         }
 
         void Toggle(GameObject go, bool? on)
         {
             if (on == null)
             {
-                go.gameObject.SetActive(!smallController.gameObject.activeSelf);
+                go.gameObject.SetActive(!go.activeSelf);
             }
             else
             {
                 go.gameObject.SetActive((bool)on);
             }
-        }
-
-        public void togglePhotoButton(bool? on = null)
-        {
-            Toggle(photoButton, on);
         }
     }
 }

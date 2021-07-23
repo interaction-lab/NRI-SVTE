@@ -40,7 +40,7 @@ namespace RosSharp.RosBridgeClient
         {
             if (animating)
             {
-                yield return null;
+                yield break;
             }
 
             animating = true;
