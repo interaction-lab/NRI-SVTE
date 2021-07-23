@@ -16,6 +16,7 @@ namespace RosSharp_Test
         public Transform largeController;
         public GameObject photoButton;
         public ColorVisualizer colorVis;
+        public GameObject userFace;
 
 
         public void ToggleKuriColorVizMesh(bool on)
@@ -62,6 +63,11 @@ namespace RosSharp_Test
         public void togglePhotoButton(bool? on = null)
         {
             Toggle(photoButton, on);
+        }
+
+        public void toggleUserFace(bool? on = null)
+        {
+            Toggle(userFace, on);
         }
 
 
