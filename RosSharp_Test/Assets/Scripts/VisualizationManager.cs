@@ -17,6 +17,7 @@ namespace RosSharp_Test
         public GameObject photoButton;
         public ColorVisualizer colorVis;
         public GameObject userFace;
+        public Transform lidar;
 
 
         public void ToggleKuriColorVizMesh(bool on)
@@ -68,6 +69,11 @@ namespace RosSharp_Test
         public void toggleUserFace(bool? on = null)
         {
             Toggle(userFace, on);
+        }
+
+        public void toggleLidar(bool? on = null)
+        {
+            Toggle(lidar, on);
         }
 
 
