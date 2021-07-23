@@ -52,16 +52,26 @@ namespace RosSharp.RosBridgeClient
 
             for (int i = 0; i < directions.Length; i++)
             {
-                LaserScan[i].transform.localPosition = ranges[i] * directions[i];
+                Vector3 endPos = ranges[i] * directions[i];
+                if (float.IsNaN(endPos.x) || float.IsNaN(endPos.y) || float.IsNaN(endPos.z) || float.IsInfinity(endPos.x) || float.IsInfinity(endPos.y) || float.IsInfinity(endPos.z))
+                {
+                    endPos = Vector3.zero;
+                   
+                }
+
+                LaserScan[i].transform.localPosition = endPos;
+                
                 LineRenderer lr = LaserScan[i].GetComponent<LineRenderer>();
                 lr.startColor = GetColor(ranges[i]);
                 lr.endColor = GetColor(ranges[i]);
                 lr.startWidth = objectWidth;
                 lr.endWidth = objectWidth;
                 lr.useWorldSpace = false;
-                lr.SetPosition(0, new Vector3(0, 0, 0));
-                lr.SetPosition(1, -LaserScan[i].transform.localPosition);
+                lr.SetPosition(0, Vector3.zero);
+
+                lr.SetPosition(1, -endPos);
             }
+            Debug.Log(directions);
         }
 
         protected override void DestroyObjects()
