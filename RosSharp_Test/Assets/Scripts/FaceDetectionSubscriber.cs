@@ -9,7 +9,7 @@ namespace RosSharp.RosBridgeClient {
         private Vector3 targetScale;
 
         private MessageTypes.Vision.FaceArray faces;
-        private bool isMessageReceived;
+        private bool isMessageReceived, turnOffSignal;
         private AnimationPublisher _animPub;
         public AnimationPublisher AnimPublisher {
             get {
@@ -25,17 +25,29 @@ namespace RosSharp.RosBridgeClient {
         private float endValue = 10;
         private float valueToLerp;
         private float speed = 0.0025f;
+        float turnOffTime = 1f;
         private bool userThere;
+        MeshRenderer pubrend;
 
         protected override void Start() {
             base.Start();
             userThere = false;
+            turnOffSignal = false;
+            pubrend = PublishedTransform.GetComponent<MeshRenderer>();
         }
         private void Update() {
             if (isMessageReceived)
                 ProcessMessage();
             LerpPosition(targetPosition, speed);
             LerpScale(targetScale, speed);
+            if(turnOffTime < 0 && pubrend.enabled)
+            {
+                pubrend.enabled = false;
+            }
+            else
+            {
+                turnOffTime -= Time.deltaTime;
+            }
         }
 
         protected override void ReceiveMessage(MessageTypes.Vision.FrameResults message) {
@@ -43,12 +55,21 @@ namespace RosSharp.RosBridgeClient {
             isMessageReceived = true;
         }
 
+        void TurnOn()
+        {
+            pubrend.enabled = true;
+            turnOffTime = 1f;   
+        }
+
+        
+
         private void ProcessMessage() {
             if (faces.faces.Length > 0) {
                 if (!userThere)
                 {
                     AnimPublisher.PublishAnim(AnimationPublisher.ANIMATION_CMD.face_detected);
                 }
+                TurnOn();
                 userThere = true;
                 targetPosition = GetPosition(faces.faces[0]);
                 targetScale = GetScale(faces.faces[0]);
