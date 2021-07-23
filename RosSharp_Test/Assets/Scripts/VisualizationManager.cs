@@ -76,6 +76,11 @@ namespace RosSharp_Test
             Toggle(lidar, on);
         }
 
+        public void TOGGLEBUTTONLIDAR()
+        {
+            Toggle(lidar, null);
+        }
+
 
         void Toggle(Transform t, bool? on)
         {

@@ -9,6 +9,7 @@ namespace RosSharp_Test
     {
         public GameObject kuriText;
         private int currentTaskLoc;
+        public Transform spawnPoint;
 
         private string[] congratulation = {
                     "Well done!",
@@ -37,6 +38,12 @@ namespace RosSharp_Test
         void Start()
         {
             currentTaskLoc = 0;
+            transform.position = spawnPoint.position + Vector3.up;
+        }
+
+        private void OnEnable()
+        {
+            transform.position = spawnPoint.position + Vector3.up;
         }
 
         public void CycleToNextPrompt()

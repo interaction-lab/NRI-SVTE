@@ -77,10 +77,13 @@ namespace RosSharp.RosBridgeClient
 
         protected override void DestroyObjects()
         {
-            for (int i = 0; i < LaserScan.Length; i++)
-                Destroy(LaserScan[i]);
+            if (LaserScan != null)
+            {
+                for (int i = 0; i < LaserScan.Length; i++)
+                    Destroy(LaserScan[i]);
 
-            Destroy(laserScanLines);
+                Destroy(laserScanLines);
+            }
             IsCreated = false;
         }
     }

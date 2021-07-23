@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using RosSharp.RosBridgeClient.MessageTypes.MobileBaseDriver;
+using RosSharp_Test;
+
 namespace RosSharp.RosBridgeClient
 {
     public class BumperSubscriber : UnitySubscriber<MessageTypes.MobileBaseDriver.Sensors>
@@ -13,6 +15,7 @@ namespace RosSharp.RosBridgeClient
         private bool isMessageReceived;
         private AnimationPublisher _animPub;
         bool animating = false;
+        
 
         public AnimationPublisher AnimPublisher
         {
@@ -61,7 +64,9 @@ namespace RosSharp.RosBridgeClient
             {
                 meshBumper.material = on;
                 StartCoroutine(BumpSound());
-          
+                VisualizationManager.instance.toggleLidar(false);
+
+
             } else
             { 
                 meshBumper.material = off;

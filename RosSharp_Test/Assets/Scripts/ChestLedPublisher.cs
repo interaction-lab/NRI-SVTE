@@ -22,7 +22,6 @@ namespace RosSharp.RosBridgeClient {
                 Color c = colorPicker.CustomColor;
                 setColor((int)(c.r * 255), (int)(c.g * 255), (int)(c.b * 255));
             }
-
         }
 
         private void InitializeMessage() {

@@ -16,21 +16,23 @@ namespace RosSharp_Test
         private void Start()
         {
             VisualizationManager.instance.toggleSmallController(true);
+            VisualizationManager.instance.toggleUserFace(true);
             VisualizationManager.instance.togglePhotoButton(false);
             VisualizationManager.instance.toggleMediumController(false);
             VisualizationManager.instance.toggleCapTouch(false);
             VisualizationManager.instance.ToggleKuriColorVizMesh(false);
-            VisualizationManager.instance.toggleUserFace(false);
             VisualizationManager.instance.toggleKuriText(false);
+            VisualizationManager.instance.toggleLidar(false);
+            VisualizationManager.instance.toggleLargeController(false);
         }
 
         int numPhotosTaken = 0;
         public void TookPhoto()
         {
             ++numPhotosTaken;
-            if (numPhotosTaken == 3)
+            if (numPhotosTaken == 2)
             {
-                VisualizationManager.instance.toggleMediumController(true);
+                VisualizationManager.instance.toggleLargeController(true);
             }
         }
 
@@ -40,7 +42,8 @@ namespace RosSharp_Test
             ++numMovementsPressed;
             if (numMovementsPressed == 2)
             {
-                VisualizationManager.instance.togglePhotoButton(true);
+                VisualizationManager.instance.toggleMediumController(true);
+                //VisualizationManager.instance.togglePhotoButton(true);
             }
         }
 
@@ -60,20 +63,19 @@ namespace RosSharp_Test
         public void AnimationPlayed()
         {
             ++numAnimations;
-            if (numAnimations >= 1 && numHeadPan >= 1 && !lastToggle)
-            {
-                VisualizationManager.instance.toggleUserFace(true);
-                VisualizationManager.instance.toggleCapTouch(true);
-                VisualizationManager.instance.toggleKuriText(true);
-                lastToggle = true;
-            }
+            FinalToggleCheck();
         }
 
         int numHeadPan = 0;
         public void HeadMoved()
         {
             ++numHeadPan;
-            if (numAnimations >= 1 && numHeadPan >= 1 && !lastToggle)
+            FinalToggleCheck();
+        }
+
+        void FinalToggleCheck()
+        {
+            if (numAnimations >= 1 && !lastToggle)
             {
                 VisualizationManager.instance.toggleUserFace(true);
                 VisualizationManager.instance.toggleCapTouch(true);

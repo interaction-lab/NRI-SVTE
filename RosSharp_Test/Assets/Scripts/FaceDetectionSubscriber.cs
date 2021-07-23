@@ -24,7 +24,7 @@ namespace RosSharp.RosBridgeClient {
         private float startValue = 0;
         private float endValue = 10;
         private float valueToLerp;
-        private float speed = 0.0025f;
+        private float speed = 0.01f;
         float turnOffTime = 1f;
         private bool userThere;
         MeshRenderer pubrend;
