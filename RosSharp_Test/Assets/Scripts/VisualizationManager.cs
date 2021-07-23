@@ -6,7 +6,7 @@ namespace RosSharp_Test
 {
     public class VisualizationManager : Singleton<VisualizationManager>
     {
-       
+
         public Transform NextStepButton;
         public Transform CapTouch;
         public Transform KuriCamera;
@@ -14,6 +14,7 @@ namespace RosSharp_Test
         public Transform smallController;
         public Transform mediumController;
         public Transform largeController;
+        public GameObject photoButton;
 
         void Start()
         {
@@ -41,9 +42,9 @@ namespace RosSharp_Test
             NextStepButton.gameObject.SetActive(!NextStepButton.gameObject.activeSelf);
         }
 
-        public void toggleSmallController()
+        public void toggleSmallController(bool? on = null)
         {
-            smallController.gameObject.SetActive(!smallController.gameObject.activeSelf);
+            Toggle(smallController, on);
         }
 
         public void toggleMediumController()
@@ -54,6 +55,28 @@ namespace RosSharp_Test
         public void toggleLargeController()
         {
             largeController.gameObject.SetActive(!largeController.gameObject.activeSelf);
+        }
+
+        void Toggle(Transform t, bool? on)
+        {
+            Toggle(t.gameObject, on);
+        }
+
+        void Toggle(GameObject go, bool? on)
+        {
+            if (on == null)
+            {
+                go.gameObject.SetActive(!smallController.gameObject.activeSelf);
+            }
+            else
+            {
+                go.gameObject.SetActive((bool)on);
+            }
+        }
+
+        public void togglePhotoButton(bool? on = null)
+        {
+            Toggle(photoButton, on);
         }
     }
 }

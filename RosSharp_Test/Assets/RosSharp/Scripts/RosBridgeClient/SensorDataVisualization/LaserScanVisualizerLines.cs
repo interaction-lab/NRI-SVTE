@@ -62,8 +62,9 @@ namespace RosSharp.RosBridgeClient
                 LaserScan[i].transform.localPosition = endPos;
                 
                 LineRenderer lr = LaserScan[i].GetComponent<LineRenderer>();
-                lr.startColor = GetColor(ranges[i]);
-                lr.endColor = GetColor(ranges[i]);
+                Color c = GetColor(ranges[i]);
+                //lr.sharedMaterial .SetColor("_Color", c);
+                lr.SetColors(c, c);
                 lr.startWidth = objectWidth;
                 lr.endWidth = objectWidth;
                 lr.useWorldSpace = false;
@@ -71,7 +72,7 @@ namespace RosSharp.RosBridgeClient
 
                 lr.SetPosition(1, -endPos);
             }
-            Debug.Log(directions);
+          
         }
 
         protected override void DestroyObjects()

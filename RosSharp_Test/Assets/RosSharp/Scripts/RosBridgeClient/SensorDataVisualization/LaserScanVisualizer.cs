@@ -58,12 +58,12 @@ namespace RosSharp.RosBridgeClient
         protected Color GetColor(float distance)
         {
             float h_min = (float)0;
-            float h_max = (float)0.5;
+            float h_max = (float)0.5f;
+
 
             float h = (float)(h_min + (distance - range_min) / (range_max - range_min) * (h_max - h_min));
             float s = (float)1.0;
             float v = (float)1.0;
-
             return Color.HSVToRGB(h, s, v);
         }
 

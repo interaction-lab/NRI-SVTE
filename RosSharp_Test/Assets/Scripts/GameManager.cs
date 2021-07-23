@@ -7,43 +7,21 @@ namespace RosSharp_Test
 {
     public class GameManager : MonoBehaviour
     {
-        private VisualizationManager visManager;
-        private float timeCount = 0;
-        private bool controllerSOff = true;
-        private bool controllerMOff = true;
-
-        void Start()
+        private void Start()
         {
-
+            VisualizationManager.instance.toggleSmallController(true);
         }
 
-        public VisualizationManager VisualizationManager
+        int numPhotosTaken = 0;
+        public void TookPhoto()
         {
-            get
-            {
-                if (!visManager)
-                {
-                    visManager = FindObjectOfType<VisualizationManager>();
-                }
-                return visManager;
-            }
+            ++numPhotosTaken;
         }
 
-        void Update()
+        int numMovementsPressed = 0;
+        public void MovementPressed()
         {
-            timeCount += Time.deltaTime;
-            
-            if (timeCount > 10 && controllerSOff)
-            {
-                VisualizationManager.toggleSmallController();
-                controllerSOff = false;
-            }
-
-            if(timeCount > 20 && controllerMOff)
-            {
-                VisualizationManager.toggleMediumController();
-                controllerMOff = false;
-            }
+            ++numMovementsPressed;
         }
     }
 }
