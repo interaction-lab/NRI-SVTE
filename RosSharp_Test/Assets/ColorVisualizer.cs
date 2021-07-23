@@ -11,6 +11,7 @@ public class ColorVisualizer : MonoBehaviour
     private void Awake()
     {
         rend = GetComponent<MeshRenderer>();
+        enabled = false;
     }
 
     private void Update()

@@ -4,31 +4,50 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace RosSharp.RosBridgeClient {
-    public class AnimationPublisher : UnityPublisher<MessageTypes.Std.String> {
+namespace RosSharp.RosBridgeClient
+{
+    public class AnimationPublisher : UnityPublisher<MessageTypes.Std.String>
+    {
         MessageTypes.Std.String msg;
+        bool is_animating = false;
 
-        protected override void Start() {
+        protected override void Start()
+        {
             base.Start();
             InitializeMessage();
         }
 
-        private void InitializeMessage() {
+        private void InitializeMessage()
+        {
             msg = new MessageTypes.Std.String("");
         }
 
-        public void PublishAnim(ANIMATION_CMD anim) {
-            msg.data = anim.ToString();
+        IEnumerator PublishIfNothingAnimating()
+        {
+            if (is_animating)
+            {
+                yield break;
+            }
+            is_animating = true;
             Publish(msg);
+            yield return new WaitForSeconds(0.75f);
+            is_animating = false;
+        }
+
+        public void PublishAnim(ANIMATION_CMD anim)
+        {
+            msg.data = anim.ToString();
+            StartCoroutine(PublishIfNothingAnimating());
         }
 
         public void PublishStringAnim(string command)
         {
             msg.data = command;
-            Publish(msg);
+            StartCoroutine(PublishIfNothingAnimating());
         }
 
-        public enum ANIMATION_CMD {
+        public enum ANIMATION_CMD
+        {
             // DockingSupportAnimations,
             docking_complete_asleep,
             docking_complete_awake,

@@ -7,6 +7,12 @@ namespace RosSharp_Test
 {
     public class GameManager : MonoBehaviour
     {
+        // bumper
+        // pickup
+        // cap touch
+        // lidar
+        // face detection
+     
         private void Start()
         {
             VisualizationManager.instance.toggleSmallController(true);
@@ -46,7 +52,14 @@ namespace RosSharp_Test
         public void ColorChanged()
         {
             ++numColorChanges;
+            if(numColorChanges == 1)
+            {
+                VisualizationManager.instance.ToggleKuriColorVizMesh(true);
+            }
         }
+
+
+        
 
 
     }
