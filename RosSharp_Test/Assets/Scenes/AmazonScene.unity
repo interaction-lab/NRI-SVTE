@@ -1732,8 +1732,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 240160646}
   m_LocalRotation: {x: -0.21643952, y: -0, z: -0, w: 0.97629607}
-  m_LocalPosition: {x: -0.084, y: 0.8615943, z: 2.1010828}
-  m_LocalScale: {x: 0.89, y: 0.10000001, z: 0.5}
+  m_LocalPosition: {x: 0.04, y: 0.8615943, z: 2.1010828}
+  m_LocalScale: {x: 0.66, y: 0.10000001, z: 0.5}
   m_Children: []
   m_Father: {fileID: 1603774775}
   m_RootOrder: 0
@@ -1770,7 +1770,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f5fc9c5346d231a46b3a1ceb7dcff90e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2401,7 +2401,7 @@ RectTransform:
   m_GameObject: {fileID: 444253590}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.02000001}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.015, y: 0.015, z: 0.015}
   m_Children: []
   m_Father: {fileID: 937759016}
   m_RootOrder: 6
@@ -3498,7 +3498,7 @@ RectTransform:
   m_GameObject: {fileID: 679047107}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.02000001}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.015, y: 0.015, z: 0.015}
   m_Children: []
   m_Father: {fileID: 937759016}
   m_RootOrder: 4
@@ -3672,7 +3672,7 @@ RectTransform:
   m_GameObject: {fileID: 684847451}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.02000001}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.015, y: 0.015, z: 0.015}
   m_Children: []
   m_Father: {fileID: 937759016}
   m_RootOrder: 7
@@ -4242,7 +4242,7 @@ RectTransform:
   m_GameObject: {fileID: 779798980}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.02000001}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.015, y: 0.015, z: 0.015}
   m_Children: []
   m_Father: {fileID: 937759016}
   m_RootOrder: 5
@@ -4881,7 +4881,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb64e2e126e45a841b84bdd797701aff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Topic: /scan_reduced_nav
+  Topic: /scan
   TimeStep: 0.1
   laserScanWriter: {fileID: 1171724601}
 --- !u!114 &890915808
@@ -6572,7 +6572,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f5fc9c5346d231a46b3a1ceb7dcff90e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6915,7 +6915,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\n\n\n\n   Pick kuri up\n   Push kuri's bumper\n   Pet kuri's head\n  
-    Extend the controller\n   Try the lidar button"
+    Try the lidar button"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
@@ -8535,7 +8535,7 @@ RectTransform:
   m_GameObject: {fileID: 1817931247}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.015, y: 0.015, z: 0.015}
   m_Children: []
   m_Father: {fileID: 937759016}
   m_RootOrder: 3
@@ -8665,7 +8665,7 @@ RectTransform:
   m_GameObject: {fileID: 1862817721}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.015, y: 0.015, z: 0.015}
   m_Children: []
   m_Father: {fileID: 937759016}
   m_RootOrder: 1
@@ -9145,7 +9145,7 @@ RectTransform:
   m_GameObject: {fileID: 1898435588}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.02000001}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.015, y: 0.015, z: 0.015}
   m_Children: []
   m_Father: {fileID: 937759016}
   m_RootOrder: 2
@@ -9287,7 +9287,6 @@ MonoBehaviour:
 
     -
 
-    -
 
 '
   m_isRightToLeft: 0
@@ -11885,7 +11884,7 @@ RectTransform:
   m_GameObject: {fileID: 2099920825}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.02000001}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.015, y: 0.015, z: 0.015}
   m_Children: []
   m_Father: {fileID: 937759016}
   m_RootOrder: 0

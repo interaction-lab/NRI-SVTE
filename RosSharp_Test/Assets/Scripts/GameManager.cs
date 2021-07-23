@@ -42,7 +42,8 @@ namespace RosSharp_Test
             ++numMovementsPressed;
             if (numMovementsPressed == 2)
             {
-                VisualizationManager.instance.toggleMediumController(true);
+                //VisualizationManager.instance.toggleMediumController(true);
+                VisualizationManager.instance.toggleLargeController(true);
                 //VisualizationManager.instance.togglePhotoButton(true);
             }
         }
