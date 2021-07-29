@@ -7,12 +7,9 @@ namespace RosSharp_Test
 {
     public class GameManager : MonoBehaviour
     {
-        // bumper
-        // pickup
-        // cap touch
-        // lidar
-        // face detection
-     
+        public AudioSource audioSource;
+
+
         private void Start()
         {
             VisualizationManager.instance.toggleSmallController(true);
@@ -21,7 +18,12 @@ namespace RosSharp_Test
             VisualizationManager.instance.toggleCapTouch(false);
             VisualizationManager.instance.ToggleKuriColorVizMesh(false);
             VisualizationManager.instance.toggleUserFace(false);
-            VisualizationManager.instance.toggleKuriText(false);
+            VisualizationManager.instance.toggleKuriText(true);
+            VisualizationManager.instance.toggleFreePlayText(false);
+            VisualizationManager.instance.toggleControllerText(true);
+            VisualizationManager.instance.toggleCameraText(false);
+            VisualizationManager.instance.toggleExtendText(false);
+            //audioSource = GetComponent<AudioSource>();
         }
 
         int numPhotosTaken = 0;
@@ -31,6 +33,9 @@ namespace RosSharp_Test
             if (numPhotosTaken == 3)
             {
                 VisualizationManager.instance.toggleMediumController(true);
+                VisualizationManager.instance.toggleCameraText(false);
+                VisualizationManager.instance.toggleExtendText(true);
+                audioSource.Play();
             }
         }
 
@@ -41,6 +46,9 @@ namespace RosSharp_Test
             if (numMovementsPressed == 2)
             {
                 VisualizationManager.instance.togglePhotoButton(true);
+                VisualizationManager.instance.toggleControllerText(false);
+                VisualizationManager.instance.toggleCameraText(true);
+                audioSource.Play();
             }
         }
 
@@ -66,6 +74,7 @@ namespace RosSharp_Test
                 VisualizationManager.instance.toggleCapTouch(true);
                 VisualizationManager.instance.toggleKuriText(true);
                 lastToggle = true;
+                audioSource.Play();
             }
         }
 
@@ -79,6 +88,19 @@ namespace RosSharp_Test
                 VisualizationManager.instance.toggleCapTouch(true);
                 VisualizationManager.instance.toggleKuriText(true);
                 lastToggle = true;
+                audioSource.Play();
+            }
+        }
+
+        bool extended = false;
+        public void ControllerExtended()
+        {
+            if(!extended)
+            {
+                extended = true;
+                VisualizationManager.instance.toggleExtendText(false);
+                VisualizationManager.instance.toggleFreePlayText(true);
+                audioSource.Play();
             }
         }
 
