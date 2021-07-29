@@ -7,7 +7,7 @@ namespace RosSharp_Test
     public class AudioManager : Singleton<AudioManager>
     {
         public static AudioClip correctAudioClip, incorrectAudioClip, poofAudioClip, popAudioClip, snapAudioClip, spwanAudioClip;
-        public AudioClip MRTKButtonPress, MRTKButtonUnpress;
+        //public AudioClip MRTKButtonPress, MRTKButtonUnpress;
         static string audioLogCol = "AudioPlayed";
 
         void Awake()

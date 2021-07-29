@@ -7,8 +7,8 @@ namespace RosSharp_Test
 {
     public class GameManager : MonoBehaviour
     {
-        public AudioSource audioSource;
-
+        public Transform KuriText;
+        public Transform Kuri;
 
         private void Start()
         {
@@ -23,20 +23,6 @@ namespace RosSharp_Test
             VisualizationManager.instance.toggleControllerText(true);
             VisualizationManager.instance.toggleCameraText(false);
             VisualizationManager.instance.toggleExtendText(false);
-            //audioSource = GetComponent<AudioSource>();
-        }
-
-        int numPhotosTaken = 0;
-        public void TookPhoto()
-        {
-            ++numPhotosTaken;
-            if (numPhotosTaken == 3)
-            {
-                VisualizationManager.instance.toggleMediumController(true);
-                VisualizationManager.instance.toggleCameraText(false);
-                VisualizationManager.instance.toggleExtendText(true);
-                audioSource.Play();
-            }
         }
 
         int numMovementsPressed = 0;
@@ -48,7 +34,20 @@ namespace RosSharp_Test
                 VisualizationManager.instance.togglePhotoButton(true);
                 VisualizationManager.instance.toggleControllerText(false);
                 VisualizationManager.instance.toggleCameraText(true);
-                audioSource.Play();
+                AudioManager.instance.PlaySoundAtObject(KuriText, AudioManager.correctAudioClip);
+            }
+        }
+
+        int numPhotosTaken = 0;
+        public void TookPhoto()
+        {
+            ++numPhotosTaken;
+            if (numPhotosTaken == 3)
+            {
+                VisualizationManager.instance.toggleMediumController(true);
+                VisualizationManager.instance.toggleCameraText(false);
+                VisualizationManager.instance.toggleExtendText(true);
+                AudioManager.instance.PlaySoundAtObject(KuriText, AudioManager.correctAudioClip);
             }
         }
 
@@ -60,6 +59,7 @@ namespace RosSharp_Test
             if(numColorChanges == 1)
             {
                 VisualizationManager.instance.ToggleKuriColorVizMesh(true);
+                AudioManager.instance.PlaySoundAtObject(Kuri, AudioManager.popAudioClip);
             }
         }
 
@@ -74,7 +74,7 @@ namespace RosSharp_Test
                 VisualizationManager.instance.toggleCapTouch(true);
                 VisualizationManager.instance.toggleKuriText(true);
                 lastToggle = true;
-                audioSource.Play();
+                AudioManager.instance.PlaySoundAtObject(KuriText, AudioManager.correctAudioClip);
             }
         }
 
@@ -88,7 +88,7 @@ namespace RosSharp_Test
                 VisualizationManager.instance.toggleCapTouch(true);
                 VisualizationManager.instance.toggleKuriText(true);
                 lastToggle = true;
-                audioSource.Play();
+                AudioManager.instance.PlaySoundAtObject(KuriText, AudioManager.correctAudioClip);
             }
         }
 
@@ -100,7 +100,7 @@ namespace RosSharp_Test
                 extended = true;
                 VisualizationManager.instance.toggleExtendText(false);
                 VisualizationManager.instance.toggleFreePlayText(true);
-                audioSource.Play();
+                AudioManager.instance.PlaySoundAtObject(KuriText, AudioManager.correctAudioClip);
             }
         }
 
