@@ -9,7 +9,7 @@ namespace KuriSVTE
     public class VirtualPhotoGallery : Singleton<VirtualPhotoGallery>
     {
         List<GameObject> PictureList { get; set; } = new List<GameObject>();
-        public Texture pictureTexture;
+        public Texture2D pictureTexture;
         public GameObject picture;
 
         public float zCoord = 0f;
@@ -28,13 +28,15 @@ namespace KuriSVTE
             curPic.transform.localRotation = Quaternion.Euler(0, -90, 0);
 
             // holds the updated picture texture
-            Texture updatedTexture = pictureTexture;
+            Texture2D updatedTexture = pictureTexture;
 
             // sets the texture onto the cube
             MeshRenderer rend = curPic.transform.GetChild(0).GetComponent<MeshRenderer>(); // TODO: get rid of child
-            Texture2D canvasTexture = new Texture2D(1, 1);
-            rend.material = new Material(Shader.Find("Mixed Reality Toolkit/Standard")); // TODO: move this to resource path constants
-            rend.material.SetTexture("_MainTex", updatedTexture);
+            Texture2D canvasTexture = new Texture2D(pictureTexture.width, pictureTexture.height);
+            canvasTexture.SetPixels(pictureTexture.GetPixels());
+            canvasTexture.Apply();
+            rend.material = new Material(Shader.Find("Mixed Reality Toolkit/Standard")); //             TODO: move this to resource path constants
+            rend.material.SetTexture("_MainTex", canvasTexture);
 
             // increments the z coordinate so each new picture taken is placed side by side
             zCoord -= 0.27f;
