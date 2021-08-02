@@ -7,12 +7,9 @@ namespace RosSharp_Test
 {
     public class GameManager : MonoBehaviour
     {
-        // bumper
-        // pickup
-        // cap touch
-        // lidar
-        // face detection
-     
+        public Transform KuriText;
+        public Transform Kuri;
+
         private void Start()
         {
             VisualizationManager.instance.toggleSmallController(true);
@@ -21,19 +18,12 @@ namespace RosSharp_Test
             VisualizationManager.instance.toggleMediumController(false);
             VisualizationManager.instance.toggleCapTouch(false);
             VisualizationManager.instance.ToggleKuriColorVizMesh(false);
-            VisualizationManager.instance.toggleKuriText(false);
-            VisualizationManager.instance.toggleLidar(false);
-            VisualizationManager.instance.toggleLargeController(false);
-        }
-
-        int numPhotosTaken = 0;
-        public void TookPhoto()
-        {
-            ++numPhotosTaken;
-            if (numPhotosTaken == 2)
-            {
-                VisualizationManager.instance.toggleLargeController(true);
-            }
+            VisualizationManager.instance.toggleUserFace(false);
+            VisualizationManager.instance.toggleKuriText(true);
+            VisualizationManager.instance.toggleFreePlayText(false);
+            VisualizationManager.instance.toggleControllerText(true);
+            VisualizationManager.instance.toggleCameraText(false);
+            VisualizationManager.instance.toggleExtendText(false);
         }
 
         int numMovementsPressed = 0;
@@ -42,9 +32,23 @@ namespace RosSharp_Test
             ++numMovementsPressed;
             if (numMovementsPressed == 2)
             {
-                //VisualizationManager.instance.toggleMediumController(true);
-                VisualizationManager.instance.toggleLargeController(true);
-                //VisualizationManager.instance.togglePhotoButton(true);
+                VisualizationManager.instance.togglePhotoButton(true);
+                VisualizationManager.instance.toggleControllerText(false);
+                VisualizationManager.instance.toggleCameraText(true);
+                AudioManager.instance.PlaySoundAtObject(KuriText, AudioManager.correctAudioClip);
+            }
+        }
+
+        int numPhotosTaken = 0;
+        public void TookPhoto()
+        {
+            ++numPhotosTaken;
+            if (numPhotosTaken == 3)
+            {
+                VisualizationManager.instance.toggleMediumController(true);
+                VisualizationManager.instance.toggleCameraText(false);
+                VisualizationManager.instance.toggleExtendText(true);
+                AudioManager.instance.PlaySoundAtObject(KuriText, AudioManager.correctAudioClip);
             }
         }
 
@@ -56,6 +60,7 @@ namespace RosSharp_Test
             if(numColorChanges == 1)
             {
                 VisualizationManager.instance.ToggleKuriColorVizMesh(true);
+                AudioManager.instance.PlaySoundAtObject(Kuri, AudioManager.popAudioClip);
             }
         }
 
@@ -82,6 +87,19 @@ namespace RosSharp_Test
                 VisualizationManager.instance.toggleCapTouch(true);
                 VisualizationManager.instance.toggleKuriText(true);
                 lastToggle = true;
+                AudioManager.instance.PlaySoundAtObject(KuriText, AudioManager.correctAudioClip);
+            }
+        }
+
+        bool extended = false;
+        public void ControllerExtended()
+        {
+            if(!extended)
+            {
+                extended = true;
+                VisualizationManager.instance.toggleExtendText(false);
+                VisualizationManager.instance.toggleFreePlayText(true);
+                AudioManager.instance.PlaySoundAtObject(KuriText, AudioManager.correctAudioClip);
             }
         }
 

@@ -20,11 +20,7 @@ namespace RosSharp.RosBridgeClient {
             }
         } // TODO: replace inspector public variable with better getter
 
-        private float lerpDuration = 3;
-        private float startValue = 0;
-        private float endValue = 10;
-        private float valueToLerp;
-        private float speed = 0.01f;
+        private float speed = 0.0025f;
         float turnOffTime = 1f;
         private bool userThere;
         MeshRenderer pubrend;

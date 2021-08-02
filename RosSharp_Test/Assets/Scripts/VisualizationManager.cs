@@ -18,6 +18,10 @@ namespace RosSharp_Test
         public ColorVisualizer colorVis;
         public GameObject userFace;
         public Transform lidar;
+        public Transform FreePlayText;
+        public Transform ControllerText;
+        public Transform CameraText;
+        public Transform ExtendText;
 
 
         public void ToggleKuriColorVizMesh(bool on)
@@ -81,6 +85,25 @@ namespace RosSharp_Test
             Toggle(lidar, null);
         }
 
+        public void toggleFreePlayText(bool? on = null)
+        {
+            Toggle(FreePlayText, on);
+        }
+
+        public void toggleControllerText(bool? on = null)
+        {
+            Toggle(ControllerText, on);
+        }
+
+        public void toggleCameraText(bool? on = null)
+        {
+            Toggle(CameraText, on);
+        }
+
+        public void toggleExtendText(bool? on = null)
+        {
+            Toggle(ExtendText, on);
+        }
 
         void Toggle(Transform t, bool? on)
         {
