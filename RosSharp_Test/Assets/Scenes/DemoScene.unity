@@ -1910,6 +1910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kuriText: {fileID: 805507719}
+  spawnPoint: {fileID: 299205951}
 --- !u!114 &299205953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8571,6 +8572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b629941ee499e46b6919343e709540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPosition: {fileID: 1422980153}
 --- !u!1 &1427371786
 GameObject:
   m_ObjectHideFlags: 0
