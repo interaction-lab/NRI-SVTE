@@ -6,42 +6,121 @@ namespace RosSharp_Test
 {
     public class VisualizationManager : Singleton<VisualizationManager>
     {
-       
+
         public Transform NextStepButton;
         public Transform CapTouch;
         public Transform KuriCamera;
         public Transform KuriText;
-        public Transform Controller;
+        public Transform smallController;
+        public Transform mediumController;
+        public Transform largeController;
+        public GameObject photoButton;
+        public ColorVisualizer colorVis;
+        public GameObject userFace;
+        public Transform lidar;
+        public Transform FreePlayText;
+        public Transform ControllerText;
+        public Transform CameraText;
+        public Transform ExtendText;
 
-        void Start()
+
+        public void ToggleKuriColorVizMesh(bool on)
         {
-            //CapTouch.enabled = false;
+            colorVis.enabled = on;
         }
 
-        public void toggleCapTouch()
+        public void toggleCapTouch(bool? on = null)
         {
-            CapTouch.gameObject.SetActive(!CapTouch.gameObject.activeSelf);
+            Toggle(CapTouch, on);
         }
 
-        public void toggleKuriText()
+        public void toggleKuriText(bool? on = null)
         {
-            KuriText.gameObject.SetActive(!KuriText.gameObject.activeSelf);
+            Toggle(KuriText, on);
         }
 
-        public void toggleKuriCameraManager()
+        public void toggleKuriCameraManager(bool? on = null)
         {
-
-            KuriCamera.gameObject.SetActive(!KuriCamera.gameObject.activeSelf);
+            Toggle(KuriCamera, on);
         }
 
-        public void toggleNext()
+        public void toggleNext(bool? on = null)
         {
-            NextStepButton.gameObject.SetActive(!NextStepButton.gameObject.activeSelf);
+            Toggle(NextStepButton, on);
         }
 
-        public void toggleController()
+        public void toggleSmallController(bool? on = null)
         {
-            Controller.gameObject.SetActive(!Controller.gameObject.activeSelf);
+            Toggle(smallController, on);
+        }
+
+        public void toggleMediumController(bool? on = null)
+        {
+            Toggle(mediumController, on);
+        }
+
+        public void toggleLargeController(bool? on = null)
+        {
+            Toggle(largeController, on);
+        }
+
+
+        public void togglePhotoButton(bool? on = null)
+        {
+            Toggle(photoButton, on);
+        }
+
+        public void toggleUserFace(bool? on = null)
+        {
+            Toggle(userFace, on);
+        }
+
+        public void toggleLidar(bool? on = null)
+        {
+            Toggle(lidar, on);
+        }
+
+        public void TOGGLEBUTTONLIDAR()
+        {
+            Toggle(lidar, null);
+        }
+
+        public void toggleFreePlayText(bool? on = null)
+        {
+            Toggle(FreePlayText, on);
+        }
+
+        public void toggleControllerText(bool? on = null)
+        {
+            Toggle(ControllerText, on);
+        }
+
+        public void toggleCameraText(bool? on = null)
+        {
+            Toggle(CameraText, on);
+        }
+
+        public void toggleExtendText(bool? on = null)
+        {
+            Toggle(ExtendText, on);
+        }
+
+        void Toggle(Transform t, bool? on)
+        {
+            Toggle(t.gameObject, on);
+
+        }
+
+        void Toggle(GameObject go, bool? on)
+        {
+            if (on == null)
+            {
+                go.gameObject.SetActive(!go.activeSelf);
+            }
+            else
+            {
+                go.gameObject.SetActive((bool)on);
+            }
         }
     }
 }

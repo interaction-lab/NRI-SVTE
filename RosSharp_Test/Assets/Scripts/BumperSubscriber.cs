@@ -1,5 +1,8 @@
 using UnityEngine;
+using System.Collections;
 using RosSharp.RosBridgeClient.MessageTypes.MobileBaseDriver;
+using RosSharp_Test;
+
 namespace RosSharp.RosBridgeClient
 {
     public class BumperSubscriber : UnitySubscriber<MessageTypes.MobileBaseDriver.Sensors>
@@ -10,6 +13,21 @@ namespace RosSharp.RosBridgeClient
 
         private MessageTypes.MobileBaseDriver.Bumper[] bumper;
         private bool isMessageReceived;
+        private AnimationPublisher _animPub;
+        bool animating = false;
+        
+
+        public AnimationPublisher AnimPublisher
+        {
+            get
+            {
+                if (!_animPub)
+                {
+                    _animPub = FindObjectOfType<AnimationPublisher>();
+                }
+                return _animPub;
+            }
+        } // TODO: replace inspector public variable with better getter
 
         protected override void Start()
         {
@@ -21,6 +39,19 @@ namespace RosSharp.RosBridgeClient
                 ProcessMessage();
         }
 
+        IEnumerator BumpSound()
+        {
+            if (animating)
+            {
+                yield break;
+            }
+
+            animating = true;
+            AnimPublisher.PublishAnim(AnimationPublisher.ANIMATION_CMD.bump);
+            yield return new WaitForSeconds(1.0f);
+            animating = false;
+        }
+
         protected override void ReceiveMessage(MessageTypes.MobileBaseDriver.Sensors message)
         {
             this.bumper = message.bumper;
@@ -29,20 +60,17 @@ namespace RosSharp.RosBridgeClient
 
         private void ProcessMessage()
         {
-            if (bumper[0].state == 1)
+            if (bumper[0].state == 1 || bumper[1].state == 1 || bumper[2].state == 1)
+            {
                 meshBumper.material = on;
-            else
-                meshBumper.material = off;
+                StartCoroutine(BumpSound());
+                VisualizationManager.instance.toggleLidar(false);
 
-            if (bumper[1].state == 1)
-                meshBumper.material = on;
-            else
-                meshBumper.material = off;
 
-            if (bumper[2].state == 1)
-                meshBumper.material = on;
-            else
+            } else
+            { 
                 meshBumper.material = off;
+            }
 
             isMessageReceived = false;
         }
