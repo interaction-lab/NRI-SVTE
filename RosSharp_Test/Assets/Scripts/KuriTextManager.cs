@@ -38,12 +38,12 @@ namespace RosSharp_Test
         void Start()
         {
             currentTaskLoc = 0;
-            transform.position = spawnPoint.position + Vector3.up;
+            //transform.position = spawnPoint.position + Vector3.up;
         }
 
         private void OnEnable()
         {
-            transform.position = spawnPoint.position + Vector3.up;
+            //transform.position = spawnPoint.position + Vector3.up;
         }
 
         public void CycleToNextPrompt()
