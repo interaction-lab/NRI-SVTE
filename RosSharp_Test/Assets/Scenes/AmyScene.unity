@@ -2738,6 +2738,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 251006306}
+  - component: {fileID: 251006307}
   m_Layer: 6
   m_Name: RayCaster
   m_TagString: Untagged
@@ -2759,6 +2760,22 @@ Transform:
   m_Father: {fileID: 367906503}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &251006307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251006305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c54425ffc974136a33ef5047c9e7aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 0}
+  numberOfObjects: 181
+  radius: 5
+  MaxRotation: 1.5707964
 --- !u!1 &264918120
 GameObject:
   m_ObjectHideFlags: 0
