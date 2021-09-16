@@ -30,10 +30,36 @@ public class RayCaster : MonoBehaviour
           layermask = ~layermask;
 
             Physics.Raycast(transform.position, rot * transform.up, out hit, weaponRange, layermask);
-            //print(out.hit);
+           // print(hit.point);
           // Instantiate(prefab, transform, rot);
       }
   
+
+    }
+
+    void Update()
+    {
+        RaycastHit hit;
+
+        for (int i = -90; i < 90; i++)
+        {
+            float angle = i * Mathf.PI / 180;
+            //float x = Mathf.Cos(angle) * radius;
+            //float z = Mathf.Sin(angle) * radius;
+            float angleDegrees = 180 - angle * Mathf.Rad2Deg;
+            Quaternion rot = Quaternion.Euler(0, angleDegrees, 0);
+
+            int layermask = 1 << 6;
+            layermask = ~layermask;
+
+            if(Physics.Raycast(transform.position, rot * transform.forward, out hit, weaponRange, layermask))
+            {
+                print(hit.point);
+            }
+            // print(hit.point);
+            // Instantiate(prefab, transform, rot);
+        }
+
 
     }
 }
