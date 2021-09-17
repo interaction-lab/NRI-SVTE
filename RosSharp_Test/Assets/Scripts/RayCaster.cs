@@ -10,7 +10,7 @@ public class RayCaster : MonoBehaviour
   public int numberOfObjects = 181;
   public float radius = 5f;
   public float MaxRotation = Mathf.PI/2;
-    public float weaponRange = 50f;
+    public float weaponRange = 2.5f;
 
 
     void Start()
@@ -22,7 +22,7 @@ public class RayCaster : MonoBehaviour
           float angle = i * Mathf.PI / 180;
           //float x = Mathf.Cos(angle) * radius;
           //float z = Mathf.Sin(angle) * radius;
-          float angleDegrees = 180 - angle*Mathf.Rad2Deg;
+          float angleDegrees = 90 + angle*Mathf.Rad2Deg;
           Quaternion rot = Quaternion.Euler(0, angleDegrees, 0);
           Instantiate(prefab, transform.position, rot, transform);
 
@@ -30,10 +30,10 @@ public class RayCaster : MonoBehaviour
           layermask = ~layermask;
 
             Physics.Raycast(transform.position, rot * transform.up, out hit, weaponRange, layermask);
-           // print(hit.point);
+            print("hit distance =" + hit.distance);
           // Instantiate(prefab, transform, rot);
       }
-  
+
 
     }
 
@@ -41,12 +41,12 @@ public class RayCaster : MonoBehaviour
     {
         RaycastHit hit;
 
-        for (int i = -90; i < 90; i++)
+        for (int i = 0; i < 180; i++)
         {
             float angle = i * Mathf.PI / 180;
             //float x = Mathf.Cos(angle) * radius;
             //float z = Mathf.Sin(angle) * radius;
-            float angleDegrees = 180 - angle * Mathf.Rad2Deg;
+            float angleDegrees = 180 + angle * Mathf.Rad2Deg;
             Quaternion rot = Quaternion.Euler(0, angleDegrees, 0);
 
             int layermask = 1 << 6;
@@ -54,9 +54,18 @@ public class RayCaster : MonoBehaviour
 
             if(Physics.Raycast(transform.position, rot * transform.forward, out hit, weaponRange, layermask))
             {
-                print(hit.point);
+              Debug.DrawRay(transform.position, rot * transform.forward, Color.green);
+              Physics.Raycast(transform.position, rot * transform.forward, out hit, weaponRange, layermask);
+
+              if (hit.distance <= 1.0){
+                print("hit distance =" + hit.distance);
+              }
+
+              Physics.Raycast(transform.position, rot * transform.forward, out hit, weaponRange, layermask);
+              // Debug.DrawRay(transform.position, rot * transform.forward, Color.green);
             }
-            // print(hit.point);
+
+            // print(hit.distance);
             // Instantiate(prefab, transform, rot);
         }
 

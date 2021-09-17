@@ -2753,7 +2753,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 251006305}
-  m_LocalRotation: {x: -0, y: 0.9961947, z: -0, w: 0.08715581}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.24321708, y: 0.2432172, z: 0.24321708}
   m_Children: []
@@ -2776,6 +2776,7 @@ MonoBehaviour:
   numberOfObjects: 181
   radius: 5
   MaxRotation: 1.5707964
+  weaponRange: 50
 --- !u!1 &264918120
 GameObject:
   m_ObjectHideFlags: 0
@@ -15566,7 +15567,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1935967353}
-  m_LocalRotation: {x: -0, y: 0.9961947, z: -0, w: 0.08715579}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.24321711, y: 0.2432172, z: 0.24321711}
   m_Children: []
@@ -15589,6 +15590,7 @@ MonoBehaviour:
   numberOfObjects: 181
   radius: 5
   MaxRotation: 1.5707964
+  weaponRange: 50
 --- !u!1 &1945681227
 GameObject:
   m_ObjectHideFlags: 0
