@@ -2739,6 +2739,8 @@ GameObject:
   m_Component:
   - component: {fileID: 251006306}
   - component: {fileID: 251006307}
+  - component: {fileID: 251006309}
+  - component: {fileID: 251006308}
   m_Layer: 6
   m_Name: RayCaster
   m_TagString: Untagged
@@ -2777,6 +2779,35 @@ MonoBehaviour:
   radius: 5
   MaxRotation: 1.5707964
   weaponRange: 50
+--- !u!114 &251006308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251006305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2ab9706b0ab2470f84b9514266bc6ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Topic: /scan
+--- !u!114 &251006309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251006305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff98778ae051cfd40a6e4effdf851ebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SecondsTimeout: 10
+  Serializer: 0
+  protocol: 0
+  RosBridgeServerUrl: ws://192.168.1.146 :9090
 --- !u!1 &264918120
 GameObject:
   m_ObjectHideFlags: 0
@@ -11275,7 +11306,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1315044763}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.26, y: -1.28, z: -0.74}
+  m_LocalPosition: {x: 4.59, y: -2.81, z: -1.87}
   m_LocalScale: {x: 2, y: 2, z: 0.25}
   m_Children: []
   m_Father: {fileID: 299205951}

@@ -22,8 +22,6 @@ using Microsoft.MixedReality.Toolkit.Experimental.ColorPicker;
 namespace RosSharp.RosBridgeClient {
     public class LidarPublisher : UnityPublisher<MessageTypes.Sensor.LaserScan> {
         private MessageTypes.Sensor.LaserScan message;
-        public ColorPicker colorPicker;
-        private AnimationPublisher animPub;
         private int layermask;
         private RaycastHit hit;
 
@@ -33,93 +31,64 @@ namespace RosSharp.RosBridgeClient {
             layermask = ~layermask;
             base.Start();
             InitializeMessage();
-            if (!colorPicker) {
-                colorPicker = FindObjectOfType<ColorPicker>(); // TODO: remove all `FindObjectOfType<T>`
-            }
         }
 
         private void FixedUpdate() {
-            if (colorPicker != null && colorPicker.isActiveAndEnabled) {
-                Color c = colorPicker.CustomColor;
-                setColor((int)(c.r * 255), (int)(c.g * 255), (int)(c.b * 255));
-            }
+
+          scan();
+
         }
 
         private void InitializeMessage() {
-            // message = new MessageTypes.MobileBaseDriver.ChestLeds();
-            int layermask = 1 << 6;
-            layermask = ~layermask;
             message = new MessageTypes.Sensor.LaserScan();
-            for (int i = 0; i < message.ranges.Length; i++) {
-                float angle = i * Mathf.PI / 180;
-                float angleDegrees = 180 - angle*Mathf.Rad2Deg;
-                Quaternion rot = Quaternion.Euler(0, angleDegrees, 0);
-                if (Physics.Raycast(transform.position, rot * transform.forward, out hit, 2.5f, layermask)){
-                  message.ranges[i] = hit.distance;
-                }
-                else{
-                  message.ranges[i] = float.NaN;
-                }
 
-            }
-            setColor(0, 0, 0);
-        }
+            // TODO: what stamp should I use? does it matter? the one in the slack example was 0
+            // message.header.stamp = scan_time;
+            // TODO: should I be using hokuyo_laser_link as my frame_id?
+            // to conclude, I have no idea what to put in the header
+            // scan.header.frame_id = "laser_frame";
 
 
-        public void setColor(int red, int green, int blue) {
-            //animPub.PublishAnim(AnimationPublisher.ANIMATION_CMD.smile);
-            // for (int i = 0; i < message.leds.Length; i++) {
-            //     message.leds[i].red = (byte)red;
-            //     message.leds[i].green = (byte)green;
-            //     message.leds[i].blue = (byte)blue;
+            message.angle_min = -1.57f;
+            message.angle_max = 1.57f;
+            message.angle_increment = 0.0174532923847f;
+            message.time_increment = 0.0f;
+            message.range_min = 0.0500000007451f;
+            message.range_max = 6.75f;
+            message.ranges = new float[180];
+            message.intensities = new float[0];
+
+            // for (int i = 0; i < message.ranges.Length; i++) {
+            //     float angle = i * Mathf.PI / 180;
+            //     float angleDegrees = 180 - angle*Mathf.Rad2Deg;
+            //     Quaternion rot = Quaternion.Euler(0, angleDegrees, 0);
+            //     if (Physics.Raycast(transform.position, rot * transform.forward, out hit, 2.5f, layermask)){
+            //       message.ranges[i] = hit.distance;
+            //     }
+            //     else{
+            //       message.ranges[i] = float.NaN;
+            //     }
             // }
-            // Publish(message);
         }
+
 
         public void scan() {
-          // TODO: what stamp should I use? does it matter? the one in the slack example was 0
-          // message.header.stamp = scan_time;
-          // TODO: should I be using hokuyo_laser_link as my frame_id?
-          // to conclude, I have no idea what to put in the header
-          // scan.header.frame_id = "laser_frame";
 
-          scan.angle_min = -1.57;
-          scan.angle_max = 1.57;
-          scan.angle_increment = 0.0174532923847;
-          scan.time_increment = 0.0;
-          scan.range_min = 0.0500000007451;
-          scan.range_max = 6.75;
+          // message.header.Update();
 
-          // Ranges should be the readings from all 180 rays
-          scan.ranges.resize(num_readings);
-          // scan.intensities = [];
-          for(int i = 0; i < num_readings; ++i){
-            scan.ranges[i] = ranges[i];
+          for (int i = 0; i < 180; i++) {
+              float angle = i * Mathf.PI / 180;
+              float angleDegrees = 180 - angle*Mathf.Rad2Deg;
+              Quaternion rot = Quaternion.Euler(0, angleDegrees, 0);
+              if (Physics.Raycast(transform.position, rot * transform.forward, out hit, 2.5f, layermask)){
+                message.ranges[i] = hit.distance;
+              }
+              else{
+                // message.ranges[i] = float.NaN;
+              }
           }
 
-          scan_pub.publish(scan);
-            Publish(message);
-        }
-
-        public void setBlue(int b) {
-            for (int i = 0; i < message.leds.Length; i++) {
-                message.leds[i].blue = (byte)b;
-            }
-            Publish(message);
-        }
-
-        public void setRed(int r) {
-            for (int i = 0; i < message.leds.Length; i++) {
-                message.leds[i].red = (byte)r;
-            }
-            Publish(message);
-        }
-
-        public void setGreen(int g) {
-            for (int i = 0; i < message.leds.Length; i++) {
-                message.leds[i].green = (byte)g;
-            }
-            Publish(message);
+          Publish(message);
         }
     }
 }
