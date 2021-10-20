@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4465773, g: 0.49641293, b: 0.5748173, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657785, g: 0.496414, b: 0.5748186, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2739,8 +2739,6 @@ GameObject:
   m_Component:
   - component: {fileID: 251006306}
   - component: {fileID: 251006307}
-  - component: {fileID: 251006309}
-  - component: {fileID: 251006308}
   m_Layer: 6
   m_Name: RayCaster
   m_TagString: Untagged
@@ -2779,35 +2777,6 @@ MonoBehaviour:
   radius: 5
   MaxRotation: 1.5707964
   weaponRange: 50
---- !u!114 &251006308
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 251006305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2ab9706b0ab2470f84b9514266bc6ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Topic: /scan
---- !u!114 &251006309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 251006305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff98778ae051cfd40a6e4effdf851ebd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SecondsTimeout: 10
-  Serializer: 0
-  protocol: 0
-  RosBridgeServerUrl: ws://192.168.1.146 :9090
 --- !u!1 &264918120
 GameObject:
   m_ObjectHideFlags: 0
@@ -3459,7 +3428,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 367906502}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28b0e460b28ad924d8aaea870b04bfce, type: 3}
   m_Name: 
@@ -3473,7 +3442,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 367906502}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa4d78f1d9cef6948b0f87fdc8eee025, type: 3}
   m_Name: 
@@ -3485,7 +3454,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 367906502}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d3e2e139a342048a1a672f69f72627f8, type: 3}
   m_Name: 
@@ -6872,6 +6841,7 @@ GameObject:
   - component: {fileID: 890915806}
   - component: {fileID: 890915807}
   - component: {fileID: 890915808}
+  - component: {fileID: 890915809}
   m_Layer: 0
   m_Name: ROS
   m_TagString: Untagged
@@ -7100,6 +7070,22 @@ MonoBehaviour:
   - head_2_joint
   JointStateWriters:
   - {fileID: 0}
+--- !u!114 &890915809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890915794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c50e49666668d943b461f484960c679, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Topic: /scan
+  TimeStep: 0.1
+  SubscribedTransform: {fileID: 367906503}
+  prefab: {fileID: 6690874671648785859, guid: a89f24d619fe44d22b5fc484f65390f5, type: 3}
 --- !u!1 &896905193
 GameObject:
   m_ObjectHideFlags: 0
