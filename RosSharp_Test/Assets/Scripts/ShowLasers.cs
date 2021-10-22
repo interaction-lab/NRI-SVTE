@@ -4,56 +4,40 @@ using UnityEngine;
 
 public class ShowLasers : MonoBehaviour
 {
-  public float weaponRange = 50f;
   public GameObject prefab;
-  //public TextMeshProUGUI distanceText;
-
-  private LineRenderer laserLine;
-
-
+  public GameObject[] prefabs;
 
   void Start ()
   {
-    laserLine = GetComponent<LineRenderer>();
+    prefabs = new GameObject[180];
 
-    float angle = i * Mathf.PI / 180;
-    float angleDegrees = 180 + angle*Mathf.Rad2Deg;
-    Quaternion rot = Quaternion.Euler(0, angleDegrees, 0);
-    GameObject pf = Instantiate(prefab, transform.position, rot, transform) as GameObject;
-    prefabs[i]=pf;
+    for (int i = 0; i < 180; i++)
+    {
+        float angle = i * Mathf.PI / 180;
+        float angleDegrees = 90 + angle*Mathf.Rad2Deg;
+        Quaternion rot = Quaternion.Euler(0, angleDegrees, 0);
+        GameObject pf = Instantiate(prefab, transform.position, rot, transform) as GameObject;
+        prefabs[i]=pf;
+    }
   }
 
+  public class Message {
+    public float[] ranges;
+  }
+
+  public void UpdateRanges(Message message)
+  {
+    float[] ranges = message.ranges;
+    for (int i = 0; i < 180; i++)
+    {
+        GameObject pf = prefabs[i];
+        LineRenderer laserLine = pf.GetComponent<LineRenderer>();
+        laserLine.SetPosition (0, transform.position);
+        laserLine.SetPosition(1,transform.position + (pf.transform.forward * ranges[i]));
+    }
+  }
 
   void Update ()
   {
-
-    if (Input.GetKey("l"))
-    {
-
-      laserLine.enabled = true;
-
-      Vector3 rayOrigin = transform.position;
-
-      RaycastHit hit;
-
-      laserLine.SetPosition (0, transform.position);
-
-      int layermask = 1<<6;
-      layermask = ~layermask;
-
-      if (Physics.Raycast (rayOrigin, transform.forward, out hit, weaponRange, layermask))
-
-      {
-        laserLine.SetPosition (1, hit.point);
-      }
-      else
-      {
-        laserLine.SetPosition (1, rayOrigin + (transform.forward * weaponRange));
-      }
-    }
-    else
-    {
-      laserLine.enabled = false;
-    }
   }
 }
