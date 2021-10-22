@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShowLasers : MonoBehaviour
 {
   public float weaponRange = 50f;
+  public GameObject prefab;
   //public TextMeshProUGUI distanceText;
 
   private LineRenderer laserLine;
@@ -14,13 +15,19 @@ public class ShowLasers : MonoBehaviour
   void Start ()
   {
     laserLine = GetComponent<LineRenderer>();
+
+    float angle = i * Mathf.PI / 180;
+    float angleDegrees = 180 + angle*Mathf.Rad2Deg;
+    Quaternion rot = Quaternion.Euler(0, angleDegrees, 0);
+    GameObject pf = Instantiate(prefab, transform.position, rot, transform) as GameObject;
+    prefabs[i]=pf;
   }
 
 
   void Update ()
   {
 
-    if (Input.GetKey("space"))
+    if (Input.GetKey("l"))
     {
 
       laserLine.enabled = true;
