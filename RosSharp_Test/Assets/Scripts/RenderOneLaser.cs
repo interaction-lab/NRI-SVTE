@@ -15,7 +15,5 @@ public class RenderOneLaser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      // laserLine.enabled = Input.GetKey("l");
-
     }
 }

@@ -6,6 +6,8 @@ public class ShowLasers : MonoBehaviour
 {
   public GameObject prefab;
   public GameObject[] prefabs;
+  public Color lidarColor = Color.magenta;
+  public float lidarWidth = .05f;
 
   void Start ()
   {
@@ -34,6 +36,8 @@ public class ShowLasers : MonoBehaviour
         LineRenderer laserLine = pf.GetComponent<LineRenderer>();
         laserLine.SetPosition (0, transform.position);
         laserLine.SetPosition(1,transform.position + (pf.transform.forward * ranges[i]));
+        laserLine.material.color = lidarColor;
+        laserLine.SetWidth(0,lidarWidth);
     }
   }
 
