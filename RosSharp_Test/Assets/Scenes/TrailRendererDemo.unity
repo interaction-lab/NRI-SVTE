@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 1594365880}
   - component: {fileID: 1594365885}
   m_Layer: 0
-  m_Name: Projectile
+  m_Name: Projectile 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -240,6 +240,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementDelta: 0.05
+  animCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!135 &1594365881
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -260,7 +284,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1594365879}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -357,7 +381,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.5
+  m_Time: 1.5
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -413,7 +437,7 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 1
-  m_Emitting: 1
+  m_Emitting: 0
 --- !u!1 &1751247539
 GameObject:
   m_ObjectHideFlags: 0
