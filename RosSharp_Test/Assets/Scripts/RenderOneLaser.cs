@@ -9,11 +9,13 @@ public class RenderOneLaser : MonoBehaviour
     void Start()
     {
       GetComponent<LineRenderer>();
+      laserLine.enabled = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-      laserLine.enabled = Input.GetKey("l");
+      // laserLine.enabled = Input.GetKey("l");
+
     }
 }
