@@ -7,6 +7,8 @@ public class ProjectileMotion : MonoBehaviour
   public float movementDelta = .10f;
   private float pos = 0f;
   public AnimationCurve animCurve;
+  public Vector3 startPose;
+  public Vector3 endPose;
   // Start is called before the first frame update
   void Start()
   {
@@ -27,9 +29,11 @@ public class ProjectileMotion : MonoBehaviour
     float totalTime = 1;
     float returnTime = .25f;
     float curtime = 0;
-    Vector3 startPose = transform.position;
-    Vector3 endPose = transform.position + Vector3.up * 3; // 0, 1, 0
-    while(curtime < totalTime - .25)
+    // Vector3 startPose = transform.position;
+    // Vector3 startPose = transform.parent.position;
+    // Vector3 endPose = transform.position + Vector3.up * 3; // 0, 1, 0
+    // Vector3 endPose = startPose * 2;
+    while(curtime < totalTime - .005)
     {
       transform.position = Vector3.Lerp(startPose, endPose, animCurve.Evaluate(curtime/totalTime));
       curtime += Time.deltaTime;
@@ -57,6 +61,7 @@ public class ProjectileMotion : MonoBehaviour
   }
 
 }
+
 
 // public class LerpSphere : MonoBehaviour
 // {

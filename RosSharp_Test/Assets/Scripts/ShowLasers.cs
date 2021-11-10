@@ -7,7 +7,7 @@ public class ShowLasers : MonoBehaviour
   public GameObject prefab;
   public GameObject[] prefabs;
   public Color lidarColor = Color.magenta;
-  public float lidarWidth = .05f;
+  public float lidarWidth = .00f;
   private AudioSource source;
 
   void Start ()
@@ -26,6 +26,7 @@ public class ShowLasers : MonoBehaviour
 
   public class Message {
     public float[] ranges;
+    public Vector3[] hit_points;
   }
 
   public void UpdateRanges(Message message)
@@ -36,6 +37,10 @@ public class ShowLasers : MonoBehaviour
         GameObject pf = prefabs[i];
         LineRenderer laserLine = pf.GetComponent<LineRenderer>();
         TrailRenderer lidarTrail = pf.GetComponent<TrailRenderer>();
+        var sphere = pf.transform.Find("Sphere");
+        var PM = sphere.GetComponent<ProjectileMotion>();
+        PM.startPose = pf.transform.position;
+        PM.endPose = pf.transform.position + (pf.transform.forward * ranges[i]);
         laserLine.SetPosition (0, transform.position);
         laserLine.SetPosition(1,transform.position + (pf.transform.forward * ranges[i]));
         laserLine.material.color = lidarColor;

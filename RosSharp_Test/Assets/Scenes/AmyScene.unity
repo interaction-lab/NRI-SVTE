@@ -2774,6 +2774,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SL: {fileID: 0}
   ranges: []
+  hit_points: []
   maxDistance: 0.00025
   layermask: 0
 --- !u!1 &264918120
@@ -15276,7 +15277,7 @@ MonoBehaviour:
   prefab: {fileID: 6690874671648785859, guid: a89f24d619fe44d22b5fc484f65390f5, type: 3}
   prefabs: []
   lidarColor: {r: 1, g: 0, b: 1, a: 1}
-  lidarWidth: 0.05
+  lidarWidth: 0
 --- !u!1 &1945681227
 GameObject:
   m_ObjectHideFlags: 0
