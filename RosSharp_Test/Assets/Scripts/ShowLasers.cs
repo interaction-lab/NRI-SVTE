@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShowLasers : MonoBehaviour
 {
   public GameObject prefab;
   public GameObject[] prefabs;
-  public Color lidarColor = Color.magenta;
+  public Color lidarColor = Color.white;
   public float lidarWidth = .00f;
+  public Slider widthSlider;
   private AudioSource source;
 
   void Start ()
@@ -21,6 +23,11 @@ public class ShowLasers : MonoBehaviour
         Quaternion rot = Quaternion.Euler(0, angleDegrees, 0);
         GameObject pf = Instantiate(prefab, transform.position, rot, transform) as GameObject;
         prefabs[i]=pf;
+        LineRenderer laserLine = pf.GetComponent<LineRenderer>();
+        TrailRenderer lidarTrail = pf.GetComponent<TrailRenderer>();
+        lidarWidth = widthSlider.value;
+
+        lidarTrail.startWidth = lidarWidth;
     }
   }
 
@@ -36,19 +43,24 @@ public class ShowLasers : MonoBehaviour
     {
         GameObject pf = prefabs[i];
         LineRenderer laserLine = pf.GetComponent<LineRenderer>();
-        TrailRenderer lidarTrail = pf.GetComponent<TrailRenderer>();
+        laserLine.enabled = false;
+        // TrailRenderer lidarTrail = pf.GetComponent<TrailRenderer>();
         var sphere = pf.transform.Find("Sphere");
+        TrailRenderer lidarTrail = sphere.GetComponent<TrailRenderer>();
         var PM = sphere.GetComponent<ProjectileMotion>();
         PM.startPose = pf.transform.position;
         PM.endPose = pf.transform.position + (pf.transform.forward * ranges[i]);
-        laserLine.SetPosition (0, transform.position);
-        laserLine.SetPosition(1,transform.position + (pf.transform.forward * ranges[i]));
-        laserLine.material.color = lidarColor;
-        laserLine.SetWidth(0,lidarWidth);
+        // laserLine.SetPosition (0, transform.position);
+        // laserLine.SetPosition(1,transform.position + (pf.transform.forward * ranges[i]));
+        // laserLine.material.color = lidarColor;
+        lidarWidth = widthSlider.value;
+
+        lidarTrail.startWidth = lidarWidth;
     }
   }
 
   void Update ()
   {
+
   }
 }
