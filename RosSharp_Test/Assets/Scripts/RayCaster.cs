@@ -40,7 +40,6 @@ public class RayCaster : MonoBehaviour
             {
               ranges[i] = maxDistance;
             }
-            // hit_points[i] = hit.point;
         }
 
         ShowLasers.Message updateMessage = new ShowLasers.Message();

@@ -10,6 +10,8 @@ public class ShowLasers : MonoBehaviour
   public Color lidarColor = Color.white;
   public float lidarWidth = .00f;
   public Slider widthSlider;
+  public Slider colorSlider;
+  public FlexibleColorPicker cp;
   private AudioSource source;
 
   void Start ()
@@ -26,6 +28,7 @@ public class ShowLasers : MonoBehaviour
         LineRenderer laserLine = pf.GetComponent<LineRenderer>();
         TrailRenderer lidarTrail = pf.GetComponent<TrailRenderer>();
         lidarWidth = widthSlider.value;
+
 
         lidarTrail.startWidth = lidarWidth;
     }
@@ -44,7 +47,6 @@ public class ShowLasers : MonoBehaviour
         GameObject pf = prefabs[i];
         LineRenderer laserLine = pf.GetComponent<LineRenderer>();
         laserLine.enabled = false;
-        // TrailRenderer lidarTrail = pf.GetComponent<TrailRenderer>();
         var sphere = pf.transform.Find("Sphere");
         TrailRenderer lidarTrail = sphere.GetComponent<TrailRenderer>();
         var PM = sphere.GetComponent<ProjectileMotion>();
@@ -54,8 +56,11 @@ public class ShowLasers : MonoBehaviour
         // laserLine.SetPosition(1,transform.position + (pf.transform.forward * ranges[i]));
         // laserLine.material.color = lidarColor;
         lidarWidth = widthSlider.value;
+        // lidarColor = Color.HSVToRGB(colorSlider.value, 1, 1);
+        lidarColor = cp.color;
 
         lidarTrail.startWidth = lidarWidth;
+        lidarTrail.material.color = lidarColor;
     }
   }
 
