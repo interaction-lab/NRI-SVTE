@@ -2,16 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RosSharp_Test
-{
-    public class AudioManager : Singleton<AudioManager>
-    {
+namespace RosSharp_Test {
+    public class AudioManager : Singleton<AudioManager> {
         public static AudioClip correctAudioClip, incorrectAudioClip, poofAudioClip, popAudioClip, snapAudioClip, spwanAudioClip;
-        //public AudioClip MRTKButtonPress, MRTKButtonUnpress;
-        static string audioLogCol = "AudioPlayed";
 
-        void Awake()
-        {
+        void Awake() {
             correctAudioClip = Resources.Load<AudioClip>(ResourcePathConstants.CorrectSound);
             incorrectAudioClip = Resources.Load<AudioClip>(ResourcePathConstants.IncorrectSound);
             poofAudioClip = Resources.Load<AudioClip>(ResourcePathConstants.PoofSound);
@@ -20,16 +15,13 @@ namespace RosSharp_Test
             spwanAudioClip = Resources.Load<AudioClip>(ResourcePathConstants.SpawnSound);
         }
 
-        public void PlaySoundAtObject(Transform tran, AudioClip ac)
-        {
+        public void PlaySoundAtObject(Transform tran, AudioClip ac) {
             PlaySoundAtObject(tran.gameObject, ac);
         }
 
-        public void PlaySoundAtObject(GameObject go, AudioClip ac)
-        {
+        public void PlaySoundAtObject(GameObject go, AudioClip ac) {
             AudioSource aos = go.GetComponent<AudioSource>();
-            if (aos == null)
-            {
+            if (aos == null) {
                 aos = go.AddComponent<AudioSource>();
                 aos.spatialize = true;
                 aos.spatialBlend = 1.0f;

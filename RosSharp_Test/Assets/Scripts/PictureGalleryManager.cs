@@ -7,7 +7,6 @@ using UnityEngine;
 namespace KuriSVTE {
     public class PictureGalleryManager : Singleton<PictureGalleryManager> {
         List<GameObject> PictureList { get; set; } = new List<GameObject>();
-        public Transform spawnPosition;
 
         private ImageSubscriber _imageSubscriber;
         private AnimationPublisher _animPub;
@@ -34,9 +33,9 @@ namespace KuriSVTE {
             PictureList.Add(Instantiate(Resources.Load<GameObject>(ResourcePathConstants.PictureObject)));
             GameObject curPic = PictureList[PictureList.Count - 1];
 
-            curPic.transform.position = spawnPosition.position;
+            curPic.transform.position = transform.position;
             curPic.transform.SetParent(transform);
-           // maybe we can aim this at where the person is looking...
+            // maybe we can aim this at where the person is looking...
             // curPic.transform.Rotate(new Vector3(0, 0, 180)); // fixes inversion issue TODO: move this down
 
             MeshRenderer rend = curPic.transform.GetChild(0).GetComponent<MeshRenderer>(); // TODO: get rid of child
