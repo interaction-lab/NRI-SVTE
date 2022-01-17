@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: c4daadb5e4e3b08488df06a63d27850e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -136,6 +136,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   startPose: {x: 0, y: 0, z: 0}
   endPose: {x: 0, y: 0, z: 0}
+  maxRange: 0
+  range: 0
 --- !u!96 &4318159623063832811
 TrailRenderer:
   serializedVersion: 2
