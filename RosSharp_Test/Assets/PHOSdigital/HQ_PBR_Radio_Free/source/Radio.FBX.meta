@@ -1,0 +1,162 @@
+fileFormatVersion: 2
+guid: 0dcd983d24602f64d93f3bafcb612a2f
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Antenna_low
+    100002: Front_low
+    100004: Grip_low
+    100006: KnobTunning_low
+    100008: KnobVolume_low
+    100010: Knop_low
+    100012: //RootNode
+    100014: Radio_low
+    100016: Marker_low
+    100018: Glass_low
+    100020: Antenna
+    100022: Radio
+    400000: Antenna_low
+    400002: Front_low
+    400004: Grip_low
+    400006: KnobTunning_low
+    400008: KnobVolume_low
+    400010: Knop_low
+    400012: //RootNode
+    400014: Radio_low
+    400016: Marker_low
+    400018: Glass_low
+    400020: Antenna
+    400022: Radio
+    2100000: Radio
+    2100002: Radio_Glass
+    2300000: Antenna_low
+    2300002: Front_low
+    2300004: Grip_low
+    2300006: KnobTunning_low
+    2300008: KnobVolume_low
+    2300010: Knop_low
+    2300012: Radio_low
+    2300014: Marker_low
+    2300016: Glass_low
+    2300018: Antenna
+    2300020: Radio
+    2300022: //RootNode
+    3300000: Antenna_low
+    3300002: Front_low
+    3300004: Grip_low
+    3300006: KnobTunning_low
+    3300008: KnobVolume_low
+    3300010: Knop_low
+    3300012: Radio_low
+    3300014: Marker_low
+    3300016: Glass_low
+    3300018: Antenna
+    3300020: Radio
+    3300022: //RootNode
+    4300000: Radio_low
+    4300002: Front_low
+    4300004: Antenna_low
+    4300006: Knop_low
+    4300008: KnobVolume_low
+    4300010: KnobTunning_low
+    4300012: Grip_low
+    4300014: Marker_low
+    4300016: Glass_low
+    4300018: Radio
+    4300020: Antenna
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Radio
+    second: {fileID: 2100000, guid: 24c94fbc4f2787b47914b6123aaa5896, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Radio_Glass
+    second: {fileID: 2100000, guid: e81617f468725bd40b09d8e0540ba76a, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
