@@ -7,6 +7,7 @@ namespace RosSharp.RosBridgeClient
     {
         protected double loudnessMin=0;
         protected double loudnessMax=100;
+        protected float alpha = 0.25f;
 
         abstract public void Visualize(MessageTypes.Std.Float64MultiArray audioRecording);
         abstract protected void DestroyObjects();
@@ -42,7 +43,7 @@ namespace RosSharp.RosBridgeClient
             float r = first.r * (percentage) + second.r * (1 - percentage);
             float g = first.g * (percentage) + second.g * (1 - percentage);
             float b = first.b * (percentage) + second.b * (1 - percentage);
-            float a = first.a * (percentage) + second.a * (1 - percentage);
+            float a = alpha;
             return new Color(r, g, b, a);
         }
 

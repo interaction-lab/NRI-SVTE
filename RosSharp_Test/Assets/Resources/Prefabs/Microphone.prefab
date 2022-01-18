@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5236636785783378032}
   - component: {fileID: 3732853366025071062}
   m_Layer: 0
-  m_Name: AudioSphere
+  m_Name: Microphone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

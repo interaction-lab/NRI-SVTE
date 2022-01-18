@@ -16,7 +16,7 @@ namespace RosSharp.RosBridgeClient
         private bool IsCreated = false;
         private float positionScale = 0.2f;
         private readonly float scaleRow = 0.01f;
-        private readonly float inflatingCoefficient = 1.2f;
+        private readonly float inflatingCoefficient = 2.0f;
         private Vector3[,] originalDimensions;
         
         private void Create()
@@ -73,6 +73,7 @@ namespace RosSharp.RosBridgeClient
                     //Gets the loudness heard by sphere i
                     float sphereLoudness = GetObjectLoudness(loudness, i, sphereNumber);
                     Color sphereColor = GetInterpolatedColor(Color.red, Color.green, sphereLoudness);
+                    print("Sphere color is: " + sphereColor);
                     audioSpheres[row, i].transform.localScale = GetInflation(sphereLoudness,row,i);
                     Renderer sphereRenderer = audioSpheres[row, i].GetComponent<Renderer>();
                     sphereRenderer.material.color = sphereColor;

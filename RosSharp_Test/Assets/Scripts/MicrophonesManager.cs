@@ -16,6 +16,7 @@ namespace RosSharp.RosBridgeClient {
         private readonly float positionScale = 0.1f;
         //Value in meters from which the microphones pick up sound as if they were in the source
         private readonly float hearingThreshold = 1.0f;
+        private readonly float hearingAngle = 60;
 
 
         public void Create()
@@ -64,22 +65,32 @@ namespace RosSharp.RosBridgeClient {
         protected override void SetMessage()
         {
             float radius;
+            float angle;
             float soundIntensityAtSource;
             for (int i = 0; i < microphones.Length; i++)
             {
                 //Distance between a microphone and the audioSource positions'
+                angle = Vector3.SignedAngle(microphones[i].transform.position, audioSource.transform.position, microphones[i].transform.position);
+                print("Microphone is number " + i + " angle is " + angle);
                 radius = Vector3.Distance(microphones[i].transform.position, audioSource.transform.position);
                 //Sound Intensity at the source
                 soundIntensityAtSource = audioSource.GetComponent<AudioSource>().volume * (loudnessMax - loudnessMin);
-                if (radius <= hearingThreshold)
+                if (Mathf.Abs(angle) <= hearingAngle)
                 {
-                    audioRecording.data[i] = soundIntensityAtSource;
-                  
+                    if (radius <= hearingThreshold)
+                    {
+                        audioRecording.data[i] = soundIntensityAtSource;
+
+                    }
+                    else
+                    {
+                        audioRecording.data[i] = soundIntensityAtSource * Mathf.Pow(hearingThreshold, 2) /
+                            Mathf.Pow(radius, 2);
+                    }
                 }
                 else
                 {
-                    audioRecording.data[i] = soundIntensityAtSource * Mathf.Pow(hearingThreshold, 2) /
-                        Mathf.Pow(radius, 2);    
+                    audioRecording.data[i] = 0;
                 }
             }
         }
