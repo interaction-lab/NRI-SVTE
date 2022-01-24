@@ -9,6 +9,10 @@ TagManager:
   - RightSensor
   - MiddleSensor
   - LeftSensor
+  - mic0
+  - mic1
+  - mic2
+  - mic3
   layers:
   - Default
   - TransparentFX

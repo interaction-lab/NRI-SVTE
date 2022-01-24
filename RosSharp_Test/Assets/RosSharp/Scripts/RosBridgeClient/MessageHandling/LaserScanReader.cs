@@ -17,7 +17,7 @@ using UnityEngine;
 
 namespace RosSharp.RosBridgeClient
 {
-    public class LaserScanReader : MonoBehaviour
+    public class LaserScanReader : MonoBehaviour    
     {
         private Ray[] rays;
         private RaycastHit[] raycastHits;
