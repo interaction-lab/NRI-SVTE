@@ -11,7 +11,7 @@ public class LoudnessSlider : AudioProvider
     {
         for (int i = 0; i < sliders.Length; i++)
         {
-            sliders[i] = GameObject.FindGameObjectWithTag("mic" + i.ToString()).GetComponent<Slider>();
+            sliders[i] = GameObject.FindGameObjectWithTag(ResourcePathManager.sliderTag + i.ToString()).GetComponent<Slider>();
             sliders[i].maxValue = loudnessMax;
             sliders[i].minValue = loudnessMin;
             sliders[i].normalizedValue = 0;

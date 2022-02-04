@@ -13,6 +13,15 @@ TagManager:
   - mic1
   - mic2
   - mic3
+  - radio
+  - bubbleText
+  - textCanvas
+  - loadingIcon
+  - speechBubble
+  - intentBubble
+  - intentText
+  - microphone
+  - radioLocations
   layers:
   - Default
   - TransparentFX
