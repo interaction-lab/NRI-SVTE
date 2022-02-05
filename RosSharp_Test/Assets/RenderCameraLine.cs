@@ -9,6 +9,7 @@ public class RenderCameraLine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+      LineRenderer cameraLine = gameObject.AddComponent<LineRenderer>();
 
     }
 
