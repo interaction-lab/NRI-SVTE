@@ -4,10 +4,8 @@ using UnityEngine;
 /// Inherit from this base class to create a singleton.
 /// e.g. public class MyClassName : Singleton<MyClassName> {}
 /// </summary>
-namespace RosSharp_Test
-{
-    public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
-    {
+namespace NRISVTE {
+    public class Singleton<T> : MonoBehaviour where T : MonoBehaviour {
         // Check to see if we're about to be destroyed.
         private static bool m_ShuttingDown = false;
         private static object m_Lock = new object();
@@ -16,16 +14,14 @@ namespace RosSharp_Test
         /// <summary>
         /// Access singleton instance through this propriety.
         /// </summary>
-        public static T instance
-        {
-            get
-            {
-               /* if (m_ShuttingDown)
-                {
-                    // Debug.LogWarning("[Singleton] Instance '" + typeof(T) +
-                    //    "' already destroyed. Returning null."); // ignoring currently
-                    return null;
-                }*/
+        public static T instance {
+            get {
+                /* if (m_ShuttingDown)
+                 {
+                     // Debug.LogWarning("[Singleton] Instance '" + typeof(T) +
+                     //    "' already destroyed. Returning null."); // ignoring currently
+                     return null;
+                 }*/
 
                 lock (m_Lock)
                 {
@@ -52,14 +48,12 @@ namespace RosSharp_Test
             }
         }
 
-        private void OnApplicationQuit()
-        {
+        private void OnApplicationQuit() {
             m_ShuttingDown = true;
         }
 
 
-        private void OnDestroy()
-        {
+        private void OnDestroy() {
             m_ShuttingDown = true;
         }
     }
