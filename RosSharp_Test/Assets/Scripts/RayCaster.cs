@@ -1,27 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class RayCaster : MonoBehaviour
-{
-  public ShowLasers SL;
-  public float[] ranges;
-  public Vector3[] hit_points;
-  public float maxDistance = .00025f;
-  public int layermask;
+public class RayCaster : MonoBehaviour {
+    public ShowLasers SL;
+    public float[] ranges;
+    public Vector3[] hit_points;
+    public float maxDistance = .00025f;
+    public int layermask;
 
 
-    void Start()
-  {
-      SL = FindObjectOfType<ShowLasers>();
-      ranges = new float[180];
-      maxDistance = 2.5f;
-      layermask = 1 << 6;
-      layermask = ~layermask;
+    void Start() {
+        SL = FindObjectOfType<ShowLasers>();
+        ranges = new float[180];
+        maxDistance = 2.5f;
+        layermask = 1 << 6;
+        layermask = ~layermask;
     }
 
-    void Update()
-    {
+    void Update() {
+        if (!SL.enabled)
+        {
+            return; // early return for disabled ShowLasers, this needs to be fixed later
+        }
         RaycastHit hit;
 
         for (int i = 0; i < 180; i++)
@@ -30,13 +29,14 @@ public class RayCaster : MonoBehaviour
             float angleDegrees = 180 + angle * Mathf.Rad2Deg;
             Quaternion rot = Quaternion.Euler(0, angleDegrees, 0);
 
-            if(Physics.Raycast(transform.position, rot * transform.forward, out hit, maxDistance, layermask))
+            if (Physics.Raycast(transform.position, rot * transform.forward, out hit, maxDistance, layermask))
             {
-              ranges[i] = hit.distance;
+                ranges[i] = hit.distance;
 
-            }else
+            }
+            else
             {
-              ranges[i] = maxDistance;
+                ranges[i] = maxDistance;
             }
         }
 
