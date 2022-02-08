@@ -4,8 +4,8 @@ using UnityEngine;
 namespace RosSharp.RosBridgeClient { 
     public class MicrophonesManager : AudioProvider
     {
-        public GameObject audioSource;
-        public GameObject spherePrefab;
+        private GameObject audioSource;
+        private GameObject microphonePrefab;
         private GameObject[] microphones = new GameObject[4];
         //Y of the microphones transform position
         private readonly float height = -0.05f;
@@ -26,7 +26,7 @@ namespace RosSharp.RosBridgeClient {
                 float microphonePosition = (float)i / (float)microphones.Length;
                 float x = Mathf.Sin(microphonePosition * Mathf.PI * 2.0f + Mathf.PI / 4);
                 float z = Mathf.Cos(microphonePosition * Mathf.PI * 2.0f + Mathf.PI / 4);
-                microphones[i] = Instantiate(spherePrefab,
+                microphones[i] = Instantiate(microphonePrefab,
                     new Vector3(positionScale * x, height, positionScale * z),
                     Quaternion.Euler(0, 0, 0));
                 microphones[i].transform.parent = GameObject.Find("Microphones").transform;
@@ -39,6 +39,8 @@ namespace RosSharp.RosBridgeClient {
         {
             if(IsCreated == false)
             {
+                microphonePrefab = Resources.Load<GameObject>(ResourcePathManager.microphonePath);
+                audioSource = GameObject.FindGameObjectWithTag(ResourcePathManager.radioTag);
                 Create();
                 IsCreated = true;
             }
@@ -71,7 +73,6 @@ namespace RosSharp.RosBridgeClient {
             {
                 //Distance between a microphone and the audioSource positions'
                 angle = Vector3.SignedAngle(microphones[i].transform.position, audioSource.transform.position, microphones[i].transform.position);
-                print("Microphone is number " + i + " angle is " + angle);
                 radius = Vector3.Distance(microphones[i].transform.position, audioSource.transform.position);
                 //Sound Intensity at the source
                 soundIntensityAtSource = audioSource.GetComponent<AudioSource>().volume * (loudnessMax - loudnessMin);
