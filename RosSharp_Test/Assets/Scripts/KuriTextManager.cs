@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using TMPro;
 
-namespace RosSharp_Test
+namespace NRISVTE
 {
     public class KuriTextManager : Singleton<KuriTextManager> 
     {

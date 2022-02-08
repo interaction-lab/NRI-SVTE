@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using RosSharp.RosBridgeClient;
 
-namespace RosSharp_Test
+namespace NRISVTE
 {
     public class GameManager : MonoBehaviour
     {
