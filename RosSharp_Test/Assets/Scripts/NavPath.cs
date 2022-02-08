@@ -23,6 +23,7 @@ namespace NRISVTE {
             ResetPath();
             foreach (Vector3 v in vectorPath) {
                 Path.Add(new NavPathPoint(v));
+                Debug.LogError(v);
             }
         }
 

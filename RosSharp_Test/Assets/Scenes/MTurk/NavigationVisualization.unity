@@ -750,6 +750,7 @@ GameObject:
   m_Component:
   - component: {fileID: 175866653}
   - component: {fileID: 175866654}
+  - component: {fileID: 175866655}
   m_Layer: 6
   m_Name: KURI
   m_TagString: Untagged
@@ -785,6 +786,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 109078d4061a449498bb40ec4589262b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &175866655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175866652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 340f0f43af5fa964a99399390b6533b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &187834571
@@ -5978,6 +5991,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09329cce08cdc3a4690a460621be4f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TPath: []
+  VPath:
+  - {x: 2, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
 --- !u!1 &1413692480
 GameObject:
   m_ObjectHideFlags: 0
