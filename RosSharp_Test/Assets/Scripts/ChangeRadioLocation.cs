@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class ChangeRadioLocation : MonoBehaviour
 {
-    public GameObject radio;
+    private GameObject radio;
     private float yOffset = 0.09f;
     private Vector3 origin = new Vector3(0, 0, 0);
-  
+   
+
     void OnMouseDown()
     {
      
@@ -17,6 +18,11 @@ public class ChangeRadioLocation : MonoBehaviour
 
     }
 
-    
+    public void SetRadio(GameObject audioSource)
+    {
+        radio = audioSource;
+    }
+
    
+
 }
