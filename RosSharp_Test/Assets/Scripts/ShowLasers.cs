@@ -36,12 +36,13 @@ public class ShowLasers : MonoBehaviour
 
   public class Message {
     public float[] ranges;
-    public Vector3[] hit_points;
+    public float maxRange;
   }
 
   public void UpdateRanges(Message message)
   {
     float[] ranges = message.ranges;
+    float maxRange = message.maxRange;
     for (int i = 0; i < 180; i++)
     {
         GameObject pf = prefabs[i];
@@ -51,7 +52,9 @@ public class ShowLasers : MonoBehaviour
         TrailRenderer lidarTrail = sphere.GetComponent<TrailRenderer>();
         var PM = sphere.GetComponent<ProjectileMotion>();
         PM.startPose = pf.transform.position;
-        PM.endPose = pf.transform.position + (pf.transform.forward * ranges[i]);
+        PM.endPose = pf.transform.position + (pf.transform.forward * maxRange);
+        PM.maxRange = maxRange;
+        PM.range = ranges[i];
         // laserLine.SetPosition (0, transform.position);
         // laserLine.SetPosition(1,transform.position + (pf.transform.forward * ranges[i]));
         // laserLine.material.color = lidarColor;

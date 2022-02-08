@@ -15,7 +15,6 @@ public class RayCaster : MonoBehaviour
   {
       SL = FindObjectOfType<ShowLasers>();
       ranges = new float[180];
-      hit_points = new Vector3[180];
       maxDistance = 2.5f;
       layermask = 1 << 6;
       layermask = ~layermask;
@@ -34,7 +33,6 @@ public class RayCaster : MonoBehaviour
             if(Physics.Raycast(transform.position, rot * transform.forward, out hit, maxDistance, layermask))
             {
               ranges[i] = hit.distance;
-              hit_points[i] = hit.point;
 
             }else
             {
@@ -44,7 +42,7 @@ public class RayCaster : MonoBehaviour
 
         ShowLasers.Message updateMessage = new ShowLasers.Message();
         updateMessage.ranges = ranges;
-        updateMessage.hit_points = hit_points;
+        updateMessage.maxRange = maxDistance;
         SL.UpdateRanges(updateMessage);
 
     }
