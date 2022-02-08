@@ -6,7 +6,7 @@ namespace RosSharp.RosBridgeClient
  
     public class AudioVisualizerSpheres : AudioVisualizer
     {
-        public GameObject spherePrefab;
+        private GameObject spherePrefab;
         private readonly int sphereNumber = 32;
         private readonly int rowsOfSpheres = 3;
         private GameObject[,] audioSpheres;
@@ -19,8 +19,9 @@ namespace RosSharp.RosBridgeClient
         private readonly float inflatingCoefficient = 2.0f;
         private Vector3[,] originalDimensions;
         
-        private void Create()
+        protected override void Create()
         {
+            spherePrefab = Resources.Load<GameObject>(ResourcePathManager.audioSpherePath);
             audioSpheres = new GameObject[rowsOfSpheres,sphereNumber];
             originalDimensions = new Vector3[rowsOfSpheres, sphereNumber];
             float midrow = (rowsOfSpheres - 1) / 2;
@@ -62,21 +63,21 @@ namespace RosSharp.RosBridgeClient
 
         public override void Visualize(Float64MultiArray audioRecording)
         {
-            if (!IsCreated)
-                Create();
             //Gets the loudness heard by each microphone in the audioRecording
             double[] loudness = GetLoudness(audioRecording);
-            for(int row = 0; row < rowsOfSpheres; row++)
+            if (audioSpheres != null && IsCreated == true)
             {
-                for (int i = 0; i < sphereNumber; i++)
+                for (int row = 0; row < rowsOfSpheres; row++)
                 {
-                    //Gets the loudness heard by sphere i
-                    float sphereLoudness = GetObjectLoudness(loudness, i, sphereNumber);
-                    Color sphereColor = GetInterpolatedColor(Color.red, Color.green, sphereLoudness);
-                    print("Sphere color is: " + sphereColor);
-                    audioSpheres[row, i].transform.localScale = GetInflation(sphereLoudness,row,i);
-                    Renderer sphereRenderer = audioSpheres[row, i].GetComponent<Renderer>();
-                    sphereRenderer.material.color = sphereColor;
+                    for (int i = 0; i < sphereNumber; i++)
+                    {
+                        //Gets the loudness heard by sphere i
+                        float sphereLoudness = GetObjectLoudness(loudness, i, sphereNumber);
+                        Color sphereColor = GetInterpolatedColor(Color.red, Color.green, sphereLoudness);
+                        audioSpheres[row, i].transform.localScale = GetInflation(sphereLoudness, row, i);
+                        Renderer sphereRenderer = audioSpheres[row, i].GetComponent<Renderer>();
+                        sphereRenderer.material.color = sphereColor;
+                    }
                 }
             }
             
@@ -106,6 +107,7 @@ namespace RosSharp.RosBridgeClient
                         Destroy(audioSpheres[row,i]);
                     }
                 }
+                IsCreated = false;
             }
         }
     }

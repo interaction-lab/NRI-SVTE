@@ -10,6 +10,8 @@ namespace RosSharp.RosBridgeClient
         protected float alpha = 0.25f;
 
         abstract public void Visualize(MessageTypes.Std.Float64MultiArray audioRecording);
+
+        abstract protected void Create();
         abstract protected void DestroyObjects();
 
         //AudioRecording data be an array of floats of dimension 4.
@@ -94,6 +96,11 @@ namespace RosSharp.RosBridgeClient
         protected void OnDisable()
         {
             DestroyObjects();
+        }
+
+        protected void OnEnable()
+        {
+            Create();
         }
 
     }

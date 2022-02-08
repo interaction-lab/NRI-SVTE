@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(MeshRenderer))]
 public class ConeMesh : MonoBehaviour
 {
-    public Mesh mesh;
+    private Mesh mesh;
     //Minimum radius of the circle at the base of the cone
     private readonly float radiusMin = 0.5f;
     //Maximum radius of the circle at the base of the cone
@@ -19,6 +19,7 @@ public class ConeMesh : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mesh = Resources.Load<Mesh>(ResourcePathManager.coneMeshPath);
         radius = radiusMin;
         mesh.RecalculateBounds();
         mesh.RecalculateNormals();
@@ -77,6 +78,16 @@ public class ConeMesh : MonoBehaviour
     {
         matColor = color;
         IsColorSet = true;
+    }
+
+    public void DisableMesh()
+    {
+        mr.enabled = false;
+    }
+
+    public void EnableMesh()
+    {
+        mr.enabled = true;
     }
 
 }

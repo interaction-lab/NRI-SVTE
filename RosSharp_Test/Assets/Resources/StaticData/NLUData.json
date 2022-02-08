@@ -1,0 +1,45 @@
+{
+  "Messages": [
+    {
+      "Timestamp": 5100,
+      "Message": {
+        "Text": "",
+        "Intents": [],
+        "NLUState": 1
+      }
+    },
+    {
+      "Timestamp": 6500,
+      "Message": {
+        "Text": "Hi! ",
+        "Intents": [],
+        "NLUState": 1
+      }
+    },
+    {
+      "Timestamp": 7500,
+      "Message": {
+        "Text": "It's nice to meet you",
+        "Intents": [],
+        "NLUState": 1
+      }
+    },
+    {
+      "Timestamp": 9500,
+      "Message": {
+        "Text": ", how are you?",
+        "Intents": [
+          {
+            "Name": "Greetings",
+            "Confidence": 0.86
+          },
+          {
+            "Name": "Small Talk",
+            "Confidence": 0.10
+          }
+        ],
+        "NLUState": 2
+      }
+    }
+  ]
+}
