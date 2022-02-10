@@ -23,7 +23,6 @@ namespace NRISVTE {
         #region unity
         private void Start() {
             CreateSpheres(NavPathManager.instance.NVPath);
-            UpdateLineRenderers();
         }
         #endregion
 
@@ -34,9 +33,9 @@ namespace NRISVTE {
         #region private
         private void CreateSpheres(NavPath np) {
             foreach (NavPathPoint pp in np.Path) {
-                Debug.LogError(pp.PointPosition);
                 LoadAndAddSphere(pp);
             }
+            UpdateLineRenderers();
         }
         private void LoadAndAddSphere(NavPathPoint pp) {
             SphereList.Add(Instantiate(original: SpherePrefab, parent: transform, instantiateInWorldSpace: true) as GameObject);

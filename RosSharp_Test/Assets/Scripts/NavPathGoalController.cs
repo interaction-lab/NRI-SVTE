@@ -7,7 +7,7 @@ namespace NRISVTE {
         #region members
         public bool AtGoal = false;
         private float distThreshold = 0.025f;
-        private float speed = 0.05f;
+        private float speed = 0.005f;
         #endregion
 
         #region unity
