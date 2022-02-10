@@ -10,15 +10,18 @@ namespace NRISVTE {
         private float speed = 0.05f;
         #endregion
 
+        #region unity
+        private void Update() {
+            if (Input.GetKeyDown(KeyCode.Alpha9)) {
+                ToggleManager.instance.ToggleLidar(false);
+                NavPathManager.instance.StartNavigatePath(this);
+            }
+        }
+        #endregion
+
         #region public
         public void SendNewGoal(Vector3 goalPos) {
             StartCoroutine(GoToGoal(goalPos));
-        }
-
-        private void Update() {
-            if (Input.GetKeyDown(KeyCode.Alpha9)) {
-                NavPathManager.instance.StartNavigatePath(this);
-            }
         }
         #endregion
 
