@@ -14,6 +14,8 @@ namespace RosSharp.RosBridgeClient
         private SpeechBubble speechBubble;
         private IntentVisualizer[] intentVisualizers;
         private GameObject[] intentElements;
+        private GameObject[] intentElementsRemovable;
+        public bool IntentElementsEnabled = false;
 
         public override void DestroyObjects()
         {
@@ -90,6 +92,12 @@ namespace RosSharp.RosBridgeClient
             intentVisualizers = gameObject.GetComponents<IntentVisualizer>();
             speechBubble.Setup("",false);
             intentElements = GameObject.FindGameObjectsWithTag(ResourcePathManager.intentElementTag);
+            intentElementsRemovable = GameObject.FindGameObjectsWithTag(ResourcePathManager.intentElementRemovableTag);
+            if (!IntentElementsEnabled)
+            {
+                for (int i = 0; i < intentElements.Length; i++)
+                    intentElementsRemovable[i].SetActive(false);
+            }
             SetIntentElementsActive(false);
         }
         
@@ -97,6 +105,11 @@ namespace RosSharp.RosBridgeClient
         {
             for (int i = 0; i < intentElements.Length; i++)
                 intentElements[i].SetActive(active);
+            if (IntentElementsEnabled)
+            {
+                for (int i = 0; i < intentElements.Length; i++)
+                    intentElementsRemovable[i].SetActive(active);
+            }
         }
 
        

@@ -9,7 +9,7 @@ namespace RosSharp.RosBridgeClient
         protected Color[] intentColors;
 
         
-    abstract public void Visualize(NLUDataTypes.NLUIntent[] intentList);
+        abstract public void Visualize(NLUDataTypes.NLUIntent[] intentList);
 
         abstract public void Disable();
 

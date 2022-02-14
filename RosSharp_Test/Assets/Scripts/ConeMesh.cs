@@ -16,6 +16,8 @@ public class ConeMesh : MonoBehaviour
     private bool IsColorSet = false;
     public Material material;
     private Color matColor;
+    private float inflatingCoefficient = 2.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +47,7 @@ public class ConeMesh : MonoBehaviour
     //and radiusMax
     public void ChangeRadius(float percentage)
     {
-        float newRadius = radiusMin + percentage * (radiusMax - radiusMin);
+        float newRadius = radiusMin + percentage * (radiusMax - radiusMin) * inflatingCoefficient;
         //To change the radius rescale the vertices and the uvs on the X and Z axis
         float scale = newRadius / radius;
         Vector3[] newVertices = new Vector3[mesh.vertices.Length];

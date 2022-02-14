@@ -14,6 +14,7 @@ namespace RosSharp.RosBridgeClient
         private readonly float circleRadius = 0.25f;
         private float coneScale = 0.15f;
         private readonly int coneNumber = 16;
+        public bool IsThreeDimensional = true;
         
         protected override void Create()
         {
@@ -22,6 +23,9 @@ namespace RosSharp.RosBridgeClient
             float tempConeScale = coneScale;
             tempConeScale /= (coneNumber/4);
             audioCones = new GameObject[coneNumber];
+            int threeDimensionalFlag = 0;
+            if (IsThreeDimensional)
+                threeDimensionalFlag = 1;
             for (int i = 0; i < coneNumber; i++)
             {
                 
@@ -32,7 +36,7 @@ namespace RosSharp.RosBridgeClient
                 float z = Mathf.Cos(conePosition * Mathf.PI * 2.0f + Mathf.PI /4) * circleRadius;
                 audioCones[i] = Instantiate(conePrefab, new Vector3(x, -0.05f, z), Quaternion.Euler(90,rotationY + 180,0 - 45)) as GameObject;
                 audioCones[i].transform.parent = GameObject.Find("Microphones").transform;
-                audioCones[i].transform.localScale = new Vector3(tempConeScale, tempConeScale, tempConeScale);
+                audioCones[i].transform.localScale = new Vector3(tempConeScale, tempConeScale, tempConeScale * threeDimensionalFlag);
                 if(hiddenObjects)
                     audioCones[i].SetActive(false);
             }
