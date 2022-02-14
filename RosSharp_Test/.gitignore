@@ -8,6 +8,7 @@
 /[Bb]uild/
 /[Bb]uilds/
 /[Ll]ogs/
+/[Uu]ser[Ss]ettings/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
@@ -121,3 +122,6 @@ M2C_MobileTest/
 [Aa]ssets/Data
 [Aa]ssets/GoogleService-Info.plist*
 [Aa]ssets/google-services.json*
+
+# Recording folder
+Recordings/

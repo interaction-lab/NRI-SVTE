@@ -28,7 +28,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - FaceFrames
   - Water
   - UI
   - IgnoreLidar

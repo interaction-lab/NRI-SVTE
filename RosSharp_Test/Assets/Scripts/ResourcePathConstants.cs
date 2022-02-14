@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RosSharp_Test
-{
-    public class ResourcePathConstants : MonoBehaviour
-    {
+namespace NRISVTE {
+    public class ResourcePathConstants : MonoBehaviour {
         //Prefabs
         public static string PrefabFolder = "Prefabs/";
 
@@ -44,5 +42,9 @@ namespace RosSharp_Test
         public static string KuriBangDownSound = KuriNegativeSoundFolder + "BANG_GOINGDOWN";
         public static string KuriFart = KuriNegativeSoundFolder + "Fart";
         public static string KuriPonderSad = KuriNegativeSoundFolder + "PONDER_SAD";
+
+        // Navigation
+        public static string NavigationFolder = PrefabFolder + "Navigation/";
+        public static string NavGoalSphere = NavigationFolder + "NavGoalSphere";
     }
 }
