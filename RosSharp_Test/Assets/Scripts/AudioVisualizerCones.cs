@@ -33,6 +33,8 @@ namespace RosSharp.RosBridgeClient
                 audioCones[i] = Instantiate(conePrefab, new Vector3(x, -0.05f, z), Quaternion.Euler(90,rotationY + 180,0 - 45)) as GameObject;
                 audioCones[i].transform.parent = GameObject.Find("Microphones").transform;
                 audioCones[i].transform.localScale = new Vector3(tempConeScale, tempConeScale, tempConeScale);
+                if(hiddenObjects)
+                    audioCones[i].SetActive(false);
             }
             IsCreated = true;
         }
@@ -45,8 +47,14 @@ namespace RosSharp.RosBridgeClient
                 {
                     //Getting loudness heard by cone i
                     coneLoudness = GetObjectLoudness(GetLoudness(audioRecording), i, coneNumber);
-                    audioCones[i].GetComponent<ConeMesh>().SetColor(GetInterpolatedColor(Color.red, Color.green, coneLoudness));
-                    audioCones[i].GetComponent<ConeMesh>().ChangeRadius(coneLoudness);
+                    if (hiddenObjects && coneLoudness > 0)
+                    {
+                        audioCones[i].SetActive(true);
+                        audioCones[i].GetComponent<ConeMesh>().SetColor(GetInterpolatedColor(Color.red, Color.green, coneLoudness));
+                        audioCones[i].GetComponent<ConeMesh>().ChangeRadius(coneLoudness);
+                    }
+                    else if (hiddenObjects && coneLoudness == 0)
+                        audioCones[i].SetActive(false);
                 }
             }
         }

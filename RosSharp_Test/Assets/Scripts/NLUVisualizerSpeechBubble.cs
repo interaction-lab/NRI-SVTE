@@ -6,12 +6,14 @@ using NLUDataTypes;
 using System.Text.Json;
 using TMPro;
 
+
 namespace RosSharp.RosBridgeClient
 {
     public class NLUVisualizerSpeechBubble : NLUVisualizer
     {
         private SpeechBubble speechBubble;
-        private GameObject intentBubble;
+        private IntentVisualizer[] intentVisualizers;
+        private GameObject[] intentElements;
 
         public override void DestroyObjects()
         {
@@ -25,11 +27,52 @@ namespace RosSharp.RosBridgeClient
                 speechBubble.ClearText();
             speechBubble.Setup(message.Text, IsLoadingIconActive(message.NLUState));
             if (message.NLUState == 2)
-                ShowIntentList(message.Intents);
+            {
+                SortIntents(message.Intents);
+                for (int i = 0; i < intentVisualizers.Length; i++)
+                    intentVisualizers[i].Visualize(message.Intents);
+                SetIntentElementsActive(true);
+                HighlightKeywords(message.Intents);
+            }
             else
-                intentBubble.gameObject.SetActive(false);
+            {
+                for (int i = 0; i < intentVisualizers.Length; i++)
+                    intentVisualizers[i].Disable();
+                SetIntentElementsActive(false);
+            }
+                
         }
 
+        private void SortIntents(NLUIntent[] intentList)
+        {
+            System.Array.Sort(intentList, new NLUIntentComparer());
+        }
+
+        private void HighlightKeywords(NLUIntent[] intentList)
+        {
+            for(int i = 0; i < intentList.Length ; i++)
+            {
+                HighlightIntentKeywords(intentList[i], intentVisualizers[0].GetIntentColor(i));
+                print("intent color for intent " + i + "is " + intentVisualizers[0].GetIntentColor(i));
+            }
+        }
+
+        private void HighlightIntentKeywords(NLUIntent intent, Color color)
+        {
+            string hexColor = ColorUtility.RGBToHex(color);
+            print("color was : " + color + "later is: " + hexColor);
+            if (intent.Keywords == null)
+                return;
+            for(int i = 0; i < intent.Keywords.Length; i++)
+            {
+                print("changing to:" + "<u color=" + hexColor + ">" + intent.Keywords[i] + "</u>");
+                speechBubble.ChangeText(
+                    speechBubble.GetText().Replace(
+                        intent.Keywords[i], "<u color=" + hexColor + ">"+intent.Keywords[i]+"</u>"));
+            }
+        }
+
+       
         // Determines if the loading icon should be active or not (NLUState == 1 || NLUState == 0).
         private bool IsLoadingIconActive(int robotState)
         {
@@ -39,29 +82,23 @@ namespace RosSharp.RosBridgeClient
                 return false;
         }   
 
-        void ShowIntentList(NLUIntent[] intents)
-        {
-            intentBubble.gameObject.SetActive(true);
-            TextMeshProUGUI intentText = GameObject
-                .FindWithTag(ResourcePathManager.intentTextTag).GetComponent<TextMeshProUGUI>();
-            intentText.text = "";
-            foreach(NLUIntent intent in intents)
-            {
-                intentText.text += intent.ToString() + ";";
-                intentText.text += "\n\n";
-            }
-            
-        }
 
         // Start is called before the first frame update
         void Start()
         {
             speechBubble = GameObject.FindWithTag(ResourcePathManager.speechBubbleTag).GetComponent<SpeechBubble>();
-            intentBubble = GameObject.FindWithTag(ResourcePathManager.intentBubbleTag);
-            intentBubble.gameObject.SetActive(false);
+            intentVisualizers = gameObject.GetComponents<IntentVisualizer>();
             speechBubble.Setup("",false);
+            intentElements = GameObject.FindGameObjectsWithTag(ResourcePathManager.intentElementTag);
+            SetIntentElementsActive(false);
+        }
+        
+        private void SetIntentElementsActive(bool active)
+        {
+            for (int i = 0; i < intentElements.Length; i++)
+                intentElements[i].SetActive(active);
         }
 
-        
+       
     }
 }

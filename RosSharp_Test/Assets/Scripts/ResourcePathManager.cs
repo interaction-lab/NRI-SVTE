@@ -17,4 +17,8 @@ public static class ResourcePathManager
     public static string intentTextTag = "intentText";
     public static string microphoneTag = "microphone";
     public static string radioLocationsTag = "radioLocations";
+    public static string futuraPath = "Fonts/futura light bt";
+    public static string intentElementTag = "intentElement";
+    public static string dottedLineMatPath = "Dotted Line Materials/PredictionLine";
+    public static string dottedLineShader = "Dotted Line Materials/DottedLine";
 }

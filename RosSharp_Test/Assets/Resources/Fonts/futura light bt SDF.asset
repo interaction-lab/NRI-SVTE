@@ -84,7 +84,7 @@ MonoBehaviour:
     m_SubscriptOffset: -17.452148
     m_SubscriptSize: 0.5
     m_UnderlineOffset: -9.50293
-    m_UnderlineThickness: 2.890625
+    m_UnderlineThickness: 30
     m_StrikethroughOffset: 12.8
     m_StrikethroughThickness: 2.890625
     m_TabWidth: 21
@@ -2629,6 +2629,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _Ambient: 0.5
     - _Bevel: 0.5
