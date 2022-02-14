@@ -18,7 +18,7 @@ namespace NRISVTE {
                 Debug.LogWarning("Disabling ShowLasers as Slider is not set, might be intended for this scene. This script should be migrated to not use public member/drag and drop.");
                 return;
             }
-
+            return;
             prefabs = new GameObject[180];
 
             for (int i = 0; i < 180; i++) {
@@ -42,6 +42,7 @@ namespace NRISVTE {
         }
 
         public void UpdateRanges(Message message) {
+            return;
             float[] ranges = message.ranges;
             float maxRange = message.maxRange;
             for (int i = 0; i < 180; i++) {
