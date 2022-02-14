@@ -433,6 +433,7 @@ MonoBehaviour:
     - {fileID: -673453192167950661}
     - {fileID: 187198729628703070}
     - {fileID: -1250928082605437918}
+    - {fileID: -4462274896857036}
 --- !u!114 &-4182291629590820750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -685,6 +686,22 @@ MonoBehaviour:
     m_DisplayName: RecorderClip
   m_Markers:
     m_Objects: []
+--- !u!114 &-4462274896857036
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
+  m_Name: Signal Emitter
+  m_EditorClassIdentifier: 
+  m_Time: 7.5
+  m_Retroactive: 0
+  m_EmitOnce: 0
+  m_Asset: {fileID: 11400000, guid: ea4d4a4c0eb539a478bb555bb5f0f7be, type: 2}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0

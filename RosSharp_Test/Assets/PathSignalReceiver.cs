@@ -22,7 +22,6 @@ namespace NRISVTE {
 
         #region public
         public void SignalNextPathPoint() {
-            Debug.LogError(curPoint);
             ResetColors(pathPoints[curPoint++]);
             if (curPoint < pathPoints.Count) {
                 SetToTraversingColor(pathPoints[curPoint]);
@@ -34,8 +33,7 @@ namespace NRISVTE {
         #region private
         void SetUpPathPoints() {
             pathPoints = new List<PathPoint>();
-            foreach (Transform t in transform) {
-                PathPoint pp = t.GetComponent<PathPoint>();
+            foreach (PathPoint pp in GetComponentsInChildren<PathPoint>()) {
                 pathPoints.Add(pp);
                 if (useKuris) {
                     pp.UseKuris();

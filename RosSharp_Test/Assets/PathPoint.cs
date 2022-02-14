@@ -5,35 +5,54 @@ using UnityEngine;
 namespace NRISVTE {
     public class PathPoint : MonoBehaviour {
         #region members
-        MeshRenderer sphereRend;
-        GameObject kuri;
-        LineRenderer lr;
+        MeshRenderer sphereRend = null;
+        MeshRenderer SphereRend {
+            get {
+                if (sphereRend == null) {
+                    sphereRend = GetComponent<MeshRenderer>();
+                }
+                return sphereRend;
+            }
+        }
+        GameObject kuri = null;
+        GameObject Kuri {
+            get {
+                if (kuri == null) {
+                    kuri = transform.GetChild(0).gameObject; // hardCoded
+                }
+                return kuri;
+            }
+        }
+        LineRenderer lr = null;
+        LineRenderer LR {
+            get {
+                if (lr == null) {
+                    lr = GetComponent<LineRenderer>();
+                }
+                return lr;
+            }
+        }
         #endregion
 
         #region unity
-        private void Awake() {
-            sphereRend = GetComponent<MeshRenderer>();
-            kuri = transform.GetChild(0).gameObject; // hardCoded
-            lr = GetComponent<LineRenderer>();
-        }
         #endregion
 
         #region public
         public void UseKuris() {
-            sphereRend.enabled = false;
-            kuri.SetActive(true);
+            SphereRend.enabled = false;
+            Kuri.SetActive(true);
         }
         public void UseSpheres() {
-            sphereRend.enabled = true;
-            kuri.SetActive(false);
+            SphereRend.enabled = true;
+            Kuri.SetActive(false);
         }
 
         public void ChangePointColor(Color c) {
-            sphereRend.material.color = c;
+            SphereRend.material.color = c;
         }
         public void ChangeLRColor(Color c) {
-            lr.colorGradient = new Gradient();
-            lr.startColor = lr.endColor = c;
+            LR.material.color = c;
+            LR.startColor = LR.endColor = c;
         }
         #endregion
 
