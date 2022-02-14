@@ -28,14 +28,29 @@
       "Timestamp": 9500,
       "Message": {
         "Text": ", how are you?",
+        "Intents": [],
+        "NLUState": 1
+      }
+    },
+    {
+      "Timestamp": 10500,
+      "Message": {
+        "Text": "",
         "Intents": [
           {
             "Name": "Greetings",
-            "Confidence": 0.86
+            "Confidence": 0.70,
+            "Keywords": [
+              "Hi",
+              "nice to meet you"
+            ]
           },
           {
             "Name": "Small Talk",
-            "Confidence": 0.10
+            "Confidence": 0.30,
+            "Keywords": [
+              "how are you"
+            ]
           }
         ],
         "NLUState": 2

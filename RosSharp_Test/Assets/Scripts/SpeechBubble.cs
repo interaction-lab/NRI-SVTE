@@ -42,4 +42,13 @@ public class SpeechBubble : MonoBehaviour
         textMesh.text = "";
     }
 
+    public string GetText()
+    {
+        return textMesh.text;
+    }
+
+    public void ChangeText(string newText)
+    {
+        textMesh.text = newText;
+    }
 }

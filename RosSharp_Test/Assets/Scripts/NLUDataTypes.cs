@@ -1,3 +1,5 @@
+using System.Collections;
+
 namespace NLUDataTypes
 {
     [System.Serializable]
@@ -27,9 +29,25 @@ namespace NLUDataTypes
         public string Name { get; set; }
         public float Confidence { get; set; }
 
+        public string[] Keywords { get; set; }
+
         public override string ToString()
         {
             return "<u>" + Name + "</u>"+ " with confidence: " + Confidence.ToString();
+        }
+    }
+
+    public class NLUIntentComparer : IComparer
+    {
+        public int Compare(object x, object y)
+        {
+            float difference = ((NLUIntent)x).Confidence - ((NLUIntent)y).Confidence;
+            if(difference < 0)
+                return +1;
+            else if(difference > 0)
+                return -1;
+            else 
+                return 0;
         }
     }
 }

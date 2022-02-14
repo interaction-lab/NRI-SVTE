@@ -22,6 +22,8 @@ TagManager:
   - intentText
   - microphone
   - radioLocations
+  - intentElement
+  - intentElementRemovable
   layers:
   - Default
   - TransparentFX
