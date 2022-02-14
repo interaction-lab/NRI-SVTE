@@ -48,7 +48,12 @@ namespace NRISVTE {
         }
 
         public void ChangePointColor(Color c) {
-            SphereRend.material.color = c;
+            if (SphereRend.enabled) {
+                SphereRend.material.color = c;
+            }
+            else {
+
+            }
         }
         public void ChangeLRColor(Color c) {
             LR.material.color = c;
