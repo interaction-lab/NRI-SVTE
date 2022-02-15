@@ -7,18 +7,21 @@ namespace NRISVTE {
         #region members
         public bool AtGoal = false;
         private float distThreshold = 0.025f;
-        private float speed = 0.05f;
+        private float speed = 0.005f;
+        #endregion
+
+        #region unity
+        private void Update() {
+            if (Input.GetKeyDown(KeyCode.Alpha9)) {
+                ToggleManager.instance.ToggleLidar(false);
+                NavPathManager.instance.StartNavigatePath(this);
+            }
+        }
         #endregion
 
         #region public
         public void SendNewGoal(Vector3 goalPos) {
             StartCoroutine(GoToGoal(goalPos));
-        }
-
-        private void Update() {
-            if (Input.GetKeyDown(KeyCode.Alpha9)) {
-                NavPathManager.instance.StartNavigatePath(this);
-            }
         }
         #endregion
 

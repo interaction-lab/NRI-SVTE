@@ -122,3 +122,6 @@ M2C_MobileTest/
 [Aa]ssets/Data
 [Aa]ssets/GoogleService-Info.plist*
 [Aa]ssets/google-services.json*
+
+# Recording folder
+Recordings/

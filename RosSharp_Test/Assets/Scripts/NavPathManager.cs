@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace NRISVTE {
@@ -9,10 +10,12 @@ namespace NRISVTE {
         public NavPath NVPath {
             get {
                 if (nVPath == null) {
-                    if (TPath != null) {
+                    if (TPath != null && !TPath.Empty()) {
+                        TPath.Prepend(KuriManager.instance.transform);
                         nVPath = new NavPath(TPath);
                     }
-                    else if (VPath != null) {
+                    else if (VPath != null && !VPath.Empty()) {
+                        VPath.Prepend(KuriManager.instance.transform.position);
                         nVPath = new NavPath(VPath);
                     }
                     else {
@@ -25,13 +28,11 @@ namespace NRISVTE {
 
         public List<Transform> TPath;
         public List<Vector3> VPath;
-        public bool IsNavigating { get; set; }
+        public bool IsNavigating { get; set; } = false;
         #endregion
 
         #region public
         public void StartNavigatePath(NavPathGoalController npgc) {
-            IsNavigating = false;
-            Debug.LogError("kldfsklsfdkjlfds");
             StartCoroutine(RunThroughPath(npgc));
         }
 
@@ -42,11 +43,8 @@ namespace NRISVTE {
             if (IsNavigating) {
                 yield break;
             }
-            Debug.LogError("fdkljs");
-            Debug.Log(NVPath.Path.Count);
             IsNavigating = true;
             foreach (NavPathPoint np in NVPath.Path) {
-                Debug.LogError(np.PointPosition);
                 npgc.SendNewGoal(np.PointPosition);
                 yield return new WaitUntil(() => npgc.AtGoal);
             }

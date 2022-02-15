@@ -8,7 +8,7 @@ namespace RosSharp.RosBridgeClient
     {
         private GameObject spherePrefab;
         private readonly int sphereNumber = 32;
-        private readonly int rowsOfSpheres = 3;
+        public int rowsOfSpheres = 1;
         private GameObject[,] audioSpheres;
         private readonly float distanceBetweenRows = 0.15f;
         private readonly float offsetY = 0.1f;
@@ -16,8 +16,9 @@ namespace RosSharp.RosBridgeClient
         private bool IsCreated = false;
         private float positionScale = 0.2f;
         private readonly float scaleRow = 0.01f;
-        private readonly float inflatingCoefficient = 2.0f;
+        public float inflatingCoefficient = 2.0f;
         private Vector3[,] originalDimensions;
+        public bool IsThreeDimensional = false;
         
         protected override void Create()
         {
@@ -25,6 +26,9 @@ namespace RosSharp.RosBridgeClient
             audioSpheres = new GameObject[rowsOfSpheres,sphereNumber];
             originalDimensions = new Vector3[rowsOfSpheres, sphereNumber];
             float midrow = (rowsOfSpheres - 1) / 2;
+            int threeDimensionalFlag = 0;
+            if (IsThreeDimensional)
+                threeDimensionalFlag = 1;
             for (int row = 0; row < rowsOfSpheres; row++)
             {
                 //Getting y of the transform position of the spheres on the row 
@@ -42,9 +46,11 @@ namespace RosSharp.RosBridgeClient
                         new Vector3(positionScale * x, positionScale * yPositionRow - offsetY, positionScale * z),
                         Quaternion.Euler(0, 0, 0));
                     audioSpheres[row, i].transform.parent = GameObject.Find("Microphones").transform;
-                    audioSpheres[row,i].transform.localScale = new Vector3(localScale,localScale,localScale);
-                    audioSpheres[row,i].transform.localScale -= new Vector3(rowScaleOffset, rowScaleOffset, rowScaleOffset);
+                    audioSpheres[row,i].transform.localScale = new Vector3(localScale,localScale * threeDimensionalFlag,localScale);
+                    audioSpheres[row,i].transform.localScale -= new Vector3(rowScaleOffset, rowScaleOffset * threeDimensionalFlag, rowScaleOffset);
                     originalDimensions[row, i] = audioSpheres[row, i].transform.localScale;
+                    if (hiddenObjects)
+                        audioSpheres[row, i].SetActive(false);
                 }
                 IsCreated = true;
             }
@@ -73,10 +79,15 @@ namespace RosSharp.RosBridgeClient
                     {
                         //Gets the loudness heard by sphere i
                         float sphereLoudness = GetObjectLoudness(loudness, i, sphereNumber);
-                        Color sphereColor = GetInterpolatedColor(Color.red, Color.green, sphereLoudness);
-                        audioSpheres[row, i].transform.localScale = GetInflation(sphereLoudness, row, i);
-                        Renderer sphereRenderer = audioSpheres[row, i].GetComponent<Renderer>();
-                        sphereRenderer.material.color = sphereColor;
+                        if (hiddenObjects && sphereLoudness > 0)
+                        {
+                            audioSpheres[row,i].SetActive(true);
+                            Color sphereColor = GetInterpolatedColor(Color.red, Color.green, sphereLoudness);
+                            audioSpheres[row, i].transform.localScale = GetInflation(sphereLoudness, row, i);
+                            Renderer sphereRenderer = audioSpheres[row, i].GetComponent<Renderer>();
+                            sphereRenderer.material.color = sphereColor;
+                        }else if(hiddenObjects && sphereLoudness == 0)
+                            audioSpheres[row, i].SetActive(false);
                     }
                 }
             }

@@ -8,6 +8,7 @@ namespace RosSharp.RosBridgeClient
         protected double loudnessMin=0;
         protected double loudnessMax=100;
         protected float alpha = 0.25f;
+        protected bool hiddenObjects = true;
 
         abstract public void Visualize(MessageTypes.Std.Float64MultiArray audioRecording);
 
