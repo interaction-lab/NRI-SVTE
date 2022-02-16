@@ -107,8 +107,8 @@ namespace RosSharp.RosBridgeClient
                 intentElements[i].SetActive(active);
             if (IntentElementsEnabled)
             {
-                for (int i = 0; i < intentElements.Length; i++)
-                    intentElementsRemovable[i].SetActive(active);
+                for (int f = 0; f < intentElementsRemovable.Length; f++)
+                    intentElementsRemovable[f].SetActive(active);
             }
         }
 

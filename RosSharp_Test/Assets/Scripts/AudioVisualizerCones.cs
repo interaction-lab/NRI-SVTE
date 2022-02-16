@@ -34,8 +34,11 @@ namespace RosSharp.RosBridgeClient
                 float rotationY = (float)i * (360 / coneNumber);
                 float x = Mathf.Sin(conePosition * Mathf.PI * 2.0f + Mathf.PI/4) * circleRadius;
                 float z = Mathf.Cos(conePosition * Mathf.PI * 2.0f + Mathf.PI /4) * circleRadius;
-                audioCones[i] = Instantiate(conePrefab, new Vector3(x, -0.05f, z), Quaternion.Euler(90,rotationY + 180,0 - 45)) as GameObject;
+                audioCones[i] = Instantiate(conePrefab, new Vector3(x, 0.1f, z), Quaternion.Euler(90,rotationY + 180,0 - 45)) as GameObject;
                 audioCones[i].transform.parent = GameObject.Find("Microphones").transform;
+                audioCones[i].transform.localPosition =
+                    new Vector3(audioCones[i].transform.position.x,
+                    audioCones[i].transform.position.y, audioCones[i].transform.position.z);
                 audioCones[i].transform.localScale = new Vector3(tempConeScale, tempConeScale, tempConeScale * threeDimensionalFlag);
                 if(hiddenObjects)
                     audioCones[i].SetActive(false);
