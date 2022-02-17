@@ -447,7 +447,7 @@ MonoBehaviour:
   m_Name: RecorderClip
   m_EditorClassIdentifier: 
   enabled: 1
-  take: 11
+  take: 26
   captureEveryNthFrame: 1
   fileNameGenerator:
     m_Path:
