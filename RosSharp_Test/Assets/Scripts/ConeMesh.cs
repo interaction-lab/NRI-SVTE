@@ -17,10 +17,18 @@ public class ConeMesh : MonoBehaviour
     public Material material;
     private Color matColor;
     private float inflatingCoefficient = 2.0f;
+    private bool IsCreated = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (!IsCreated) {
+            Create();
+            IsCreated = true;
+        }
+    }
+
+    void Create() {
         mesh = Resources.Load<Mesh>(ResourcePathManager.coneMeshPath);
         radius = radiusMin;
         mesh.RecalculateBounds();
@@ -47,6 +55,10 @@ public class ConeMesh : MonoBehaviour
     //and radiusMax
     public void ChangeRadius(float percentage)
     {
+        if (!IsCreated) {
+            Create();
+            IsCreated = true;
+        }
         float newRadius = radiusMin + percentage * (radiusMax - radiusMin) * inflatingCoefficient;
         //To change the radius rescale the vertices and the uvs on the X and Z axis
         float scale = newRadius / radius;
@@ -90,6 +102,10 @@ public class ConeMesh : MonoBehaviour
     public void EnableMesh()
     {
         mr.enabled = true;
+    }
+
+    public void SetInflatingCoefficient(float coefficient) {
+        inflatingCoefficient = coefficient;
     }
 
 }

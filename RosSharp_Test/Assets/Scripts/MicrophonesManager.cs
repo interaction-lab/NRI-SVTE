@@ -42,6 +42,7 @@ namespace RosSharp.RosBridgeClient {
                 GameObject angleCalculator = new GameObject("AngleCalculator_" + i);
                 angleCalculator.transform.parent = microphones[i].transform;
                 angleCalculator.transform.localPosition = Vector3.zero;
+                angleCalculator.transform.eulerAngles = new Vector3(0,45 + 90 * i);
 
             }
             IsCreated = true;
@@ -82,8 +83,11 @@ namespace RosSharp.RosBridgeClient {
         //Gets the angle between the microphone with index and the and the audio source
         private float GetAngle(int index) {
             GameObject angleCalculator = GameObject.Find("AngleCalculator_"+index);
+            float startingRotation = angleCalculator.transform.eulerAngles.y;
             angleCalculator.transform.LookAt(audioSource.transform);
-            return angleCalculator.transform.eulerAngles.y - audioSource.transform.eulerAngles.y;
+            float angle = angleCalculator.transform.eulerAngles.y - startingRotation;
+            angleCalculator.transform.eulerAngles = new Vector3(0,45 + 90*index, 0);
+            return angle;
         }
 
         protected override void SetMessage()
@@ -94,14 +98,11 @@ namespace RosSharp.RosBridgeClient {
             for (int i = 0; i < microphones.Length; i++)
             {
                 //Distance between a microphone and the audioSource positions'
-                print("microphone Position " + microphones[i].transform.position);
-                print("audio source position " + audioSource.transform.position);
                 angle = GetAngle(i);
                 
                 radius = Vector3.Distance(microphones[i].transform.position, audioSource.transform.position);
                 //Sound Intensity at the source
                 soundIntensityAtSource = audioSource.GetComponent<AudioSource>().volume * (loudnessMax - loudnessMin);
-                print(angle);
                 if (Mathf.Abs(angle) <= hearingAngle)
                 {
                     if (radius <= hearingThreshold)

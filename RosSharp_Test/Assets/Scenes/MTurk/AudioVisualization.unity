@@ -1366,9 +1366,9 @@ MonoBehaviour:
   locationPrefab: {fileID: 4749509862403441963, guid: d24931e4e68919d419de4883145faba8, type: 3}
   radio: {fileID: 0}
   AutomaticMovement: 0
-  locationNumber: 10
+  locationNumber: 5
   moveSpeed: 10
-  switchBetweenLocations: 0
+  switchBetweenLocations: 1
 --- !u!4 &291671095
 Transform:
   m_ObjectHideFlags: 0
@@ -3169,7 +3169,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -4633,13 +4633,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 946595134}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20a52d3014e1abe4884d0442196ee329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rowsOfSpheres: 3
-  inflatingCoefficient: 2
+  inflatingCoefficient: 2.5
   IsThreeDimensional: 1
 --- !u!114 &946595137
 MonoBehaviour:
@@ -4648,12 +4648,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 946595134}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b64ab715e526c94e818c7b278f2470e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IsThreeDimensional: 1
+  inflatingCoefficient: 2.5
 --- !u!114 &946595138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14071,7 +14072,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 808951037656818318, guid: 49f576a03ece56a4e9c640ed081f6a68, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f576a03ece56a4e9c640ed081f6a68, type: 3}

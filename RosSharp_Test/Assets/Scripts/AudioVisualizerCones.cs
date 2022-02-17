@@ -15,7 +15,7 @@ namespace RosSharp.RosBridgeClient
         private float coneScale = 0.15f;
         private readonly int coneNumber = 16;
         public bool IsThreeDimensional = true;
-        
+        public float inflatingCoefficient = 2.0f;
         protected override void Create()
         {
             conePrefab = Resources.Load<GameObject>(ResourcePathManager.conePath);
@@ -42,6 +42,7 @@ namespace RosSharp.RosBridgeClient
                 audioCones[i].transform.localScale = new Vector3(tempConeScale, tempConeScale, tempConeScale * threeDimensionalFlag);
                 if(hiddenObjects)
                     audioCones[i].SetActive(false);
+                audioCones[i].GetComponent<ConeMesh>().SetInflatingCoefficient(inflatingCoefficient);
             }
             IsCreated = true;
         }

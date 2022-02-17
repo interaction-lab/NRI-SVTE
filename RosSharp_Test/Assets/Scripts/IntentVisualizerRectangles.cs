@@ -55,7 +55,7 @@ namespace RosSharp.RosBridgeClient
                     Vector3 position = GetNextRectanglePosition(rectangles[i-1].transform.localPosition, 
                         scale*intentList[i-1].Confidence* combinedLength, scale*intentList[i].Confidence * combinedLength);
                     rectangles[i] = CreateRectangle(position, scale * intentList[i].Confidence, intentColors[i]);
-                    print(intentColors[i]);
+                   
                 }   
                 GameObject text = SetIntentNameText(rectangles[i],intentList[i].Name,i);
                 SetIntentConfidenceText(rectangles[i],intentList[i].Confidence, intentList[i].Name);
@@ -158,7 +158,7 @@ namespace RosSharp.RosBridgeClient
             text.transform.localPosition = new Vector3(rectangle.transform.localPosition.x, rectangle.transform.localPosition.y - 
                 fixedHeight * rectangle.transform.localScale.y,
                 rectangle.transform.localPosition.z);
-            print(text.transform.localPosition);
+           
             text.fontSize = FontSize;
             text.anchor = new TextAnchor();
             text.anchor = TextAnchor.MiddleCenter;
