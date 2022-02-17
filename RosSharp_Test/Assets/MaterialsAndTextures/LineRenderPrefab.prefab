@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6dab8dd95d4139a45a42fc4dce6aaf8f, type: 2}
+  - {fileID: 2100000, guid: 3f71d35c56a51fb4ba23ed33c8c5017d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -305,7 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1bf8457231799f48898f77ca1ff572c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementDelta: 0.1
+  movementDelta: 0.5
   animCurve:
     serializedVersion: 2
     m_Curve:
@@ -331,7 +331,9 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   startPose: {x: 0, y: 0, z: 0}
+  curStartPose: {x: 0, y: 0, z: 0}
   endPose: {x: 0, y: 0, z: 0}
+  curEndPose: {x: 0, y: 0, z: 0}
   maxRange: 0
   range: 0
 --- !u!96 &4318159623063832811

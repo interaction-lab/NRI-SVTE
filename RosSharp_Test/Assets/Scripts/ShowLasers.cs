@@ -8,18 +8,17 @@ namespace NRISVTE {
         public GameObject prefab;
         public bool StaticLinesEnabled = false;
         public bool StaticPointsEnabled = false;
+        public bool EmitTrail = false;
 
-        public Slider widthSlider;
-        public Slider colorSlider;
-        public FlexibleColorPicker cp;
+        private float movingLaserWidth = 0.02f, lidarWidth = 0.01f;
+        public Color movingLaserColor;
 
-        public GameObject[] lidarPrefabArray;
-        private Color lidarColor = Color.white;
-        private float lidarWidth = 0.00f;
+        private GameObject[] lidarPrefabArray;
+        public Color lidarColor = Color.white;
         float noiseLevel = 0.002f;
         float publishHZ = 15, lastTimeStamp = 0, rateInMS = -1;
 
-        public float[] rangies;
+        private float[] rangies;
         public class Message {
             public float[] ranges;
             public float maxRange;
@@ -31,6 +30,7 @@ namespace NRISVTE {
         void Start() {
             CreateLidarPrefabArray();
             rateInMS = 1000f / publishHZ;
+            transform.localRotation = Quaternion.Euler(0, 135, 0); // Not sure why this is the offset but it is
         }
         #endregion
 
@@ -44,7 +44,6 @@ namespace NRISVTE {
             float[] ranges = message.ranges;
             rangies = ranges;
             float maxRange = message.maxRange;
-            transform.localRotation = Quaternion.Euler(0, 135, 0);
             for (int i = 0; i < 180; i++) {
                 GameObject lidarPrefab = lidarPrefabArray[i];
                 Vector3 pos = calculateLocalEndPoint(lidarPrefab, ranges[i]);
@@ -73,7 +72,7 @@ namespace NRISVTE {
                 LineRenderer laserLine = pf.GetComponent<LineRenderer>();
                 laserLine.enabled = StaticLinesEnabled;
                 TrailRenderer lidarTrail = pf.GetComponent<TrailRenderer>();
-                lidarWidth = widthSlider.value;
+                lidarWidth = movingLaserWidth;
                 lidarTrail.startWidth = lidarWidth;
             }
         }
@@ -85,11 +84,13 @@ namespace NRISVTE {
             laserLine.SetPosition(0, transform.position);
             laserLine.SetPosition(1, pos);
             laserLine.material.color = lidarColor;
-            lidarWidth = widthSlider.value;
-            lidarColor = cp.color;
         }
 
+        bool firstRun = true;
         private void SetUpTrailRenderer(float[] ranges, float maxRange, int i, GameObject lidarPrefab, float lidarWidth, Color lidarColor) {
+            if (!EmitTrail) {
+                return;
+            }
             Transform sphere = lidarPrefab.transform.GetChild(0);
             TrailRenderer lidarTrail = sphere.GetComponent<TrailRenderer>();
             var PM = sphere.GetComponent<ProjectileMotion>();
@@ -97,8 +98,14 @@ namespace NRISVTE {
             PM.endPose = transform.position + (lidarPrefab.transform.forward * maxRange);
             PM.maxRange = maxRange;
             PM.range = ranges[i];
-            lidarTrail.startWidth = lidarWidth;
-            lidarTrail.material.color = lidarColor;
+            lidarTrail.startWidth = movingLaserWidth;
+            lidarTrail.material.color = movingLaserColor;
+            if (firstRun) {
+                PM.EmitTrail();
+            }
+            if (i == 179) {
+                firstRun = false;
+            }
         }
 
         private void SetUpStaticPoints(GameObject lidarPrefab, Vector3 pos) {

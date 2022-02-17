@@ -11,12 +11,6 @@ namespace NRISVTE {
         #endregion
 
         #region unity
-        private void Update() {
-            if (Input.GetKeyDown(KeyCode.Alpha9)) {
-                ToggleManager.instance.ToggleLidar(false);
-                NavPathManager.instance.StartNavigatePath(this);
-            }
-        }
         #endregion
 
         #region public
