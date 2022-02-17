@@ -10,7 +10,9 @@ public class FaceCamera : MonoBehaviour
     void Start()
     {
 
-      mainCamera = Camera.main;
+      if (!mainCamera){
+        mainCamera = Camera.main;
+        }
 
     }
 

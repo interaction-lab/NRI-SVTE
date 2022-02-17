@@ -24,6 +24,8 @@ TagManager:
   - radioLocations
   - intentElement
   - intentElementRemovable
+  - SquareFaceMarker
+  - MeshFaceMarker
   layers:
   - Default
   - TransparentFX

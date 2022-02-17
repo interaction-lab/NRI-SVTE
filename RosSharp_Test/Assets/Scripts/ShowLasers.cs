@@ -5,6 +5,7 @@ namespace NRISVTE {
     public class ShowLasers : MonoBehaviour {
         public GameObject prefab;
         public bool StaticLinesEnabled = false;
+        public bool StaticPointsEnabled = false;
 
         public Slider widthSlider;
         public Slider colorSlider;
@@ -13,6 +14,8 @@ namespace NRISVTE {
         public GameObject[] prefabs;
         private Color lidarColor = Color.white;
         private float lidarWidth = 0.00f;
+
+        public float[] rangies;
 
         void Start() {
             if (widthSlider == null) {
@@ -47,18 +50,32 @@ namespace NRISVTE {
         public void UpdateRanges(Message message) {
             // return;
             float[] ranges = message.ranges;
+            rangies = ranges;
             float maxRange = message.maxRange;
             for (int i = 0; i < 180; i++) {
                 GameObject pf = prefabs[i];
                 LineRenderer laserLine = pf.GetComponent<LineRenderer>();
                 laserLine.enabled = StaticLinesEnabled;
-                var sphere = pf.transform.Find("Sphere");
+
+                if (StaticPointsEnabled){
+                  // var point = pf.transform.Find("Point");
+                  Transform point = pf.transform.GetChild(1);
+                  point.gameObject.SetActive(true);
+                  // point.SetActive(true);
+                  point.transform.position = pf.transform.position + (pf.transform.forward * ranges[i]);
+                  } else {
+                    pf.transform.GetChild(1).gameObject.SetActive(false);
+                  }
+
+                // var sphere = pf.transform.Find("Sphere");
+                Transform sphere = pf.transform.GetChild(0);
                 TrailRenderer lidarTrail = sphere.GetComponent<TrailRenderer>();
                 var PM = sphere.GetComponent<ProjectileMotion>();
                 PM.startPose = pf.transform.position;
                 PM.endPose = pf.transform.position + (pf.transform.forward * maxRange);
                 PM.maxRange = maxRange;
                 PM.range = ranges[i];
+
                 laserLine.startWidth = lidarWidth;
                 // laserLine.SetPosition (0, transform.position);
                 // laserLine.SetPosition(1,transform.position + (pf.transform.forward * ranges[i]));
@@ -71,6 +88,8 @@ namespace NRISVTE {
 
                 lidarTrail.startWidth = lidarWidth;
                 lidarTrail.material.color = lidarColor;
+
+
             }
         }
 
