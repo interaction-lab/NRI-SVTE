@@ -14,8 +14,11 @@ namespace NRISVTE {
         public GameObject[] prefabs;
         private Color lidarColor = Color.white;
         private float lidarWidth = 0.00f;
+        float noiseLevel = 0.001f;
+        float publishHZ = 15, lastTimeStamp = 0, rateInMS = -1;
 
         public float[] rangies;
+
 
         void Start() {
             if (widthSlider == null) {
@@ -23,7 +26,6 @@ namespace NRISVTE {
                 Debug.LogWarning("Disabling ShowLasers as Slider is not set, might be intended for this scene. This script should be migrated to not use public member/drag and drop.");
                 // return;
             }
-            // return;
             prefabs = new GameObject[180];
 
             for (int i = 0; i < 180; i++) {
@@ -40,6 +42,8 @@ namespace NRISVTE {
 
                 lidarTrail.startWidth = lidarWidth;
             }
+
+            rateInMS = 1000f / publishHZ;
         }
 
         public class Message {
@@ -48,7 +52,11 @@ namespace NRISVTE {
         }
 
         public void UpdateRanges(Message message) {
-            // return;
+            if (Time.time * 1000f - lastTimeStamp < rateInMS) {
+                return;
+            }
+            lastTimeStamp = Time.time * 1000f;
+
             float[] ranges = message.ranges;
             rangies = ranges;
             float maxRange = message.maxRange;
@@ -57,17 +65,23 @@ namespace NRISVTE {
                 LineRenderer laserLine = pf.GetComponent<LineRenderer>();
                 laserLine.enabled = StaticLinesEnabled;
 
-                if (StaticPointsEnabled){
-                  // var point = pf.transform.Find("Point");
-                  Transform point = pf.transform.GetChild(1);
-                  point.gameObject.SetActive(true);
-                  // point.SetActive(true);
-                  point.transform.position = pf.transform.position + (pf.transform.forward * ranges[i]);
-                  } else {
-                    pf.transform.GetChild(1).gameObject.SetActive(false);
-                  }
+                // calculate end point
+                Vector3 pos = pf.transform.position;
+                pos = pos + (pf.transform.forward * ranges[i]);
+                pos.x *= (1 + Random.Range(-noiseLevel, noiseLevel));
+                pos.z *= (1 + Random.Range(-noiseLevel, noiseLevel));
 
-                // var sphere = pf.transform.Find("Sphere");
+                // Turn on/off points
+                if (StaticPointsEnabled) {
+                    Transform point = pf.transform.GetChild(1);
+                    point.gameObject.SetActive(true);
+                    point.transform.position = pos;
+                }
+                else {
+                    pf.transform.GetChild(1).gameObject.SetActive(false);
+                }
+
+                // Turn on/off trailrenderer
                 Transform sphere = pf.transform.GetChild(0);
                 TrailRenderer lidarTrail = sphere.GetComponent<TrailRenderer>();
                 var PM = sphere.GetComponent<ProjectileMotion>();
@@ -76,14 +90,12 @@ namespace NRISVTE {
                 PM.maxRange = maxRange;
                 PM.range = ranges[i];
 
+                // laser line positions
                 laserLine.startWidth = lidarWidth;
-                // laserLine.SetPosition (0, transform.position);
-                // laserLine.SetPosition(1,transform.position + (pf.transform.forward * ranges[i]));
-                laserLine.SetPosition (0, pf.transform.position);
-                laserLine.SetPosition(1,pf.transform.position + (pf.transform.forward * ranges[i]));
+                laserLine.SetPosition(0, pf.transform.position);
+                laserLine.SetPosition(1, pos);
                 laserLine.material.color = lidarColor;
                 lidarWidth = widthSlider.value;
-                // lidarColor = Color.HSVToRGB(colorSlider.value, 1, 1);
                 lidarColor = cp.color;
 
                 lidarTrail.startWidth = lidarWidth;
