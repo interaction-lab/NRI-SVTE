@@ -55,19 +55,19 @@ namespace RosSharp.RosBridgeClient
             for(int i = 0; i < intentList.Length ; i++)
             {
                 HighlightIntentKeywords(intentList[i], intentVisualizers[0].GetIntentColor(i));
-                print("intent color for intent " + i + "is " + intentVisualizers[0].GetIntentColor(i));
+                
             }
         }
 
         private void HighlightIntentKeywords(NLUIntent intent, Color color)
         {
             string hexColor = ColorUtility.RGBToHex(color);
-            print("color was : " + color + "later is: " + hexColor);
+           
             if (intent.Keywords == null)
                 return;
             for(int i = 0; i < intent.Keywords.Length; i++)
             {
-                print("changing to:" + "<u color=" + hexColor + ">" + intent.Keywords[i] + "</u>");
+               
                 speechBubble.ChangeText(
                     speechBubble.GetText().Replace(
                         intent.Keywords[i], "<u color=" + hexColor + ">"+intent.Keywords[i]+"</u>"));
@@ -107,8 +107,8 @@ namespace RosSharp.RosBridgeClient
                 intentElements[i].SetActive(active);
             if (IntentElementsEnabled)
             {
-                for (int i = 0; i < intentElements.Length; i++)
-                    intentElementsRemovable[i].SetActive(active);
+                for (int f = 0; f < intentElementsRemovable.Length; f++)
+                    intentElementsRemovable[f].SetActive(active);
             }
         }
 

@@ -43,9 +43,11 @@ namespace RosSharp.RosBridgeClient
                     float x = Mathf.Sin(spherePosition * Mathf.PI * 2.0f + Mathf.PI / 4);
                     float z = Mathf.Cos(spherePosition * Mathf.PI * 2.0f + Mathf.PI / 4);
                     audioSpheres[row, i] = Instantiate(spherePrefab,
-                        new Vector3(positionScale * x, positionScale * yPositionRow - offsetY, positionScale * z),
+                        new Vector3(positionScale * x, positionScale * yPositionRow + offsetY, positionScale * z),
                         Quaternion.Euler(0, 0, 0));
                     audioSpheres[row, i].transform.parent = GameObject.Find("Microphones").transform;
+                    audioSpheres[row, i].transform.localPosition = new Vector3(positionScale * x,
+                        positionScale * yPositionRow + offsetY, positionScale * z);
                     audioSpheres[row,i].transform.localScale = new Vector3(localScale,localScale * threeDimensionalFlag,localScale);
                     audioSpheres[row,i].transform.localScale -= new Vector3(rowScaleOffset, rowScaleOffset * threeDimensionalFlag, rowScaleOffset);
                     originalDimensions[row, i] = audioSpheres[row, i].transform.localScale;

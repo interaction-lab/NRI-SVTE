@@ -45,6 +45,8 @@ namespace NRISVTE {
         public void UseSpheres() {
             SphereRend.enabled = true;
             Kuri.SetActive(false);
+            transform.localScale *= 70f;
+            transform.Rotate(new Vector3(90, 0, 0));
         }
 
         public void ChangePointColor(Color c) {

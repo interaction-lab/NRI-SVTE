@@ -8,17 +8,18 @@ namespace RosSharp.RosBridgeClient
     {
         private GameObject[] rectangles;
         private float combinedLength = 2.0f;
-        private Vector3 firstRectanglePosition = new(-2.0f,0.516f, 0f);
-        private float fixedHeight = 0.20f;
-        private float fixedDepth = 0.00f;
-        private float scale = 0.5f;
-        public int FontSize = 128;
+        private Vector3 firstRectanglePosition = new(3.57f,0,-1f);
+        private float fixedHeight = 1f;
+        private float fixedDepth = 1f;
+        private float scale = 1f;
+        private int FontSize = 512;
         private float textScale = 0.005f;
-        private float textHeight = 0.15f;
+        private float textHeight = 0.6f;
         private float enlargeFactor = 1.25f;
         private float lineWidth = 0.01f;
         private float linePadding = 0.02f;
-        private float textHeightDifference = 0.07f;
+        private float textHeightDifference = 0.18f;
+        public bool IsThreeDimensional = true;
 
         public override void Disable()
         {
@@ -51,10 +52,10 @@ namespace RosSharp.RosBridgeClient
                 }
                 else 
                 {
-                    Vector3 position = GetNextRectanglePosition(rectangles[i-1].transform.position, 
+                    Vector3 position = GetNextRectanglePosition(rectangles[i-1].transform.localPosition, 
                         scale*intentList[i-1].Confidence* combinedLength, scale*intentList[i].Confidence * combinedLength);
                     rectangles[i] = CreateRectangle(position, scale * intentList[i].Confidence, intentColors[i]);
-                    print(intentColors[i]);
+                   
                 }   
                 GameObject text = SetIntentNameText(rectangles[i],intentList[i].Name,i);
                 SetIntentConfidenceText(rectangles[i],intentList[i].Confidence, intentList[i].Name);
@@ -69,9 +70,10 @@ namespace RosSharp.RosBridgeClient
             {
                 name = text.name + "Line"
             };
+            line.transform.parent = GameObject.Find("Background").transform;
             LineRenderer lineRenderer = line.AddComponent<LineRenderer>();
-            lineRenderer.SetPosition(1, GetRectangleStartingPosition(rectangle));
-            lineRenderer.SetPosition(0, GetTextStartingPosition(text));
+            lineRenderer.useWorldSpace = true;
+            SetLinePosition(rectangle,text,lineRenderer);
             lineRenderer.startWidth = lineWidth;
             lineRenderer.endWidth = lineWidth;
             lineRenderer.material = new Material((Material)Resources.Load(ResourcePathManager.dottedLineMatPath));
@@ -79,24 +81,17 @@ namespace RosSharp.RosBridgeClient
             lineRenderer.GetComponent<Renderer>().sortingOrder = 1;
         }
 
-        private Vector3 GetTextStartingPosition(GameObject text)
-        {
-            return new Vector3(text.transform.position.x - 
-                Mathf.Sign(text.transform.position.x) * text.transform.localScale.x/2
-                - linePadding * Mathf.Sign(text.transform.position.x),
-                text.transform.position.y - Mathf.Sign(text.transform.position.y) * text.transform.localScale.y / 2,
-                text.transform.position.z);
+        private void SetLinePosition(GameObject rectangle, GameObject text, LineRenderer lineRenderer) {
+            float textX = text.transform.position.x -
+                Mathf.Sign(text.transform.position.x) * text.transform.localScale.x / 2
+                + linePadding * Mathf.Sign(text.transform.position.x);
+            float textY = text.transform.position.y - Mathf.Sign(text.transform.position.y) * text.transform.localScale.y / 2;
+            Vector3 endPosition = new (textX, rectangle.transform.position.y, text.transform.position.z);
+            Vector3 startPosition = new(textX, textY, text.transform.position.z);
+            lineRenderer.SetPosition(0, startPosition);
+            lineRenderer.SetPosition(1, endPosition);
         }
-        private Vector3 GetRectangleStartingPosition(GameObject rectangle)
-        {
-            return new Vector3(
-                rectangle.transform.position.x -
-                Mathf.Sign(rectangle.transform.position.x) * rectangle.transform.localScale.x/2
-                - linePadding * Mathf.Sign(rectangle.transform.position.x),
-                rectangle.transform.position.y +
-                Mathf.Sign(rectangle.transform.position.y) * rectangle.transform.localScale.y / 2,
-                rectangle.transform.position.z);
-        }
+       
         private void EnlargeIntentWithMostConfidence(int maxConfidenceIndex)
         {
             rectangles[maxConfidenceIndex].transform.localScale = new Vector3(
@@ -112,10 +107,14 @@ namespace RosSharp.RosBridgeClient
         {
             GameObject rectangle; 
             rectangle = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            rectangle.transform.position = new Vector3(position.x,
+            rectangle.transform.parent = GameObject.Find("Background").transform;
+            rectangle.transform.localPosition = new Vector3(position.x,
                         position.y, position.z);
-            
-            rectangle.transform.localScale = new Vector3(localScale, fixedHeight, fixedDepth);
+            rectangle.transform.rotation = new Quaternion(0,0,0,0);
+            int threeDimensionalFlag = 0;
+            if (IsThreeDimensional)
+                threeDimensionalFlag = 1;
+            rectangle.transform.localScale = new Vector3(localScale, fixedHeight, fixedDepth*threeDimensionalFlag);
             
             rectangle.GetComponent<Renderer>().material.color = new Color(color.r / 255, color.g / 255, color.b /255);
 
@@ -126,20 +125,23 @@ namespace RosSharp.RosBridgeClient
         private GameObject SetIntentNameText(GameObject rectangle, string intentName, int index)
         {
             GameObject intentText = new GameObject(intentName);
+            intentText.transform.parent = GameObject.Find("Background").transform;
             TextMesh text = intentText.AddComponent<TextMesh>();
             text.text = "<b>"+intentName+"</b>";
             
             text.transform.localScale = new Vector3(textScale, textScale, textScale);
-            text.transform.position = new Vector3(rectangle.transform.position.x
-                - rectangle.transform.localScale.x / 2 * Mathf.Sign(rectangle.transform.position.x)
-                , rectangle.transform.position.y 
+            text.transform.localPosition = new Vector3(rectangle.transform.localPosition.x
+                - rectangle.transform.localScale.x / 2 * Mathf.Sign(rectangle.transform.localPosition.x)
+                , rectangle.transform.localPosition.y 
                 + fixedHeight/2 + textHeight + textHeightDifference*(index%3),
-                rectangle.transform.position.z);
+                rectangle.transform.localPosition.z);
             text.fontSize = FontSize;
             text.color = new Color(0,0,0);
             text.transform.eulerAngles = new Vector3(0,180,0); 
             Font futura = Resources.Load<Font>(ResourcePathManager.futuraPath);
             text.font = futura;
+            text.color = new Color(intentColors[index].r / 255, intentColors[index].g / 255
+                , intentColors[index].b / 255);
             text.GetComponent<Renderer>().material = new Material(futura.material);
             text.GetComponent<Renderer>().sortingLayerName= "Default";
             text.GetComponent<Renderer>().sortingOrder = 2;
@@ -151,14 +153,17 @@ namespace RosSharp.RosBridgeClient
             GameObject intentText = new GameObject(intentName + "_confidence");
             TextMesh text = intentText.AddComponent<TextMesh>();
             text.text = "<b>" + confidence*100 + "%" + "</b>";
+            text.transform.parent = GameObject.Find("Background").transform;
             text.transform.localScale = new Vector3(textScale, textScale, textScale);
-            text.transform.position = new Vector3(rectangle.transform.position.x, rectangle.transform.position.y,
-                rectangle.transform.position.z);
+            text.transform.localPosition = new Vector3(rectangle.transform.localPosition.x, rectangle.transform.localPosition.y - 
+                fixedHeight * rectangle.transform.localScale.y,
+                rectangle.transform.localPosition.z);
+           
             text.fontSize = FontSize;
             text.anchor = new TextAnchor();
             text.anchor = TextAnchor.MiddleCenter;
             text.alignment = TextAlignment.Center;
-            text.color = new Color(0, 0, 0);
+            text.color = new Color(1, 1, 1);
             text.transform.eulerAngles = new Vector3(0, 180, 0);
             Font futura = Resources.Load<Font>(ResourcePathManager.futuraPath);
             text.font = futura;
