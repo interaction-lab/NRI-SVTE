@@ -19,7 +19,7 @@ namespace NRISVTE {
 
         void Update() {
             if (!SL.enabled) {
-                return; // early return for disabled ShowLasers, this needs to be fixed later
+                // return; // early return for disabled ShowLasers, this needs to be fixed later
             }
             RaycastHit hit;
 
