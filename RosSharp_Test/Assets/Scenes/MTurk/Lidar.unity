@@ -1988,7 +1988,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7701935, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 1
     m_InheritPosition: 0
@@ -2004,7 +2004,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 394656460}
-  m_LocalRotation: {x: -0.16738154, y: 0.8326085, z: -0.37555006, w: -0.37109113}
+  m_LocalRotation: {x: -0.16738154, y: 0.8326086, z: -0.37555006, w: -0.37109113}
   m_LocalPosition: {x: 0.21, y: 1.2, z: 6.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8379,7 +8379,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1755412230}
-  m_LocalRotation: {x: -0.16738154, y: 0.8326085, z: -0.37555006, w: -0.37109113}
+  m_LocalRotation: {x: -0.16738154, y: 0.8326086, z: -0.37555006, w: -0.37109113}
   m_LocalPosition: {x: 0.21, y: 1.7, z: 6.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8994,8 +8994,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 6690874671648785859, guid: a89f24d619fe44d22b5fc484f65390f5, type: 3}
-  StaticLinesEnabled: 1
-  StaticPointsEnabled: 0
+  StaticLinesEnabled: 0
+  StaticPointsEnabled: 1
   EmitTrail: 1
   movingLaserColor: {r: 0.8773585, g: 0.8773585, b: 0.8773585, a: 0.7647059}
   lidarColor: {r: 0.2028302, g: 1, b: 0.92219603, a: 1}

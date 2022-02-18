@@ -88,11 +88,12 @@ namespace NRISVTE {
 
         bool firstRun = true;
         private void SetUpTrailRenderer(float[] ranges, float maxRange, int i, GameObject lidarPrefab, float lidarWidth, Color lidarColor) {
-            if (!EmitTrail) {
-                return;
-            }
             Transform sphere = lidarPrefab.transform.GetChild(0);
             TrailRenderer lidarTrail = sphere.GetComponent<TrailRenderer>();
+            if (!EmitTrail) {
+                lidarTrail.enabled = false;
+                return;
+            }
             var PM = sphere.GetComponent<ProjectileMotion>();
             PM.startPose = lidarPrefab.transform.position;
             PM.endPose = transform.position + (lidarPrefab.transform.forward * maxRange);
