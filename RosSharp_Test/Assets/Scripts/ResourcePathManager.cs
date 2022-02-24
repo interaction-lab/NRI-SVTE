@@ -22,4 +22,5 @@ public static class ResourcePathManager
     public static string intentElementRemovableTag = "intentElementRemovable";
     public static string dottedLineMatPath = "Dotted Line Materials/PredictionLine";
     public static string dottedLineShader = "Dotted Line Materials/DottedLine";
+    public static string bubblePrefabPath = "Prefabs/BubblePrefab";
 }
