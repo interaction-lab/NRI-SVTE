@@ -14,12 +14,18 @@ namespace RosSharp.RosBridgeClient
         private float scale = 1f;
         private int FontSize = 512;
         private float textScale = 0.005f;
-        private float textHeight = 0.6f;
+        private float textHeight = 0.4f;
         private float enlargeFactor = 1.25f;
         private float lineWidth = 0.01f;
-        private float linePadding = 0.02f;
+        private float linePadding = 0.06f;
         private float textHeightDifference = 0.18f;
         public bool IsThreeDimensional = true;
+        private GameObject speechBubblePrefab;
+        private float textPadding = 0.02f;
+
+        void Start() {
+            speechBubblePrefab = Resources.Load<GameObject>(ResourcePathManager.bubblePrefabPath);
+        }
 
         public override void Disable()
         {
@@ -83,9 +89,9 @@ namespace RosSharp.RosBridgeClient
 
         private void SetLinePosition(GameObject rectangle, GameObject text, LineRenderer lineRenderer) {
             float textX = text.transform.position.x -
-                Mathf.Sign(text.transform.position.x) * text.transform.localScale.x / 2
-                + linePadding * Mathf.Sign(text.transform.position.x);
-            float textY = text.transform.position.y - Mathf.Sign(text.transform.position.y) * text.transform.localScale.y / 2;
+                Mathf.Sign(text.transform.position.x) * text.transform.localScale.x / 2;
+            float textY = text.transform.position.y - Mathf.Sign(text.transform.position.y) * 
+                text.transform.localScale.y / 2 - Mathf.Sign(text.transform.position.y)* linePadding;
             Vector3 endPosition = new (textX, rectangle.transform.position.y, text.transform.position.z);
             Vector3 startPosition = new(textX, textY, text.transform.position.z);
             lineRenderer.SetPosition(0, startPosition);
@@ -140,14 +146,36 @@ namespace RosSharp.RosBridgeClient
             text.transform.eulerAngles = new Vector3(0,180,0); 
             Font futura = Resources.Load<Font>(ResourcePathManager.futuraPath);
             text.font = futura;
+            text.anchor = new TextAnchor();
+            text.anchor = TextAnchor.MiddleCenter;
+            text.alignment = TextAlignment.Center;
             text.color = new Color(intentColors[index].r / 255, intentColors[index].g / 255
                 , intentColors[index].b / 255);
             text.GetComponent<Renderer>().material = new Material(futura.material);
             text.GetComponent<Renderer>().sortingLayerName= "Default";
             text.GetComponent<Renderer>().sortingOrder = 2;
+            SetTextBubble(intentText);
             return intentText;
         }
 
+        private void SetTextBubble(GameObject text) {
+            GameObject bubble = Instantiate(speechBubblePrefab,
+                new Vector3(text.transform.position.x,
+                    text.transform.position.y,
+                    text.transform.position.z),
+                Quaternion.Euler(0,0,0));
+            bubble.transform.parent = GameObject.Find("Background").transform;
+            bubble.transform.localPosition = new Vector3(text.transform.localPosition.x,
+                    text.transform.localPosition.y,
+                    text.transform.localPosition.z);
+            MeshRenderer mesh = text.GetComponent<MeshRenderer>();
+            bubble.transform.localScale = new Vector3(mesh.bounds.size.x + 5*textPadding,
+                mesh.bounds.size.y + textPadding,
+                mesh.bounds.size.z);
+            //SpriteRenderer sr = bubble.GetComponentInChildren<SpriteRenderer>();
+            //sr.size.Set(mesh.bounds.size.x + textPadding,mesh.bounds.size.y + textPadding);
+           
+        }
         private void SetIntentConfidenceText(GameObject rectangle, float confidence, string intentName)
         {
             GameObject intentText = new GameObject(intentName + "_confidence");
@@ -170,6 +198,7 @@ namespace RosSharp.RosBridgeClient
             text.GetComponent<Renderer>().material = new Material(futura.material);
             text.GetComponent<Renderer>().sortingLayerName = "Default";
             text.GetComponent<Renderer>().sortingOrder = 2;
+            SetTextBubble(intentText);
         }
 
         private Vector3 GetNextRectanglePosition(Vector3 lastRectanglePosition, 
