@@ -15,11 +15,11 @@ namespace RosSharp.RosBridgeClient
 
         protected void GenerateIntentColors(int length)
         {
-            // intentColors = ColorUtility.GetDifferentColors(length);
+            intentColors = ColorUtility.GetDifferentColors(length);
 
-            intentColors = new Color[2];
-            intentColors[0] = new Color(175, 175, 0, 255);
-            intentColors[1] = new Color(50, 200, 200, 255);
+            // intentColors = new Color[2];
+            // intentColors[0] = new Color(175, 175, 0, 255);
+            // intentColors[1] = new Color(50, 200, 200, 255);
 
         }
 
