@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.446577, g: 0.49641252, b: 0.5748164, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465772, g: 0.49641305, b: 0.57481736, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1339,7 +1339,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 243931688}
-  m_LocalRotation: {x: -0.015062381, y: 0.984903, z: -0.11770772, w: -0.12603238}
+  m_LocalRotation: {x: -0.015062373, y: 0.984903, z: -0.11770774, w: -0.1260323}
   m_LocalPosition: {x: 3.85194, y: 1.755, z: 4.61936}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2929,7 +2929,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Intent Probabilities
+  m_text: Probabilities
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b09fae2c1a3930b458f21deebbecd7b5, type: 2}
   m_sharedMaterial: {fileID: 2695847126733003067, guid: b09fae2c1a3930b458f21deebbecd7b5, type: 2}
@@ -3065,7 +3065,7 @@ Transform:
   m_GameObject: {fileID: 603223263}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.7, y: 1.9299991, z: 17.3}
-  m_LocalScale: {x: 10.256408, y: 10.256411, z: 10.256408}
+  m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 792580442}
@@ -4151,7 +4151,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.000030517578, y: 0}
-  m_SizeDelta: {x: 2031.8, y: 791.4}
+  m_SizeDelta: {x: 6000, y: 791.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &828936300
 MonoBehaviour:
@@ -4173,9 +4173,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Intent
-
-'
+  m_text: Understanding
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b09fae2c1a3930b458f21deebbecd7b5, type: 2}
   m_sharedMaterial: {fileID: 2695847126733003067, guid: b09fae2c1a3930b458f21deebbecd7b5, type: 2}
@@ -5089,7 +5087,7 @@ Transform:
   m_GameObject: {fileID: 977265603}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 0.2, z: 0.05000001}
+  m_LocalScale: {x: 2.8, y: 0.2, z: 0.05000001}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1749954598}
@@ -5340,7 +5338,7 @@ GameObject:
   - component: {fileID: 1011612299}
   m_Layer: 0
   m_Name: SpeechBubbleTitle
-  m_TagString: intentElementRemovable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13935,7 +13933,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 2.724138, y: 1}
   m_Transitions:
     m_BlendHint: 1
     m_InheritPosition: 0
@@ -13951,7 +13949,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1911589795}
-  m_LocalRotation: {x: -0.015062382, y: 0.984903, z: -0.11770773, w: -0.12603238}
+  m_LocalRotation: {x: -0.015062373, y: 0.984903, z: -0.11770774, w: -0.1260323}
   m_LocalPosition: {x: 3.85194, y: 1.255, z: 4.61936}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -14532,7 +14530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 041f5a49408c0bd4eace2a49d141caca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IntentElementsEnabled: 1
+  IntentElementsEnabled: 0
 --- !u!114 &2020242149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14545,7 +14543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d5e5f889469f64d9ff00f21ec0fea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsThreeDimensional: 0
+  IsThreeDimensional: 1
 --- !u!1 &2027460760
 GameObject:
   m_ObjectHideFlags: 0
