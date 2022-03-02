@@ -644,7 +644,7 @@ Transform:
   - {fileID: 624781722}
   - {fileID: 583413485}
   m_Father: {fileID: 557985897}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &155600007
 MonoBehaviour:
@@ -1339,7 +1339,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 243931688}
-  m_LocalRotation: {x: -0.015062382, y: 0.984903, z: -0.11770774, w: -0.12603237}
+  m_LocalRotation: {x: -0.015062381, y: 0.984903, z: -0.11770772, w: -0.12603238}
   m_LocalPosition: {x: 3.85194, y: 1.755, z: 4.61936}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2800,6 +2800,7 @@ RectTransform:
   - {fileID: 12974773}
   - {fileID: 1011612298}
   - {fileID: 223483459}
+  - {fileID: 1749954598}
   - {fileID: 141243377}
   m_Father: {fileID: 792580442}
   m_RootOrder: 0
@@ -5078,7 +5079,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &977265604
 Transform:
   m_ObjectHideFlags: 0
@@ -13107,14 +13108,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1749954597}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 20, y: 1.9299991, z: -13.360011}
-  m_LocalScale: {x: 10.256408, y: 10.256411, z: 10.256408}
+  m_LocalRotation: {x: -0, y: 0.00000005960463, z: -0, w: 1}
+  m_LocalPosition: {x: 408, y: 180, z: 82}
+  m_LocalScale: {x: 32.5, y: 48.7, z: 97.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 977265604}
   - {fileID: 828936299}
-  m_Father: {fileID: 2020242146}
+  m_Father: {fileID: 557985897}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1762436919
@@ -13950,7 +13951,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1911589795}
-  m_LocalRotation: {x: -0.015062381, y: 0.984903, z: -0.11770772, w: -0.12603238}
+  m_LocalRotation: {x: -0.015062382, y: 0.984903, z: -0.11770773, w: -0.12603238}
   m_LocalPosition: {x: 3.85194, y: 1.255, z: 4.61936}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -14504,7 +14505,6 @@ Transform:
   - {fileID: 1423055935}
   - {fileID: 30172183}
   - {fileID: 603223264}
-  - {fileID: 1749954598}
   m_Father: {fileID: 42545353}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14532,7 +14532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 041f5a49408c0bd4eace2a49d141caca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IntentElementsEnabled: 1
+  IntentElementsEnabled: 0
 --- !u!114 &2020242149
 MonoBehaviour:
   m_ObjectHideFlags: 0
