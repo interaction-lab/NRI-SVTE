@@ -1066,7 +1066,7 @@ GameObject:
   - component: {fileID: 223483460}
   m_Layer: 0
   m_Name: Parenthesis
-  m_TagString: intentElement
+  m_TagString: intentElementRemovable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5340,7 +5340,7 @@ GameObject:
   - component: {fileID: 1011612299}
   m_Layer: 0
   m_Name: SpeechBubbleTitle
-  m_TagString: Untagged
+  m_TagString: intentElementRemovable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13096,7 +13096,7 @@ GameObject:
   - component: {fileID: 1749954598}
   m_Layer: 0
   m_Name: IntentBubble
-  m_TagString: intentElement
+  m_TagString: intentElementRemovable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14532,7 +14532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 041f5a49408c0bd4eace2a49d141caca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IntentElementsEnabled: 0
+  IntentElementsEnabled: 1
 --- !u!114 &2020242149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14545,7 +14545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d5e5f889469f64d9ff00f21ec0fea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsThreeDimensional: 1
+  IsThreeDimensional: 0
 --- !u!1 &2027460760
 GameObject:
   m_ObjectHideFlags: 0
