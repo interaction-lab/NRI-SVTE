@@ -58,7 +58,7 @@ namespace RosSharp.RosBridgeClient
                     if (hiddenObjects && coneLoudness > 0)
                     {
                         audioCones[i].SetActive(true);
-                        audioCones[i].GetComponent<ConeMesh>().SetColor(GetInterpolatedColor(Color.red, Color.green, coneLoudness));
+                        audioCones[i].GetComponent<ConeMesh>().SetColor(GetInterpolatedColor(highColor, lowColor, coneLoudness));
                         audioCones[i].GetComponent<ConeMesh>().ChangeRadius(coneLoudness);
                     }
                     else if (hiddenObjects && coneLoudness == 0)

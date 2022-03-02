@@ -9,6 +9,9 @@ namespace RosSharp.RosBridgeClient
         protected double loudnessMax=100;
         protected float alpha = 0.25f;
         protected bool hiddenObjects = true;
+        protected Color lowColor = new Color((float)247/255,(float)252/255,(float)245/255);
+        protected Color highColor = new Color((float)0 / 255, (float)68 / 255, (float)27 / 255);
+        private bool divergingColorPalette = false;
 
         abstract public void Visualize(MessageTypes.Std.Float64MultiArray audioRecording);
 
@@ -43,12 +46,26 @@ namespace RosSharp.RosBridgeClient
         //The color displayed will be the first otherwise if percentage is equal to 0 the color displayed will be the second
         protected Color GetInterpolatedColor(Color first, Color second, float percentage)
         {
+            Color newColor; 
+            if (divergingColorPalette) {
+                if(percentage >= 0.5)
+                    newColor = GetAverageColor(first,Color.white,percentage);
+                else
+                    newColor = GetAverageColor(Color.white,second,percentage);
+            }
+            else {
+                newColor = GetAverageColor(first,second,percentage);
+            }
+            return newColor;
+        }
+
+        private Color GetAverageColor(Color first, Color second, float percentage) {
             float r = first.r * (percentage) + second.r * (1 - percentage);
             float g = first.g * (percentage) + second.g * (1 - percentage);
             float b = first.b * (percentage) + second.b * (1 - percentage);
             float a = alpha;
             return new Color(r, g, b, a);
-        }
+    }
 
         //Gets the loudness heard by each object, given that objects are placed on a circle around Kuri.
         protected float GetObjectLoudness(double[] loudness, int objectIndex, int objectNumber)
