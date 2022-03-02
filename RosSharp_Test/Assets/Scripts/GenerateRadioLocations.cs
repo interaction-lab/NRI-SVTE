@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GenerateRadioLocations : MonoBehaviour 
@@ -11,22 +10,14 @@ public class GenerateRadioLocations : MonoBehaviour
     //Location Generation
     public int locationNumber = 4;
     private GameObject[] radioLocations;
-    private readonly float circleRadiusMax = 2;
-    private readonly float circleRadiusMin= 1;
     private bool IsCreated = false;
-    private bool LocationsActive = false;
     private float fixedHeight = 0.2f;
-    //Path Generation
-    private Vector3[] pathNodes;
-    private readonly int nodeNumber = 64;
     private readonly float startingRadius = 0.8f;
     private float endingRadius = 2;
     private float timer = 0;
-    public float moveSpeed = 10;
+    public float moveSpeed = 1;
     private Vector3 currentPosition;
     private int currentNode;
-    private bool direction = true;
-    private int trailRendererTime = 18;
     //Change locations at runtime
     private float timeInEachLocation = 5f;
     public bool switchBetweenLocations = true;
@@ -51,44 +42,14 @@ public class GenerateRadioLocations : MonoBehaviour
     void Create()
     {
         GenerateLocations();
-        GeneratePath();
         if (AutomaticMovement == true)
-        {
             SetStartingRadioPosition();
-            SetRadioLocationsActive(false);
-        }
         else {
-            SetRadioTrailRenderer(false);
             MoveRadioToLocation(0);
             currentLocation = 0;
-            StartCoroutine(ChangeLocation());
-            
+            StartCoroutine(ChangeLocation());  
         }
         IsCreated = true;
-    }
-
-    private void SetRadioLocationsActive(bool IsActive)
-    {
-        for(int i = 0; i < radioLocations.Length; i++)
-        {
-            radioLocations[i].SetActive(IsActive);
-            radioLocations[i].GetComponent<Renderer>().enabled = IsActive;
-        }
-        LocationsActive = IsActive;
-    }
-    
-    private void SetRadioTrailRenderer(bool IsActive)
-    {
-        TrailRenderer tr = radio.GetComponent<TrailRenderer>();
-        if (!IsActive)
-        {
-            tr.Clear();
-            tr.time = -1;
-        }
-        else
-        {
-            tr.time = trailRendererTime;
-        }
     }
 
     private void SetStartingRadioPosition()
@@ -102,7 +63,9 @@ public class GenerateRadioLocations : MonoBehaviour
     private void UpdateCurrentPosition()
     {
         timer = 0;
-        currentPosition = pathNodes[currentNode];
+        currentPosition = new Vector3(radioLocations[currentNode].transform.position.x,
+            radioLocations[currentNode].transform.position.y + yOffset,
+            radioLocations[currentNode].transform.position.z);
     }
     private void GenerateLocations()
     {
@@ -123,29 +86,12 @@ public class GenerateRadioLocations : MonoBehaviour
             radioLocations[i].GetComponent<ChangeRadioLocation>().SetOrigin(kuriPosition);
             radius += radiusIncrement;
         }
-        LocationsActive = true;
-    }
-
-    private void GeneratePath()
-    {
-        float radius = startingRadius;
-        float radiusIncrement = (endingRadius - startingRadius) / nodeNumber;
-        Vector3[] path = new Vector3[nodeNumber];
-        for (int i = 0; i < nodeNumber; i++)
-        {
-            float nodePosition = (float)i / (float)nodeNumber;
-            float x = Mathf.Sin(nodePosition * Mathf.PI * 2.0f + Mathf.PI / 4) * radius;
-            float z = Mathf.Cos(nodePosition * Mathf.PI * 2.0f + Mathf.PI / 4) * radius;
-            radius += radiusIncrement;
-            path[i] = new Vector3(x, radio.transform.position.y, z);
-        }
-        pathNodes = path;
     }
 
     private void UpdateAutomaticPosition()
     {
         timer += Time.deltaTime * moveSpeed;
-        if (radio.transform.position != currentPosition)
+        if (Vector3.Distance(radio.transform.position,currentPosition) != 0)
         {
             Vector3 newPosition = Vector3.Lerp(radio.transform.position, currentPosition, timer);
             radio.transform.position = new Vector3(newPosition.x, newPosition.y, newPosition.z);
@@ -153,26 +99,12 @@ public class GenerateRadioLocations : MonoBehaviour
         }
         else
         {
-            if (direction)
-            {
-                if (currentNode < pathNodes.Length - 1)
-                {
-                    currentNode += 1;
-                    UpdateCurrentPosition();
-                }
-                else
-                    direction = false;
-            }
-            else
-            {
-                if (currentNode > 0)
-                {
-                    currentNode -= 1;
-                    UpdateCurrentPosition();
-                }
-                else
-                    direction = true;
-            }
+            if (currentNode < radioLocations.Length - 1)
+                currentNode += 1;
+               
+            else 
+                currentNode = 0;
+            UpdateCurrentPosition();
         }
     }
 
@@ -198,24 +130,8 @@ public class GenerateRadioLocations : MonoBehaviour
     private void Update()
     {
         if (AutomaticMovement)
-        {
-            if (LocationsActive)
-            {
-                SetStartingRadioPosition();
-                SetRadioLocationsActive(false);
-                SetRadioTrailRenderer(true);
-            }
             UpdateAutomaticPosition();
-        }
-        else
-        {
-            if (!LocationsActive)
-            {
-                SetRadioTrailRenderer(false);
-                SetRadioLocationsActive(true);
-            }
-        }
+        
     }
-
 
 }
