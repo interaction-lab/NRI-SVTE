@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4465772, g: 0.49641305, b: 0.57481736, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657785, g: 0.496414, b: 0.5748186, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1367,7 +1367,7 @@ MonoBehaviour:
   radio: {fileID: 0}
   AutomaticMovement: 1
   locationNumber: 5
-  moveSpeed: 1
+  moveSpeed: 0.5
   switchBetweenLocations: 0
 --- !u!4 &291671095
 Transform:

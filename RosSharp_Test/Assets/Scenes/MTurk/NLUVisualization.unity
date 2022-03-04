@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4465772, g: 0.49641305, b: 0.57481736, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657785, g: 0.496414, b: 0.5748186, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -722,7 +722,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 175866652}
   m_LocalRotation: {x: 0, y: -0.49780676, z: 0, w: 0.867288}
-  m_LocalPosition: {x: 2.33, y: 0.1, z: -1.23}
+  m_LocalPosition: {x: 2.99, y: 0.1, z: -1.31}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1339,8 +1339,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 243931688}
-  m_LocalRotation: {x: -0.015062373, y: 0.984903, z: -0.11770774, w: -0.1260323}
-  m_LocalPosition: {x: 3.85194, y: 1.755, z: 4.61936}
+  m_LocalRotation: {x: -0.007897984, y: 0.9773397, z: -0.2082571, w: -0.037064824}
+  m_LocalPosition: {x: 3.2877247, y: 2.1072264, z: 2.7723618}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3341,7 +3341,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 562a7d7f413414846966f16396372f51, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d49a15df261c529459f5d69615a970bb, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -13933,7 +13933,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.724138, y: 1}
+    m_SensorSize: {x: 2.1880999, y: 1}
   m_Transitions:
     m_BlendHint: 1
     m_InheritPosition: 0
@@ -13949,8 +13949,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1911589795}
-  m_LocalRotation: {x: -0.015062373, y: 0.984903, z: -0.11770774, w: -0.1260323}
-  m_LocalPosition: {x: 3.85194, y: 1.255, z: 4.61936}
+  m_LocalRotation: {x: -0.007897984, y: 0.9773397, z: -0.2082571, w: -0.037064824}
+  m_LocalPosition: {x: 3.2877247, y: 1.6072264, z: 2.7723618}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14530,7 +14530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 041f5a49408c0bd4eace2a49d141caca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IntentElementsEnabled: 0
+  IntentElementsEnabled: 1
 --- !u!114 &2020242149
 MonoBehaviour:
   m_ObjectHideFlags: 0
