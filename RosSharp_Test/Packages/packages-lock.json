@@ -1,23 +1,5 @@
 {
   "dependencies": {
-    "com.microsoft.azure.spatial-anchors-sdk.core": {
-      "version": "file:MixedReality/com.microsoft.azure.spatial-anchors-sdk.core-2.9.0.tgz",
-      "depth": 0,
-      "source": "local-tarball",
-      "dependencies": {
-        "com.unity.subsystemregistration": "1.0.6",
-        "com.unity.xr.arsubsystems": "4.0.8",
-        "com.unity.xr.arfoundation": "4.0.12"
-      }
-    },
-    "com.microsoft.azure.spatial-anchors-sdk.windows": {
-      "version": "file:MixedReality/com.microsoft.azure.spatial-anchors-sdk.windows-2.9.0.tgz",
-      "depth": 0,
-      "source": "local-tarball",
-      "dependencies": {
-        "com.microsoft.azure.spatial-anchors-sdk.core": "2.9.0"
-      }
-    },
     "com.microsoft.mixedreality.toolkit.extensions": {
       "version": "file:MixedReality/com.microsoft.mixedreality.toolkit.extensions-2.7.0.tgz",
       "depth": 0,
@@ -272,7 +254,7 @@
     },
     "com.unity.subsystemregistration": {
       "version": "1.1.0",
-      "depth": 1,
+      "depth": 2,
       "source": "registry",
       "dependencies": {
         "com.unity.modules.subsystems": "1.0.0"
@@ -321,11 +303,11 @@
       }
     },
     "com.unity.xr.arfoundation": {
-      "version": "4.2.1",
-      "depth": 1,
+      "version": "4.2.3",
+      "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.xr.arsubsystems": "4.2.1",
+        "com.unity.xr.arsubsystems": "4.2.3",
         "com.unity.xr.management": "4.0.1",
         "com.unity.modules.particlesystem": "1.0.0"
       },
