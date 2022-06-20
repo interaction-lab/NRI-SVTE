@@ -95,8 +95,9 @@ namespace RosSharp.RosBridgeClient
             intentElementsRemovable = GameObject.FindGameObjectsWithTag(ResourcePathManager.intentElementRemovableTag);
             if (!IntentElementsEnabled)
             {
-                for (int i = 0; i < intentElements.Length; i++)
+                for (int i = 0; i < intentElementsRemovable.Length; i++) 
                     intentElementsRemovable[i].SetActive(false);
+                
             }
             SetIntentElementsActive(false);
         }

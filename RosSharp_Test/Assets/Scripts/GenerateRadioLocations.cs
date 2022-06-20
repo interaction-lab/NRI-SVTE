@@ -15,7 +15,7 @@ public class GenerateRadioLocations : MonoBehaviour
     private readonly float startingRadius = 0.8f;
     private float endingRadius = 2;
     private float timer = 0;
-    public float moveSpeed = 1;
+    public float moveSpeed = 0.1f;
     private Vector3 currentPosition;
     private int currentNode;
     //Change locations at runtime

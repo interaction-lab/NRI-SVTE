@@ -84,7 +84,7 @@ namespace RosSharp.RosBridgeClient
                         if (hiddenObjects && sphereLoudness > 0)
                         {
                             audioSpheres[row,i].SetActive(true);
-                            Color sphereColor = GetInterpolatedColor(Color.red, Color.green, sphereLoudness);
+                            Color sphereColor = GetInterpolatedColor(highColor, lowColor, sphereLoudness);
                             audioSpheres[row, i].transform.localScale = GetInflation(sphereLoudness, row, i);
                             Renderer sphereRenderer = audioSpheres[row, i].GetComponent<Renderer>();
                             sphereRenderer.material.color = sphereColor;
