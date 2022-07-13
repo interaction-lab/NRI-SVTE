@@ -16,12 +16,16 @@ namespace NRISVTE {
                 return _originT;
             }
         }
+        // create child game object that holds a set of line render children
+        GameObject lineRenderContainer;
+        List<LineRenderer> lineRenderers = new List<LineRenderer>();
         #endregion
 
         #region unity
         // initialize raycasts to size 8
         void Start() {
             InitRayCastHits();
+            InitLineRenders();
         }
 
         void FixedUpdate() {
@@ -53,6 +57,10 @@ namespace NRISVTE {
         void DebugDrawRaycasts() {
             for (int i = raycastHits.Capacity - 1; i >= 0; i--) {
                 Debug.DrawLine(OriginT.position, raycastHits[i].point, Color.red);
+                // update line renderer
+                lineRenderers[i].enabled = true;
+                lineRenderers[i].SetPosition(0, OriginT.position);
+                lineRenderers[i].SetPosition(1, raycastHits[i].point);
             }
         }
 
@@ -60,6 +68,41 @@ namespace NRISVTE {
             for (int i = 8 - 1; i >= 0; i--) {
                 raycastHits.Add(new RaycastHit());
             }
+        }
+        private void InitLineRenders() {
+            InitLRContainer();
+
+            // create line renderers
+            // for each raycast hit, create a line renderer game object and add it to the line renderer container
+            for (int i = 0; i < raycastHits.Count; i++) {
+                Debug.Log(i);
+                GameObject lineRenderGO = new GameObject("LineRender" + i);
+                lineRenderGO.transform.parent = lineRenderContainer.transform;
+                lineRenderGO.transform.localPosition = Vector3.zero;
+                lineRenderGO.transform.localRotation = Quaternion.identity;
+                lineRenderGO.transform.localScale = Vector3.one;
+                LineRenderer lineRender = lineRenderGO.AddComponent<LineRenderer>();
+                // use universal render pipeline lit shader for liner renderer
+                Material mat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                mat.color = Color.red;
+                lineRender.material = mat;
+                lineRender.startWidth = 0.01f;
+                lineRender.endWidth = 0.01f;
+                lineRender.startColor = Color.red;
+                lineRender.endColor = Color.red;
+                lineRender.positionCount = 2;
+                lineRender.enabled = false;
+                lineRenderers.Add(lineRender);
+            }
+        }
+
+        private void InitLRContainer() {
+            // create a container for the line renderers
+            lineRenderContainer = new GameObject("LineRenderContainer");
+            lineRenderContainer.transform.parent = transform;
+            lineRenderContainer.transform.localPosition = Vector3.zero;
+            lineRenderContainer.transform.localRotation = Quaternion.identity;
+            lineRenderContainer.transform.localScale = Vector3.one;
         }
         #endregion
     }
