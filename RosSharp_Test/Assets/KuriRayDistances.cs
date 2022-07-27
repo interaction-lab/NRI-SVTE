@@ -19,6 +19,32 @@ namespace NRISVTE {
         // create child game object that holds a set of line render children
         GameObject lineRenderContainer;
         List<LineRenderer> lineRenderers = new List<LineRenderer>();
+
+        public List<float> RayDistances {
+            get {
+                List<float> distances = new List<float>();
+                foreach (RaycastHit hit in raycastHits) {
+                    distances.Add(hit.distance);
+                }
+                return distances;
+            }
+        }
+
+        Transform _personT;
+        Transform PersonT {
+            get {
+                if (_personT == null) {
+                    _personT = Camera.main.transform;
+                }
+                return _personT;
+            }
+        }
+
+        public float DistanceToPerson{
+            get {
+                return Vector3.Distance(OriginT.position, PersonT.position);
+            }
+        }
         #endregion
 
         #region unity
