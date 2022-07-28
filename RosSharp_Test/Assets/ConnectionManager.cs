@@ -22,9 +22,9 @@ namespace NRISVTE {
             };
             ws.OnMessage += (sender, e) => {
                 try {
-					UnityMainThread.wkr.AddJob(() => {
-						DebugTextM.SetDebugText(e.Data);
-					});
+                    UnityMainThread.wkr.AddJob(() => {
+                        DebugTextM.SetDebugText("Received: " + e.Data);
+                    });
                 }
                 catch (System.Exception ex) {
                     Debug.Log(ex.Message);
