@@ -59,7 +59,7 @@ namespace NRISVTE {
             if (KuriState.Rstate == KuriStateManager.States.StoppedByButton) {
                 return; // do nothing
             }
-            if (Vector3.Distance(KuriT.FlatPosition, PlayerT.FlatPosition) < distThreshold) {
+            if (Vector3.Distance(KuriT.GroundPosition, PlayerT.GroundPosition) < distThreshold) {
                 KuriState.SetState(KuriStateManager.States.Idle);
             }
             else {
@@ -70,31 +70,33 @@ namespace NRISVTE {
             if (KuriState.Rstate == KuriStateManager.States.Moving) {
                 Move();
             }
-			else if(KuriState.Rstate == KuriStateManager.States.StoppedByButton) {
-				Stop();
-			}
+            else if (KuriState.Rstate == KuriStateManager.States.StoppedByButton) {
+                Stop();
+            }
         }
         void Move() {
-            Vector3 desiredForward = PlayerT.FlatPosition - KuriT.FlatPosition;
-            float angleToUser = Vector3.SignedAngle(KuriT.FlatForward, desiredForward, KuriT.OriginT.up);
+            Vector2 desiredForward = (PlayerT.TwoDPosition - KuriT.TwoDPosition);
+            Vector2 k2DForward = KuriT.TwoDForward;
+            float angleToUser = Vector2.SignedAngle(k2DForward, desiredForward);
             if (Mathf.Abs(angleToUser) > rotationThreshold) {
                 KuriT.OriginT.RotateAround(KuriT.Position,
-                KuriT.OriginT.up,
-                (angleToUser < 0 ? -1 : 1) * rotSpeedDegPerSec * Time.deltaTime);
+                Vector3.up,
+                (angleToUser < 0 ? 1 : -1) * rotSpeedDegPerSec * Time.deltaTime);
             }
-            else if (Vector3.Distance(KuriT.FlatPosition, PlayerT.FlatPosition) > distThreshold) {
+            else if (Vector3.Distance(KuriT.GroundPosition, PlayerT.GroundPosition) > distThreshold) {
                 // make sure kuri rotates toward user
-                KuriT.Rotation = Quaternion.LookRotation(desiredForward);
+                Vector3 desiredForward3D = new Vector3(desiredForward.x, 0, desiredForward.y);
+                KuriT.Rotation = Quaternion.LookRotation(desiredForward3D, Vector3.up);
                 // make kuri move toward user over time
                 KuriT.Position += KuriT.Forward * Time.deltaTime * speed;
             }
             // keep kuri on the ground
-            KuriT.Position = new Vector3(KuriT.Position.x, 0, KuriT.Position.z);
-            // make sure kuri is rotationally aligned with the ground
-            KuriT.Rotation = Quaternion.LookRotation(KuriT.FlatForward, Vector3.up);
+            KuriT.Position = new Vector3(KuriT.Position.x, KuriT.GroundYCord, KuriT.Position.z);
+            // make sure kuri is aligned vertically with the ground
+            KuriT.OriginT.rotation = Quaternion.LookRotation(KuriT.OriginT.forward, Vector3.up);
         }
-		void Stop() {
-		} // placeholder, does nothing for now
+        void Stop() {
+        } // placeholder, does nothing for now
         #endregion
     }
 }

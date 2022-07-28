@@ -26,6 +26,27 @@ namespace NRISVTE {
 				OriginT.rotation = value;
 			}
 		}
+
+        KuriTransformManager _kuriTransformManager;
+        KuriTransformManager KuriT {
+            get {
+                if (_kuriTransformManager == null) {
+                    _kuriTransformManager = KuriManager.instance.GetComponent<KuriTransformManager>();
+                }
+                return _kuriTransformManager;
+            }
+        }
+
+        public override float GroundYCord {
+            get {
+                return KuriT.GroundYCord;
+            }
+            set {
+                KuriT.GroundYCord = value;
+            }
+        }
+
+        
         #endregion
 
         #region unity

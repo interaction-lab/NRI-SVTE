@@ -6216,10 +6216,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 400, y: 300}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -7967,10 +7967,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c895306c2c09afb44b4b119f89e8ef2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 0.5
   rotSpeedDegPerSec: 90
   distThreshold: 0.5
-  rotationThreshold: 0.1
+  rotationThreshold: 3
 --- !u!114 &919132148530632250
 MonoBehaviour:
   m_ObjectHideFlags: 0
