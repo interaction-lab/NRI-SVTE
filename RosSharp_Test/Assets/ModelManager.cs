@@ -65,12 +65,23 @@ namespace NRISVTE {
 			}
 		}
 
+		ConnectionManager _connectionManager;
+		ConnectionManager ConnectionM {
+			get {
+				if (_connectionManager == null) {
+					_connectionManager = FindObjectOfType<ConnectionManager>();
+				}
+				return _connectionManager;
+			}
+		}
+
 
 		#endregion
 
 		#region unity
-		void Update() {
+		void FixedUpdate() {
 			UpdateModelInputs();
+			SendModelInputs();
 		}
 		#endregion
 
@@ -98,6 +109,10 @@ namespace NRISVTE {
 			// h_orientation_sin, h_orientation_cos
 			modelInputs[12] = KuriAngleManager.SinRobotToHumanOrientation;
 			modelInputs[13] = KuriAngleManager.CosRobotToHumanOrientation;
+		}
+
+		private void SendModelInputs(){
+			ConnectionM.SendToServer(string.Join(',',modelInputs));
 		}
 		#endregion
 	}
