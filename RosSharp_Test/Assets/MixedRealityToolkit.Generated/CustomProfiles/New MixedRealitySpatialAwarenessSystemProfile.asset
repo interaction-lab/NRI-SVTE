@@ -27,11 +27,11 @@ MonoBehaviour:
     componentName: OpenXR Spatial Mesh Observer
     priority: 0
     runtimePlatform: 296
-    observerProfile: {fileID: 11400000, guid: 8be0bcd2117dd214da41ed98f0def2e3, type: 2}
+    observerProfile: {fileID: 11400000, guid: c22d70954ebf01844805ff9253b92487, type: 2}
   - componentType:
-      reference: Microsoft.MixedReality.Toolkit.WindowsSceneUnderstanding.Experimental.WindowsSceneUnderstandingObserver,
-        Microsoft.MixedReality.Toolkit.Providers.WindowsSceneUnderstanding
-    componentName: Windows Scene Understanding Observer
+      reference: Microsoft.MixedReality.Toolkit.SpatialObjectMeshObserver.SpatialObjectMeshObserver,
+        Microsoft.MixedReality.Toolkit.Providers.ObjectMeshObserver
+    componentName: Spatial Object Mesh Observer
     priority: 0
-    runtimePlatform: 264
-    observerProfile: {fileID: 11400000, guid: 1ce015d87321ac7458f2f259a7e1aaa5, type: 2}
+    runtimePlatform: 208
+    observerProfile: {fileID: 11400000, guid: fc63086865dac484aacfd058723b0648, type: 2}

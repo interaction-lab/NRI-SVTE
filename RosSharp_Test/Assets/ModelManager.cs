@@ -75,6 +75,16 @@ namespace NRISVTE {
             }
         }
 
+        RoomAreaEstimationManager _roomAreaEstimationManager;
+        RoomAreaEstimationManager RoomAreaEstimationM {
+            get {
+                if (_roomAreaEstimationManager == null) {
+                    _roomAreaEstimationManager = GetComponent<RoomAreaEstimationManager>();
+                }
+                return _roomAreaEstimationManager;
+            }
+        }
+
         #endregion
 
         #region unity
@@ -99,8 +109,8 @@ namespace NRISVTE {
                 modelInputs[i] = KuriFourWayRay.raycastDistances[i - 4] * distScaleF;
             }
             // area
-            modelInputs[8] = 0; // not implemented yet, waiting on Massi for more info
-                                // hr_dist
+            modelInputs[8] = RoomAreaEstimationM.TotalArea;
+            // hr_dist
             modelInputs[9] = DistToPlayer_.GetDistanceToPlayer() * distScaleF;
             // h_angle_sin, h_angle_cos
             modelInputs[10] = KuriAngleManager.SinRobotToHumanAngle;

@@ -12,7 +12,9 @@ namespace NRISVTE {
         public string endPointPath = "/Echo";
         WebSocket ws;
         DebugTextManager DebugTextM;
+        int numErrors = 0;
         #endregion
+
         #region unity
         void Start() {
             DebugTextM = DebugTextManager.instance;
@@ -31,7 +33,8 @@ namespace NRISVTE {
                 }
             };
             ws.OnError += (sender, e) => {
-                Debug.Log("Error: " + e.Message);
+                //Debug.Log("Error: " + e.Message);
+                numErrors++;                
             };
             ws.OnClose += (sender, e) => {
                 Debug.Log("Closed with code: " + e.Code);
