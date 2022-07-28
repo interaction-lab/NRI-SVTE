@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12729394, g: 0.1341429, b: 0.121147014, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5712,6 +5712,7 @@ GameObject:
   - component: {fileID: 1770657813}
   - component: {fileID: 1770657816}
   - component: {fileID: 1770657817}
+  - component: {fileID: 1770657818}
   m_Layer: 0
   m_Name: ModelManager
   m_TagString: Untagged
@@ -5802,6 +5803,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b62c71c69adb33544a8374ae60188bd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1770657818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770657812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6ecbbf0b5840b09d7b4ee7f0a62b7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1864898134
@@ -6052,6 +6065,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4544683958350164}
+  - component: {fileID: 4544683958350165}
   m_Layer: 31
   m_Name: Base Room Scene
   m_TagString: Untagged
@@ -6362,6 +6376,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4544683958350165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437332851141564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 755457333153d62499302516c9afbabb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4774622349152720
 Transform:
   m_ObjectHideFlags: 0
@@ -7609,6 +7635,7 @@ GameObject:
   - component: {fileID: 919132148530632246}
   - component: {fileID: 919132148530632247}
   - component: {fileID: 919132148530632248}
+  - component: {fileID: 919132148530632249}
   m_Layer: 0
   m_Name: KURI
   m_TagString: Untagged
@@ -7656,6 +7683,22 @@ MonoBehaviour:
   CosRobotToHumanAngle: 0
   SinRobotToHumanOrientation: 0
   CosRobotToHumanOrientation: 0
+--- !u!114 &919132148530632249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148530632245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c895306c2c09afb44b4b119f89e8ef2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  rotSpeedDegPerSec: 90
+  distThreshold: 0.5
+  rotationThreshold: 0.1
 --- !u!1 &953784933426894402
 GameObject:
   m_ObjectHideFlags: 0
@@ -9153,7 +9196,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781933045778119381}
-  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0.0067503583, z: 0}
   m_LocalScale: {x: 0.023713676, y: 0.023713676, z: 0.023713676}
   m_ConstrainProportionsScale: 0
@@ -9162,7 +9205,7 @@ Transform:
   - {fileID: 1428275893259492519}
   m_Father: {fileID: 543450652185922703}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &3865769901442784978
 Transform:
   m_ObjectHideFlags: 0

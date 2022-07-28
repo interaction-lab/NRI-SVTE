@@ -6,9 +6,8 @@ namespace NRISVTE {
     internal class UnityMainThread : MonoBehaviour {
         internal static UnityMainThread wkr;
         Queue<Action> jobs = new Queue<Action>();
-
-        void Awake() {
-            wkr = this;
+        public UnityMainThread() {
+            UnityMainThread.wkr = this;
         }
 
         void Update() {

@@ -6,7 +6,7 @@ namespace NRISVTE {
     public abstract class TransformManager : MonoBehaviour {
         #region members
         Transform _originT;
-        protected Transform OriginT {
+        public Transform OriginT {
             get {
                 if (_originT == null) {
                     _originT = transform; // using my transform for now
@@ -15,9 +15,24 @@ namespace NRISVTE {
             }
         }
 
-		public abstract Vector3 Forward { get; }
-		public abstract Vector3 Position { get; }
 
+        public abstract Vector3 Forward { get; }
+        public abstract Vector3 Position {
+            get; set;
+        }
+        public abstract Quaternion Rotation { get; set; }
+
+        public Vector3 FlatForward {
+            get {
+                return new Vector3(Forward.x, 0, Forward.z);
+            }
+        }
+
+        public Vector3 FlatPosition {
+            get {
+                return new Vector3(Position.x, 0, Position.z);
+            }
+        }
         #endregion
 
         #region unity
