@@ -166,7 +166,7 @@ MonoBehaviour:
   magneticSurfaces:
   - serializedVersion: 2
     m_Bits: 4294967291
-  debugEnabled: 1
+  debugEnabled: 0
   onPlacingStarted:
     m_PersistentCalls:
       m_Calls: []
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b55691ad5b034fe6966763a6e23818d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackedTargetType: 5
+  trackedTargetType: 0
   trackedHandness: 3
   trackedHandJoint: 2
   transformOverride: {fileID: 0}
@@ -7636,6 +7636,7 @@ GameObject:
   - component: {fileID: 919132148530632247}
   - component: {fileID: 919132148530632248}
   - component: {fileID: 919132148530632249}
+  - component: {fileID: 919132148530632250}
   m_Layer: 0
   m_Name: KURI
   m_TagString: Untagged
@@ -7699,6 +7700,22 @@ MonoBehaviour:
   rotSpeedDegPerSec: 90
   distThreshold: 0.5
   rotationThreshold: 0.1
+--- !u!114 &919132148530632250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148530632245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b9eeca45785fd42b89dfdb3b912d16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _state: 0
+  OnStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &953784933426894402
 GameObject:
   m_ObjectHideFlags: 0
