@@ -56,6 +56,9 @@ namespace NRISVTE {
 
         #region private
         private void UpdateState() {
+            if (KuriState.Rstate == KuriStateManager.States.StoppedByButton) {
+                return; // do nothing
+            }
             if (Vector3.Distance(KuriT.FlatPosition, PlayerT.FlatPosition) < distThreshold) {
                 KuriState.SetState(KuriStateManager.States.Idle);
             }
@@ -67,6 +70,9 @@ namespace NRISVTE {
             if (KuriState.Rstate == KuriStateManager.States.Moving) {
                 Move();
             }
+			else if(KuriState.Rstate == KuriStateManager.States.StoppedByButton) {
+				Stop();
+			}
         }
         void Move() {
             Vector3 desiredForward = PlayerT.FlatPosition - KuriT.FlatPosition;
@@ -87,6 +93,8 @@ namespace NRISVTE {
             // make sure kuri is rotationally aligned with the ground
             KuriT.Rotation = Quaternion.LookRotation(KuriT.FlatForward, Vector3.up);
         }
+		void Stop() {
+		} // placeholder, does nothing for now
         #endregion
     }
 }
