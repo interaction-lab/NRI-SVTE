@@ -36,12 +36,14 @@ namespace NRISVTE {
             }
         }
 
+		float center3Up = 0.15f;
+
         #endregion
 
         #region unity
         void Update() {
             // get viewport position of kuri
-            Vector3 viewportPos = MainCam.WorldToViewportPoint(kuriTransformManager.Position);
+            Vector3 viewportPos = MainCam.WorldToViewportPoint(kuriTransformManager.Position + Vector3.up * center3Up);
 
 
             // check if on screen
@@ -54,7 +56,8 @@ namespace NRISVTE {
                 ArrowImage.enabled = false;
 				return; // done
             }
-			            // get on screen position of kuri
+			
+			// get on screen position of kuri
             Vector2 screenPos = new Vector2(
                 (viewportPos.x * Screen.width) - (Screen.width / 2f),
                 (viewportPos.y * Screen.height) - (Screen.height / 2f)
@@ -66,7 +69,7 @@ namespace NRISVTE {
                 Mathf.Abs(screenPos.y)
             );
 
-			// undo mapping from viewport to screen
+			// convert back to viewport space
 			screenPos = (screenPos / (maxOffset * 2f)) + new Vector2(0.5f, 0.5f);
 
 			// set arrow position to screenPos
@@ -74,8 +77,15 @@ namespace NRISVTE {
 			ArrowImage.rectTransform.anchorMax = screenPos;
 			ArrowImage.rectTransform.anchoredPosition = Vector2.zero;
 
-			
-            
+			// convert screenPos to back to screen space
+			screenPos = (screenPos - new Vector2(0.5f, 0.5f)) * maxOffset * 2f;
+			// get direction from screenPos to center
+			Vector2 direction = screenPos.normalized;
+			// get angle from direction
+			float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+			// set arrow angle to angle
+			ArrowImage.rectTransform.localEulerAngles = new Vector3(0, 0, angle + 180);
+
         }
 
 
