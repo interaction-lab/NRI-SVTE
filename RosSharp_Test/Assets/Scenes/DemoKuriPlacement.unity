@@ -5793,16 +5793,16 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.8
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.4
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -6265,8 +6265,13 @@ GameObject:
   - component: {fileID: 1770657817}
   - component: {fileID: 1770657818}
   - component: {fileID: 1770657819}
+  - component: {fileID: 1770657821}
+  - component: {fileID: 1770657820}
+  - component: {fileID: 1770657824}
+  - component: {fileID: 1770657823}
+  - component: {fileID: 1770657822}
   m_Layer: 0
-  m_Name: ModelManager
+  m_Name: Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6381,6 +6386,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e205a66384afc0948b4f668062920b15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1770657820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770657812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35b57c5b848065846a8ac3a829d3c061, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1770657821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770657812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ef44c7bb97d5684e97676c1054aeba5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logData: 1
+--- !u!114 &1770657822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770657812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec80fffde5fb1cb48a3bac28c8268fef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1770657823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770657812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3a73d58a31058f4e9d7a115531366f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1770657824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770657812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba9e798bb36ef7049b68f80c1d24b086, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1864898134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6475,7 +6541,7 @@ GameObject:
   - component: {fileID: 2055520431}
   - component: {fileID: 2055520430}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: ScreenUICanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

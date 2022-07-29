@@ -104,6 +104,10 @@ namespace NRISVTE {
         public static T GetComponentInChildrenOnlyDepthOne<T>(this GameObject go) where T : Component {
             return go.transform.GetComponentInChildrenOnlyDepthOne<T>();
         }
+        // Gameobject Extensions
+        public static string TryGetNiceNameOfObjectForLogging(this GameObject go) {
+            return go.name;
+        }
 
         // ObjectManipulator
         public static void RemoveTwoHandedScaling(this ObjectManipulator om) {

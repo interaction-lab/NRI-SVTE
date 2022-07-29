@@ -6,6 +6,14 @@ namespace NRISVTE {
     public class ModelManager : MonoBehaviour {
         #region members
         public float[] modelInputs = new float[14];
+        string[] logNames = new string[] {
+            "h_w", "h_e", "h_n", "h_s",
+            "r_w", "r_e", "r_n", "r_s",
+            "area",
+            "hr_dist",
+            "h_angle_sin", "h_angle_cos",
+            "h_orientation_sin", "h_orientation_cos"
+        };
         private float distScaleF = 1000f;
         PlayerTransformManager _playerTransformManager;
         PlayerTransformManager playerTransformManager {
@@ -85,12 +93,26 @@ namespace NRISVTE {
             }
         }
 
+        LoggingManager _loggingManager;
+        LoggingManager LoggingM {
+            get {
+                if (_loggingManager == null) {
+                    _loggingManager = LoggingManager.instance;
+                }
+                return _loggingManager;
+            }
+        }
+
         #endregion
 
         #region unity
+        void Start() {
+            Init();    
+        }
         void FixedUpdate() {
             UpdateModelInputs();
             SendModelInputs();
+            LogModelInputs();
         }
         #endregion
 
@@ -98,6 +120,12 @@ namespace NRISVTE {
         #endregion
 
         #region private
+        void Init() {
+            for (int i = 0; i < modelInputs.Length; i++) {
+                modelInputs[i] = -1f;
+                LoggingM.AddLogColumn(logNames[i], "-1");
+            }
+        }
         // Note all model inputs should be in mm so we scale them to mm from m
         void UpdateModelInputs() {
             // h_w, h_e, h_n, h_s
@@ -123,6 +151,14 @@ namespace NRISVTE {
         private void SendModelInputs() {
             ConnectionM.SendToServer(string.Join(',', modelInputs));
         }
+
+
+        private void LogModelInputs() {
+            for (int i = 0; i < modelInputs.Length; i++) {
+                LoggingM.UpdateLogColumn(logNames[i], modelInputs[i].ToString());
+            }
+        }
+
         #endregion
     }
 }
