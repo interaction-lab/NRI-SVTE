@@ -9,7 +9,7 @@ namespace RosSharp.RosBridgeClient {
         private Vector3 targetScale;
 
         private MessageTypes.Vision.FaceArray faces;
-        private bool isMessageReceived, turnOffSignal;
+        private bool isMessageReceived;
         private AnimationPublisher _animPub;
         public AnimationPublisher AnimPublisher {
             get {
@@ -28,7 +28,6 @@ namespace RosSharp.RosBridgeClient {
         protected override void Start() {
             base.Start();
             userThere = false;
-            turnOffSignal = false;
             pubrend = PublishedTransform.GetComponent<MeshRenderer>();
         }
         private void Update() {
