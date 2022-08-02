@@ -7,7 +7,15 @@ namespace NRISVTE {
         internal static UnityMainThread wkr;
         Queue<Action> jobs = new Queue<Action>();
         public UnityMainThread() {
-            UnityMainThread.wkr = this;
+            if (UnityMainThread.wkr == null) {
+                UnityMainThread.wkr = this;
+            }
+        }
+
+        private void Awake() {
+            if (UnityMainThread.wkr == null) {
+                UnityMainThread.wkr = this;
+            }
         }
 
         void Update() {
