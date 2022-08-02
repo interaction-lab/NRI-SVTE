@@ -4,10 +4,12 @@ using GraphViewBehaviorTree.Nodes;
 using UnityEditor;
 using UnityEngine;
 using static GraphViewBehaviorTree.BlackBoardConstants;
+using UnityEngine.Events;
 
 namespace GraphViewBehaviorTree {
     public class Blackboard {
         public Dictionary<string, object> blackboard;
+        public Dictionary<string, UnityEvent> events;
         public Blackboard(GameObject go) {
             blackboard = new Dictionary<string, object>();
             blackboard.Add(GameObjectBBK, go);
@@ -46,6 +48,15 @@ namespace GraphViewBehaviorTree {
             }
             else {
                 return o;
+            }
+        }
+
+        public UnityEvent GetEvent(string key) {
+            if (events.ContainsKey(key)) {
+                return events[key];
+            }
+            else {
+                return null;
             }
         }
     }

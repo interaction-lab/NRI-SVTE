@@ -126,6 +126,11 @@ namespace GraphViewBehaviorTree.Nodes {
             state = State.Running;
         }
 
+        /// just another name for node reset to be consistent with kiwi
+        public virtual void Abort(){
+            NodeReset();
+        }
+
         #endregion
 
         /// <summary>
