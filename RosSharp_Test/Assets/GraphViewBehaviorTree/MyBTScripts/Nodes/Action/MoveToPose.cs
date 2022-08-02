@@ -18,6 +18,9 @@ namespace GraphViewBehaviorTree.Nodes {
             timeOutTimer = timeOut;
             myTransform = (blackBoard.GetValue(GameObjectBBK) as GameObject).transform;
             targetPosition = (Vector3)blackBoard.TryG(GoalPosBBK, targetPosition);
+            // choose random target position
+            targetPosition = new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1));
+
         }
         protected override void OnStop() {
         }
