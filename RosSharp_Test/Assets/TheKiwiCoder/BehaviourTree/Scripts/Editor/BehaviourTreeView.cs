@@ -22,7 +22,6 @@ namespace TheKiwiCoder {
         }
 
         public ScriptTemplate[] scriptFileAssets = {
-            
             new ScriptTemplate{ templateFile=BehaviourTreeSettings.GetOrCreateSettings().scriptTemplateActionNode, defaultFileName="NewActionNode.cs", subFolder="Actions" },
             new ScriptTemplate{ templateFile=BehaviourTreeSettings.GetOrCreateSettings().scriptTemplateCompositeNode, defaultFileName="NewCompositeNode.cs", subFolder="Composites" },
             new ScriptTemplate{ templateFile=BehaviourTreeSettings.GetOrCreateSettings().scriptTemplateDecoratorNode, defaultFileName="NewDecoratorNode.cs", subFolder="Decorators" },
@@ -126,15 +125,17 @@ namespace TheKiwiCoder {
 
             //base.BuildContextualMenu(evt);
 
-            // New script functions
+            // New script functions to create new nodes
             evt.menu.AppendAction($"Create Script.../New Action Node", (a) => CreateNewScript(scriptFileAssets[0]));
             evt.menu.AppendAction($"Create Script.../New Composite Node", (a) => CreateNewScript(scriptFileAssets[1]));
             evt.menu.AppendAction($"Create Script.../New Decorator Node", (a) => CreateNewScript(scriptFileAssets[2]));
             evt.menu.AppendSeparator();
+            // New script function to delete node
+            evt.menu.AppendAction($"Delete Node", (a) => DeleteNode(evt));
+            evt.menu.AppendSeparator();
 
             Vector2 nodePosition = this.ChangeCoordinatesTo(contentViewContainer, evt.localMousePosition);
             {
-
                 var types = TypeCache.GetTypesDerivedFrom<ActionNode>();
                 foreach (var type in types) {
                     evt.menu.AppendAction($"[Action]/{type.Name}", (a) => CreateNode(type, nodePosition));
@@ -191,6 +192,21 @@ namespace TheKiwiCoder {
             NodeView nodeView = new NodeView(node);
             nodeView.OnNodeSelected = OnNodeSelected;
             AddElement(nodeView);
+        }
+
+        void DeleteNode(ContextualMenuPopulateEvent evt) {
+            var nodeView = evt.target as NodeView;
+            if (nodeView != null) {
+                tree.DeleteNode(nodeView.node);
+                DeleteElements(new List<GraphElement>() { nodeView });
+            }
+            Debug.Log(evt);
+            Debug.Log(evt.target);
+            Debug.Log(evt.currentTarget);
+
+            // Debug.Log(nodeView);
+            // tree.DeleteNode(nodeView.node);
+            // DeleteElements(new List<GraphElement>() { nodeView });
         }
 
         public void UpdateNodeStates() {
