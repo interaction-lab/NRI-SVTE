@@ -14,7 +14,7 @@ class BehaviourTreeSettings : ScriptableObject {
     public TextAsset scriptTemplateActionNode;
     public TextAsset scriptTemplateCompositeNode;
     public TextAsset scriptTemplateDecoratorNode;
-    public string newNodeBasePath = "Assets/";
+    public string newNodeBasePath = "Assets/BT/";
 
     static BehaviourTreeSettings FindSettings(){
         var guids = AssetDatabase.FindAssets("t:BehaviourTreeSettings");

@@ -25,7 +25,7 @@ namespace TheKiwiCoder {
         SerializedObject treeObject;
         SerializedProperty blackboardProperty;
 
-        [MenuItem("TheKiwiCoder/BehaviourTreeEditor ...")]
+        [MenuItem("TheKiwiCoder/BehaviourTreeEditor")]
         public static void OpenWindow() {
             BehaviourTreeEditor wnd = GetWindow<BehaviourTreeEditor>();
             wnd.titleContent = new GUIContent("BehaviourTreeEditor");
@@ -97,11 +97,11 @@ namespace TheKiwiCoder {
             toolbarMenu.menu.AppendAction("New Tree...", (a) => CreateNewTree("NewBehaviourTree"));
 
             // New Tree Dialog
-            treeNameField = root.Q<TextField>("TreeName");
-            locationPathField = root.Q<TextField>("LocationPath");
-            overlay = root.Q<VisualElement>("Overlay");
-            createNewTreeButton = root.Q<Button>("CreateButton");
-            createNewTreeButton.clicked += () => CreateNewTree(treeNameField.value);
+            // treeNameField = root.Q<TextField>("TreeName");
+            // locationPathField = root.Q<TextField>("LocationPath");
+            // overlay = root.Q<VisualElement>("Overlay");
+            // createNewTreeButton = root.Q<Button>("CreateButton");
+            // createNewTreeButton.clicked += () => CreateNewTree(treeNameField.value);
 
             if (tree == null) {
                 OnSelectionChange();
@@ -162,7 +162,7 @@ namespace TheKiwiCoder {
 
             this.tree = newTree;
 
-            overlay.style.visibility = Visibility.Hidden;
+            //overlay.style.visibility = Visibility.Hidden;
 
             if (Application.isPlaying) {
                 treeView.PopulateView(tree);

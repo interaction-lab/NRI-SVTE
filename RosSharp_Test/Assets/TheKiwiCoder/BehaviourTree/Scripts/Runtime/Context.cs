@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+using Microsoft.MixedReality.Toolkit;
+using Microsoft.MixedReality.Toolkit.Utilities.Solvers;
+using NRISVTE;
 namespace TheKiwiCoder {
 
     // The context is a shared object every node has access to.
@@ -19,6 +21,10 @@ namespace TheKiwiCoder {
         public BoxCollider boxCollider;
         public CapsuleCollider capsuleCollider;
         public CharacterController characterController;
+        public TapToPlace tapToPlace;
+        public KuriTransformManager kuriT;
+        public PlayerTransformManager playerT;
+
         // Add other game specific systems here
 
         public static Context CreateFromGameObject(GameObject gameObject) {
@@ -33,7 +39,10 @@ namespace TheKiwiCoder {
             context.boxCollider = gameObject.GetComponent<BoxCollider>();
             context.capsuleCollider = gameObject.GetComponent<CapsuleCollider>();
             context.characterController = gameObject.GetComponent<CharacterController>();
-            
+            context.tapToPlace = gameObject.GetComponent<TapToPlace>();
+            context.kuriT = Object.FindObjectOfType<KuriTransformManager>();
+            context.playerT = Object.FindObjectOfType<PlayerTransformManager>();
+
             // Add whatever else you need here...
 
             return context;
