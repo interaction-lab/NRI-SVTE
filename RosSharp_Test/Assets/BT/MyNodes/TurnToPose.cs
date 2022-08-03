@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TheKiwiCoder;
 
-namespace NRISVTE{
-    public class #SCRIPTNAME# : ActionNode
-    {
+namespace NRISVTE {
+    public class TurnToPose : ActionNode {
         protected override void OnStart() {
         }
 

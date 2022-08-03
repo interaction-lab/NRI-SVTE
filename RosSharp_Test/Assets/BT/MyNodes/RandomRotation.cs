@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using TheKiwiCoder;
 
-namespace NRISVTE{
-    public class #SCRIPTNAME# : ActionNode
-    {
+namespace NRISVTE {
+    public class RandomRotation : ActionNode {
+        public float min = -180;
+        public float max = 180;
         protected override void OnStart() {
         }
 
@@ -13,6 +14,7 @@ namespace NRISVTE{
         }
 
         protected override State OnUpdate() {
+            blackboard.goalRotation.eulerAngles.y = Random.Range(min, max);
             return State.Success;
         }
     }

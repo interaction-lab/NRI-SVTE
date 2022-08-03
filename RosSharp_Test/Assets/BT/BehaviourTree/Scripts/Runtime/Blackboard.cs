@@ -9,6 +9,7 @@ namespace TheKiwiCoder {
     // Add other properties here that make sense for your specific use case.
     [System.Serializable]
     public class Blackboard {
-        public Vector3 moveToPosition;
+        public Vector3 goalPosition;
+        public Quaternion goalRotation;
     }
 }

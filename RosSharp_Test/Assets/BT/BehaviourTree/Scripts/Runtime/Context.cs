@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+using NRISVTE;
 namespace TheKiwiCoder {
 
     // The context is a shared object every node has access to.
@@ -18,7 +18,9 @@ namespace TheKiwiCoder {
         public SphereCollider sphereCollider;
         public BoxCollider boxCollider;
         public CapsuleCollider capsuleCollider;
-        public CharacterController characterController;
+        public KuriTransformManager kuriTransformManager;
+        public PlayerTransformManager playerTransformManager;
+
         // Add other game specific systems here
 
         public static Context CreateFromGameObject(GameObject gameObject) {
@@ -32,9 +34,10 @@ namespace TheKiwiCoder {
             context.sphereCollider = gameObject.GetComponent<SphereCollider>();
             context.boxCollider = gameObject.GetComponent<BoxCollider>();
             context.capsuleCollider = gameObject.GetComponent<CapsuleCollider>();
-            context.characterController = gameObject.GetComponent<CharacterController>();
             
-            // Add whatever else you need here...
+            // SVTE specific components
+            context.kuriTransformManager = gameObject.GetComponent<KuriTransformManager>();
+            context.playerTransformManager = Camera.main.transform.GetComponent<PlayerTransformManager>();
 
             return context;
         }

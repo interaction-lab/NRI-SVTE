@@ -15,8 +15,8 @@ public class RandomPosition : ActionNode
     }
 
     protected override State OnUpdate() {
-        blackboard.moveToPosition.x = Random.Range(min.x, max.x);
-        blackboard.moveToPosition.z = Random.Range(min.y, max.y);
+        blackboard.goalPosition.x = Random.Range(min.x, max.x);
+        blackboard.goalPosition.z = Random.Range(min.y, max.y);
         return State.Success;
     }
 }
