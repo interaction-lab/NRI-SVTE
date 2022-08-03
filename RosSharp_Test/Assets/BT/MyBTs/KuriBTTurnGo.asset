@@ -38,7 +38,7 @@ MonoBehaviour:
   m_Name: RootNode
   m_EditorClassIdentifier: 
   state: 0
-  started: 0
+  started: 1
   guid: 75f550e3162204eaba23399187b4b07f
   position: {x: 0, y: 0}
   blackboard:
@@ -46,7 +46,7 @@ MonoBehaviour:
     goalRotation: {x: 0, y: 0, z: 0}
   description: 
   drawGizmos: 0
-  child: {fileID: 0}
+  child: {fileID: 3768066815214277624}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,7 +62,6 @@ MonoBehaviour:
   rootNode: {fileID: -3800665685699207894}
   treeState: 0
   nodes:
-  - {fileID: 0}
   - {fileID: -3800665685699207894}
   - {fileID: 3768066815214277624}
   - {fileID: 7487742368074759264}

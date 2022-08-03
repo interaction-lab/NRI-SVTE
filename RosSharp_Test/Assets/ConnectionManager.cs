@@ -17,6 +17,7 @@ namespace NRISVTE {
 
         #region unity
         void Start() {
+            return;
             DebugTextM = DebugTextManager.instance;
             ws = new WebSocket("ws://" + host + ":" + port + endPointPath);
             ws.OnOpen += (sender, e) => {
@@ -45,7 +46,7 @@ namespace NRISVTE {
 
         #region public
         public void SendToServer(string message) {
-            ws.Send(message);
+            //ws.Send(message);
         }
 
         #endregion
