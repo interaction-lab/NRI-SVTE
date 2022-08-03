@@ -21,7 +21,7 @@ namespace NRISVTE {
         int maxLeafNodes = 4; // higher number = faster building, but slower querying
         int numNearestToLookAt = 7; // higher number = slower querying, but more accurate/uses all hits
         KuriTransformManager _kuriT;
-        List<Vector3> polyLine; // x, y, angle all relative to Kuri
+        public List<Vector3> PolyLineList; // x, y, angle all relative to Kuri
         public KuriTransformManager KuriT {
             get {
                 if (_kuriT == null) {
@@ -140,15 +140,15 @@ namespace NRISVTE {
 
         void BuildPolyLine() {
             // ST, NT, WT, ET, SF, NF, WF, EF
-            polyLine = new List<Vector3>();
-            polyLine.AddRange(pointHits['S'][true]);
-            polyLine.AddRange(pointHits['N'][true]);
-            polyLine.AddRange(pointHits['W'][true]);
-            polyLine.AddRange(pointHits['E'][true]);
-            polyLine.AddRange(pointHits['S'][false]);
-            polyLine.AddRange(pointHits['N'][false]);
-            polyLine.AddRange(pointHits['W'][false]);
-            polyLine.AddRange(pointHits['E'][false]);
+            PolyLineList = new List<Vector3>();
+            PolyLineList.AddRange(pointHits['S'][true]);
+            PolyLineList.AddRange(pointHits['N'][true]);
+            PolyLineList.AddRange(pointHits['W'][true]);
+            PolyLineList.AddRange(pointHits['E'][true]);
+            PolyLineList.AddRange(pointHits['S'][false]);
+            PolyLineList.AddRange(pointHits['N'][false]);
+            PolyLineList.AddRange(pointHits['W'][false]);
+            PolyLineList.AddRange(pointHits['E'][false]);
 
             DebugDrawPolyLine(); // draw prior to transforming into kuri coords
 
@@ -156,12 +156,12 @@ namespace NRISVTE {
             // convert to relative to Kuri
             Vector3 forwardNormed = KuriT.Forward.normalized;
             Vector2 kuriForward = new Vector2(forwardNormed.x, forwardNormed.z);
-            for (int i = 0; i < polyLine.Count; i++) {
+            for (int i = 0; i < PolyLineList.Count; i++) {
                 Vector2 twodpos = new Vector2(
-                    polyLine[i].x - KuriT.Position.x,   // x in kuri cords
-                    polyLine[i].z - KuriT.Position.z);  // y in kuri coords
+                    PolyLineList[i].x - KuriT.Position.x,   // x in kuri cords
+                    PolyLineList[i].z - KuriT.Position.z);  // y in kuri coords
                 float angle = Vector2.SignedAngle(kuriForward, twodpos.normalized);
-                polyLine[i] = new Vector3(twodpos.x, twodpos.y, angle);
+                PolyLineList[i] = new Vector3(twodpos.x, twodpos.y, angle);
             }
         }
 
@@ -201,15 +201,15 @@ namespace NRISVTE {
         }
 
         void DebugDrawPolyLine() {
-            for (int i = 0; i < polyLine.Count; i++) {
+            for (int i = 0; i < PolyLineList.Count; i++) {
                 // draw a line from the current point to the next point
-                int nextPointIndex = (i + 1) % polyLine.Count;
-                Debug.DrawLine(polyLine[i], polyLine[nextPointIndex], Color.white);
+                int nextPointIndex = (i + 1) % PolyLineList.Count;
+                Debug.DrawLine(PolyLineList[i], PolyLineList[nextPointIndex], Color.white);
             }
         }
 
         void DebugDrawPolyLineFromKuri(){
-            foreach(Vector3 v in polyLine){
+            foreach(Vector3 v in PolyLineList){
                 // convert to world coords from x,y,angle
                 Vector3 kuriCords = new Vector3(v.x, 0, v.y);
                 Vector3 worldCords = KuriT.Position + kuriCords;

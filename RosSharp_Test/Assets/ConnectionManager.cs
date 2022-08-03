@@ -13,11 +13,13 @@ namespace NRISVTE {
         WebSocket ws;
         DebugTextManager DebugTextM;
         int numErrors = 0;
+
+        PolyLineJSON polyLineJSONmsg;
         #endregion
 
         #region unity
         void Start() {
-            return;
+            polyLineJSONmsg = new PolyLineJSON();
             DebugTextM = DebugTextManager.instance;
             ws = new WebSocket("ws://" + host + ":" + port + endPointPath);
             ws.OnOpen += (sender, e) => {
@@ -35,12 +37,19 @@ namespace NRISVTE {
             };
             ws.OnError += (sender, e) => {
                 //Debug.Log("Error: " + e.Message);
-                numErrors++;                
+                numErrors++;
             };
             ws.OnClose += (sender, e) => {
                 Debug.Log("Closed with code: " + e.Code);
             };
             ws.Connect();
+        }
+
+        private void Update() {
+            if (Input.GetKeyDown(KeyCode.Space)) {
+                polyLineJSONmsg.identifier = "test";
+                ws.Send(JsonUtility.ToJson(polyLineJSONmsg));
+            }
         }
         #endregion
 

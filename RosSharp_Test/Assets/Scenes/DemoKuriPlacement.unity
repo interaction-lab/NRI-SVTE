@@ -6348,9 +6348,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1035cf332977e5149bc9f21c7087b707, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  host: 10.0.0.235
-  port: 4649
-  endPointPath: /Chat
+  host: localhost
+  port: 2345
+  endPointPath: 
 --- !u!114 &1770657817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6411,7 +6411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ef44c7bb97d5684e97676c1054aeba5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logData: 1
+  logData: 0
 --- !u!114 &1770657822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6455,11 +6455,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1770657812}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f08be0cee0cd47a2a16eb3c430dcfa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PolyLineList: []
 --- !u!114 &1864898134
 MonoBehaviour:
   m_ObjectHideFlags: 0
