@@ -42,7 +42,7 @@ namespace NRISVTE {
         #region public
         void Update() {
             UpdateRayEstimators();
-            DebugDrawRayHits();
+           // DebugDrawRayHits();
             BuildPolyLine();
             DebugDrawPolyLineFromKuri();
         }
@@ -212,8 +212,8 @@ namespace NRISVTE {
             foreach(Vector3 v in polyLine){
                 // convert to world coords from x,y,angle
                 Vector3 kuriCords = new Vector3(v.x, 0, v.y);
-                Vector3 worldCords = KuriT.Position + Quaternion.Euler(0, v.z, 0) * kuriCords;
-                Debug.DrawRay(KuriT.Position, worldCords, Color.cyan);
+                Vector3 worldCords = KuriT.Position + kuriCords;
+                Debug.DrawLine(KuriT.Position, worldCords, Color.cyan);
             }
         }
 
