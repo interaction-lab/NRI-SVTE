@@ -11,7 +11,7 @@ namespace NRISVTE {
         public List<Dictionary<string, float>> humans;
         public List<Dictionary<string, float>> objects;
         public List<List<string>> links;
-        public List<List<int>> room;
+        public List<List<float>> room; // [[x0, y0], [x1, y1], ...]
 
     }
 }

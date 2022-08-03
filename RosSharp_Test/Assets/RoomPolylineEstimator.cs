@@ -21,7 +21,8 @@ namespace NRISVTE {
         int maxLeafNodes = 4; // higher number = faster building, but slower querying
         int numNearestToLookAt = 7; // higher number = slower querying, but more accurate/uses all hits
         KuriTransformManager _kuriT;
-        public List<Vector3> PolyLineList; // x, y, angle all relative to Kuri
+        private List<Vector3> PolyLineList; // [[x, y, angle],...]
+        public List<List<float>> PublicPolyLineList; // [[x, y, angle],...]
         public KuriTransformManager KuriT {
             get {
                 if (_kuriT == null) {
@@ -150,8 +151,9 @@ namespace NRISVTE {
             PolyLineList.AddRange(pointHits['W'][false]);
             PolyLineList.AddRange(pointHits['E'][false]);
 
-            DebugDrawPolyLine(); // draw prior to transforming into kuri coords
+            PublicPolyLineList = new List<List<float>>();
 
+            DebugDrawPolyLine(); // draw prior to transforming into kuri coords
 
             // convert to relative to Kuri
             Vector3 forwardNormed = KuriT.Forward.normalized;
@@ -162,6 +164,7 @@ namespace NRISVTE {
                     PolyLineList[i].z - KuriT.Position.z);  // y in kuri coords
                 float angle = Vector2.SignedAngle(kuriForward, twodpos.normalized);
                 PolyLineList[i] = new Vector3(twodpos.x, twodpos.y, angle);
+                PublicPolyLineList.Add(new List<float>(){twodpos.x, twodpos.y});
             }
         }
 

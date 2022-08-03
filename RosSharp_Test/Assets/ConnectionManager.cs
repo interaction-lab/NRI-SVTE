@@ -15,6 +15,15 @@ namespace NRISVTE {
         int numErrors = 0;
 
         PolyLineJSON polyLineJSONmsg;
+        RoomPolylineEstimator _roomPolylineEstimator;
+        public RoomPolylineEstimator roomPolylineEstimator {
+            get {
+                if (_roomPolylineEstimator == null) {
+                    _roomPolylineEstimator = GetComponent<RoomPolylineEstimator>();
+                }
+                return _roomPolylineEstimator;
+            }
+        }
         #endregion
 
         #region unity
@@ -48,7 +57,8 @@ namespace NRISVTE {
         private void Update() {
             if (Input.GetKeyDown(KeyCode.Space)) {
                 polyLineJSONmsg.identifier = "test";
-                ws.Send(JsonUtility.ToJson(polyLineJSONmsg));
+                polyLineJSONmsg.room = roomPolylineEstimator.PublicPolyLineList;
+                ws.Send(Newtonsoft.Json.JsonConvert.SerializeObject(polyLineJSONmsg));
             }
         }
         #endregion
