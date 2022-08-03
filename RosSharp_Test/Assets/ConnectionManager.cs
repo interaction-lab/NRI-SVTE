@@ -88,8 +88,8 @@ namespace NRISVTE {
                 polyLineJSONmsg.humans = new List<Dictionary<string, float>>() {
                     new Dictionary<string, float>() {
                         {"id", 1},
-                        {"xPos", userPosRelKuri.x},
-                        {"yPos", userPosRelKuri.y},
+                        {"xPos", userPosRelKuri.x * 100},
+                        {"yPos", userPosRelKuri.y * 100},
                         {"orientation", angle}
                     }
                 };

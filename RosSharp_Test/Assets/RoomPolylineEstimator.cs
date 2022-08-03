@@ -164,7 +164,7 @@ namespace NRISVTE {
                     PolyLineList[i].z - KuriT.Position.z);  // y in kuri coords
                 float angle = Vector2.SignedAngle(kuriForward, twodpos.normalized);
                 PolyLineList[i] = new Vector3(twodpos.x, twodpos.y, angle);
-                PublicPolyLineList.Add(new List<float>(){twodpos.x, twodpos.y});
+                PublicPolyLineList.Add(new List<float>(){twodpos.x * 100, twodpos.y * 100});
             }
         }
 
