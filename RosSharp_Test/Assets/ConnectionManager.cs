@@ -14,6 +14,25 @@ namespace NRISVTE {
         DebugTextManager DebugTextM;
         int numErrors = 0;
 
+        PlayerTransformManager _playerT;
+        PlayerTransformManager PlayerT {
+            get {
+                if (_playerT == null) {
+                    _playerT = Camera.main.GetComponent<PlayerTransformManager>();
+                }
+                return _playerT;
+            }
+        }
+
+        KuriTransformManager _kuriT;
+        KuriTransformManager KuriT {
+            get {
+                if (_kuriT == null) {
+                    _kuriT = KuriManager.instance.GetComponent<KuriTransformManager>();
+                }
+                return _kuriT;
+            }
+        }
         PolyLineJSON polyLineJSONmsg;
         RoomPolylineEstimator _roomPolylineEstimator;
         public RoomPolylineEstimator roomPolylineEstimator {
@@ -56,8 +75,24 @@ namespace NRISVTE {
 
         private void Update() {
             if (Input.GetKeyDown(KeyCode.Space)) {
-                polyLineJSONmsg.identifier = "test";
+                polyLineJSONmsg.identifier = string.Join("_", UserIDManager.PlayerId, UserIDManager.DeviceId, Time.time.ToString());
                 polyLineJSONmsg.room = roomPolylineEstimator.PublicPolyLineList;
+                polyLineJSONmsg.robot = new Dictionary<string, int>() {
+                    {"id", 0}
+                };
+                polyLineJSONmsg.score = -1;
+
+                Vector2 userPosRelKuri = new Vector2(PlayerT.Position.x - KuriT.Position.x, PlayerT.Position.z - KuriT.Position.z);
+                Vector2 kuriForward2D = new Vector2(KuriT.Forward.x, KuriT.Forward.z);
+                float angle = Vector2.SignedAngle(userPosRelKuri, kuriForward2D);
+                polyLineJSONmsg.humans = new List<Dictionary<string, float>>() {
+                    new Dictionary<string, float>() {
+                        {"id", 1},
+                        {"xPos", userPosRelKuri.x},
+                        {"yPos", userPosRelKuri.y},
+                        {"orientation", angle}
+                    }
+                };
                 ws.Send(Newtonsoft.Json.JsonConvert.SerializeObject(polyLineJSONmsg));
             }
         }
