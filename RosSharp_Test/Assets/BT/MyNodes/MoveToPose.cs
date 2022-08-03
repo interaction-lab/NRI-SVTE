@@ -22,7 +22,10 @@ namespace NRISVTE {
 
         protected override State OnUpdate() {
             if (updateRotation) {
-                context.kuriTransformManager.Rotation = goalRotation;
+                context.kuriTransformManager.Rotation = Quaternion.Euler(
+                    context.kuriTransformManager.Rotation.eulerAngles.x,
+                    goalRotation.y,
+                    context.kuriTransformManager.Rotation.eulerAngles.z);
             }
             if (Vector3.Distance(context.kuriTransformManager.Position, goalPosition) < stoppingDistance) {
                 context.kuriTransformManager.Position = goalPosition;
@@ -30,7 +33,7 @@ namespace NRISVTE {
             }
             float distToGoal = Vector3.Distance(context.kuriTransformManager.Position, goalPosition);
             if (distToGoal < slowDownDistance) {
-                float scaleFactor = max(distToGoal / slowDownDistance, minSpeed);
+                float scaleFactor = Mathf.Max(distToGoal / slowDownDistance, minSpeed);
                 context.kuriTransformManager.Position = Vector3.MoveTowards(context.kuriTransformManager.Position, goalPosition, speed * Time.deltaTime * scaleFactor);
             }
             else {

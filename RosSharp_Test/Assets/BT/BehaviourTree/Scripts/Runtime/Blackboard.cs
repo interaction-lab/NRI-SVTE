@@ -10,6 +10,6 @@ namespace TheKiwiCoder {
     [System.Serializable]
     public class Blackboard {
         public Vector3 goalPosition;
-        public Quaternion goalRotation;
+        public Vector3 goalRotation;
     }
 }

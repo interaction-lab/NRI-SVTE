@@ -152,9 +152,6 @@ namespace TheKiwiCoder {
                     evt.menu.AppendAction($"[Decorator]/{type.Name}", (a) => CreateNode(type, nodePosition));
                 }
             }
-
-            // evt.menu.AppendSeparator();
-            // evt.menu.AppendAction("Delete", (a) => DeleteSelectedElements());
         }
 
         void SelectFolder(string path) {

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-4623806484287032485
+--- !u!114 &-4865850642487693907
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,42 +9,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0a055ff4bd9e6642b3f0dff32a86e1d, type: 3}
-  m_Name: RandomPosition
+  m_Script: {fileID: 11500000, guid: 7bcc168c145af4513ba77552a8122108, type: 3}
+  m_Name: MoveToPose
   m_EditorClassIdentifier: 
   state: 0
   started: 0
-  guid: 22699d97945ab487a9f204cfc41ad359
-  position: {x: -359, y: 311}
+  guid: 4f83254bb2f0549579d0166a21db8bdb
+  position: {x: 265.88, y: 318}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
-    goalRotation: {x: 0, y: 0, z: 0, w: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
   description: 
   drawGizmos: 0
-  min: {x: -10, y: -10}
-  max: {x: 10, y: 10}
---- !u!114 &-3778679491438657199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0414be88826548659aa800cb4866a3a, type: 3}
-  m_Name: TurnToPose
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: 612bed6535f7849a2809fdbf397f594e
-  position: {x: 0, y: 311}
-  blackboard:
-    goalPosition: {x: 0, y: 0, z: 0}
-    goalRotation: {x: 0, y: 0, z: 0, w: 0}
-  description: 
-  drawGizmos: 0
---- !u!114 &-3097029908279183568
+  speed: 1
+  slowDownDistance: 0.1
+  stoppingDistance: 0.01
+  updateRotation: 1
+--- !u!114 &-3800665685699207894
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -58,14 +39,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   started: 0
-  guid: dfb65820ac4744a0189ef68bf938306e
+  guid: 75f550e3162204eaba23399187b4b07f
   position: {x: 0, y: 0}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
-    goalRotation: {x: 0, y: 0, z: 0, w: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
   description: 
   drawGizmos: 0
-  child: {fileID: 2751725448305413715}
+  child: {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,42 +57,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d285eb63c2cdd74180de7cfceaa96ad, type: 3}
-  m_Name: KuriBT
+  m_Name: KuriBTTurnGo
   m_EditorClassIdentifier: 
-  rootNode: {fileID: -3097029908279183568}
+  rootNode: {fileID: -3800665685699207894}
   treeState: 0
   nodes:
-  - {fileID: -3097029908279183568}
-  - {fileID: -3778679491438657199}
-  - {fileID: 2751725448305413715}
-  - {fileID: -4623806484287032485}
-  - {fileID: 4140098955128703780}
-  - {fileID: 607501813735095831}
+  - {fileID: 0}
+  - {fileID: -3800665685699207894}
+  - {fileID: 3768066815214277624}
+  - {fileID: 7487742368074759264}
+  - {fileID: 8401121160887883049}
+  - {fileID: 8370148457399579118}
+  - {fileID: -4865850642487693907}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
-    goalRotation: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &607501813735095831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: MoveToPose
-  m_EditorClassIdentifier: Assembly-CSharp::MoveToPose
-  state: 0
-  started: 0
-  guid: b4d9d7d017a5542e18373a7b6ecaa1e7
-  position: {x: 208, y: 311}
-  blackboard:
-    goalPosition: {x: 0, y: 0, z: 0}
-    goalRotation: {x: 0, y: 0, z: 0, w: 0}
-  description: 
-  drawGizmos: 0
---- !u!114 &2751725448305413715
+    goalRotation: {x: 0, y: 0, z: 0}
+--- !u!114 &3768066815214277624
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,19 +86,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   started: 0
-  guid: 94eb75174127c4c1498e6e7359efb743
-  position: {x: 0, y: 138}
+  guid: 4d4166d7e61b449c4bf66a6ea6d95e9a
+  position: {x: 15, y: 177}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
-    goalRotation: {x: 0, y: 0, z: 0, w: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
   description: 
   drawGizmos: 0
   children:
-  - {fileID: -4623806484287032485}
-  - {fileID: 4140098955128703780}
-  - {fileID: -3778679491438657199}
-  - {fileID: 607501813735095831}
---- !u!114 &4140098955128703780
+  - {fileID: 7487742368074759264}
+  - {fileID: 8401121160887883049}
+  - {fileID: 8370148457399579118}
+  - {fileID: -4865850642487693907}
+--- !u!114 &7487742368074759264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0a055ff4bd9e6642b3f0dff32a86e1d, type: 3}
+  m_Name: RandomPosition
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: d1e39d1865f6742308832198977936f7
+  position: {x: -348.72, y: 318}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
+  min: {x: -10, y: -10}
+  max: {x: 10, y: 10}
+--- !u!114 &8370148457399579118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0414be88826548659aa800cb4866a3a, type: 3}
+  m_Name: TurnToPose
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: de1a8c6d482ff44c48e0069634679a3a
+  position: {x: 41, y: 318}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
+--- !u!114 &8401121160887883049
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,10 +156,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   started: 0
-  guid: 73a99525e90f74c84b12d324de126326
-  position: {x: -187, y: 311}
+  guid: b8366cdc0ed654f89b9496352542e599
+  position: {x: -165, y: 318}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
-    goalRotation: {x: 0, y: 0, z: 0, w: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
   description: 
   drawGizmos: 0
+  min: -180
+  max: 180

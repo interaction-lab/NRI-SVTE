@@ -14,7 +14,7 @@ namespace NRISVTE {
         }
 
         protected override State OnUpdate() {
-            blackboard.goalRotation.eulerAngles.y = Random.Range(min, max);
+            blackboard.goalRotation.y = Random.Range(min, max);
             return State.Success;
         }
     }
