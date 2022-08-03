@@ -25,7 +25,7 @@ namespace TheKiwiCoder {
         SerializedObject treeObject;
         SerializedProperty blackboardProperty;
 
-        [MenuItem("TheKiwiCoder/BehaviourTreeEditor ...")]
+        [MenuItem("BT/BehaviourTreeEditor")]
         public static void OpenWindow() {
             BehaviourTreeEditor wnd = GetWindow<BehaviourTreeEditor>();
             wnd.titleContent = new GUIContent("BehaviourTreeEditor");
@@ -105,7 +105,8 @@ namespace TheKiwiCoder {
 
             if (tree == null) {
                 OnSelectionChange();
-            } else {
+            }
+            else {
                 SelectTree(tree);
             }
         }
@@ -165,11 +166,12 @@ namespace TheKiwiCoder {
 
             if (Application.isPlaying) {
                 treeView.PopulateView(tree);
-            } else {
+            }
+            else {
                 treeView.PopulateView(tree);
             }
 
-            
+
             treeObject = new SerializedObject(tree);
             blackboardProperty = treeObject.FindProperty("blackboard");
 

@@ -22,7 +22,6 @@ namespace TheKiwiCoder {
         }
 
         public ScriptTemplate[] scriptFileAssets = {
-            
             new ScriptTemplate{ templateFile=BehaviourTreeSettings.GetOrCreateSettings().scriptTemplateActionNode, defaultFileName="NewActionNode.cs", subFolder="Actions" },
             new ScriptTemplate{ templateFile=BehaviourTreeSettings.GetOrCreateSettings().scriptTemplateCompositeNode, defaultFileName="NewCompositeNode.cs", subFolder="Composites" },
             new ScriptTemplate{ templateFile=BehaviourTreeSettings.GetOrCreateSettings().scriptTemplateDecoratorNode, defaultFileName="NewDecoratorNode.cs", subFolder="Decorators" },
@@ -124,7 +123,7 @@ namespace TheKiwiCoder {
 
         public override void BuildContextualMenu(ContextualMenuPopulateEvent evt) {
 
-            //base.BuildContextualMenu(evt);
+            base.BuildContextualMenu(evt);
 
             // New script functions
             evt.menu.AppendAction($"Create Script.../New Action Node", (a) => CreateNewScript(scriptFileAssets[0]));
@@ -134,7 +133,6 @@ namespace TheKiwiCoder {
 
             Vector2 nodePosition = this.ChangeCoordinatesTo(contentViewContainer, evt.localMousePosition);
             {
-
                 var types = TypeCache.GetTypesDerivedFrom<ActionNode>();
                 foreach (var type in types) {
                     evt.menu.AppendAction($"[Action]/{type.Name}", (a) => CreateNode(type, nodePosition));
@@ -154,6 +152,9 @@ namespace TheKiwiCoder {
                     evt.menu.AppendAction($"[Decorator]/{type.Name}", (a) => CreateNode(type, nodePosition));
                 }
             }
+
+            // evt.menu.AppendSeparator();
+            // evt.menu.AppendAction("Delete", (a) => DeleteSelectedElements());
         }
 
         void SelectFolder(string path) {
