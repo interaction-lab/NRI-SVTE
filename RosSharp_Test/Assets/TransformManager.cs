@@ -55,6 +55,12 @@ namespace NRISVTE {
             }
         }
 
+        public virtual Vector3 Left{
+            get {
+                return -OriginT.right;
+            }
+        }
+
         #endregion
 
         #region unity

@@ -7,7 +7,9 @@
 Thomas R. Groechel*, Allison O'Connell*, Massimiliano Nigro*, and Maja J. Matarić. "Reimagining RViz: Multidimensional Augmented Reality Robot Signal Design", In 2022 IEEE International Symposium on Robot and Human Interactive Communication (RO-MAN 2022), Aug-2022. - [77610bae15ae9a2fb632c31f9b26150ffe8e258a](https://github.com/interaction-lab/NRI-SVTE/commit/77610bae15ae9a2fb632c31f9b26150ffe8e258a), [Video](https://youtu.be/Xw2_kHyN-xA)
 
 ## Thanks
-We want to thank [The Kiwi Coder](https://thekiwicoder.com/behaviour-tree-editor/) for their free behavior tree unitypackage.
+We want to thank 
+- [The Kiwi Coder](https://thekiwicoder.com/behaviour-tree-editor/) for their free behavior tree unitypackage.
+- [KDTrees](https://github.com/viliwonka/KDTree) for their package on kd trees
 ## Setup
 
 - Change line 88 of `ColorPicker.cs` to 
