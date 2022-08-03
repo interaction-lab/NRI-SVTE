@@ -16,6 +16,6 @@ public class ColorVisualizer : MonoBehaviour
 
     private void Update()
     {
-        rend.material.color = colorPicker.CustomColor;
+        //rend.material.color = colorPicker.CustomColor;
     }
 }
