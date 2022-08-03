@@ -17,13 +17,11 @@ namespace NRISVTE {
         static int numMissessAllowed = 5; // this is how many times rays can miss before we stop, we are likely out of the mesh at this point
         int layerMask;
         Vector2Int centerCords = new Vector2Int(width / 2, height / 2);
-
-        KDTree kdTree;
-        KDQuery query = new KDQuery();
-        List<Vector3> pointHits = new List<Vector3>();
+        Dictionary<char, Dictionary<bool, List<Vector3>>> pointHits;
         int maxLeafNodes = 4; // higher number = faster building, but slower querying
         int numNearestToLookAt = 7; // higher number = slower querying, but more accurate/uses all hits
         KuriTransformManager _kuriT;
+        List<Vector3> polyLine; // x, y, angle all relative to Kuri
         public KuriTransformManager KuriT {
             get {
                 if (_kuriT == null) {
@@ -39,31 +37,56 @@ namespace NRISVTE {
             verticalRaycastHits = new RaycastHit[width, 2]; // up, down
             horizontalRaycastHits = new RaycastHit[height, 2]; // left, right
             layerMask = 1 << LayerMask.NameToLayer("Spatial Awareness");
-            kdTree = new KDTree(maxLeafNodes);
         }
         #endregion
         #region public
         void Update() {
             UpdateRayEstimators();
-            BuildPolyLine();
             DebugDrawRayHits();
+            BuildPolyLine();
+            DebugDrawPolyLineFromKuri();
         }
         #endregion
         #region private
         void UpdateRayEstimators() {
-            pointHits.Clear();
-            pointHits.AddRange(UpdateWestRays());
-            pointHits.AddRange(UpdateEastRays());
-            pointHits.AddRange(UpdateNorthRays());
-            pointHits.AddRange(UpdateSouthRays());
+            InitPointHits();
+            UpdateWestRays();
+            UpdateEastRays();
+            UpdateNorthRays();
+            UpdateSouthRays();
+        }
+
+        void InitPointHits() {
+            pointHits = new Dictionary<char, Dictionary<bool, List<Vector3>>>()
+            {
+                {'S', new Dictionary<bool, List<Vector3>>()
+                {
+                    { true, new List<Vector3>() },
+                    { false, new List<Vector3>() }
+                }},
+                {'N', new Dictionary<bool, List<Vector3>>()
+                {
+                    { true, new List<Vector3>() },
+                    { false, new List<Vector3>() }
+                }},
+                {'W', new Dictionary<bool, List<Vector3>>()
+                {
+                    { true, new List<Vector3>() },
+                    { false, new List<Vector3>() }
+                }},
+                {'E', new Dictionary<bool, List<Vector3>>()
+                {
+                    { true, new List<Vector3>() },
+                    { false, new List<Vector3>() }
+                }}
+            };
         }
 
         // [start, end]
-        List<Vector3> UpdateRayCast(RaycastHit[,] raycastHitsArr, Vector3 dir0, Vector3 dir1, int start, int end) {
+        void UpdateRayCast(RaycastHit[,] raycastHitsArr, Vector3 dir0, Vector3 dir1, int start, int end, char dirKey) {
             int numMissess = 0;
             int cur = start;
             bool isVertical = raycastHitsArr == verticalRaycastHits;
-            List<Vector3> pointHits = new List<Vector3>();
             while (true) {
                 Vector3 location = CalcLocForRayOrigin(cur, isVertical);
                 Physics.Raycast(location, dir0, out raycastHitsArr[cur, 0], maxRayDist, layerMask);
@@ -73,8 +96,8 @@ namespace NRISVTE {
                 }
                 else {
                     numMissess = 0;
-                    pointHits.Add(raycastHitsArr[cur, 0].point);
-                    pointHits.Add(raycastHitsArr[cur, 1].point);
+                    pointHits[dirKey][true].Add(raycastHitsArr[cur, 0].point);
+                    pointHits[dirKey][false].Add(raycastHitsArr[cur, 1].point);
                 }
                 if (numMissess > numMissessAllowed) {
                     break;
@@ -93,19 +116,18 @@ namespace NRISVTE {
                 }
 
             }
-            return pointHits;
         }
-        List<Vector3> UpdateWestRays() {
-            return UpdateRayCast(verticalRaycastHits, KuriT.Forward, -KuriT.Forward, centerCords.x, 0);
+        void UpdateWestRays() {
+            UpdateRayCast(verticalRaycastHits, KuriT.Forward, -KuriT.Forward, centerCords.x, 0, 'W');
         }
-        List<Vector3> UpdateEastRays() {
-            return UpdateRayCast(verticalRaycastHits, KuriT.Forward, -KuriT.Forward, centerCords.x, width - 1);
+        void UpdateEastRays() {
+            UpdateRayCast(verticalRaycastHits, KuriT.Forward, -KuriT.Forward, centerCords.x, width - 1, 'E');
         }
-        List<Vector3> UpdateNorthRays() {
-            return UpdateRayCast(horizontalRaycastHits, KuriT.Left, -KuriT.Left, centerCords.y, 0);
+        void UpdateNorthRays() {
+            UpdateRayCast(horizontalRaycastHits, KuriT.Left, -KuriT.Left, centerCords.y, 0, 'N');
         }
-        List<Vector3> UpdateSouthRays() {
-            return UpdateRayCast(horizontalRaycastHits, KuriT.Left, -KuriT.Left, centerCords.y, height - 1);
+        void UpdateSouthRays() {
+            UpdateRayCast(horizontalRaycastHits, KuriT.Left, -KuriT.Left, centerCords.y, height - 1, 'S');
         }
         Vector3 CalcLocForRayOrigin(int i, bool isVertical) {
             if (isVertical) {
@@ -116,6 +138,32 @@ namespace NRISVTE {
             }
         }
 
+        void BuildPolyLine() {
+            // ST, NT, WT, ET, SF, NF, WF, EF
+            polyLine = new List<Vector3>();
+            polyLine.AddRange(pointHits['S'][true]);
+            polyLine.AddRange(pointHits['N'][true]);
+            polyLine.AddRange(pointHits['W'][true]);
+            polyLine.AddRange(pointHits['E'][true]);
+            polyLine.AddRange(pointHits['S'][false]);
+            polyLine.AddRange(pointHits['N'][false]);
+            polyLine.AddRange(pointHits['W'][false]);
+            polyLine.AddRange(pointHits['E'][false]);
+
+            DebugDrawPolyLine(); // draw prior to transforming into kuri coords
+
+
+            // convert to relative to Kuri
+            Vector3 forwardNormed = KuriT.Forward.normalized;
+            Vector2 kuriForward = new Vector2(forwardNormed.x, forwardNormed.z);
+            for (int i = 0; i < polyLine.Count; i++) {
+                Vector2 twodpos = new Vector2(
+                    polyLine[i].x - KuriT.Position.x,   // x in kuri cords
+                    polyLine[i].z - KuriT.Position.z);  // y in kuri coords
+                float angle = Vector2.SignedAngle(kuriForward, twodpos.normalized);
+                polyLine[i] = new Vector3(twodpos.x, twodpos.y, angle);
+            }
+        }
 
         void DebugDrawRayHits() {
             // draw vertical rays
@@ -152,85 +200,23 @@ namespace NRISVTE {
             }
         }
 
-        void BuildPolyLine() {
-            int totalPointHits = pointHits.Count;
-            kdTree.Build(pointHits, maxLeafNodes);
-            if (kdTree.Points.Length == 0) {
-                Debug.Log("No points in kdTree");
-                return;
+        void DebugDrawPolyLine() {
+            for (int i = 0; i < polyLine.Count; i++) {
+                // draw a line from the current point to the next point
+                int nextPointIndex = (i + 1) % polyLine.Count;
+                Debug.DrawLine(polyLine[i], polyLine[nextPointIndex], Color.white);
             }
-
-            // take an initial point from the beginning of the kd tree points
-            Vector3 curPoint = kdTree.Points[0];
-            HashSet<Vector3> visitedPoints = new HashSet<Vector3>();
-            List<Vector3> polyLine = new List<Vector3>();
-            polyLine.Add(curPoint);
-            visitedPoints.Add(curPoint);
-
-
-            bool runTwice = false;
-            while (polyLine.Count < totalPointHits) {
-                List<int> resultIndices = new List<int>();
-                List<float> resultDistances = new List<float>();
-                query.KNearest(kdTree, curPoint, numNearestToLookAt, resultIndices, resultDistances);
-
-                // sort the indices by distance
-                // resultIndices = resultIndices.OrderBy(i => resultDistances[i]).ToList(); // this breaks for some reason
-                resultIndices = KeyValSort(resultDistances, resultIndices);
-
-                bool newNearestFound = false;
-                foreach (int index in resultIndices) {
-                    if (!visitedPoints.Contains(kdTree.Points[index])) {
-                        curPoint = kdTree.Points[index];
-                        polyLine.Add(curPoint);
-                        visitedPoints.Add(curPoint);
-                        newNearestFound = true;
-                        runTwice = false;
-                        break;
-                    }
-                }
-
-                if (!newNearestFound && polyLine.Count < totalPointHits) {
-                    if (runTwice) {
-                        ++numNearestToLookAt; // keep adding to this until we find a new nearest point
-                    }
-                    else {
-                        // remove all points visisted from pointHits and rebuild the kdTree
-                        List<Vector3> newPointHits = new List<Vector3>();
-                        foreach (Vector3 point in pointHits) {
-                            if (!visitedPoints.Contains(point)) {
-                                newPointHits.Add(point);
-                            }
-                        }
-                        pointHits = newPointHits;
-                        kdTree.Build(pointHits, maxLeafNodes);
-                        curPoint = kdTree.Points[0];
-                        runTwice = true;
-                    }
-                }
-            }
-            Debug.Log("Polyline length: " + polyLine.Count);
-
         }
 
-        List<int> KeyValSort(List<float> keys, List<int> values) {
-            List<int> result = new List<int>();
-            for (int i = 0; i < keys.Count; i++) {
-                int index = keys.IndexOf(keys.Min());
-                result.Add(values[index]);
-                keys.RemoveAt(index);
-                values.RemoveAt(index);
+        void DebugDrawPolyLineFromKuri(){
+            foreach(Vector3 v in polyLine){
+                // convert to world coords from x,y,angle
+                Vector3 kuriCords = new Vector3(v.x, 0, v.y);
+                Vector3 worldCords = KuriT.Position + Quaternion.Euler(0, v.z, 0) * kuriCords;
+                Debug.DrawRay(KuriT.Position, worldCords, Color.cyan);
             }
-            return result;
         }
 
-        void PrintList<T>(List<T> list) {
-            string str = "";
-            foreach (T v in list) {
-                str += v.ToString() + " ";
-            }
-            Debug.Log(str);
-        }
         #endregion
 
     }

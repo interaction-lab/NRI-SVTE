@@ -44,6 +44,11 @@ namespace NRISVTE {
                 return new Vector2(Forward.x, Forward.z);
             }
         }
+        public virtual Vector3 Up{
+            get {
+                return OriginT.up;
+            }
+        }
 
         float _groundYCord = 0f;
         public virtual float GroundYCord {
