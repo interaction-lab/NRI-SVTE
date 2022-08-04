@@ -61,7 +61,7 @@ MonoBehaviour:
   state: 0
   started: 1
   guid: 75f550e3162204eaba23399187b4b07f
-  position: {x: -50, y: -174.82468}
+  position: {x: -318.5, y: -367.52002}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -83,7 +83,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 8358fa0beb45b446d85a658d9fd7ecce
-  position: {x: 0, y: 0}
+  position: {x: 68.36365, y: 468.49994}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -104,15 +104,39 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 732b18b34801e46c0a36047de3af2fd2
-  position: {x: -50, y: -26.248993}
+  position: {x: -318.5, y: -169}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
   description: 
   drawGizmos: 0
-  child: {fileID: 7763931539460907648}
+  child: {fileID: 3040214136047231227}
   restartOnSuccess: 1
-  restartOnFailure: 0
+  restartOnFailure: 1
+--- !u!114 &-1727869080658319654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61431bba79d7d7843b82bf1de71703f5, type: 3}
+  m_Name: Sequencer
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 6cf4fd4826b6a43a2aaead50d7757062
+  position: {x: -48, y: 160.5}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
+  children:
+  - {fileID: 2143380675490538526}
+  - {fileID: 3768066815214277624}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,8 +161,10 @@ MonoBehaviour:
   - {fileID: -3155346379149912824}
   - {fileID: 2143380675490538526}
   - {fileID: -3840956628551839608}
-  - {fileID: 7763931539460907648}
   - {fileID: -3525738371127469992}
+  - {fileID: 3040214136047231227}
+  - {fileID: 5306275910785180079}
+  - {fileID: -1727869080658319654}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -167,6 +193,30 @@ MonoBehaviour:
   - {fileID: 7487742368074759264}
   - {fileID: 8401121160887883049}
   - {fileID: -3840956628551839608}
+--- !u!114 &3040214136047231227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f9815d524d95484bb27eddab14d47db, type: 3}
+  m_Name: MonitorComposite
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 317ce83a5b047457ab39c5935553db18
+  position: {x: -318.5, y: -27}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
+  children:
+  - {fileID: 5306275910785180079}
+  - {fileID: -1727869080658319654}
 --- !u!114 &3768066815214277624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,15 +232,38 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 4d4166d7e61b449c4bf66a6ea6d95e9a
-  position: {x: 237.30792, y: 284.02087}
+  position: {x: 237.50006, y: 282.5}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
   description: 
   drawGizmos: 0
   children:
+  - {fileID: -3525738371127469992}
   - {fileID: 8370148457399579118}
   - {fileID: -4865850642487693907}
+--- !u!114 &5306275910785180079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d3ef859cb2f04c45ae299e4632ec511, type: 3}
+  m_Name: MonitorPublicBool
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 929804af8cc694d36b33c96db3ebdfac
+  position: {x: -524.5, y: 160.5}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
+  value: 1
 --- !u!114 &7487742368074759264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,30 +287,6 @@ MonoBehaviour:
   drawGizmos: 0
   min: {x: -3, y: -3}
   max: {x: 3, y: 3}
---- !u!114 &7763931539460907648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61431bba79d7d7843b82bf1de71703f5, type: 3}
-  m_Name: Sequencer
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: cd439d444fc7b4d02b6d45175436f66f
-  position: {x: -50.00006, y: 143.77878}
-  blackboard:
-    goalPosition: {x: 0, y: 0, z: 0}
-    goalRotation: {x: 0, y: 0, z: 0}
-  description: 
-  drawGizmos: 0
-  children:
-  - {fileID: 2143380675490538526}
-  - {fileID: 3768066815214277624}
 --- !u!114 &8370148457399579118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,7 +302,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: de1a8c6d482ff44c48e0069634679a3a
-  position: {x: 199.93164, y: 468.50006}
+  position: {x: 237.50006, y: 468.50006}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
