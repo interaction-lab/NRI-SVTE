@@ -375,7 +375,7 @@ GameObject:
   - component: {fileID: 233804535}
   - component: {fileID: 233804534}
   m_Layer: 5
-  m_Name: Stop
+  m_Name: StopButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6547,7 +6547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ef44c7bb97d5684e97676c1054aeba5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logData: 1
+  logData: 0
 --- !u!114 &1770657822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8561,6 +8561,7 @@ GameObject:
   - component: {fileID: 919132148530632250}
   - component: {fileID: 919132148530632251}
   - component: {fileID: 919132148530632252}
+  - component: {fileID: 919132148530632253}
   m_Layer: 0
   m_Name: KURI
   m_TagString: Untagged
@@ -8663,6 +8664,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fbec8c1a5138e4ec3a5f5c52265a4244, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &919132148530632253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148530632245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4a5f09fd2c6e426ca2e6ed56a904ea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &953784933426894402
