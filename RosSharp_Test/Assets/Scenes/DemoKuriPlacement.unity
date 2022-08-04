@@ -211,7 +211,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148530632245}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 486a6acb08585d148b13133309e35dae, type: 3}
   m_Name: 
@@ -6350,7 +6350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   host: localhost
-  port: 2345
+  port: 2346
   endPointPath: 
 --- !u!114 &1770657817
 MonoBehaviour:
@@ -8295,6 +8295,7 @@ GameObject:
   - component: {fileID: 919132148530632249}
   - component: {fileID: 919132148530632250}
   - component: {fileID: 919132148530632251}
+  - component: {fileID: 919132148530632252}
   m_Layer: 0
   m_Name: KURI
   m_TagString: Untagged
@@ -8333,7 +8334,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148530632245}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e1f236e9eee96d439041c4239056937, type: 3}
   m_Name: 
@@ -8387,6 +8388,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tree: {fileID: 11400000, guid: 0d155c59fd15044abbbbc1f4914f50a8, type: 2}
+--- !u!114 &919132148530632252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148530632245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbec8c1a5138e4ec3a5f5c52265a4244, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &953784933426894402
 GameObject:
   m_ObjectHideFlags: 0

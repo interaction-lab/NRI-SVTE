@@ -43,9 +43,9 @@ namespace NRISVTE {
         #region public
         void Update() {
             UpdateRayEstimators();
-           // DebugDrawRayHits();
+            // DebugDrawRayHits();
             BuildPolyLine();
-            DebugDrawPolyLineFromKuri();
+            // DebugDrawPolyLineFromKuri();
         }
         #endregion
         #region private
@@ -153,7 +153,7 @@ namespace NRISVTE {
 
             PublicPolyLineList = new List<List<float>>();
 
-            DebugDrawPolyLine(); // draw prior to transforming into kuri coords
+            // DebugDrawPolyLine(); // draw prior to transforming into kuri coords
 
             // convert to relative to Kuri
             Vector3 forwardNormed = KuriT.Forward.normalized;
@@ -164,7 +164,7 @@ namespace NRISVTE {
                     PolyLineList[i].z - KuriT.Position.z);  // y in kuri coords
                 float angle = Vector2.SignedAngle(kuriForward, twodpos.normalized);
                 PolyLineList[i] = new Vector3(twodpos.x, twodpos.y, angle);
-                PublicPolyLineList.Add(new List<float>(){twodpos.x * 100, twodpos.y * 100});
+                PublicPolyLineList.Add(new List<float>() { twodpos.x * 100, twodpos.y * 100 });
             }
         }
 
@@ -211,8 +211,8 @@ namespace NRISVTE {
             }
         }
 
-        void DebugDrawPolyLineFromKuri(){
-            foreach(Vector3 v in PolyLineList){
+        void DebugDrawPolyLineFromKuri() {
+            foreach (Vector3 v in PolyLineList) {
                 // convert to world coords from x,y,angle
                 Vector3 kuriCords = new Vector3(v.x, 0, v.y);
                 Vector3 worldCords = KuriT.Position + kuriCords;
