@@ -4,22 +4,35 @@ using UnityEngine;
 
 namespace NRISVTE {
     public class HeadPoseLoggingManager : Singleton<HeadPoseLoggingManager> {
-        static string headPoseLocColNameX = "HeadPoseX",
-           headPoseLocColNameY = "HeadPoseY", headPoseLocColNameZ = "HeadPoseZ";
+        static string headPoseColName = "HeadPose", headRotColName = "HeadRot";
 
-        Transform headTransform;
+        PlayerTransformManager _playerT;
+        PlayerTransformManager PlayerT {
+            get {
+                if (_playerT == null) {
+                    _playerT = Camera.main.GetComponent<PlayerTransformManager>();
+                }
+                return _playerT;
+            }
+        }
+        LoggingManager _loggingManager;
+        LoggingManager loggingManager {
+            get {
+                if (_loggingManager == null) {
+                    _loggingManager = LoggingManager.instance;
+                }
+                return _loggingManager;
+            }
+        }
 
         private void Start() {
-            LoggingManager.instance.AddLogColumn(headPoseLocColNameX, "");
-            LoggingManager.instance.AddLogColumn(headPoseLocColNameY, "");
-            LoggingManager.instance.AddLogColumn(headPoseLocColNameZ, "");
-            headTransform = Camera.main.transform;
+            loggingManager.AddLogColumn(headPoseColName, Vector3.zero.ToString());
+            loggingManager.AddLogColumn(headRotColName, Quaternion.identity.ToString());
         }
 
         private void Update() {
-            LoggingManager.instance.UpdateLogColumn(headPoseLocColNameX, headTransform.position.x.ToString());
-            LoggingManager.instance.UpdateLogColumn(headPoseLocColNameY, headTransform.position.y.ToString());
-            LoggingManager.instance.UpdateLogColumn(headPoseLocColNameZ, headTransform.position.z.ToString());
+            loggingManager.UpdateLogColumn(headPoseColName, PlayerT.Position.ToString());
+            loggingManager.UpdateLogColumn(headRotColName, PlayerT.Rotation.ToString());
         }
     }
 }

@@ -39,7 +39,7 @@ namespace NRISVTE {
             ws.OnMessage += (sender, e) => {
                 try {
                     UnityMainThread.wkr.AddJob(() => {
-                        loggingManager.UpdateLogColumn(msgRecvColName, e.Data);
+                        loggingManager.UpdateLogColumn(msgRecvColName, e.Data.ToString());
                         DebugTextM.SetDebugText("Received: " + e.Data);
                     });
                 }
