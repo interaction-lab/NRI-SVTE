@@ -13,41 +13,24 @@ namespace NRISVTE {
         WebSocket ws;
         DebugTextManager DebugTextM;
         int numErrors = 0;
-
-        PlayerTransformManager _playerT;
-        PlayerTransformManager PlayerT {
+        public static string msgSendColName = "msgSend", msgRecvColName = "msgRecv";
+        LoggingManager _loggingManager;
+        LoggingManager loggingManager {
             get {
-                if (_playerT == null) {
-                    _playerT = Camera.main.GetComponent<PlayerTransformManager>();
+                if (_loggingManager == null) {
+                    _loggingManager = LoggingManager.instance;
                 }
-                return _playerT;
+                return _loggingManager;
             }
         }
 
-        KuriTransformManager _kuriT;
-        KuriTransformManager KuriT {
-            get {
-                if (_kuriT == null) {
-                    _kuriT = KuriManager.instance.GetComponent<KuriTransformManager>();
-                }
-                return _kuriT;
-            }
-        }
-        PolyLineJSON polyLineJSONmsg;
-        RoomPolylineEstimator _roomPolylineEstimator;
-        public RoomPolylineEstimator roomPolylineEstimator {
-            get {
-                if (_roomPolylineEstimator == null) {
-                    _roomPolylineEstimator = GetComponent<RoomPolylineEstimator>();
-                }
-                return _roomPolylineEstimator;
-            }
-        }
+
         #endregion
 
         #region unity
         void Start() {
-            polyLineJSONmsg = new PolyLineJSON();
+            loggingManager.AddLogColumn(msgSendColName, "");
+            loggingManager.AddLogColumn(msgRecvColName, "");
             DebugTextM = DebugTextManager.instance;
             ws = new WebSocket("ws://" + host + ":" + port + endPointPath);
             ws.OnOpen += (sender, e) => {
@@ -56,6 +39,7 @@ namespace NRISVTE {
             ws.OnMessage += (sender, e) => {
                 try {
                     UnityMainThread.wkr.AddJob(() => {
+                        loggingManager.UpdateLogColumn(msgRecvColName, e.Data);
                         DebugTextM.SetDebugText("Received: " + e.Data);
                     });
                 }
@@ -64,7 +48,6 @@ namespace NRISVTE {
                 }
             };
             ws.OnError += (sender, e) => {
-                //Debug.Log("Error: " + e.Message);
                 numErrors++;
             };
             ws.OnClose += (sender, e) => {
@@ -72,35 +55,12 @@ namespace NRISVTE {
             };
             ws.Connect();
         }
-
-        private void Update() {
-            if (Input.GetKeyDown(KeyCode.Space)) {
-                polyLineJSONmsg.identifier = string.Join("_", UserIDManager.PlayerId, UserIDManager.DeviceId, Time.time.ToString());
-                polyLineJSONmsg.room = roomPolylineEstimator.PublicPolyLineList;
-                polyLineJSONmsg.robot = new Dictionary<string, int>() {
-                    {"id", 0}
-                };
-                polyLineJSONmsg.score = -1;
-
-                Vector2 userPosRelKuri = new Vector2(PlayerT.Position.x - KuriT.Position.x, PlayerT.Position.z - KuriT.Position.z);
-                Vector2 kuriForward2D = new Vector2(KuriT.Forward.x, KuriT.Forward.z);
-                float angle = Vector2.SignedAngle(userPosRelKuri, kuriForward2D);
-                polyLineJSONmsg.humans = new List<Dictionary<string, float>>() {
-                    new Dictionary<string, float>() {
-                        {"id", 1},
-                        {"xPos", userPosRelKuri.x * 100},
-                        {"yPos", userPosRelKuri.y * 100},
-                        {"orientation", angle}
-                    }
-                };
-                ws.Send(Newtonsoft.Json.JsonConvert.SerializeObject(polyLineJSONmsg));
-            }
-        }
         #endregion
 
         #region public
         public void SendToServer(string message) {
-            //ws.Send(message);
+            loggingManager.UpdateLogColumn(msgSendColName, message);
+            ws.Send(message);
         }
 
         #endregion

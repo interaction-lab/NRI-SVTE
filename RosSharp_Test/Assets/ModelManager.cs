@@ -149,7 +149,7 @@ namespace NRISVTE {
         }
 
         private void SendModelInputs() {
-            ConnectionM.SendToServer(string.Join(',', modelInputs));
+            // ConnectionM.SendToServer(string.Join(',', modelInputs));
         }
 
 
