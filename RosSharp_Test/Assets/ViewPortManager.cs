@@ -68,7 +68,7 @@ namespace NRISVTE {
                 Mathf.Clamp(screenPos.x, 0, Screen.width),
                 Mathf.Clamp(screenPos.y, 0, Screen.height),
                 screenPos.z);
-            viewPortPos = MainCam.ScreenToViewportPoint(kuriWorldTarget);
+            viewPortPos = MainCam.WorldToViewportPoint(kuriWorldTarget);
         }
 
         private void UpdateIsInViewPort() {
