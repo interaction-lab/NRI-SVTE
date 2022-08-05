@@ -5774,7 +5774,6 @@ GameObject:
   - component: {fileID: 862468997}
   - component: {fileID: 862468999}
   - component: {fileID: 862469001}
-  - component: {fileID: 862469000}
   - component: {fileID: 862469002}
   m_Layer: 7
   m_Name: Main Camera
@@ -5931,28 +5930,6 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &862469000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 862468990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 486a6acb08585d148b13133309e35dae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  raycastDistances:
-  - 0
-  - 0
-  - 0
-  - 0
-  raycastAngles:
-  - 270
-  - 90
-  - 0
-  - 180
 --- !u!114 &862469001
 MonoBehaviour:
   m_ObjectHideFlags: 0

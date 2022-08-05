@@ -8,7 +8,7 @@ namespace NRISVTE {
     public class ConnectionManager : MonoBehaviour {
         #region members
         public string host = "localhost";
-        public int port = 4649;
+        public int port = 2346;
         public string endPointPath = "/Echo";
         WebSocket ws;
         DebugTextManager DebugTextM;
@@ -24,6 +24,7 @@ namespace NRISVTE {
             }
         }
 
+        string closeCode = "";
 
         #endregion
 
@@ -52,6 +53,7 @@ namespace NRISVTE {
             };
             ws.OnClose += (sender, e) => {
                 Debug.Log("Closed with code: " + e.Code);
+                closeCode = e.Code.ToString();
             };
             ws.Connect();
         }
@@ -65,6 +67,7 @@ namespace NRISVTE {
             }
             else {
                 Debug.Log("Not connected to server, attempted to send: " + message);
+                Debug.Log("Close code: " + closeCode);
             }
         }
 
