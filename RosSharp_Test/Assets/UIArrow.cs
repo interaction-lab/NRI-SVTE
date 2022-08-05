@@ -41,7 +41,7 @@ namespace NRISVTE {
 
         #region unity
         void Update() {
-            if (!viewPortManager.IsInViewPort) {
+            if (viewPortManager.IsOffScreen && !viewPortManager.IsBehindPlayer) {
                 ArrowImage.enabled = true;
                 UpdateArrowPosition();
             }

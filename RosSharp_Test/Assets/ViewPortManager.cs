@@ -47,6 +47,8 @@ namespace NRISVTE {
                 return _isInViewPort;
             }
         }
+
+        public bool IsBehindPlayer, IsOffScreen;
         #endregion
         #region unity
         void Awake() {
@@ -72,9 +74,9 @@ namespace NRISVTE {
         }
 
         private void UpdateIsInViewPort() {
-            bool offScreen = screenPos.x < 0 || screenPos.x > Screen.width || screenPos.y < 0 || screenPos.y > Screen.height;
-            bool isBehindPlayer = kuriRelativeToCamera.z < 0;
-            _isInViewPort = !offScreen && !isBehindPlayer;
+            IsOffScreen = screenPos.x < 0 || screenPos.x > Screen.width || screenPos.y < 0 || screenPos.y > Screen.height;
+            IsBehindPlayer = kuriRelativeToCamera.z < 0;
+            _isInViewPort = !IsOffScreen && !IsBehindPlayer;
             if (wasOutOfView && IsInViewPort) {
                 KuriEnterViewPort.Invoke();
                 wasOutOfView = false;
