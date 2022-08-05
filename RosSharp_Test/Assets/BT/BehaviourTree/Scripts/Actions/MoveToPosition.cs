@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TheKiwiCoder;
+using NRISVTE;
 
-public class MoveToPosition : ActionNode
-{
+public class MoveToPosition : ActionNode {
     public float speed = 5;
     public float stoppingDistance = 0.1f;
     public bool updateRotation = true;
     public float acceleration = 40.0f;
     public float tolerance = 1.0f;
+
+    KuriTransformManager kuriTransformManager;
 
     protected override void OnStart() {
         context.agent.stoppingDistance = stoppingDistance;
@@ -17,12 +19,14 @@ public class MoveToPosition : ActionNode
         context.agent.destination = blackboard.goalPosition;
         context.agent.updateRotation = updateRotation;
         context.agent.acceleration = acceleration;
+        kuriTransformManager = KuriManager.instance.GetComponent<KuriTransformManager>();
     }
 
     protected override void OnStop() {
     }
 
     protected override State OnUpdate() {
+        kuriTransformManager.Position = new Vector3(kuriTransformManager.Position.x, kuriTransformManager.GroundYCord, kuriTransformManager.Position.z);
         if (context.agent.pathPending) {
             return State.Running;
         }

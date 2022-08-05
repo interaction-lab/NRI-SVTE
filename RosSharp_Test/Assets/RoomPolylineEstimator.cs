@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DataStructures.ViliWonka.KDTree;
 using System.Linq;
 
 namespace NRISVTE {
