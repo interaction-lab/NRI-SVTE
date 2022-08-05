@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace NRISVTE {
-    public class ServerJSONManager : MonoBehaviour {
+    public class ServerJSONManager : Singleton<ServerJSONManager> {
         #region members
         ConnectionManager _connectionManager;
         ConnectionManager connectionManager {
@@ -48,12 +48,6 @@ namespace NRISVTE {
         #region unity
         void Start() {
             polyLineJSONmsg = new PolyLineJSON();
-        }
-
-        void Update() {
-            if (Input.GetKeyDown(KeyCode.Space)) {
-                SendToServer(-1);
-            }
         }
         #endregion
 

@@ -60,7 +60,12 @@ namespace NRISVTE {
         #region public
         public void SendToServer(string message) {
             loggingManager.UpdateLogColumn(msgSendColName, message);
-            ws.Send(message);
+            if (ws.ReadyState == WebSocketState.Open) {
+                ws.Send(message);
+            }
+            else {
+                Debug.Log("Not connected to server, attempted to send: " + message);
+            }
         }
 
         #endregion
