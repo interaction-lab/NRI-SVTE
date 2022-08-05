@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 
 namespace NRISVTE {
-    public class UIArrow : MonoBehaviour {
+    public class UIArrow : Singleton<UIArrow> {
         #region members
         KuriTransformManager _kuriTransformManager;
         KuriTransformManager kuriTransformManager {
@@ -47,6 +47,12 @@ namespace NRISVTE {
                     _kuriBTEventRouter = KuriManager.instance.GetComponent<KuriBTEventRouter>();
                 }
                 return _kuriBTEventRouter;
+            }
+        }
+
+        public bool IsInViewPort {
+            get {
+                return !ArrowImage.enabled;
             }
         }
 
