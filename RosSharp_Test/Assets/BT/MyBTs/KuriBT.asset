@@ -21,8 +21,8 @@ MonoBehaviour:
     goalRotation: {x: 0, y: 0, z: 0}
   description: 
   drawGizmos: 0
-  min: {x: -10, y: -10}
-  max: {x: 10, y: 10}
+  min: {x: -3, y: -3}
+  max: {x: 3, y: 3}
 --- !u!114 &-8634884121623884657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,14 +59,13 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 1bf1605e63e0b45478a11b5aa686fe27
-  position: {x: -282, y: 305}
+  position: {x: -372, y: 321}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
   description: 
   drawGizmos: 0
   eventName: 
-  eventHappened: 0
 --- !u!114 &-7492123826235071683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,28 +89,6 @@ MonoBehaviour:
   drawGizmos: 0
   min: -180
   max: 180
---- !u!114 &-1271474272590200195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e658b1bd308bc5c429f5a9b404a04943, type: 3}
-  m_Name: Inverter
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: 425faa711e3f945e699651681dadea3c
-  position: {x: -246, y: 217}
-  blackboard:
-    goalPosition: {x: 0, y: 0, z: 0}
-    goalRotation: {x: 0, y: 0, z: 0}
-  description: 
-  drawGizmos: 0
-  child: {fileID: -7695155782536834697}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,7 +108,6 @@ MonoBehaviour:
   - {fileID: 6262570792249732517}
   - {fileID: 4407952470248866594}
   - {fileID: -7695155782536834697}
-  - {fileID: -1271474272590200195}
   - {fileID: 2231598805151735261}
   - {fileID: -7492123826235071683}
   - {fileID: -8985284610073284007}
@@ -140,10 +116,33 @@ MonoBehaviour:
   - {fileID: 786684170966397140}
   - {fileID: 2592339250002087727}
   - {fileID: 4588322083355070225}
-  - {fileID: 3663763848878919652}
+  - {fileID: 485519507291403080}
+  - {fileID: 9189865762511116435}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
+--- !u!114 &485519507291403080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 484819166e2414323932a3df6d078eaf, type: 3}
+  m_Name: SuccessOnStartButtonPressed
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 670d12121749f47818b84c50f9b44d5f
+  position: {x: -419.64, y: 68}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
+  eventName: 
 --- !u!114 &786684170966397140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,29 +238,6 @@ MonoBehaviour:
     goalRotation: {x: 0, y: 0, z: 0}
   description: 
   drawGizmos: 0
---- !u!114 &3663763848878919652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 484819166e2414323932a3df6d078eaf, type: 3}
-  m_Name: SuccessOnStartButtonPressed
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: 271fcd450583746e3adb84050fbdcd87
-  position: {x: -456, y: 81}
-  blackboard:
-    goalPosition: {x: 0, y: 0, z: 0}
-    goalRotation: {x: 0, y: 0, z: 0}
-  description: 
-  drawGizmos: 0
-  eventName: 
-  eventHappened: 0
 --- !u!114 &4407952470248866594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,7 +260,7 @@ MonoBehaviour:
   description: 
   drawGizmos: 0
   children:
-  - {fileID: -1271474272590200195}
+  - {fileID: 9189865762511116435}
   - {fileID: 2231598805151735261}
 --- !u!114 &4588322083355070225
 MonoBehaviour:
@@ -308,7 +284,7 @@ MonoBehaviour:
   description: 
   drawGizmos: 0
   children:
-  - {fileID: 3663763848878919652}
+  - {fileID: 485519507291403080}
   - {fileID: 4407952470248866594}
 --- !u!114 &6262570792249732517
 MonoBehaviour:
@@ -356,3 +332,25 @@ MonoBehaviour:
   description: 
   drawGizmos: 0
   child: {fileID: 6262570792249732517}
+--- !u!114 &9189865762511116435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be562323ca9ed477793d422927922b94, type: 3}
+  m_Name: InvertMonitorCondition
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: ce178de6a74ad492cbb7c95a70239f91
+  position: {x: -245, y: 184}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
+  child: {fileID: -7695155782536834697}

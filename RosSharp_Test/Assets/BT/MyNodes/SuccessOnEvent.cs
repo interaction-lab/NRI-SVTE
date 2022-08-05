@@ -18,24 +18,33 @@ namespace NRISVTE {
         public string eventName;
         UnityEvent evt;
 
-        public bool eventHappened = false;
+        float timeEventHappened = -1f, lastFrameTime = -1f;
+        bool processedEvent = true;
 
         protected override void OnStart() {
-            evt = eventRouter.GetEvent(eventName);
-            evt.AddListener(OnEvent);
-            eventHappened = false;
+            if (evt == null) {
+                evt = eventRouter.GetEvent(eventName);
+                evt.AddListener(OnEvent);
+            }
         }
 
         protected override void OnStop() {
-            evt.RemoveListener(OnEvent);
         }
 
-        protected virtual void OnEvent(){
-            eventHappened = true;
+        protected virtual void OnEvent() {
+            timeEventHappened = Time.time;
+            processedEvent = false;
         }
 
         protected override State OnUpdate() {
-            return eventHappened ? State.Success : State.Failure;
+            bool ret = false;
+            if (timeEventHappened == Time.time || // happened this frame
+               (timeEventHappened == lastFrameTime && !processedEvent)) { // happened last frame and was not processed
+                processedEvent = true;
+                ret = true;
+            }
+            lastFrameTime = Time.time;
+            return ret ? State.Success : State.Failure;
         }
     }
 }

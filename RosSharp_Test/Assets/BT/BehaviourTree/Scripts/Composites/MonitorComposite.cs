@@ -17,7 +17,7 @@ namespace TheKiwiCoder {
             childrenMonitorConditionsIndices.Clear();
             int i = 0;
             foreach(var child in children) {
-                if(child is MonitorCondition) {
+                if(child is MonitorCondition || child is MonitorDecorator) {
                     childrenMonitorConditionsIndices.Add(i);
                 }
                 ++i;
