@@ -12,15 +12,31 @@ namespace NRISVTE {
         private Vector3 goalPosition, goalRotation;
         float minSpeed = 0.1f;
 
+        PlayerTransformManager playerTransformManager;
+        KuriTransformManager kuriTransformManager;
+
         protected override void OnStart() {
-            goalPosition = blackboard.goalPosition;
-            goalRotation = blackboard.goalRotation;
+            SetGoalFromBB();
+            playerTransformManager = Camera.main.GetComponent<PlayerTransformManager>();
+            kuriTransformManager = KuriManager.instance.GetComponent<KuriTransformManager>();
         }
 
         protected override void OnStop() {
         }
 
+        private void SetGoalFromBB(){
+            goalPosition = blackboard.goalPosition;
+            goalRotation = blackboard.goalRotation;
+        }
+
         protected override State OnUpdate() {
+            // hacking in set position
+            blackboard.goalPosition = playerTransformManager.Position;
+            blackboard.goalPosition.y = kuriTransformManager.GroundYCord;
+            blackboard.goalRotation = Quaternion.LookRotation(playerTransformManager.Position - kuriTransformManager.Position, Vector3.up).eulerAngles;
+            
+            SetGoalFromBB();
+            
             if (updateRotation) {
                 context.kuriTransformManager.Rotation = Quaternion.Euler(
                     context.kuriTransformManager.Rotation.eulerAngles.x,

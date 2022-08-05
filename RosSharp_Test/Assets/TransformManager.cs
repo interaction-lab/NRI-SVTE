@@ -53,7 +53,7 @@ namespace NRISVTE {
         float _groundYCord = 0f;
         public virtual float GroundYCord {
             get {
-                return _groundYCord + 0.01f; // just off the ground to deal with issues with floating point
+                return _groundYCord + 0.00001f; // just off the ground to deal with issues with floating point
             }
             set {
                 _groundYCord = value;
