@@ -83,7 +83,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: a37b9478dc0fe4871b8b89cb34aa3986
-  position: {x: 45, y: 964.5501}
+  position: {x: 45, y: 965.00006}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -111,6 +111,28 @@ MonoBehaviour:
   description: 
   drawGizmos: 0
   score: 100
+--- !u!114 &-3297349304869200865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 813a8b94c8c7d48158beb064e088e3df, type: 3}
+  m_Name: MonitorSequence
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 4f10940d8b8b14148aa5e847cbd93961
+  position: {x: 0, y: 0}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
+  children: []
 --- !u!114 &-3130410509314734081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,6 +266,8 @@ MonoBehaviour:
   - {fileID: 30061140318839285}
   - {fileID: 5808029694259893795}
   - {fileID: 7393082819099250661}
+  - {fileID: 6842769530318553582}
+  - {fileID: -3297349304869200865}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -262,7 +286,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 8c07457c6d6fa43ec87322c66199b4ba
-  position: {x: 45, y: 849.00006}
+  position: {x: 45, y: 849}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -409,7 +433,7 @@ MonoBehaviour:
     goalRotation: {x: 0, y: 0, z: 0}
   description: 
   drawGizmos: 0
-  child: {fileID: 0}
+  child: {fileID: 6842769530318553582}
   restartOnSuccess: 0
   restartOnFailure: 1
 --- !u!114 &6262570792249732517
@@ -458,6 +482,29 @@ MonoBehaviour:
   description: 
   drawGizmos: 0
   score: -1
+--- !u!114 &6842769530318553582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f9815d524d95484bb27eddab14d47db, type: 3}
+  m_Name: MonitorComposite
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 8da14a58aafd542098395e2048d629c3
+  position: {x: 251, y: 686.6383}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
+  children:
+  - {fileID: 30061140318839285}
 --- !u!114 &7393082819099250661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517,7 +564,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: ed847a032b4ff480e83a993f0a413275
-  position: {x: 236, y: 965.00006}
+  position: {x: 235.99994, y: 965.00006}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}

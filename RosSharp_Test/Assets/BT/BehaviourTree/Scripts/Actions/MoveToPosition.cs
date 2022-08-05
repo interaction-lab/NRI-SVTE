@@ -20,12 +20,15 @@ public class MoveToPosition : ActionNode {
         context.agent.updateRotation = updateRotation;
         context.agent.acceleration = acceleration;
         kuriTransformManager = KuriManager.instance.GetComponent<KuriTransformManager>();
+        context.agent.isStopped = false;
     }
 
     protected override void OnStop() {
+        context.agent.isStopped = true;
     }
 
     protected override State OnUpdate() {
+        context.agent.destination = blackboard.goalPosition;
         kuriTransformManager.Position = new Vector3(kuriTransformManager.Position.x, kuriTransformManager.GroundYCord, kuriTransformManager.Position.z);
         if (context.agent.pathPending) {
             return State.Running;

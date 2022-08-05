@@ -25,6 +25,7 @@ namespace TheKiwiCoder {
 
         protected override State OnUpdate() {
             bool monitorsPassed = CheckAllMonitorChildren();
+            
             if(!monitorsPassed){
                 return State.Failure;
             }
