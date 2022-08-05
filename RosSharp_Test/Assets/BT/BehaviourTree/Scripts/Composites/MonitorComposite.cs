@@ -8,17 +8,23 @@ namespace TheKiwiCoder {
     public class MonitorComposite : CompositeNode {
         List<State> childrenLeftToExecute = new List<State>();
         List<int> childrenMonitorConditionsIndices = new List<int>();
+        HashSet<int> childrenMonitorDecoratorsIndices = new HashSet<int>();
 
         protected override void OnStart() {
             childrenLeftToExecute.Clear();
             children.ForEach(a => {
                 childrenLeftToExecute.Add(State.Running);
             });
+
             childrenMonitorConditionsIndices.Clear();
+            childrenMonitorDecoratorsIndices.Clear();
             int i = 0;
             foreach(var child in children) {
                 if(child is MonitorCondition || child is MonitorDecorator) {
                     childrenMonitorConditionsIndices.Add(i);
+                }
+                if(child is MonitorDecorator){
+                    childrenMonitorDecoratorsIndices.Add(i);
                 }
                 ++i;
             }
@@ -36,8 +42,8 @@ namespace TheKiwiCoder {
                         AbortRunningChildren();
                         return State.Failure;
                     }
-
-                    if (status == State.Running) {
+                    // skip over any monitor decorators (allows repeat checking of conditions)
+                    if (status == State.Running && !childrenMonitorDecoratorsIndices.Contains(i)) {
                         stillRunning = true;
                     }
 
