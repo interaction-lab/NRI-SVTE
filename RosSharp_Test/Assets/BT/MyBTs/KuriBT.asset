@@ -38,7 +38,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 42239288788374a10a84c13c3d9fdd56
-  position: {x: 100.99994, y: 551.8364}
+  position: {x: 254.79999, y: 552}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -104,12 +104,13 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 3ce483fc1aba143a29d0d22b6729c138
-  position: {x: 251, y: 228}
+  position: {x: 251, y: 227.99988}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
   description: 
   drawGizmos: 0
+  score: 100
 --- !u!114 &-3130410509314734081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,6 +188,7 @@ MonoBehaviour:
   - {fileID: -1158330387636908117}
   - {fileID: -3130410509314734081}
   - {fileID: -4505426595669773417}
+  - {fileID: 6590946236223152082}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -227,7 +229,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 9c736ffc7b5924e96a5cf621b9e3c4ed
-  position: {x: 261.00006, y: 551.8364}
+  position: {x: 414.8, y: 552}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -258,6 +260,7 @@ MonoBehaviour:
   - {fileID: -8985284610073284007}
   - {fileID: -7492123826235071683}
   - {fileID: 3458238637661359981}
+  - {fileID: 6590946236223152082}
   - {fileID: -8634884121623884657}
   - {fileID: 786684170966397140}
   - {fileID: 2592339250002087727}
@@ -276,7 +279,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: a9b1668f5d86e46739a5a6e0e89de1b9
-  position: {x: 424.99994, y: 551.8364}
+  position: {x: 578.8, y: 552}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -380,6 +383,28 @@ MonoBehaviour:
   child: {fileID: 4588322083355070225}
   restartOnSuccess: 1
   restartOnFailure: 1
+--- !u!114 &6590946236223152082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65fdd610ad45042ceaa42ddd350fbe28, type: 3}
+  m_Name: SendModelData
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 4bd9e0a4b492642f88a96d763e3864b4
+  position: {x: 101, y: 552}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
+  score: -1
 --- !u!114 &8101403734170402144
 MonoBehaviour:
   m_ObjectHideFlags: 0
