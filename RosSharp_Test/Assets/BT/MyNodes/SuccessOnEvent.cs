@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using TheKiwiCoder;
 
 namespace NRISVTE {
-    public class MonitorEvent : MonitorCondition {
+    public class SuccessOnEvent : MonitorCondition {
         KuriBTEventRouter _eventRouter;
         KuriBTEventRouter eventRouter {
             get {
@@ -30,12 +30,12 @@ namespace NRISVTE {
             evt.RemoveListener(OnEvent);
         }
 
-        private void OnEvent(){
+        protected virtual void OnEvent(){
             eventHappened = true;
         }
 
         protected override State OnUpdate() {
-            return eventHappened ? State.Success : State.Running;
+            return eventHappened ? State.Success : State.Failure;
         }
     }
 }

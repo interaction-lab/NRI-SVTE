@@ -18,11 +18,6 @@ namespace NRISVTE {
         }
 
         public UnityEvent GetEvent(string eventName) {
-            // print out events dictionary
-            foreach (KeyValuePair<string, UnityEvent> kvp in events) {
-                Debug.Log(kvp.Key.ToString() + ": " + kvp.Value.ToString());
-            }
-            Debug.Log(eventName);
             if (events.ContainsKey(eventName)) {
                 return events[eventName];
             }

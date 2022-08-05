@@ -55,10 +55,10 @@ namespace NRISVTE {
         #region private
         void OnStateChanged() {
             if (KuriState.Rstate == KuriStateManager.States.Moving) {
-                StopButton.interactable = true;
+                //StopButton.interactable = true;
             }
             else {
-                StopButton.interactable = false;
+               // StopButton.interactable = false;
             }
         }
         void OnStopButtonPressed() {
