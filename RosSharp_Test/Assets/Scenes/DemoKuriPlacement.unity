@@ -5648,6 +5648,7 @@ GameObject:
   - component: {fileID: 730025404}
   - component: {fileID: 730025403}
   - component: {fileID: 730025402}
+  - component: {fileID: 730025405}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -5738,6 +5739,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &730025405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730025400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1008ad071611e42dea22c049a7a42495, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &858473554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6136,6 +6149,7 @@ GameObject:
   - component: {fileID: 1084903364}
   - component: {fileID: 1084903367}
   - component: {fileID: 1084903366}
+  - component: {fileID: 1084903368}
   m_Layer: 5
   m_Name: UIArrowInner
   m_TagString: Untagged
@@ -6160,7 +6174,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0399, y: 0.07488}
+  m_AnchoredPosition: {x: 0.03908, y: 0.07488001}
   m_SizeDelta: {x: 0.01, y: 0.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1084903366
@@ -6201,6 +6215,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1084903363}
   m_CullTransparentMesh: 1
+--- !u!114 &1084903368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084903363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9e0ca684dc01e14f99c8bd4f80828f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1197947460
 GameObject:
   m_ObjectHideFlags: 0
@@ -6214,7 +6240,7 @@ GameObject:
   - component: {fileID: 1197947463}
   - component: {fileID: 1197947462}
   m_Layer: 5
-  m_Name: UIArrowManager
+  m_Name: UIArrowOuter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6237,7 +6263,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0399, y: 0.0739}
+  m_AnchoredPosition: {x: 0.03908, y: 0.0739}
   m_SizeDelta: {x: 0.01, y: 0.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1197947462

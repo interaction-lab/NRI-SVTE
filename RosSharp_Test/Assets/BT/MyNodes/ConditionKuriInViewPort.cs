@@ -5,13 +5,13 @@ using TheKiwiCoder;
 
 namespace NRISVTE {
     public class ConditionKuriInViewPort : MonitorCondition {
-        UIArrow _arrow;
-        UIArrow viewportArrow {
+        ViewPortManager _viewPortManager;
+        ViewPortManager viewPortManager {
             get {
-                if (_arrow == null) {
-                    _arrow = UIArrow.instance;
+                if (_viewPortManager == null) {
+                    _viewPortManager = ViewPortManager.instance;
                 }
-                return _arrow;
+                return _viewPortManager;
             }
         }
         protected override void OnStart() {
@@ -21,7 +21,7 @@ namespace NRISVTE {
         }
 
         protected override State OnUpdate() {
-            return viewportArrow.IsInViewPort ? State.Success : State.Failure;
+            return viewPortManager.IsInViewPort ? State.Success : State.Failure;
         }
     }
 }
