@@ -5,11 +5,8 @@ using UnityEngine;
 using WebSocketSharp;
 
 namespace NRISVTE {
-    public class ConnectionManager : MonoBehaviour {
+    public class ConnectionManager : Singleton<ConnectionManager> {
         #region members
-        public string host = "localhost";
-        public int port = 2346;
-        public string endPointPath = "/Echo";
         WebSocket ws;
         DebugTextManager DebugTextM;
         int numErrors = 0;
@@ -25,6 +22,11 @@ namespace NRISVTE {
         }
 
         string closeCode = "";
+        public bool IsConnected {
+            get {
+                return ws != null && ws.ReadyState == WebSocketState.Open;
+            }
+        }
 
         #endregion
 
@@ -33,7 +35,18 @@ namespace NRISVTE {
             loggingManager.AddLogColumn(msgSendColName, "");
             loggingManager.AddLogColumn(msgRecvColName, "");
             DebugTextM = DebugTextManager.instance;
-            ws = new WebSocket("ws://" + host + ":" + port + endPointPath);
+        }
+        #endregion
+
+        #region public
+        public void Connect() {
+            if(IsConnected) {
+                ws.Close();
+            }
+            ws = new WebSocket("ws://" +
+                HostInputFieldManager.instance.HostNumber +
+                ":" +
+                PortInputFieldManager.instance.PortNumber);
             ws.OnOpen += (sender, e) => {
                 Debug.Log("Connected");
             };
@@ -57,12 +70,9 @@ namespace NRISVTE {
             };
             ws.Connect();
         }
-        #endregion
-
-        #region public
         public void SendToServer(string message) {
             loggingManager.UpdateLogColumn(msgSendColName, message);
-            if (ws.ReadyState == WebSocketState.Open) {
+            if (IsConnected) {
                 ws.Send(message);
             }
             else {

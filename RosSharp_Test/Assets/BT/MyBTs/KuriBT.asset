@@ -126,13 +126,15 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 4f10940d8b8b14148aa5e847cbd93961
-  position: {x: 0, y: 0}
+  position: {x: 340, y: 815}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
   description: 
   drawGizmos: 0
-  children: []
+  children:
+  - {fileID: 9145505181967068731}
+  - {fileID: -2772109362818878922}
 --- !u!114 &-3130410509314734081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,17 +172,17 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: b61510416919b443bbeda3fcdbb92a20
-  position: {x: 452.03247, y: 965.00006}
+  position: {x: 452, y: 965}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
   description: 
   drawGizmos: 0
   speed: 0.5
-  stoppingDistance: 0.1
+  stoppingDistance: 0.025
   updateRotation: 1
   acceleration: 40
-  tolerance: 1
+  tolerance: 0.025
 --- !u!114 &-1158330387636908117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,6 +507,7 @@ MonoBehaviour:
   drawGizmos: 0
   children:
   - {fileID: 30061140318839285}
+  - {fileID: -3297349304869200865}
 --- !u!114 &7393082819099250661
 MonoBehaviour:
   m_ObjectHideFlags: 0
