@@ -386,7 +386,6 @@ MonoBehaviour:
   children:
   - {fileID: -7492123826235071683}
   - {fileID: 3458238637661359981}
-  - {fileID: 0}
 --- !u!114 &3458238637661359981
 MonoBehaviour:
   m_ObjectHideFlags: 0

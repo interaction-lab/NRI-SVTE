@@ -87,6 +87,17 @@ namespace TheKiwiCoder {
             return node;
         }
 
+        public void DeleteBrokenNode(Node parent, int childIndex = -1){
+            if(childIndex != -1){
+                // delete child
+                Undo.RecordObject(this, "Behaviour Tree (DeleteNode)");
+                GetChildren(parent).RemoveAt(childIndex);
+                AssetDatabase.SaveAssets();
+            }
+            else{
+                DeleteNode(parent);
+            }
+        }
         public void DeleteNode(Node node) {
             Undo.RecordObject(this, "Behaviour Tree (DeleteNode)");
             nodes.Remove(node);
@@ -117,14 +128,7 @@ namespace TheKiwiCoder {
             }
         }
 
-        public void RemoveChild(Node parent, Node child, int index = -1) {
-            // hack to remove broken nodes from asset
-            if(index != -1 && parent is CompositeNode compositeWNull){
-                Undo.RecordObject(compositeWNull, "Behaviour Tree (RemoveChild)");
-                compositeWNull.children.RemoveAt(index);
-                EditorUtility.SetDirty(compositeWNull);
-                return;
-            }
+        public void RemoveChild(Node parent, Node child) {
             if (parent is DecoratorNode decorator) {
                 Undo.RecordObject(decorator, "Behaviour Tree (RemoveChild)");
                 decorator.child = null;
