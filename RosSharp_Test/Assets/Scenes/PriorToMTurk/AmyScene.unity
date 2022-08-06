@@ -16715,12 +16715,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 6690874671648785859, guid: a89f24d619fe44d22b5fc484f65390f5, type: 3}
-  prefabs: []
+  StaticLinesEnabled: 0
+  StaticPointsEnabled: 0
+  EmitTrail: 0
+  movingLaserColor: {r: 0, g: 0, b: 0, a: 0}
   lidarColor: {r: 0, g: 1, b: 0.058253527, a: 1}
-  lidarWidth: 0.64
-  widthSlider: {fileID: 271242868}
-  colorSlider: {fileID: 0}
-  cp: {fileID: 7961456395721855993}
 --- !u!1 &1945681227
 GameObject:
   m_ObjectHideFlags: 0
@@ -39518,7 +39517,6 @@ MonoBehaviour:
   TextHue: {fileID: 6710558438514123042}
   TextSaturation: {fileID: 3577734412868318994}
   TextBrightness: {fileID: 7606077001299596031}
-  CustomColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!33 &4105283184600398378
 MeshFilter:
   m_ObjectHideFlags: 0

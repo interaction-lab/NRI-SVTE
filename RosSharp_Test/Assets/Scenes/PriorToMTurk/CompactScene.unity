@@ -33403,7 +33403,6 @@ MonoBehaviour:
   TextHue: {fileID: 6710558438514123042}
   TextSaturation: {fileID: 3577734412868318994}
   TextBrightness: {fileID: 7606077001299596031}
-  CustomColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!33 &4105283184600398378
 MeshFilter:
   m_ObjectHideFlags: 0
