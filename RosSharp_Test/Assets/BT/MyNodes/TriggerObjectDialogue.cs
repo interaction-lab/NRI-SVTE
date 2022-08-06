@@ -3,9 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using TheKiwiCoder;
 
-namespace NRISVTE{
-    public class TriggerObjectDialogue : ActionNode
-    {
+namespace NRISVTE {
+    public class TriggerObjectDialogue : ActionNode {
+        ObjectToPickUpManager _objectToPickUpManager;
+        ObjectToPickUpManager objectToPickUpManager {
+            get {
+                if (_objectToPickUpManager == null) {
+                    _objectToPickUpManager = ObjectToPickUpManager.instance;
+                }
+                return _objectToPickUpManager;
+            }
+        }
+
         protected override void OnStart() {
         }
 
@@ -13,7 +22,7 @@ namespace NRISVTE{
         }
 
         protected override State OnUpdate() {
-            return State.Success;
+            return objectToPickUpManager.TriggerObjectDialogue() ? State.Success : State.Running;
         }
     }
 }

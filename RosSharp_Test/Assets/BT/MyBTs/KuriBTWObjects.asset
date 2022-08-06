@@ -24,6 +24,29 @@ MonoBehaviour:
   children:
   - {fileID: 2256876256956640503}
   - {fileID: 1542907863073629213}
+--- !u!114 &-8079597729324524164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61431bba79d7d7843b82bf1de71703f5, type: 3}
+  m_Name: Sequencer
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: ebf28e74662514d9f87fbae449cbe3f3
+  position: {x: 996, y: 390}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
+  children:
+  - {fileID: -3038189061769805216}
 --- !u!114 &-7323237999929404557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,6 +135,27 @@ MonoBehaviour:
   description: 
   drawGizmos: 0
   score: -1
+--- !u!114 &-3038189061769805216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ac04356056649e19b0f63c3db5d7ab, type: 3}
+  m_Name: TriggerObjectDialogue
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 98e65d009c7f64636af9d52f0f0b06e0
+  position: {x: 913.25, y: 510}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
 --- !u!114 &-2889221781167843212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,7 +171,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 0eaee0afe35bc45458f5d832a4df647d
-  position: {x: 662.75, y: 478}
+  position: {x: 662.75, y: 497}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -268,29 +312,6 @@ MonoBehaviour:
   children:
   - {fileID: 4290260838171338221}
   - {fileID: -1277725368423983167}
---- !u!114 &-726851597696569841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f9815d524d95484bb27eddab14d47db, type: 3}
-  m_Name: MonitorComposite
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: f2741197ce5ee4c3599073da39b571a8
-  position: {x: 764.5, y: 259}
-  blackboard:
-    goalPosition: {x: 0, y: 0, z: 0}
-    goalRotation: {x: 0, y: 0, z: 0}
-  description: 
-  drawGizmos: 0
-  children:
-  - {fileID: 2208462964222728920}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,8 +353,10 @@ MonoBehaviour:
   - {fileID: -3460038001686657694}
   - {fileID: -2889221781167843212}
   - {fileID: 2626072232254044678}
-  - {fileID: -726851597696569841}
   - {fileID: 2208462964222728920}
+  - {fileID: -3038189061769805216}
+  - {fileID: 6843741298924102905}
+  - {fileID: -8079597729324524164}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -400,7 +423,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 0dc8698d0fa62461d9c9d2a43bc22648
-  position: {x: 676, y: 367}
+  position: {x: 676, y: 390}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -569,7 +592,7 @@ MonoBehaviour:
   drawGizmos: 0
   children:
   - {fileID: -3460038001686657694}
-  - {fileID: -726851597696569841}
+  - {fileID: 6843741298924102905}
 --- !u!114 &4290260838171338221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -622,6 +645,30 @@ MonoBehaviour:
   child: {fileID: -2861057580476716684}
   restartOnSuccess: 1
   restartOnFailure: 0
+--- !u!114 &6843741298924102905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f9815d524d95484bb27eddab14d47db, type: 3}
+  m_Name: MonitorComposite
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 63126dc7a6d5d477bb288afd5fda9b15
+  position: {x: 808.5, y: 270}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
+  children:
+  - {fileID: 2208462964222728920}
+  - {fileID: -8079597729324524164}
 --- !u!114 &7008085206473143621
 MonoBehaviour:
   m_ObjectHideFlags: 0

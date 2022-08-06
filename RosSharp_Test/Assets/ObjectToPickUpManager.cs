@@ -44,17 +44,14 @@ namespace NRISVTE {
         }
         #endregion
         #region public
-        public void EnableObject(ObjectToPickUp objectToPickUp) {
-            objectToPickUp.gameObject.SetActive(true);
-            AttachToKuriHead(objectToPickUp);
-        }
-        public void DisableObject(ObjectToPickUp objectToPickUp) {
-            if (objectToPickUp != null) {
-                objectToPickUp.gameObject.SetActive(false);
-                objectToPickUp.transform.parent = transform;
+        // return true if successfully triggered the dialogue of the object
+        public bool TriggerObjectDialogue(){
+            if (CurrentlyPickedUpObject != null) {
+                CurrentlyPickedUpObject.Dialogue();
+                return true;
             }
+            return false;
         }
-
         public void GetNewRandomObject() {
             if (UnUsedObjects.Empty()) {
                 ResetObjectSets();
@@ -68,15 +65,24 @@ namespace NRISVTE {
             CurrentlyPickedUpObject = objectToPickUp;
             EnableObject(CurrentlyPickedUpObject);
         }
+        #endregion
 
+        #region private
+        private void EnableObject(ObjectToPickUp objectToPickUp) {
+            objectToPickUp.gameObject.SetActive(true);
+            AttachToKuriHead(objectToPickUp);
+        }
+        private void DisableObject(ObjectToPickUp objectToPickUp) {
+            if (objectToPickUp != null) {
+                objectToPickUp.gameObject.SetActive(false);
+                objectToPickUp.transform.parent = transform;
+            }
+        }
         private void AttachToKuriHead(ObjectToPickUp objectToPickUp) {
             objectToPickUp.transform.position = KuriT.HeadPosition + KuriT.AboveHeadOffset * Vector3.up;
             objectToPickUp.transform.rotation = KuriT.Rotation;
             objectToPickUp.transform.parent = KuriT.OriginT;
         }
-        #endregion
-
-        #region private
         private void ResetObjectSets() {
             UsedObjects.Clear();
             UnUsedObjects.AddRange(GetComponentsInChildren<ObjectToPickUp>(true));
