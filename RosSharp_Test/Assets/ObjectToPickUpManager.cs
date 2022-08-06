@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace NRISVTE {
-
-
     public class ObjectToPickUpManager : Singleton<ObjectToPickUpManager> {
         #region members
         List<ObjectToPickUp> _unUsedObjects;
