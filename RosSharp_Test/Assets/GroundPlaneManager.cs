@@ -18,16 +18,22 @@ namespace NRISVTE {
         private float offset = 0.0001f;
         #endregion
         #region unity
-        void Update(){
+        void Start() {
+            // if not unity editor, turn off the mesh renderer of the ground plane
+#if !UNITY_EDITOR
+            GetComponent<MeshRenderer>().enabled = false;
+#endif
+        }
+        void Update() {
             MoveTowardGround();
         }
         #endregion
         #region public
         #endregion
         #region private
-        void MoveTowardGround(){
+        void MoveTowardGround() {
             // move my transform y toward kuriTransformManager.GroundYCord
-            transform.position = new Vector3(transform.position.x, kuriTransformManager.GroundYCord-offset, transform.position.z);
+            transform.position = new Vector3(transform.position.x, kuriTransformManager.GroundYCord - offset, transform.position.z);
         }
         #endregion
     }

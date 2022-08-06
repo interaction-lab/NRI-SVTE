@@ -9,7 +9,7 @@ namespace NRISVTE {
         public int score;
         public Dictionary<string, int> robot;
         public List<Dictionary<string, float>> humans;
-        public List<Dictionary<string, float>> objects;
+        public List<List<List<float>>> objects;
         public List<List<string>> links;
         public List<List<float>> room; // [[x0, y0], [x1, y1], ...]
 

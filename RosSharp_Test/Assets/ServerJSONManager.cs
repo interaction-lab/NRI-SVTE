@@ -43,6 +43,16 @@ namespace NRISVTE {
                 return _roomPolylineEstimator;
             }
         }
+
+        GroundObstacleManager _groundObstacleManager;
+        GroundObstacleManager groundObstacleManager {
+            get {
+                if (_groundObstacleManager == null) {
+                    _groundObstacleManager = GroundObstacleManager.instance;
+                }
+                return _groundObstacleManager;
+            }
+        }
         #endregion
 
         #region unity
@@ -59,6 +69,7 @@ namespace NRISVTE {
                     {"id", 0}
                 };
             polyLineJSONmsg.score = score;
+            polyLineJSONmsg.objects = groundObstacleManager.GetObstaclePolyLines();
 
             Vector2 userPosRelKuri = new Vector2(PlayerT.Position.x - KuriT.Position.x, PlayerT.Position.z - KuriT.Position.z);
             Vector2 kuriForward2D = new Vector2(KuriT.Forward.x, KuriT.Forward.z);
