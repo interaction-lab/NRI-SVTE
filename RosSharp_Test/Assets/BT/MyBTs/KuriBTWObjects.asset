@@ -46,7 +46,7 @@ MonoBehaviour:
   description: 
   drawGizmos: 0
   children:
-  - {fileID: -3038189061769805216}
+  - {fileID: 0}
 --- !u!114 &-7323237999929404557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,7 +354,6 @@ MonoBehaviour:
   - {fileID: -2889221781167843212}
   - {fileID: 2626072232254044678}
   - {fileID: 2208462964222728920}
-  - {fileID: -3038189061769805216}
   - {fileID: 6843741298924102905}
   - {fileID: -8079597729324524164}
   blackboard:
