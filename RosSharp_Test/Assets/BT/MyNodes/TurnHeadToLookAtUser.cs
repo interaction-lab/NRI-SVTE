@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TheKiwiCoder;
 
-namespace NRISVTE{
-    public class TurnHeadToLookAtUser : ActionNode
-    {
-        public float speed = 5; // degrees per second
+namespace NRISVTE {
+    public class TurnHeadToLookAtUser : ActionNode {
+        public float speed = 5; // deg per second
         PlayerTransformManager _playerTransformManager;
         PlayerTransformManager playerTransformManager {
             get {
@@ -25,6 +24,7 @@ namespace NRISVTE{
                 return _kuriHeadPositionManager;
             }
         }
+        float elapsedTime = 0, timeItShouldTake = 0;
         protected override void OnStart() {
         }
 
@@ -32,18 +32,15 @@ namespace NRISVTE{
         }
 
         protected override State OnUpdate() {
-            // get desired direction to look at user
-            Vector3 desiredDirection = playerTransformManager.Position - kuriHeadPositionManager.HeadPosition;
-            // get current direction to look at user
-            Vector3 currentDirection = kuriHeadPositionManager.HeadPan.forward;
-            // get angle between current and desired direction
-            float angle = Vector3.SignedAngle(currentDirection, desiredDirection);
-            // get angle between current and desired direction in degrees
-            float angleInDegrees = angle * Mathf.Rad2Deg * speed * Time.deltaTime;
-
-
-            kuriHeadPositionManager.HeadTilt.Rotate(0, 0, angleInDegrees);
-            return State.Success;
+            Vector3 dir = playerTransformManager.Position - kuriHeadPositionManager.HeadPosition;
+            Quaternion rot = Quaternion.LookRotation(dir);
+            kuriHeadPositionManager.HeadRotation = Quaternion.Slerp(kuriHeadPositionManager.HeadRotation, rot, speed * Time.deltaTime);
+            // if rotation is close enough, stop
+            if (Quaternion.Angle(kuriHeadPositionManager.HeadRotation, rot) < 0.1f) {
+                kuriHeadPositionManager.HeadRotation = rot;
+                return State.Success;
+            }
+            return State.Running;
         }
     }
 }

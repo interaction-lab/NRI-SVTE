@@ -12,6 +12,15 @@ namespace NRISVTE {
         }
         public Transform HeadPan, HeadTilt, EyeLids;
 
+        public Quaternion HeadRotation {
+            get {
+                return transform.rotation;
+            }
+            set {
+                transform.rotation = value;
+            }
+        }
+
         public float AboveHeadOffset = 0.5f;
         #endregion
         #region unity
