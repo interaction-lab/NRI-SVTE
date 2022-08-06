@@ -27,6 +27,10 @@ namespace NRISVTE {
 
         #endregion
         #region unity
+        void Awake(){
+            questionText = GetComponentInChildren<QuestionText>(true).GetComponent<TextMeshProUGUI>();
+            questionText.enabled = false;
+        }
         #endregion
         #region public
         public void UpdateQuestionText() {

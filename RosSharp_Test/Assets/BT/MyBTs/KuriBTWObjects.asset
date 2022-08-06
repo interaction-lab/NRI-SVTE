@@ -1,5 +1,27 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8990485516747005505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a5134d9de14153468b48928d3e7359a, type: 3}
+  m_Name: Wait
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 331f9b69e37f64242a59bcec749c86f4
+  position: {x: 1138, y: 575}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
+  duration: 5
 --- !u!114 &-8163643612388882989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39,13 +61,15 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: ebf28e74662514d9f87fbae449cbe3f3
-  position: {x: 996, y: 390}
+  position: {x: 988, y: 390}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
   description: 
   drawGizmos: 0
-  children: []
+  children:
+  - {fileID: 2771146390541929084}
+  - {fileID: -8990485516747005505}
 --- !u!114 &-7323237999929404557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,6 +379,8 @@ MonoBehaviour:
   - {fileID: 2208462964222728920}
   - {fileID: 6843741298924102905}
   - {fileID: -8079597729324524164}
+  - {fileID: 2771146390541929084}
+  - {fileID: -8990485516747005505}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -495,6 +521,27 @@ MonoBehaviour:
   drawGizmos: 0
   min: {x: -2, y: -2}
   max: {x: 2, y: 2}
+--- !u!114 &2771146390541929084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ac04356056649e19b0f63c3db5d7ab, type: 3}
+  m_Name: SayObjectQuestion
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 61e1f67f2c399409cb15fba7ea3a0938
+  position: {x: 901, y: 543.14996}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
 --- !u!114 &3555508315677362338
 MonoBehaviour:
   m_ObjectHideFlags: 0
