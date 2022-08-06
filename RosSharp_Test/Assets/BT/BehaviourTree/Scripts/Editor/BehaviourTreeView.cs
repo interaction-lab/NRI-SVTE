@@ -63,7 +63,7 @@ namespace TheKiwiCoder {
                 }
                 catch (NullReferenceException e) {
                     // detele parent node
-                    tree.DeleteNode(tree.nodes[i]);
+                    tree.DeleteBrokenNode(tree.nodes[i], i);
                     Debug.Log("bad node caught");
                 }
             }
@@ -75,7 +75,7 @@ namespace TheKiwiCoder {
                         NodeView childView = FindNodeView(children[j]);
                     }
                     catch (NullReferenceException e) {
-                        tree.RemoveChild(tree.nodes[i], null, j);
+                        tree.DeleteBrokenNode(tree.nodes[i], j);
                     }
                 }
             }

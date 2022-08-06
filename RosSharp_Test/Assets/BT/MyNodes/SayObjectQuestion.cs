@@ -5,7 +5,7 @@ using TheKiwiCoder;
 
 namespace NRISVTE {
     // really should be called say object
-    public class TriggerObjectDialogue : ActionNode {
+    public class SayObjectQuestion : ActionNode {
         DialogueManager _dialogueManager;
         DialogueManager dialogueManager{
             get{

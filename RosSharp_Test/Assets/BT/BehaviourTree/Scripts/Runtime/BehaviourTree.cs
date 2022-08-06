@@ -87,15 +87,18 @@ namespace TheKiwiCoder {
             return node;
         }
 
-        public void DeleteBrokenNode(Node parent, int childIndex = -1){
-            if(childIndex != -1){
+        public void DeleteBrokenNode(Node parent, int index = -1){
+            if(parent != null){
                 // delete child
                 Undo.RecordObject(this, "Behaviour Tree (DeleteNode)");
-                GetChildren(parent).RemoveAt(childIndex);
+                GetChildren(parent).RemoveAt(index);
                 AssetDatabase.SaveAssets();
             }
             else{
-                DeleteNode(parent);
+                // delete parent
+                Undo.RecordObject(this, "Behaviour Tree (DeleteNode)");
+                nodes.RemoveAt(index);
+                AssetDatabase.SaveAssets();
             }
         }
         public void DeleteNode(Node node) {
