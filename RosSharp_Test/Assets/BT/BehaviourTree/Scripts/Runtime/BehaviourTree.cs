@@ -117,7 +117,14 @@ namespace TheKiwiCoder {
             }
         }
 
-        public void RemoveChild(Node parent, Node child) {
+        public void RemoveChild(Node parent, Node child, int index = -1) {
+            // hack to remove broken nodes from asset
+            if(index != -1 && parent is CompositeNode compositeWNull){
+                Undo.RecordObject(compositeWNull, "Behaviour Tree (RemoveChild)");
+                compositeWNull.children.RemoveAt(index);
+                EditorUtility.SetDirty(compositeWNull);
+                return;
+            }
             if (parent is DecoratorNode decorator) {
                 Undo.RecordObject(decorator, "Behaviour Tree (RemoveChild)");
                 decorator.child = null;

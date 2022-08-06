@@ -56,6 +56,31 @@ namespace TheKiwiCoder {
         internal void PopulateView(BehaviourTree tree) {
             this.tree = tree;
 
+            // delete any bad tree nodes
+            for (int i = tree.nodes.Count - 1; i >= 0; --i) {
+                try {
+                    NodeView parentView = FindNodeView(tree.nodes[i]);
+                }
+                catch (NullReferenceException e) {
+                    // detele parent node
+                    tree.DeleteNode(tree.nodes[i]);
+                    Debug.Log("bad node caught");
+                }
+            }
+            // delete any bad children nodes
+            for (int i = tree.nodes.Count - 1; i >= 0; --i) {
+                List<Node> children = BehaviourTree.GetChildren(tree.nodes[i]);
+                for (int j = children.Count - 1; j >= 0; --j) {
+                    try {
+                        NodeView childView = FindNodeView(children[j]);
+                    }
+                    catch (NullReferenceException e) {
+                        tree.RemoveChild(tree.nodes[i], null, j);
+                    }
+                }
+            }
+
+
             graphViewChanged -= OnGraphViewChanged;
             DeleteElements(graphElements.ToList());
             graphViewChanged += OnGraphViewChanged;
