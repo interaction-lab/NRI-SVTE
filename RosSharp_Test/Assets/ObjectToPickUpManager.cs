@@ -49,8 +49,10 @@ namespace NRISVTE {
             AttachToKuriHead(objectToPickUp);
         }
         public void DisableObject(ObjectToPickUp objectToPickUp) {
-            objectToPickUp?.gameObject.SetActive(false);
-            objectToPickUp?.transform.parent = transform;
+            if (objectToPickUp != null) {
+                objectToPickUp.gameObject.SetActive(false);
+                objectToPickUp.transform.parent = transform;
+            }
         }
 
         public void GetNewRandomObject() {
