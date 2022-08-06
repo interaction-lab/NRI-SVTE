@@ -25,6 +25,26 @@ namespace NRISVTE {
                 OriginT.rotation = value;
             }
         }
+        KuriHeadPositionManager _kuriHeadPositionManager;
+        KuriHeadPositionManager KuriHeadManager {
+            get {
+                if (_kuriHeadPositionManager == null) {
+                    _kuriHeadPositionManager = KuriHeadPositionManager.instance;
+                }
+                return _kuriHeadPositionManager;
+            }
+        }
+        public Vector3 HeadPosition {
+            get {
+                return KuriHeadManager.HeadPosition;
+            }
+        }
+
+        public float AboveHeadOffset {
+            get {
+                return KuriHeadManager.AboveHeadOffset;
+            }
+        }
         #endregion
 
         #region unity
