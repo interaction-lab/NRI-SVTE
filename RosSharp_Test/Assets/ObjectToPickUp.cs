@@ -23,13 +23,35 @@ namespace NRISVTE {
                 return _dialogueJSON;
             }
         }
+        public string OptionA {
+            get {
+                return DialogueJSON_.OptionA;
+            }
+        }
+        public string OptionB {
+            get {
+                return DialogueJSON_.OptionA;
+            }
+        }
+         public string Question {
+            get {
+                return DialogueJSON_.Question;
+            }
+        }
+         public string ResponseA {
+            get {
+                return DialogueJSON_.ResponseA;
+            }
+        }
+         public string ResponseB {
+            get {
+                return DialogueJSON_.ResponseB;
+            }
+        }
         #endregion
         #region unity
         #endregion
         #region public
-        public void Dialogue() {
-            Debug.Log(DialogueJSON_.OptionA);
-        }
         #endregion
         #region private
         #endregion

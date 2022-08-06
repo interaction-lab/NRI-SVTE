@@ -34,6 +34,15 @@ namespace NRISVTE {
         }
         public ObjectToPickUp CurrentlyPickedUpObject = null;
 
+        DialogueManager _dialogueManager;
+        DialogueManager dialogueManager {
+            get {
+                if (_dialogueManager == null) {
+                    _dialogueManager = DialogueManager.instance;
+                }
+                return _dialogueManager;
+            }
+        }
         #endregion
         #region unity
         void Start() {
@@ -42,14 +51,6 @@ namespace NRISVTE {
         }
         #endregion
         #region public
-        // return true if successfully triggered the dialogue of the object
-        public bool TriggerObjectDialogue(){
-            if (CurrentlyPickedUpObject != null) {
-                CurrentlyPickedUpObject.Dialogue();
-                return true;
-            }
-            return false;
-        }
         public void GetNewRandomObject() {
             if (UnUsedObjects.Empty()) {
                 ResetObjectSets();
