@@ -10,6 +10,7 @@ namespace NRISVTE {
                 return transform.position;
             }
         }
+        public Transform HeadPan, HeadTilt, EyeLids;
 
         public float AboveHeadOffset = 0.5f;
         #endregion

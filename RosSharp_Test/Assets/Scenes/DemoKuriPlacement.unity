@@ -15921,7 +15921,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33e8cbe53924645409a48708831f81ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AboveHeadOffset: 0.1
+  HeadPan: {fileID: 6272521529893986457}
+  HeadTilt: {fileID: 2230717258594456330}
+  EyeLids: {fileID: 3818521555570997806}
+  AboveHeadOffset: 0.2
 --- !u!4 &7831810758214916602
 Transform:
   m_ObjectHideFlags: 0
