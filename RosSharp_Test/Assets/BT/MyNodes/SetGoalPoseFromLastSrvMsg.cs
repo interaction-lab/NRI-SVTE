@@ -14,6 +14,16 @@ namespace NRISVTE {
                 return connectionManager;
             }
         }
+
+        KuriTransformManager kuriT;
+        KuriTransformManager KuriT_ {
+            get {
+                if (kuriT == null) {
+                    kuriT = KuriManager.instance.GetComponent<KuriTransformManager>();
+                }
+                return kuriT;
+            }
+        }
         protected override void OnStart() {
         }
 
@@ -25,8 +35,14 @@ namespace NRISVTE {
             List<float> kuriCordList = new List<float>();
             string lastMsg = ConnectionManager_.LatestMsg;
             if (lastMsg != null) {
-                kuriCordList = JsonUtility.FromJson<ServerPointResponseJSON>(lastMsg).point;
-                newGoal = new Vector3(kuriCordList[0], kuriCordList[1], kuriCordList[2]);
+                kuriCordList = Newtonsoft.Json.JsonConvert.DeserializeObject<ServerPointResponseJSON>(lastMsg).point;
+                newGoal = new Vector3(kuriCordList[0], 0, kuriCordList[1]);
+                // transform back into meters from cm
+                newGoal *= 0.01f;
+                // transform back to world cords by adding Kuri position
+                newGoal += KuriT_.Position;
+                // set on the ground
+                newGoal.y = KuriT_.GroundYCord;
                 blackboard.goalPosition = newGoal;
                 return State.Success;
             }
