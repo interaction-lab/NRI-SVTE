@@ -106,7 +106,7 @@ namespace NRISVTE {
                 questionText.text = ObjectToPickUpManager_.CurrentlyPickedUpObject.ResponseA;
             }
             else if (CurrentlySelectedOption == Option.B) {
-                questionText.text = ObjectToPickUpManager_.CurrentlyPickedUpObject.ResponseA;
+                questionText.text = ObjectToPickUpManager_.CurrentlyPickedUpObject.ResponseB;
             }
             // play audio over time, will update the state update to wait until the audio is done
             state = State.None;

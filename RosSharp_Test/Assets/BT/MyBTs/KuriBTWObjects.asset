@@ -82,7 +82,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: ebf28e74662514d9f87fbae449cbe3f3
-  position: {x: 988, y: 390}
+  position: {x: 1063, y: 390}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -92,6 +92,7 @@ MonoBehaviour:
   - {fileID: 2771146390541929084}
   - {fileID: -8765588398319286666}
   - {fileID: -1720312018255382335}
+  - {fileID: 3561066658565843895}
 --- !u!114 &-7323237999929404557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -679,7 +680,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: eca7283a71bcf4095aa90d98db355766
-  position: {x: 0, y: 0}
+  position: {x: 1310.5, y: 598}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
