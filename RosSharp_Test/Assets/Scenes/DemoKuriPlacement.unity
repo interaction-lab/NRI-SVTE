@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b20bd6119bc44da0b0f6d33cefbfd7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HostNumber: 
+  HostNumber: 192.168.0.27
 --- !u!1 &92000513
 GameObject:
   m_ObjectHideFlags: 0
@@ -1302,7 +1302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0217aed3ab1d94b3a92c8ca6005bfc62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PortNumber: 
+  PortNumber: 2346
 --- !u!1 &421140727
 GameObject:
   m_ObjectHideFlags: 0
