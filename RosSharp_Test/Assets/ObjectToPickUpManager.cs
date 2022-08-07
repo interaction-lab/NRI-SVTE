@@ -51,7 +51,7 @@ namespace NRISVTE {
         }
         #endregion
         #region public
-        public void GetNewRandomObject() {
+        public void DisableAndSelectNewObject() {
             if (UnUsedObjects.Empty()) {
                 ResetObjectSets();
             }
@@ -62,14 +62,20 @@ namespace NRISVTE {
 
             DisableObject(CurrentlyPickedUpObject);
             CurrentlyPickedUpObject = objectToPickUp;
+        }
+
+        public void SpawnCurObject() {
             EnableObject(CurrentlyPickedUpObject);
+        }
+
+        public void PickUpObject() {
+            AttachToKuriHead(objectToPickUp);
         }
         #endregion
 
         #region private
         private void EnableObject(ObjectToPickUp objectToPickUp) {
             objectToPickUp.gameObject.SetActive(true);
-            AttachToKuriHead(objectToPickUp);
         }
         private void DisableObject(ObjectToPickUp objectToPickUp) {
             if (objectToPickUp != null) {

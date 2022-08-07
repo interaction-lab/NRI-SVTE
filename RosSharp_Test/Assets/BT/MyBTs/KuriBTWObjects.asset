@@ -151,7 +151,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 3645343c226a4495daabc24960883021
-  position: {x: -97.5, y: 853.5}
+  position: {x: 60.05005, y: 858}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -349,7 +349,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: d75475e32d6f64c7ba64ba420ced672c
-  position: {x: -231.5, y: 1107}
+  position: {x: -71, y: 1181.7502}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -394,7 +394,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 6704e858cd6b94dd780d4520c2649a12
-  position: {x: -45, y: 1107}
+  position: {x: 115.49994, y: 1181.7502}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -506,9 +506,31 @@ MonoBehaviour:
   - {fileID: 723533833496833334}
   - {fileID: -1430737957653764730}
   - {fileID: -1095305376814368211}
+  - {fileID: 13918986462976607}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
+--- !u!114 &13918986462976607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80d9e7ffaf38b4f1e801a06fd904c368, type: 3}
+  m_Name: SpawnNewObject
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: e1cd25544a2cd4253859825a2224acbb
+  position: {x: -306.49994, y: 946}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
 --- !u!114 &723533833496833334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -524,7 +546,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 2c9c9f5b908aa491ca80c37b5c1db8b1
-  position: {x: -511.25, y: 1107}
+  position: {x: -350.50006, y: 1181.7502}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -857,6 +879,7 @@ MonoBehaviour:
   - {fileID: 2762255057006211539}
   - {fileID: 3555508315677362338}
   - {fileID: -1089637402966126087}
+  - {fileID: 13918986462976607}
   - {fileID: 6094385405673704823}
   - {fileID: -4318833344732297412}
 --- !u!114 &5158259776951533146
@@ -898,7 +921,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: c79bbfe9c17c944dda3178f9c612bd96
-  position: {x: -231.5, y: 946}
+  position: {x: -134.6499, y: 970}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}

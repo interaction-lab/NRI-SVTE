@@ -4,7 +4,7 @@ using UnityEngine;
 using TheKiwiCoder;
 
 namespace NRISVTE {
-    public class PickNewRandomObject : ActionNode {
+    public class SpawnNewObject : ActionNode {
         ObjectToPickUpManager _objectToPickUpManager;
         ObjectToPickUpManager objectToPickUpManager {
             get {
@@ -14,9 +14,8 @@ namespace NRISVTE {
                 return _objectToPickUpManager;
             }
         }
-
         protected override void OnStart() {
-            objectToPickUpManager.DisableAndSelectNewObject();
+            objectToPickUpManager.SpawnCurObject();
         }
 
         protected override void OnStop() {
