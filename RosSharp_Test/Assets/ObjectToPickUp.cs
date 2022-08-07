@@ -30,7 +30,7 @@ namespace NRISVTE {
         }
         public string OptionB {
             get {
-                return DialogueJSON_.OptionA;
+                return DialogueJSON_.OptionB;
             }
         }
          public string Question {
