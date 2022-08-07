@@ -21,10 +21,12 @@ namespace NRISVTE {
         }
 
         protected override State OnUpdate() {
-            Vector3 dirInWorld = (blackboard.goalPosition - KuriT.Position).normalized;
-            // goal roation is relative to kuri forward direction
-            Quaternion goalRotation = Quaternion.LookRotation(dirInWorld, KuriT.Forward);
-            blackboard.goalRotation = goalRotation.eulerAngles;
+            
+            Vector2 goalPosition = new Vector2(blackboard.goalPosition.x, blackboard.goalPosition.z);
+            Vector2 kuriPosition = new Vector2(KuriT.Position.x, KuriT.Position.z);
+            Vector2 direction = goalPosition - kuriPosition;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            blackboard.goalRotation = new Vector3(0, angle, 0);
             return State.Success;
         }
     }

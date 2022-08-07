@@ -55,13 +55,16 @@ namespace NRISVTE {
             optionBButton = userOptionButtonObject.OptionBButton;
             optionAText = userOptionButtonObject.OptionAText;
             optionBText = userOptionButtonObject.OptionBText;
-            questionText.enabled = false;
-            DisableOptionsObj();
+            ResetAllUI();
             OnUserOptionSelected = new UnityEvent();
             eventRouter.AddEvent(EventNames.OnUserOptionSelected, OnUserOptionSelected);
         }
         #endregion
         #region public
+        public void ResetAllUI(){
+            questionText.enabled = false;
+            DisableOptionsObj();
+        }
         public void UpdateQuestionText() {
             if (ErrorIfSelectedNull()) {
                 return;

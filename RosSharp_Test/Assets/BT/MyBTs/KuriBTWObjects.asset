@@ -15,7 +15,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 3aa893ce49fad487d94acfe717e3299b
-  position: {x: 161.84991, y: 770.5}
+  position: {x: 288, y: 689}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -58,7 +58,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 414d76e0173e64274a8f6c0c69c8f884
-  position: {x: 751, y: 858}
+  position: {x: 738, y: 890}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -152,7 +152,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 3645343c226a4495daabc24960883021
-  position: {x: -76.5, y: 853.5}
+  position: {x: -97.5, y: 853.5}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -239,7 +239,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: c44bd0aaf0a5c4e0a953fcf9ebafd822
-  position: {x: 384, y: 982}
+  position: {x: 371, y: 1014}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -335,6 +335,28 @@ MonoBehaviour:
   description: 
   drawGizmos: 0
   child: {fileID: -7323237999929404557}
+--- !u!114 &-1430737957653764730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0414be88826548659aa800cb4866a3a, type: 3}
+  m_Name: TurnToPose
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: d75475e32d6f64c7ba64ba420ced672c
+  position: {x: -231.5, y: 1107}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
+  turnSpeed: 30
 --- !u!114 &-1277725368423983167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,7 +372,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 410de59406d5c4cb5b35baaf369bab33
-  position: {x: 582, y: 574}
+  position: {x: 513, y: 665}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -359,6 +381,32 @@ MonoBehaviour:
   child: {fileID: 4089645720947035441}
   restartOnSuccess: 0
   restartOnFailure: 1
+--- !u!114 &-1095305376814368211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4489e3e257543504c8fc9f891246af6c, type: 3}
+  m_Name: MoveToPosition
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 6704e858cd6b94dd780d4520c2649a12
+  position: {x: -45, y: 1107}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
+  speed: 5
+  stoppingDistance: 0.1
+  updateRotation: 1
+  acceleration: 40
+  tolerance: 1
 --- !u!114 &-1089637402966126087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,7 +422,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: d91feb2bd4ffd4e89aee8f01a6382f79
-  position: {x: -259.5, y: 853.5}
+  position: {x: -402.5, y: 853.5}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -404,7 +452,6 @@ MonoBehaviour:
   children:
   - {fileID: 4290260838171338221}
   - {fileID: 1285274839569435453}
-  - {fileID: -1277725368423983167}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -432,7 +479,6 @@ MonoBehaviour:
   - {fileID: -902838189090058006}
   - {fileID: 2762255057006211539}
   - {fileID: 3555508315677362338}
-  - {fileID: 8569555862675502383}
   - {fileID: -1089637402966126087}
   - {fileID: -4318833344732297412}
   - {fileID: -1277725368423983167}
@@ -457,9 +503,35 @@ MonoBehaviour:
   - {fileID: -2071764148361473535}
   - {fileID: -8765588398319286666}
   - {fileID: 3561066658565843895}
+  - {fileID: 6947606508065726143}
+  - {fileID: 6094385405673704823}
+  - {fileID: 723533833496833334}
+  - {fileID: -1430737957653764730}
+  - {fileID: -1095305376814368211}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
+--- !u!114 &723533833496833334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c3e2c41f928462e9b2501c6e262477, type: 3}
+  m_Name: SetGoalRotationTowardGoalPosition
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 2c9c9f5b908aa491ca80c37b5c1db8b1
+  position: {x: -511.25, y: 1107}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
 --- !u!114 &921515690074221703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,7 +569,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: fcb104186e1e741acb1d03d39f12d911
-  position: {x: 73.5, y: 638.5}
+  position: {x: 259, y: 542}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -506,6 +578,7 @@ MonoBehaviour:
   children:
   - {fileID: 7597545425315152063}
   - {fileID: -8977000337275009982}
+  - {fileID: -1277725368423983167}
 --- !u!114 &1542907863073629213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -521,17 +594,17 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 425b818bb1e1b45568d4105478eb592a
-  position: {x: 838, y: 982}
+  position: {x: 825, y: 1014}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
   description: 
   drawGizmos: 0
   speed: 0.5
-  stoppingDistance: 0.15
+  stoppingDistance: 0.3
   updateRotation: 1
   acceleration: 40
-  tolerance: 0.15
+  tolerance: 0.3
 --- !u!114 &2208462964222728920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -571,7 +644,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 8c9fa5bd4c0924173831949313292353
-  position: {x: 600, y: 982}
+  position: {x: 587, y: 1014}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -592,7 +665,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: b61079d5d0fd04045a99ff6d0d65a364
-  position: {x: -880.5, y: 853.5}
+  position: {x: -1024.5, y: 853.5}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -619,8 +692,8 @@ MonoBehaviour:
     goalRotation: {x: 0, y: 0, z: 0}
   description: 
   drawGizmos: 0
-  min: {x: -2, y: -2}
-  max: {x: 2, y: 2}
+  min: {x: -1.5, y: -1.5}
+  max: {x: 1.5, y: 1.5}
 --- !u!114 &2771146390541929084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -726,7 +799,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: d9c500b5526cf4d96828147e5771a06d
-  position: {x: 582, y: 721}
+  position: {x: 521, y: 785}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -782,10 +855,11 @@ MonoBehaviour:
   drawGizmos: 0
   children:
   - {fileID: 2626072232254044678}
+  - {fileID: 6947606508065726143}
   - {fileID: 2762255057006211539}
   - {fileID: 3555508315677362338}
-  - {fileID: 8569555862675502383}
   - {fileID: -1089637402966126087}
+  - {fileID: 6094385405673704823}
   - {fileID: -4318833344732297412}
 --- !u!114 &5158259776951533146
 MonoBehaviour:
@@ -802,7 +876,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: e69b91ccfcc8141769eb03d342450c15
-  position: {x: 384, y: 858}
+  position: {x: 371, y: 890}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -811,6 +885,31 @@ MonoBehaviour:
   child: {fileID: -2861057580476716684}
   restartOnSuccess: 1
   restartOnFailure: 0
+--- !u!114 &6094385405673704823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61431bba79d7d7843b82bf1de71703f5, type: 3}
+  m_Name: Sequencer
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: c79bbfe9c17c944dda3178f9c612bd96
+  position: {x: -231.5, y: 946}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
+  children:
+  - {fileID: 723533833496833334}
+  - {fileID: -1430737957653764730}
+  - {fileID: -1095305376814368211}
 --- !u!114 &6843741298924102905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -835,6 +934,27 @@ MonoBehaviour:
   children:
   - {fileID: 2208462964222728920}
   - {fileID: -8079597729324524164}
+--- !u!114 &6947606508065726143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2385f9dc512c4685a350dff932ce2ce, type: 3}
+  m_Name: ResetKuriUI
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: d4b4dc2bb776d47f1a97b5654e1ed6f5
+  position: {x: -874.5, y: 853.5}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
 --- !u!114 &7008085206473143621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -874,7 +994,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 69b80dc2d530c4c91bbb2230723242c6
-  position: {x: -132, y: 752}
+  position: {x: -29, y: 689}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -904,24 +1024,3 @@ MonoBehaviour:
   children:
   - {fileID: -1564224323675009852}
   - {fileID: -902838189090058006}
---- !u!114 &8569555862675502383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c106fe6f5ae2a4df684a379839415fc3, type: 3}
-  m_Name: TeleportToPose
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: 152760129ef3a4380800046f3174c007
-  position: {x: -418.5, y: 853.5}
-  blackboard:
-    goalPosition: {x: 0, y: 0, z: 0}
-    goalRotation: {x: 0, y: 0, z: 0}
-  description: 
-  drawGizmos: 0

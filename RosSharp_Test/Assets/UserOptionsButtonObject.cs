@@ -29,7 +29,7 @@ namespace NRISVTE {
         public TextMeshProUGUI OptionAText {
             get {
                 if (optionAText == null) {
-                    optionAText = OptionBButton.GetComponentInChildren<TextMeshProUGUI>(true);
+                    optionAText = OptionAButton.GetComponentInChildren<TextMeshProUGUI>(true);
                 }
                 return optionAText;
             }
@@ -37,7 +37,7 @@ namespace NRISVTE {
         public TextMeshProUGUI OptionBText {
             get {
                 if (optionBText == null) {
-                    optionBText = OptionAButton.GetComponentInChildren<TextMeshProUGUI>(true);
+                    optionBText = OptionBButton.GetComponentInChildren<TextMeshProUGUI>(true);
                 }
                 return optionBText;
             }
