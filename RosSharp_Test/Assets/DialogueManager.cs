@@ -36,6 +36,15 @@ namespace NRISVTE {
         }
         public Option CurrentlySelectedOption = Option.None;
         UnityEvent OnUserOptionSelected;
+        KuriBTEventRouter _eventRouter;
+        KuriBTEventRouter eventRouter {
+            get {
+                if (_eventRouter == null) {
+                    _eventRouter = KuriManager.instance.GetComponent<KuriBTEventRouter>();
+                }
+                return _eventRouter;
+            }
+        }
 
         #endregion
         #region unity
@@ -48,7 +57,8 @@ namespace NRISVTE {
             optionBText = userOptionButtonObject.OptionBText;
             questionText.enabled = false;
             DisableOptionsObj();
-            KuriManager.instance.GetComponent<KuriBTEventRouter>().AddEvent(EventNames.OnUserOptionSelected, OnUserOptionSelected);
+            OnUserOptionSelected = new UnityEvent();
+            eventRouter.AddEvent(EventNames.OnUserOptionSelected, OnUserOptionSelected);
         }
         #endregion
         #region public
