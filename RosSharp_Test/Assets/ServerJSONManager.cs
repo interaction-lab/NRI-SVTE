@@ -34,13 +34,14 @@ namespace NRISVTE {
             }
         }
         PolyLineJSON polyLineJSONmsg;
-        RoomPolylineEstimator _roomPolylineEstimator;
-        public RoomPolylineEstimator roomPolylineEstimator {
+        FakeWallRoomPolylineEstimator fakeWallRoomPolylineEstimator;
+
+        FakeWallRoomPolylineEstimator FakeWallRoomPolylineEstimator_ {
             get {
-                if (_roomPolylineEstimator == null) {
-                    _roomPolylineEstimator = GetComponent<RoomPolylineEstimator>();
+                if (fakeWallRoomPolylineEstimator == null) {
+                    fakeWallRoomPolylineEstimator = FindObjectOfType<FakeWallRoomPolylineEstimator>();
                 }
-                return _roomPolylineEstimator;
+                return fakeWallRoomPolylineEstimator;
             }
         }
 
@@ -64,7 +65,7 @@ namespace NRISVTE {
         #region public
         public void SendToServer(int score) {
             polyLineJSONmsg.identifier = string.Join("_", UserIDManager.PlayerId, UserIDManager.DeviceId, Time.time.ToString());
-            polyLineJSONmsg.room = roomPolylineEstimator.PublicPolyLineList;
+            polyLineJSONmsg.room = FakeWallRoomPolylineEstimator_.GetWallPolyLines();
             polyLineJSONmsg.robot = new Dictionary<string, int>() {
                     {"id", 0}
                 };
