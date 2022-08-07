@@ -1,7 +1,7 @@
 {
     "Question" : "Do you think watermelons are nutrious?",
     "OptionA" : "Yes",
-    "OptionB" : "No",
+    "OptionB" : "Yes",
     "ResponseA" : "MMM watermelon",
     "ResponseB" : "MMM watermelon"
 }
