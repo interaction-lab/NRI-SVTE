@@ -64,6 +64,20 @@ namespace NRISVTE {
 
         #region public
         public void SendToServer(int score) {
+            polyLineJSONmsg.requestType = "label";
+            GeneratePolyline(score);
+
+        }
+
+        public void RequestNextSamplePoint(InteractionManager.SampleTypes sampleType) {
+            polyLineJSONmsg.sampleType = sampleType.ToString();
+            polyLineJSONmsg.requestType = "sample";
+            GeneratePolyline(0);
+        }
+        #endregion
+
+        #region private
+        void GeneratePolyline(int score) {
             polyLineJSONmsg.identifier = string.Join("_", UserIDManager.PlayerId, UserIDManager.DeviceId, Time.time.ToString());
             polyLineJSONmsg.room = FakeWallRoomPolylineEstimator_.GetWallPolyLines();
             polyLineJSONmsg.robot = new Dictionary<string, int>() {

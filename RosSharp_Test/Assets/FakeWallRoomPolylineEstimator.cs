@@ -89,7 +89,6 @@ namespace NRISVTE {
             if (closestPointPairs.Empty()) {
                 return;
             }
-            PrettyPrintClosestPointPairs(closestPointPairs);
             Vector2 startingPoint = closestPointPairs[0][0];
             res.Add(new List<float>() { startingPoint.x, startingPoint.y });
             Vector2 curPoint = closestPointPairs[0][1];

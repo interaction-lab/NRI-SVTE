@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 using WebSocketSharp;
 
@@ -27,6 +28,17 @@ namespace NRISVTE {
                 return ws != null && ws.ReadyState == WebSocketState.Open;
             }
         }
+        UnityEvent receivedMessageEvent;
+        public UnityEvent ReceivedMessageEvent {
+            get {
+                if (receivedMessageEvent == null) {
+                    receivedMessageEvent = new UnityEvent();
+                }
+                return receivedMessageEvent;
+            }
+        }
+        public string LatestMsg = "";
+        float lastMsgTime = 0;
 
         #endregion
 
@@ -35,13 +47,14 @@ namespace NRISVTE {
             loggingManager.AddLogColumn(msgSendColName, "");
             loggingManager.AddLogColumn(msgRecvColName, "");
             DebugTextM = DebugTextManager.instance;
+            KuriManager.instance.GetComponent<KuriBTEventRouter>().AddEvent(EventNames.ReceivedMessage, ReceivedMessageEvent);
         }
         #endregion
 
         #region public
         public void Connect() {
-            if(IsConnected) {
-                ws.Close();
+            if (IsConnected) {
+                return;
             }
             ws = new WebSocket("ws://" +
                 HostInputFieldManager.instance.HostNumber +
@@ -55,6 +68,9 @@ namespace NRISVTE {
                     UnityMainThread.wkr.AddJob(() => {
                         loggingManager.UpdateLogColumn(msgRecvColName, e.Data.ToString());
                         DebugTextM.SetDebugText("Received: " + e.Data);
+                        LatestMsg = e.Data;
+                        lastMsgTime = Time.time;
+                        ReceivedMessageEvent.Invoke();
                     });
                 }
                 catch (System.Exception ex) {

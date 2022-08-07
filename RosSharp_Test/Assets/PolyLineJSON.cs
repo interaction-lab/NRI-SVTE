@@ -12,6 +12,7 @@ namespace NRISVTE {
         public List<List<List<float>>> objects;
         public List<List<string>> links;
         public List<List<float>> room; // [[x0, y0], [x1, y1], ...]
-
+        public string requestType;
+        public string sampleType;
     }
 }
