@@ -20,7 +20,7 @@ namespace NRISVTE {
         public enum State {
             SayingQuestion,
             WaitingForResponse,
-            SayingAnswer,
+            SayingResponse,
             SayingOptions,
             None
         }
@@ -90,7 +90,7 @@ namespace NRISVTE {
                 return;
             }
             DisableOptionsObj();
-            state = State.SayingAnswer;
+            state = State.SayingResponse;
             DisableOptionsObj();
             if (CurrentlySelectedOption == Option.A) {
                 questionText.text = ObjectToPickUpManager_.CurrentlyPickedUpObject.ResponseA;
