@@ -48,6 +48,31 @@ namespace NRISVTE {
                 return DialogueJSON_.ResponseB;
             }
         }
+        public string ResponseAAudioClipName {
+            get {
+                return gameObject.name.ToLower() + "ResponseA";
+            }
+        }
+        public string ResponseBAudioClipName {
+            get {
+                return gameObject.name.ToLower() + "ResponseB";
+            }
+        }
+        public string QuestionAudioClipName {
+            get {
+                return gameObject.name.ToLower() + "Question";
+            }
+        }
+        public string OptionAAudioClipName {
+            get {
+                return gameObject.name.ToLower() + "OptionA";
+            }
+        }
+        public string OptionBAudioClipName {
+            get {
+                return gameObject.name.ToLower() + "OptionB";
+            }
+        }
         #endregion
         #region unity
         #endregion

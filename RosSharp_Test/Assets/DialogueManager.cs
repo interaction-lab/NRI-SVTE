@@ -8,6 +8,15 @@ using UnityEngine.Events;
 namespace NRISVTE {
     public class DialogueManager : Singleton<DialogueManager> {
         #region members
+        KuriAudioManager _kuriAudioManager;
+        KuriAudioManager kuriAudioManager {
+            get {
+                if (_kuriAudioManager == null) {
+                    _kuriAudioManager = KuriAudioManager.instance;
+                }
+                return _kuriAudioManager;
+            }
+        }
         ObjectToPickUpManager _obj2pikUPMaNaGeR; // lol if any ever sees this
         ObjectToPickUpManager ObjectToPickUpManager_ {
             get {
@@ -61,7 +70,7 @@ namespace NRISVTE {
         }
         #endregion
         #region public
-        public void ResetAllUI(){
+        public void ResetAllUI() {
             questionText.enabled = false;
             DisableOptionsObj();
         }
@@ -73,7 +82,8 @@ namespace NRISVTE {
             questionText.enabled = true;
             // play audio over time, will update the state update to wait until the audio is done
             questionText.text = ObjectToPickUpManager_.CurrentlyPickedUpObject.Question;
-            state = State.None;
+            float timeToStall = kuriAudioManager.PlayAudioClip(ObjectToPickUpManager_.CurrentlyPickedUpObject.QuestionAudioClipName);
+            StartCoroutine(WaitForAudioToFinish(timeToStall));
         }
         public void ResetQuestionText() {
             questionText.text = "";
@@ -111,12 +121,15 @@ namespace NRISVTE {
             else if (CurrentlySelectedOption == Option.B) {
                 questionText.text = ObjectToPickUpManager_.CurrentlyPickedUpObject.ResponseB;
             }
-            // play audio over time, will update the state update to wait until the audio is done
-            state = State.None;
+
         }
 
         #endregion
         #region private
+        IEnumerator WaitForAudioToFinish(float timeToStall) {
+            yield return new WaitForSeconds(timeToStall);
+            state = State.None;
+        }
         void DisableOptionsObj() {
             userOptionButtonObject.gameObject.SetActive(false);
         }

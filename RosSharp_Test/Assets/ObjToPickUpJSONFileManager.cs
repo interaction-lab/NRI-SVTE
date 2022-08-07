@@ -6,6 +6,7 @@ namespace NRISVTE {
     public class ObjToPickUpJSONFileManager : Singleton<ObjToPickUpJSONFileManager> {
         #region members
         static string resourcePathToJSONs = "ObjectToPickUpFolder/Dialogue/";
+        static string resourcePathToAudio = "ObjectToPickUpFolder/Audio/";
         Dictionary<string, DialogueJSON> _dialogueJSONs;
         // filename (lowercase) -> DialogueJSON
         Dictionary<string, DialogueJSON> DialogueJSONs {
@@ -14,6 +15,15 @@ namespace NRISVTE {
                     SetUpDialogueJSONs();
                 }
                 return _dialogueJSONs;
+            }
+        }
+        Dictionary<string, AudioClip> _audioClips;
+        Dictionary<string, AudioClip> AudioClips {
+            get {
+                if (_audioClips == null) {
+                    SetUpAudioClips();
+                }
+                return _audioClips;
             }
         }
         #endregion
@@ -27,6 +37,13 @@ namespace NRISVTE {
             Debug.LogError("Did not find dialogue json for " + objname);
             return null;
         }
+        public AudioClip GetAudioClip(string objname) {
+            if (AudioClips.ContainsKey(objname)) {
+                return AudioClips[objname];
+            }
+            Debug.LogError("Did not find audio clip for " + objname);
+            return null;
+        }
 
         #endregion
         #region private
@@ -36,6 +53,13 @@ namespace NRISVTE {
             foreach (TextAsset file in files) {
                 _dialogueJSONs.Add(file.name.ToLower(),
                     Newtonsoft.Json.JsonConvert.DeserializeObject<DialogueJSON>(file.text));
+            }
+        }
+        private void SetUpAudioClips() {
+            _audioClips = new Dictionary<string, AudioClip>();
+            AudioClip[] files = Resources.LoadAll<AudioClip>(resourcePathToAudio);
+            foreach (AudioClip file in files) {
+                _audioClips.Add(file.name, file);
             }
         }
         #endregion
