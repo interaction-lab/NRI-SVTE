@@ -19,7 +19,7 @@ namespace NRISVTE {
         List<ARPlane> WallARPlanes {
             get {
                 List<ARPlane> wallARPlanes = new List<ARPlane>();
-#if !UnityEditor
+#if !UNITY_EDITOR
                 foreach (ARPlane plane in ARPlaneManager_.trackables) {
                     if (plane.alignment == PlaneAlignment.Vertical) {
                         wallARPlanes.Add(plane);

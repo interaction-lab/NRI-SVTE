@@ -12,9 +12,8 @@ namespace NRISVTE {
         public List<ARPlane> _fakeplanes = null;
         public List<ARPlane> FakePlanes {
             get {
-                if (_fakeplanes == null) {
+                if (_fakeplanes == null || _fakeplanes.Empty()) {
                     _fakeplanes = new List<ARPlane>();
-                    Debug.Log("kjdfs");
                     foreach (ARPlane plane in GetComponentsInChildren<ARPlane>(true)) {
                         _fakeplanes.Add(plane);
                     }
