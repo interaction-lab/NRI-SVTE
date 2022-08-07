@@ -10,7 +10,7 @@ namespace NRISVTE {
                 return transform.position;
             }
         }
-        public Transform HeadPan, HeadTilt, EyeLids;
+        public Transform HeadPan, HeadTilt, EyeLids; // vestigial
 
         public Quaternion HeadRotation {
             get {
@@ -18,6 +18,11 @@ namespace NRISVTE {
             }
             set {
                 transform.rotation = value;
+            }
+        }
+        public Transform OriginT{
+            get{
+                return transform;
             }
         }
 

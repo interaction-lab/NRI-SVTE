@@ -18,14 +18,14 @@ namespace NRISVTE {
             }
         }
         protected override void OnStart() {
-            goalYRot = blackboard.goalRotation.y;
-            // get goal roation between 0 and 360 degrees
-            if (goalYRot < 0) {
-                goalYRot += 360;
-            }
-            if (goalYRot > 360) {
-                goalYRot -= 360;
-            }
+            // goalYRot = blackboard.goalRotation.y;
+            // // get goal roation between 0 and 360 degrees
+            // if (goalYRot < 0) {
+            //     goalYRot += 360;
+            // }
+            // if (goalYRot > 360) {
+            //     goalYRot -= 360;
+            // }
             minAngle = turnSpeed * Time.deltaTime * 2f;
         }
 
@@ -33,40 +33,17 @@ namespace NRISVTE {
         }
 
         protected override State OnUpdate() {
-            float kuriRot = KuriT.Rotation.eulerAngles.y;
-            // get kuri rotation between 0 and 360 degrees
-            if (kuriRot < 0) {
-                kuriRot += 360;
-            }
-            if (kuriRot > 360) {
-                kuriRot -= 360;
-            }
-            KuriT.Rotation = Quaternion.Euler(KuriT.Rotation.eulerAngles.x, kuriRot, KuriT.Rotation.eulerAngles.z);
-            float delta = (goalYRot - KuriT.Rotation.eulerAngles.y);
-            // delta range is 0 to 360
-            // clamp delta to -180 to 180 degrees
-            if (delta > 180) {
-                delta -= 360;
-            }
-            if (delta < -180) {
-                delta += 360;
-            }
-            if (Mathf.Abs(delta) <= minAngle) {
-                KuriT.Rotation = Quaternion.Euler(new Vector3(KuriT.Rotation.eulerAngles.x, goalYRot, KuriT.Rotation.eulerAngles.z));
-                return State.Success;
-            }
-
+            Vector3 goalPosition = blackboard.goalPosition;
+            Vector3 kuriPosition = KuriT.Position;
+            Vector3 directionInKuriCords = goalPosition - kuriPosition;
+            Vector3 kuriForward = KuriT.Forward;
+            // get angle between directionInKuriCords and kuriForward
+            float angle = Vector3.SignedAngle(directionInKuriCords, kuriForward, Vector3.up); // y angle to rotate kuri by
             float timedSpeed = turnSpeed * Time.deltaTime;
-            timedSpeed = Mathf.Min(timedSpeed, delta);
+            Vector3 newForward = Vector3.RotateTowards(KuriT.Forward, directionInKuriCords, timedSpeed, 0.0f);
+            KuriT.Rotation = Quaternion.LookRotation(newForward);
 
-            if (delta > 0f) {
-                KuriT.Rotation = Quaternion.Euler(new Vector3(KuriT.Rotation.eulerAngles.x, KuriT.Rotation.eulerAngles.y + timedSpeed, KuriT.Rotation.eulerAngles.z));
-            }
-            else {
-                KuriT.Rotation = Quaternion.Euler(new Vector3(KuriT.Rotation.eulerAngles.x, KuriT.Rotation.eulerAngles.y - timedSpeed, KuriT.Rotation.eulerAngles.z));
-            }
-
-            return State.Running;
+            return angle < minAngle ? State.Success : State.Running;
         }
     }
 }

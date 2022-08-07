@@ -21,7 +21,7 @@ namespace NRISVTE {
         }
 
         protected override State OnUpdate() {
-            kuriHeadPositionManager.HeadRotation = Quaternion.identity;
+            kuriHeadPositionManager.transform.localRotation = Quaternion.identity;
             return State.Success;
         }
     }

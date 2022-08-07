@@ -20,7 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DemoKuriPlacement.unity
     guid: 24678459fbb27104db804e200c55ed2b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Kitchen Asset/KitchenDemo.unity
     guid: 6cbf0f22944ccb7438ef0d239e289649
   m_configObjects:

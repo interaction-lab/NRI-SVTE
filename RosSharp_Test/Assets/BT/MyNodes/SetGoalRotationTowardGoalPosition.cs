@@ -21,11 +21,22 @@ namespace NRISVTE {
         }
 
         protected override State OnUpdate() {
-            
-            Vector2 goalPosition = new Vector2(blackboard.goalPosition.x, blackboard.goalPosition.z);
-            Vector2 kuriPosition = new Vector2(KuriT.Position.x, KuriT.Position.z);
-            Vector2 direction = goalPosition - kuriPosition;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            Vector3 goalPoisiton = blackboard.goalPosition;
+            Vector3 kuriPosition = KuriT.Position;
+            Vector3 directionInKuriCords = goalPoisiton - kuriPosition;
+
+            // get kuri forward vector in global coords
+            Vector3 kuriForward = KuriT.Forward;
+            Vector2 kuriFlatForward = new Vector2(kuriForward.x, kuriForward.z);
+            kuriFlatForward.Normalize();
+            // get angle of kuriFlatFoward relative to global coords
+
+            float angle = Mathf.Atan2(kuriFlatForward.y, kuriFlatForward.x) * Mathf.Rad2Deg;
+
+            // rotate direction in Kuri Cords by angle
+            Vector3 direction = Quaternion.Euler(0, angle, 0) * directionInKuriCords;
+
+            angle = Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg;
             blackboard.goalRotation = new Vector3(0, angle, 0);
             return State.Success;
         }

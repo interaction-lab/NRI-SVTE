@@ -151,28 +151,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: bbdad338a452c418caa06f69e5dd5439
-  position: {x: 691.5, y: 845.9998}
-  blackboard:
-    goalPosition: {x: 0, y: 0, z: 0}
-    goalRotation: {x: 0, y: 0, z: 0}
-  description: 
-  drawGizmos: 0
---- !u!114 &-4900216308414123967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50c3e2c41f928462e9b2501c6e262477, type: 3}
-  m_Name: SetGoalRotationTowardGoalPosition
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: 9cddd8c660f6a4b7091072ceef8ee4ce
-  position: {x: 841.5, y: 846.00006}
+  position: {x: 791, y: 814}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -245,7 +224,6 @@ MonoBehaviour:
   drawGizmos: 0
   children:
   - {fileID: 2280195275293677063}
-  - {fileID: 4931082965864222980}
   - {fileID: 2924450388649639480}
 --- !u!114 &-3038189061769805216
 MonoBehaviour:
@@ -440,7 +418,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: d75475e32d6f64c7ba64ba420ced672c
-  position: {x: -205.99976, y: 1182}
+  position: {x: -365, y: 1130}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -485,7 +463,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 6704e858cd6b94dd780d4520c2649a12
-  position: {x: 115.49994, y: 1181.7502}
+  position: {x: -50, y: 1130}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -495,7 +473,7 @@ MonoBehaviour:
   stoppingDistance: 0.1
   updateRotation: 1
   acceleration: 40
-  tolerance: 1
+  tolerance: 0.1
 --- !u!114 &-1089637402966126087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -587,22 +565,18 @@ MonoBehaviour:
   - {fileID: 2771146390541929084}
   - {fileID: -8977000337275009982}
   - {fileID: 1285274839569435453}
-  - {fileID: 7597545425315152063}
   - {fileID: -1720312018255382335}
   - {fileID: -2071764148361473535}
   - {fileID: -8765588398319286666}
   - {fileID: 3561066658565843895}
   - {fileID: 6947606508065726143}
   - {fileID: 6094385405673704823}
-  - {fileID: 723533833496833334}
   - {fileID: -1430737957653764730}
   - {fileID: -1095305376814368211}
   - {fileID: 13918986462976607}
   - {fileID: 6375117686067696053}
   - {fileID: -2729655762697036384}
   - {fileID: -3053706809764380956}
-  - {fileID: -4900216308414123967}
-  - {fileID: 4931082965864222980}
   - {fileID: 2924450388649639480}
   - {fileID: 2280195275293677063}
   - {fileID: -5632769981686056922}
@@ -627,27 +601,6 @@ MonoBehaviour:
   started: 0
   guid: e1cd25544a2cd4253859825a2224acbb
   position: {x: -306.49994, y: 946}
-  blackboard:
-    goalPosition: {x: 0, y: 0, z: 0}
-    goalRotation: {x: 0, y: 0, z: 0}
-  description: 
-  drawGizmos: 0
---- !u!114 &723533833496833334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50c3e2c41f928462e9b2501c6e262477, type: 3}
-  m_Name: SetGoalRotationTowardGoalPosition
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: 2c9c9f5b908aa491ca80c37b5c1db8b1
-  position: {x: -565.99994, y: 1182}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -697,7 +650,6 @@ MonoBehaviour:
   description: 
   drawGizmos: 0
   children:
-  - {fileID: 7597545425315152063}
   - {fileID: -8977000337275009982}
   - {fileID: 5426568491830980339}
   - {fileID: -1277725368423983167}
@@ -787,7 +739,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 736c2bf8d550c4932a9fa5d4417444f1
-  position: {x: 691.5, y: 709.00006}
+  position: {x: 791, y: 677}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -897,7 +849,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: f95bb8ee8a9fd45c288eaa5b47f0c6ab
-  position: {x: -40.999878, y: 1182}
+  position: {x: -200, y: 1130}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -1050,30 +1002,6 @@ MonoBehaviour:
   - {fileID: 13918986462976607}
   - {fileID: 6094385405673704823}
   - {fileID: -4318833344732297412}
---- !u!114 &4931082965864222980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1907df3fcf7f9462fb51a7b9a89c935d, type: 3}
-  m_Name: MonitorRepeater
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: a25f19ef0d5ff4e468b6a1e817e36215
-  position: {x: 892, y: 713.00006}
-  blackboard:
-    goalPosition: {x: 0, y: 0, z: 0}
-    goalRotation: {x: 0, y: 0, z: 0}
-  description: 
-  drawGizmos: 0
-  child: {fileID: -4900216308414123967}
-  restartOnSuccess: 1
-  restartOnFailure: 0
 --- !u!114 &5158259776951533146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1141,7 +1069,6 @@ MonoBehaviour:
   description: 
   drawGizmos: 0
   children:
-  - {fileID: 723533833496833334}
   - {fileID: -1430737957653764730}
   - {fileID: 3279871966771845544}
   - {fileID: -1095305376814368211}
@@ -1161,7 +1088,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 1dbe83ea8a682453a84464b37ec9a10e
-  position: {x: 282.94495, y: 1182}
+  position: {x: 135, y: 1130}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -1237,27 +1164,6 @@ MonoBehaviour:
   child: {fileID: 3769209482580497903}
   restartOnSuccess: 1
   restartOnFailure: 1
---- !u!114 &7597545425315152063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50c3e2c41f928462e9b2501c6e262477, type: 3}
-  m_Name: SetGoalRotationTowardGoalPosition
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: 69b80dc2d530c4c91bbb2230723242c6
-  position: {x: -29, y: 689}
-  blackboard:
-    goalPosition: {x: 0, y: 0, z: 0}
-    goalRotation: {x: 0, y: 0, z: 0}
-  description: 
-  drawGizmos: 0
 --- !u!114 &7818245969041346504
 MonoBehaviour:
   m_ObjectHideFlags: 0
