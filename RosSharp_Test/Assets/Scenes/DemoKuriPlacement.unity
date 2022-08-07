@@ -11002,7 +11002,6 @@ GameObject:
   - component: {fileID: 65348717121769618}
   - component: {fileID: 65348717121769619}
   - component: {fileID: 65348717121769620}
-  - component: {fileID: 65348717121769621}
   m_Layer: 31
   m_Name: Wall
   m_TagString: Untagged
@@ -11785,6 +11784,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LeftBound: {x: 0, y: 0}
   RightBound: {x: 0, y: 0}
+  sphereSize: 0.05
 --- !u!65 &65163962004476406
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11826,6 +11826,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LeftBound: {x: 0, y: 0}
   RightBound: {x: 0, y: 0}
+  sphereSize: 0.05
 --- !u!65 &65317495260556946
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11867,6 +11868,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LeftBound: {x: 0, y: 0}
   RightBound: {x: 0, y: 0}
+  sphereSize: 0.05
 --- !u!65 &65348717121769618
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11908,20 +11910,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LeftBound: {x: 0, y: 0}
   RightBound: {x: 0, y: 0}
---- !u!114 &65348717121769621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1976868056431954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a0a4a94c5f2b4f1eb2790c6870b5927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LeftBound: {x: 0, y: 0}
-  RightBound: {x: 0, y: 0}
+  sphereSize: 0.05
 --- !u!65 &65734417939006644
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11963,6 +11952,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LeftBound: {x: 0, y: 0}
   RightBound: {x: 0, y: 0}
+  sphereSize: 0.05
 --- !u!65 &65821080449091244
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12004,6 +11994,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LeftBound: {x: 0, y: 0}
   RightBound: {x: 0, y: 0}
+  sphereSize: 0.05
 --- !u!65 &65901246542029544
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12045,6 +12036,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LeftBound: {x: 0, y: 0}
   RightBound: {x: 0, y: 0}
+  sphereSize: 0.05
 --- !u!65 &65903172570120930
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12086,6 +12078,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LeftBound: {x: 0, y: 0}
   RightBound: {x: 0, y: 0}
+  sphereSize: 0.05
 --- !u!65 &65931074477063574
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12127,6 +12120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LeftBound: {x: 0, y: 0}
   RightBound: {x: 0, y: 0}
+  sphereSize: 0.05
 --- !u!108 &108420559283827050
 Light:
   m_ObjectHideFlags: 0
