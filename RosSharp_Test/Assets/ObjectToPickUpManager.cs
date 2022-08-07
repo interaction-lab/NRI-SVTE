@@ -64,18 +64,19 @@ namespace NRISVTE {
             CurrentlyPickedUpObject = objectToPickUp;
         }
 
-        public void SpawnCurObject() {
-            EnableObject(CurrentlyPickedUpObject);
+        public void SpawnCurObject(Vector3 position) {
+            EnableObject(CurrentlyPickedUpObject, position);
         }
 
         public void PickUpObject() {
-            AttachToKuriHead(objectToPickUp);
+            AttachToKuriHead(CurrentlyPickedUpObject);
         }
         #endregion
 
         #region private
-        private void EnableObject(ObjectToPickUp objectToPickUp) {
+        private void EnableObject(ObjectToPickUp objectToPickUp, Vector3 position) {
             objectToPickUp.gameObject.SetActive(true);
+            objectToPickUp.transform.position = position;
         }
         private void DisableObject(ObjectToPickUp objectToPickUp) {
             if (objectToPickUp != null) {

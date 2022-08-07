@@ -4,7 +4,7 @@ using UnityEngine;
 using TheKiwiCoder;
 
 namespace NRISVTE {
-    public class SpawnNewObject : ActionNode {
+    public class PickUpObject : ActionNode {
         ObjectToPickUpManager _objectToPickUpManager;
         ObjectToPickUpManager objectToPickUpManager {
             get {
@@ -15,7 +15,7 @@ namespace NRISVTE {
             }
         }
         protected override void OnStart() {
-            objectToPickUpManager.SpawnCurObject(blackboard.goalPosition);
+            objectToPickUpManager.PickUpObject();
         }
 
         protected override void OnStop() {
