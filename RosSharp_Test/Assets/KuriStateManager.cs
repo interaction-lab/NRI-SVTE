@@ -24,23 +24,13 @@ namespace NRISVTE {
                 _state = value;
             }
         }
-        TapToPlace _tapToPl;
-        TapToPlace TapToPl {
-            get {
-                if (_tapToPl == null) {
-                    _tapToPl = GetComponent<TapToPlace>();
-                }
-                return _tapToPl;
-            }
-        }
+
 
         public UnityEvent OnStateChanged;
         #endregion
 
         #region unity
         void Start() {
-            TapToPl.OnPlacingStarted.AddListener(OnPlacementStarted);
-            TapToPl.OnPlacingStopped.AddListener(OnPlacementCompleted);
         }
         #endregion
 
@@ -52,12 +42,6 @@ namespace NRISVTE {
         #endregion
 
         #region private
-        void OnPlacementStarted() {
-            SetState(States.BeingPlaced);
-        }
-        void OnPlacementCompleted() {
-            SetState(States.Idle);
-        }
         #endregion
     }
 }

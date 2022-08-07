@@ -21,7 +21,7 @@ namespace NRISVTE {
         int numNearestToLookAt = 7; // higher number = slower querying, but more accurate/uses all hits
         KuriTransformManager _kuriT;
         private List<Vector3> PolyLineList; // [[x, y, angle],...]
-        public List<List<float>> PublicPolyLineList; // [[x, y, angle],...]
+        public List<List<float>> PublicPolyLineList; // [[x, y],...]
         public KuriTransformManager KuriT {
             get {
                 if (_kuriT == null) {
