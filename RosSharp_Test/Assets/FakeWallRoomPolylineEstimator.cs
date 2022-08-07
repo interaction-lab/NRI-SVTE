@@ -7,6 +7,15 @@ using UnityEngine.XR.ARSubsystems;
 namespace NRISVTE {
     public class FakeWallRoomPolylineEstimator : Singleton<FakeWallRoomPolylineEstimator> {
         #region members
+        KuriTransformManager kuriTransformManager;
+        KuriTransformManager KuriT {
+            get {
+                if (kuriTransformManager == null) {
+                    kuriTransformManager = KuriManager.instance.GetComponent<KuriTransformManager>();
+                }
+                return kuriTransformManager;
+            }
+        }
         ARPlaneManager _planeManager;
         ARPlaneManager ARPlaneManager_ {
             get {
@@ -26,8 +35,6 @@ namespace NRISVTE {
                     }
                 }
 #else
-                // get fake walls here
-                Debug.Log("here");
                 wallARPlanes = BaseRoomTester.instance.FakePlanes;
 #endif
                 return wallARPlanes;
@@ -35,18 +42,43 @@ namespace NRISVTE {
         }
         #endregion
         #region unity
-        void Update() {
-            if (Input.GetKeyDown(KeyCode.Alpha0)) {
-                Debug.Log(0);
-                foreach (var plane in WallARPlanes) {
-                    Debug.Log(plane.boundary);
-                }
-            }
-        }
         #endregion
         #region public
+        public List<List<float>> GetWallPolyLines() {
+            List<List<float>> res = new List<List<float>>();
+            // go through all WallARPlane get get the right and left bounds
+#if !UNITY_EDITOR
+            // this likely needs sorting but going to use this for now
+            foreach (ARPlane plane in WallARPlanes) {
+                LeftAndRightBound leftAndRightBound = plane.GetComponent<LeftAndRightBound>();
+                if (leftAndRightBound != null) {
+                    res.Add(new List<float>() { leftAndRightBound.LeftBound.x, leftAndRightBound.LeftBound.y });
+                    res.Add(new List<float>() { leftAndRightBound.RightBound.x, leftAndRightBound.RightBound.y });
+                }
+            }
+#else
+            // fake
+            foreach (ARPlane plane in WallARPlanes) {
+                FakeLeftRightBound leftAndRightBound = plane.GetComponent<FakeLeftRightBound>();
+                if (leftAndRightBound != null) {
+                    res.Add(new List<float>() { leftAndRightBound.LeftBound.x, leftAndRightBound.LeftBound.y });
+                    res.Add(new List<float>() { leftAndRightBound.RightBound.x, leftAndRightBound.RightBound.y });
+                }
+            }
+#endif
+            // convert to kuri space
+            ConvertToKuriSpace(res);
+            return res;
+        }
         #endregion
         #region private
-        #endregion
+        private void ConvertToKuriSpace(List<List<float>> polylines) {
+            for (int i = 0; i < polylines.Count; i++) {
+                polylines[i][0] = (polylines[i][0] - KuriT.Position.x) * 100;
+                polylines[i][1] = (polylines[i][1] - KuriT.Position.y) * 100;
+            }
+        }
     }
+    #endregion
 }
+
