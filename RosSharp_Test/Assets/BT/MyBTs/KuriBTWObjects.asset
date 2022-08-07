@@ -15,13 +15,12 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 3aa893ce49fad487d94acfe717e3299b
-  position: {x: 288, y: 689}
+  position: {x: 296, y: 689}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
   description: 
   drawGizmos: 0
-  turnSpeed: 30
 --- !u!114 &-8765588398319286666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,7 +355,6 @@ MonoBehaviour:
     goalRotation: {x: 0, y: 0, z: 0}
   description: 
   drawGizmos: 0
-  turnSpeed: 30
 --- !u!114 &-1277725368423983167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,7 +400,7 @@ MonoBehaviour:
     goalRotation: {x: 0, y: 0, z: 0}
   description: 
   drawGizmos: 0
-  speed: 5
+  speed: 0.75
   stoppingDistance: 0.1
   updateRotation: 1
   acceleration: 40
