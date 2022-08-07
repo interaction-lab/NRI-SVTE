@@ -585,6 +585,7 @@ MonoBehaviour:
   description: 
   drawGizmos: 0
   children:
+  - {fileID: 2806991820818994229}
   - {fileID: -4216429727589979603}
   - {fileID: -6780564540008868197}
   - {fileID: -5844706176581188112}
@@ -655,6 +656,7 @@ MonoBehaviour:
   - {fileID: -6780564540008868197}
   - {fileID: 1360918474854952282}
   - {fileID: -5844706176581188112}
+  - {fileID: 2806991820818994229}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -903,6 +905,27 @@ MonoBehaviour:
   started: 0
   guid: 61e1f67f2c399409cb15fba7ea3a0938
   position: {x: 1092.5625, y: 598.00006}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
+--- !u!114 &2806991820818994229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d3561f15b17941fb84c6a5034954d95, type: 3}
+  m_Name: IsConnectedToServer
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 40868bb0981134d29bdebbce979b99e2
+  position: {x: -1277, y: 1259.5}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
