@@ -77,14 +77,95 @@ namespace NRISVTE {
         #region private
         private List<List<float>> CalculateIntersectionPoints(List<List<float>> res) {
             // make a List of all plane centers and normals
-            List<Vector3> planeCenters = new List<Vector3>();
-            List<Vector3> planeNormals = new List<Vector3>();
-            foreach (ARPlane plane in WallARPlanes) {
-                planeCenters.Add(plane.center);
-                planeNormals.Add(plane.normal);
+            List<Vector3> planeCenters, planeNormals;
+            CreatePlaneCentersAndNormals(out planeCenters, out planeNormals);
+            List<List<Vector3>> planeIntersections = FindPlaneIntersections(planeCenters, planeNormals);
+            List<List<Vector2>> closestPointPairs = FindWithinPointClosestPairs(planeCenters, planeIntersections);
+            CreatePolylineFromClosestPointPairs(res, closestPointPairs);
+            return res;
+        }
+
+        private void CreatePolylineFromClosestPointPairs(List<List<float>> res, List<List<Vector2>> closestPointPairs) {
+            if (closestPointPairs.Empty()) {
+                return;
+            }
+            PrettyPrintClosestPointPairs(closestPointPairs);
+            Vector2 startingPoint = closestPointPairs[0][0];
+            res.Add(new List<float>() { startingPoint.x, startingPoint.y });
+            Vector2 curPoint = closestPointPairs[0][1];
+            res.Add(new List<float>() { curPoint.x, curPoint.y });
+            closestPointPairs.RemoveAt(0);
+
+            while (!closestPointPairs.Empty()) {
+                float minDist = float.MaxValue;
+                int minIndex = -1;
+                bool isFirstPoint = true;
+                for (int i = 0; i < closestPointPairs.Count; ++i) {
+                    Vector2 point1 = closestPointPairs[i][0];
+                    Vector2 point2 = closestPointPairs[i][1];
+                    float dist1 = Vector2.Distance(point1, curPoint);
+                    float dist2 = Vector2.Distance(point2, curPoint);
+                    if (dist1 < minDist) {
+                        isFirstPoint = true;
+                        minDist = dist1;
+                        minIndex = i;
+                    }
+                    if (dist2 < minDist) {
+                        isFirstPoint = false;
+                        minDist = dist2;
+                        minIndex = i;
+                    }
+                }
+                // whatever is matched is the same point essentially as what was last
+                if (isFirstPoint) {
+                    curPoint = closestPointPairs[minIndex][1];
+                }
+                else {
+                    curPoint = closestPointPairs[minIndex][0];
+                }
+                res.Add(new List<float>() { curPoint.x, curPoint.y });
+                // remove found point pair from list
+                closestPointPairs.RemoveAt(minIndex);
+            }
+        }
+
+        private List<List<Vector2>> FindWithinPointClosestPairs(List<Vector3> planeCenters, List<List<Vector3>> planeIntersections) {
+            List<List<Vector2>> closestPointPairs = new List<List<Vector2>>();
+
+            int index = -1;
+            foreach (List<Vector3> intersectionPoints in planeIntersections) {
+                ++index;
+                if (intersectionPoints.Count == 0) { // nothing intersected with this plane which is odd
+                    continue;
+                }
+
+                Vector3 closestPoint = Vector3.zero;
+                Vector3 secondClosestPoint = Vector3.zero;
+                float closestDistance = float.MaxValue;
+                float secondClosestDistance = float.MaxValue;
+
+                foreach (Vector3 intersectionPoint in intersectionPoints) {
+                    float distance = Vector3.Distance(intersectionPoint, planeCenters[index]);
+                    if (distance < closestDistance) {
+                        secondClosestDistance = closestDistance;
+                        secondClosestPoint = closestPoint;
+                        closestDistance = distance;
+                        closestPoint = intersectionPoint;
+                    }
+                    else if (distance < secondClosestDistance) {
+                        secondClosestDistance = distance;
+                        secondClosestPoint = intersectionPoint;
+                    }
+                }
+                closestPointPairs.Add(new List<Vector2>());
+                closestPointPairs[index].Add(new Vector2(closestPoint.x, closestPoint.z));
+                closestPointPairs[index].Add(new Vector2(secondClosestPoint.x, secondClosestPoint.z));
             }
 
-            // calculate the intersection points of the planes
+            return closestPointPairs;
+        }
+
+        private List<List<Vector3>> FindPlaneIntersections(List<Vector3> planeCenters, List<Vector3> planeNormals) {
             List<List<Vector3>> planeIntersections = new List<List<Vector3>>();
             // go through all plane centers and normals and get the intersection points for each
             for (int i = 0; i < planeCenters.Count; i++) {
@@ -114,76 +195,36 @@ namespace NRISVTE {
                 }
             }
 
-            // for each intersection point, find the closest 2 to that plane's center and add it to the result
-            List<List<Vector2>> closestPointPairs = new List<List<Vector2>>();
-            int index = -1;
-            foreach (List<Vector3> intersectionPoints in planeIntersections) {
-                ++index;
-                if (intersectionPoints.Count == 0) {
-                    continue;
-                }
-                Vector3 closestPoint = Vector3.zero;
-                Vector3 secondClosestPoint = Vector3.zero;
-                float closestDistance = float.MaxValue;
-                float secondClosestDistance = float.MaxValue;
-                foreach (Vector3 intersectionPoint in intersectionPoints) {
-                    float distance = Vector3.Distance(intersectionPoint, planeCenters[index]);
-                    if (distance < closestDistance) {
-                        secondClosestDistance = closestDistance;
-                        secondClosestPoint = closestPoint;
-                        closestDistance = distance;
-                        closestPoint = intersectionPoint;
-                    }
-                    else if (distance < secondClosestDistance) {
-                        secondClosestDistance = distance;
-                        secondClosestPoint = intersectionPoint;
-                    }
-                }
-                closestPointPairs.Add(new List<Vector2>());
-                closestPointPairs[index].Add(new Vector2(closestPoint.x, closestPoint.z));
-                closestPointPairs[index].Add(new Vector2(secondClosestPoint.x, secondClosestPoint.z));
-            }
-
-            // match points to sort them in order
-
-            Vector2 startingPoint = closestPointPairs[0][0];
-            res.Add(new List<float>() { startingPoint.x, startingPoint.y });
-            Vector2 curPoint = closestPointPairs[0][1];
-            res.Add(new List<float>() { curPoint.x, curPoint.y });
-            // remove the first point from the list of closest points
-            closestPointPairs.RemoveAt(0);
-            // find the corresponding closest point to curPoint in closestPointPairs and add it to the result
-            int fIndex = -1;
-            float threshold = 0.01f;
-            bool foundPoint = true;
-            while (closestPointPairs.Count > 0 && foundPoint) {
-                foundPoint = false;
-                foreach (List<Vector2> pointPair in closestPointPairs) {
-                    ++fIndex;
-                    if (PlaneMathLibrary.CloseEnough(curPoint, pointPair[0], threshold)) {
-                        res.Add(new List<float>() { pointPair[1].x, pointPair[1].y });
-                        curPoint = pointPair[1];
-                        closestPointPairs.RemoveAt(fIndex);
-                        foundPoint = true;
-                        break;
-                    }
-                    else if (PlaneMathLibrary.CloseEnough(curPoint, pointPair[1], threshold)) {
-                        res.Add(new List<float>() { pointPair[0].x, pointPair[0].y });
-                        curPoint = pointPair[0];
-                        closestPointPairs.RemoveAt(fIndex);
-                        foundPoint = true;
-                        break;
-                    }
-                }
-            }
-
-            return res;
+            return planeIntersections;
         }
+
+        private void CreatePlaneCentersAndNormals(out List<Vector3> planeCenters, out List<Vector3> planeNormals) {
+            planeCenters = new List<Vector3>();
+            planeNormals = new List<Vector3>();
+            foreach (ARPlane plane in WallARPlanes) {
+                planeCenters.Add(plane.center);
+                planeNormals.Add(plane.normal);
+            }
+        }
+
         private void ConvertToKuriSpace(List<List<float>> polylines) {
             for (int i = 0; i < polylines.Count; i++) {
                 polylines[i][0] = (polylines[i][0] - KuriT.Position.x) * 100;
                 polylines[i][1] = (polylines[i][1] - KuriT.Position.z) * 100;
             }
+        }
+
+        private void PrettyPrintClosestPointPairs(List<List<Vector2>> closestPointPairs) {
+            Debug.Log("Closest Point Pairs:");
+            string final = "";
+            for (int i = 0; i < closestPointPairs.Count; ++i) {
+                final += "Plane " + i + ": ";
+                for (int j = 0; j < closestPointPairs[i].Count; ++j) {
+                    final += "(" + closestPointPairs[i][j].x + ", " + closestPointPairs[i][j].y + ") ";
+                }
+                final += "\n";
+            }
+            Debug.Log(final);
         }
     }
     #endregion
