@@ -4,9 +4,7 @@ using UnityEngine;
 using TheKiwiCoder;
 
 namespace NRISVTE {
-    public class TurnToPose : ActionNode {
-        public float turnSpeed = 30f; // degrees per second
-        Quaternion goalRotation;
+    public class SetGoalRotationTowardGoalPosition : ActionNode {
         KuriTransformManager kuriTransformManager;
         KuriTransformManager KuriT {
             get {
@@ -17,15 +15,17 @@ namespace NRISVTE {
             }
         }
         protected override void OnStart() {
-            goalRotation = Quaternion.Euler(blackboard.goalRotation);
         }
 
         protected override void OnStop() {
         }
 
         protected override State OnUpdate() {
-            KuriT.Rotation = Quaternion.RotateTowards(KuriT.Rotation, goalRotation, turnSpeed * Time.deltaTime);
-            return KuriT.Rotation == goalRotation ? State.Success : State.Running;
+            Vector3 dirInWorld = (blackboard.goalPosition - KuriT.Position).normalized;
+            // goal roation is relative to kuri forward direction
+            Quaternion goalRotation = Quaternion.LookRotation(dirInWorld, KuriT.Forward);
+            blackboard.goalRotation = goalRotation.eulerAngles;
+            return State.Success;
         }
     }
 }

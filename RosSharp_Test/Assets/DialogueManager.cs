@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+using UnityEngine.Events;
 
 namespace NRISVTE {
     public class DialogueManager : Singleton<DialogueManager> {
@@ -19,17 +21,34 @@ namespace NRISVTE {
             SayingQuestion,
             WaitingForResponse,
             SayingAnswer,
+            SayingOptions,
             None
         }
         public State state = State.None;
 
         TextMeshProUGUI questionText, optionAText, optionBText;
+        Button optionAButton, optionBButton;
+        UserOptionsButtonObject userOptionButtonObject;
+        public enum Option {
+            A,
+            B,
+            None
+        }
+        public Option CurrentlySelectedOption = Option.None;
+        UnityEvent OnUserOptionSelected;
 
         #endregion
         #region unity
-        void Awake(){
+        void Awake() {
             questionText = GetComponentInChildren<QuestionText>(true).GetComponent<TextMeshProUGUI>();
+            userOptionButtonObject = GetComponentInChildren<UserOptionsButtonObject>(true);
+            optionAButton = userOptionButtonObject.OptionAButton;
+            optionBButton = userOptionButtonObject.OptionBButton;
+            optionAText = userOptionButtonObject.OptionAText;
+            optionBText = userOptionButtonObject.OptionBText;
             questionText.enabled = false;
+            DisableOptionsObj();
+            KuriManager.instance.GetComponent<KuriBTEventRouter>().AddEvent(EventNames.OnUserOptionSelected, OnUserOptionSelected);
         }
         #endregion
         #region public
@@ -41,14 +60,62 @@ namespace NRISVTE {
             questionText.enabled = true;
             // play audio over time, will update the state update to wait until the audio is done
             questionText.text = ObjectToPickUpManager_.CurrentlyPickedUpObject.Question;
-            state = State.WaitingForResponse;
+            state = State.None;
         }
-        public void ResetQuestionText(){
+        public void ResetQuestionText() {
             questionText.text = "";
             questionText.enabled = false;
         }
+        public void EnableOptions() {
+            if (ErrorIfSelectedNull()) {
+                return;
+            }
+            state = State.SayingOptions;
+            EnableOptionsObj();
+            UpdateOptionAText(ObjectToPickUpManager_.CurrentlyPickedUpObject.OptionA);
+            UpdateOptionBText(ObjectToPickUpManager_.CurrentlyPickedUpObject.OptionB);
+            state = State.WaitingForResponse;
+        }
+        public void ClickedOption(Option option) {
+            if (ErrorIfSelectedNull()) {
+                return;
+            }
+            CurrentlySelectedOption = option;
+            OnUserOptionSelected.Invoke();
+            state = State.None;
+        }
+
+        public void UpdateResponseText() {
+            if (ErrorIfSelectedNull()) {
+                return;
+            }
+            DisableOptionsObj();
+            state = State.SayingAnswer;
+            DisableOptionsObj();
+            if (CurrentlySelectedOption == Option.A) {
+                questionText.text = ObjectToPickUpManager_.CurrentlyPickedUpObject.ResponseA;
+            }
+            else if (CurrentlySelectedOption == Option.B) {
+                questionText.text = ObjectToPickUpManager_.CurrentlyPickedUpObject.ResponseA;
+            }
+            // play audio over time, will update the state update to wait until the audio is done
+            state = State.None;
+        }
+
         #endregion
         #region private
+        void DisableOptionsObj() {
+            userOptionButtonObject.gameObject.SetActive(false);
+        }
+        void EnableOptionsObj() {
+            userOptionButtonObject.gameObject.SetActive(true);
+        }
+        private void UpdateOptionAText(string text) {
+            optionAText.text = text;
+        }
+        private void UpdateOptionBText(string text) {
+            optionBText.text = text;
+        }
         bool ErrorIfSelectedNull() {
             bool isNull = ObjectToPickUpManager_.CurrentlyPickedUpObject == null;
             if (isNull) {

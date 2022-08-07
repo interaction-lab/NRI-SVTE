@@ -15,7 +15,7 @@ namespace NRISVTE {
             }
         }
 
-        private float offset = 0.0001f;
+        private float offset = 0.01f;
         #endregion
         #region unity
         void Start() {
