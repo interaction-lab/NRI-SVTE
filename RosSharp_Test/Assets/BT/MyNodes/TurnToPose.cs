@@ -5,7 +5,7 @@ using TheKiwiCoder;
 
 namespace NRISVTE {
     public class TurnToPose : ActionNode {
-        float turnSpeed = 30f; // degrees per second
+        float turnSpeed = 120f; // degrees per second
         float goalYRot;
         float minAngle;
         KuriTransformManager kuriTransformManager;
@@ -45,14 +45,12 @@ namespace NRISVTE {
             float delta = (goalYRot - KuriT.Rotation.eulerAngles.y);
             // delta range is 0 to 360
             // clamp delta to -180 to 180 degrees
-            Debug.Log("b4: " + delta.ToString());
             if (delta > 180) {
                 delta -= 360;
             }
             if (delta < -180) {
                 delta += 360;
             }
-            Debug.Log(delta);
             if (Mathf.Abs(delta) <= minAngle) {
                 KuriT.Rotation = Quaternion.Euler(new Vector3(KuriT.Rotation.eulerAngles.x, goalYRot, KuriT.Rotation.eulerAngles.z));
                 return State.Success;
