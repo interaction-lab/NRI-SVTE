@@ -34,6 +34,8 @@ namespace NRISVTE {
         #endregion
         #region public
         public float PlayAudioClip(string acName) {
+            // lowercase and remove spaces from audio clip name
+            acName = acName.ToLower().Replace(" ", "");
             AudioClip ac = ObjDialogueFileManager.GetAudioClip(acName);
             if (ac != null) {
                 audioSRC.clip = ac;
