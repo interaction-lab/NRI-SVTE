@@ -6,7 +6,7 @@ using TheKiwiCoder;
 namespace NRISVTE{
     public class SendModelData : ActionNode
     {
-        public int score = -1;
+        public int score = 100;
         ServerJSONManager _serverJSONManager;
         ServerJSONManager serverJSONManager {
             get {
@@ -23,7 +23,7 @@ namespace NRISVTE{
         }
 
         protected override State OnUpdate() {
-            serverJSONManager.SendToServer(score);
+            serverJSONManager.SendLabeledPoint(score);
             return State.Success;
         }
     }

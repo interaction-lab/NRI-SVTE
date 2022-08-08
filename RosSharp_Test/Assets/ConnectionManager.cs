@@ -103,6 +103,7 @@ namespace NRISVTE {
                 closeCode = e.Code.ToString();
             };
             ws.ConnectAsync();
+            //ws.Connect();
             while(!IsConnected && numErrors < 3) {
                 yield return null;
             }

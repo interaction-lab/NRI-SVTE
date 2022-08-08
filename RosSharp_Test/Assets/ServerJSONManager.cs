@@ -54,6 +54,15 @@ namespace NRISVTE {
                 return _groundObstacleManager;
             }
         }
+        InteractionManager _interactionManager;
+        InteractionManager InteractionManager_ {
+            get {
+                if (_interactionManager == null) {
+                    _interactionManager = InteractionManager.instance;
+                }
+                return _interactionManager;
+            }
+        }
         #endregion
 
         #region unity
@@ -63,14 +72,13 @@ namespace NRISVTE {
         #endregion
 
         #region public
-        public void SendToServer(int score) {
+        public void SendLabeledPoint(int score) {
             polyLineJSONmsg.requestType = "label";
             GeneratePolyline(score);
 
         }
 
-        public void RequestNextSamplePoint(InteractionManager.SampleTypes sampleType) {
-            polyLineJSONmsg.sampleType = sampleType.ToString();
+        public void RequestNextSamplePoint() {
             polyLineJSONmsg.requestType = "sample";
             GeneratePolyline(0);
         }
@@ -78,6 +86,7 @@ namespace NRISVTE {
 
         #region private
         void GeneratePolyline(int score) {
+            polyLineJSONmsg.sampleType = InteractionManager_.CurrentSampleType.ToString();
             polyLineJSONmsg.identifier = string.Join("_", UserIDManager.PlayerId, UserIDManager.DeviceId, Time.time.ToString());
             polyLineJSONmsg.room = FakeWallRoomPolylineEstimator_.GetWallPolyLines();
             polyLineJSONmsg.robot = new Dictionary<string, int>() {
@@ -97,6 +106,7 @@ namespace NRISVTE {
                         {"orientation", angle}
                     }
                 };
+            Debug.Log("SendPolyline: " + polyLineJSONmsg.ToString());
             connectionManager.SendToServer(Newtonsoft.Json.JsonConvert.SerializeObject(polyLineJSONmsg));
         }
         #endregion

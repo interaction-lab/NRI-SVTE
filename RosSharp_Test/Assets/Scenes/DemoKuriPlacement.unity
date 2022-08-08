@@ -201,6 +201,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HostNumber: 192.168.0.27
+--- !u!1 &63649215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 63649217}
+  - component: {fileID: 63649216}
+  m_Layer: 0
+  m_Name: KeyboardTester
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &63649216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63649215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93e3d383a683842fb8c60e0e453c9c59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &63649217
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63649215}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.037310895, y: 0.0042981505, z: -0.007090032}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &92000513
 GameObject:
   m_ObjectHideFlags: 0
@@ -9971,6 +10015,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1035cf332977e5149bc9f21c7087b707, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeOutTime: 10
   LatestMsg: 
 --- !u!114 &1770657817
 MonoBehaviour:

@@ -30,7 +30,7 @@ namespace NRISVTE {
         }
 
         protected override State OnUpdate() {
-            ServerJSONManage_.RequestNextSamplePoint(InteractionManager_.CurrentSampleType);
+            ServerJSONManage_.RequestNextSamplePoint();
             return State.Success;
         }
     }
