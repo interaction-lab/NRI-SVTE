@@ -8,6 +8,7 @@ using WebSocketSharp;
 namespace NRISVTE {
     public class ConnectionManager : Singleton<ConnectionManager> {
         #region members
+        public float timeOutTime = 10f; // in seconds
         WebSocket ws;
         DebugTextManager DebugTextM;
         int numErrors = 0;
@@ -56,6 +57,23 @@ namespace NRISVTE {
             if (IsConnected) {
                 return;
             }
+            StartCoroutine(ConnectCoroutine());
+        }
+        public void SendToServer(string message) {
+            loggingManager.UpdateLogColumn(msgSendColName, message);
+            if (IsConnected) {
+                ws.Send(message);
+            }
+            else {
+                Debug.Log("Not connected to server, attempted to send: " + message);
+                Debug.Log("Close code: " + closeCode);
+            }
+        }
+
+        #endregion
+
+        #region private
+        IEnumerator ConnectCoroutine(){
             ws = new WebSocket("ws://" +
                 HostInputFieldManager.instance.HostNumber +
                 ":" +
@@ -84,22 +102,11 @@ namespace NRISVTE {
                 Debug.Log("Closed with code: " + e.Code);
                 closeCode = e.Code.ToString();
             };
-            ws.Connect();
-        }
-        public void SendToServer(string message) {
-            loggingManager.UpdateLogColumn(msgSendColName, message);
-            if (IsConnected) {
-                ws.Send(message);
-            }
-            else {
-                Debug.Log("Not connected to server, attempted to send: " + message);
-                Debug.Log("Close code: " + closeCode);
+            ws.ConnectAsync();
+            while(!IsConnected && numErrors < 3) {
+                yield return null;
             }
         }
-
-        #endregion
-
-        #region private
         #endregion
     }
 }
