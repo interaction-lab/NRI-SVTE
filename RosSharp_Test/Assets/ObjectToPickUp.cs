@@ -18,7 +18,7 @@ namespace NRISVTE {
         public DialogueJSON DialogueJSON_ {
             get {
                 if (_dialogueJSON == null) {
-                    _dialogueJSON = ObjDialogueFileManager.GetDialogueJSON(name.ToLower());
+                    _dialogueJSON = ObjDialogueFileManager.GetDialogueJSON(name);
                 }
                 return _dialogueJSON;
             }

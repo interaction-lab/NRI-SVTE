@@ -90,6 +90,7 @@ namespace NRISVTE {
             objectToPickUp.transform.parent = KuriT.OriginT;
         }
         private void ResetObjectSets() {
+            DisableObject(CurrentlyPickedUpObject); // need to reset it back to this transform
             UsedObjects.Clear();
             foreach (Transform t in transform) {
                 ObjectToPickUp objectToPickUp = t.GetComponent<ObjectToPickUp>();

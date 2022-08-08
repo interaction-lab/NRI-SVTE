@@ -31,6 +31,8 @@ namespace NRISVTE {
         #endregion
         #region public
         public DialogueJSON GetDialogueJSON(string objname) {
+            // lowercase the objname and remove spaces
+            objname = objname.ToLower().Replace(" ", "");
             if (DialogueJSONs.ContainsKey(objname)) {
                 return DialogueJSONs[objname];
             }
@@ -38,6 +40,7 @@ namespace NRISVTE {
             return null;
         }
         public AudioClip GetAudioClip(string objname) {
+            objname = objname.ToLower().Replace(" ", "");
             if (AudioClips.ContainsKey(objname)) {
                 return AudioClips[objname];
             }
@@ -51,7 +54,7 @@ namespace NRISVTE {
             _dialogueJSONs = new Dictionary<string, DialogueJSON>();
             TextAsset[] files = Resources.LoadAll<TextAsset>(resourcePathToJSONs);
             foreach (TextAsset file in files) {
-                _dialogueJSONs.Add(file.name.ToLower(),
+                _dialogueJSONs.Add(file.name.ToLower().Replace(" ", ""),
                     Newtonsoft.Json.JsonConvert.DeserializeObject<DialogueJSON>(file.text));
             }
         }
@@ -59,7 +62,7 @@ namespace NRISVTE {
             _audioClips = new Dictionary<string, AudioClip>();
             AudioClip[] files = Resources.LoadAll<AudioClip>(resourcePathToAudio);
             foreach (AudioClip file in files) {
-                _audioClips.Add(file.name, file);
+                _audioClips.Add(file.name.ToLower().Replace(" ", ""), file);
             }
         }
         #endregion
