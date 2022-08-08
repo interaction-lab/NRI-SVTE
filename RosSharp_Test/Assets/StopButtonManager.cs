@@ -17,7 +17,7 @@ namespace NRISVTE {
             }
         }
         Button _stopButton;
-        Button StopButton {
+        public Button StopButton {
             get {
                 if (_stopButton == null) {
                     _stopButton = GetComponent<Button>();

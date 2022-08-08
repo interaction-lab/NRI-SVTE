@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TheKiwiCoder;
+using Newtonsoft.Json;
 
 namespace NRISVTE {
     public class SetGoalPoseFromLastSrvMsg : ActionNode {
@@ -34,8 +35,16 @@ namespace NRISVTE {
             Vector3 newGoal;
             List<float> kuriCordList = new List<float>();
             string lastMsg = ConnectionManager_.LatestMsg;
+            ServerPointResponseJSON serverPointResponseJSONjunk = new ServerPointResponseJSON();
+            serverPointResponseJSONjunk.point = new List<float>();
+            serverPointResponseJSONjunk.point.Add(-10);
+            serverPointResponseJSONjunk.point.Add(-11);
+            Debug.Log(lastMsg);
+            Debug.Log(JsonConvert.SerializeObject(serverPointResponseJSONjunk));
             if (lastMsg != null) {
-                kuriCordList = Newtonsoft.Json.JsonConvert.DeserializeObject<ServerPointResponseJSON>(lastMsg).point;
+                ServerPointResponseJSON serverPointResponseJSON = JsonConvert.DeserializeObject<ServerPointResponseJSON>(lastMsg);
+
+                kuriCordList = serverPointResponseJSON.point;
                 newGoal = new Vector3(kuriCordList[0], 0, kuriCordList[1]);
                 // transform back into meters from cm
                 newGoal *= 0.01f;

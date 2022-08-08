@@ -42,6 +42,28 @@ MonoBehaviour:
     goalRotation: {x: 0, y: 0, z: 0}
   description: 
   drawGizmos: 0
+--- !u!114 &-8687649678624984349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b42be27b4674c22b004818d50fcc1f, type: 3}
+  m_Name: ToggleStopButton
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 4b13ff71097f34b86bc304320abe63cd
+  position: {x: 0, y: 0}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
+  toggleOn: 0
 --- !u!114 &-8163643612388882989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,7 +266,6 @@ MonoBehaviour:
     goalRotation: {x: 0, y: 0, z: 0}
   description: 
   drawGizmos: 0
-  score: -1
 --- !u!114 &-3053706809764380956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -657,6 +678,8 @@ MonoBehaviour:
   - {fileID: 1360918474854952282}
   - {fileID: -5844706176581188112}
   - {fileID: 2806991820818994229}
+  - {fileID: 5240429797885826029}
+  - {fileID: -8687649678624984349}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -860,7 +883,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: b61079d5d0fd04045a99ff6d0d65a364
-  position: {x: -1024.5, y: 853.5}
+  position: {x: -1220.5001, y: 861.10443}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}
@@ -1091,6 +1114,7 @@ MonoBehaviour:
   children:
   - {fileID: 2626072232254044678}
   - {fileID: 6947606508065726143}
+  - {fileID: 5240429797885826029}
   - {fileID: 9157690805635412648}
   - {fileID: -1089637402966126087}
   - {fileID: 13918986462976607}
@@ -1119,6 +1143,28 @@ MonoBehaviour:
   child: {fileID: -2861057580476716684}
   restartOnSuccess: 1
   restartOnFailure: 0
+--- !u!114 &5240429797885826029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b42be27b4674c22b004818d50fcc1f, type: 3}
+  m_Name: ToggleStopButton
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 8a720d2d4e7bb4c7fa1fdb74ae2d78aa
+  position: {x: -894.50024, y: 861.0001}
+  blackboard:
+    goalPosition: {x: 0, y: 0, z: 0}
+    goalRotation: {x: 0, y: 0, z: 0}
+  description: 
+  drawGizmos: 0
+  toggleOn: 0
 --- !u!114 &5426568491830980339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1227,7 +1273,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: d4b4dc2bb776d47f1a97b5654e1ed6f5
-  position: {x: -874.5, y: 853.5}
+  position: {x: -1070.5001, y: 861.10443}
   blackboard:
     goalPosition: {x: 0, y: 0, z: 0}
     goalRotation: {x: 0, y: 0, z: 0}

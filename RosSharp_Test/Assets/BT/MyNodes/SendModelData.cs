@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TheKiwiCoder;
 
-namespace NRISVTE{
-    public class SendModelData : ActionNode
-    {
-        public int score = 100;
+namespace NRISVTE {
+    public class SendModelData : ActionNode {
+        int score = 100; /// always 100 for now
         ServerJSONManager _serverJSONManager;
         ServerJSONManager serverJSONManager {
             get {
