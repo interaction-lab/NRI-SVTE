@@ -41,7 +41,7 @@ namespace NRISVTE {
             if (AudioClips.ContainsKey(objname)) {
                 return AudioClips[objname];
             }
-            Debug.LogError("Did not find audio clip for " + objname);
+            Debug.LogWarning("Did not find audio clip for " + objname);
             return null;
         }
 

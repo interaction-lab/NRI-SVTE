@@ -23,15 +23,28 @@ namespace NRISVTE {
                 return _src;
             }
         }
+
+        public bool IsPlaying {
+            get {
+                return audioSRC.isPlaying;
+            }
+        }
         #endregion
         #region unity
         #endregion
         #region public
         public float PlayAudioClip(string acName) {
             AudioClip ac = ObjDialogueFileManager.GetAudioClip(acName);
-            audioSRC.clip = ac;
-            audioSRC.Play();
-            return ac.length;
+            if (ac != null) {
+                audioSRC.clip = ac;
+                audioSRC.Play();
+                return ac.length;
+            }
+            return 0;
+        }
+
+        public void StopAudio() {
+            audioSRC.Stop();
         }
         #endregion
         #region private

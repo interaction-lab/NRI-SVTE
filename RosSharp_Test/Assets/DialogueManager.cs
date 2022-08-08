@@ -67,6 +67,7 @@ namespace NRISVTE {
             ResetAllUI();
             OnUserOptionSelected = new UnityEvent();
             eventRouter.AddEvent(EventNames.OnUserOptionSelected, OnUserOptionSelected);
+            SetUpHoverOptionEvents();
         }
         #endregion
         #region public
@@ -112,16 +113,22 @@ namespace NRISVTE {
             if (ErrorIfSelectedNull()) {
                 return;
             }
+            if (AudioIsPlaying()) {
+                kuriAudioManager.StopAudio();
+            }
             DisableOptionsObj();
             state = State.SayingResponse;
             DisableOptionsObj();
             if (CurrentlySelectedOption == Option.A) {
                 questionText.text = ObjectToPickUpManager_.CurrentlyPickedUpObject.ResponseA;
+                float timeToStall = kuriAudioManager.PlayAudioClip(ObjectToPickUpManager_.CurrentlyPickedUpObject.ResponseAAudioClipName);
+                StartCoroutine(WaitForAudioToFinish(timeToStall));
             }
             else if (CurrentlySelectedOption == Option.B) {
                 questionText.text = ObjectToPickUpManager_.CurrentlyPickedUpObject.ResponseB;
+                float timeToStall = kuriAudioManager.PlayAudioClip(ObjectToPickUpManager_.CurrentlyPickedUpObject.ResponseBAudioClipName);
+                StartCoroutine(WaitForAudioToFinish(timeToStall));
             }
-
         }
 
         #endregion
@@ -148,6 +155,40 @@ namespace NRISVTE {
                 Debug.LogError("Currently Selected Object is null");
             }
             return isNull;
+        }
+
+        bool AudioIsPlaying() {
+            return kuriAudioManager.IsPlaying;
+        }
+        void AHoverEnter() {
+            if (AudioIsPlaying()) {
+                kuriAudioManager.StopAudio();
+            }
+            kuriAudioManager.PlayAudioClip(ObjectToPickUpManager_.CurrentlyPickedUpObject.OptionAAudioClipName);
+        }
+        void AHoverExit() {
+            if (AudioIsPlaying()) {
+                kuriAudioManager.StopAudio();
+            }
+        }
+        void BHoverEnter() {
+            if (AudioIsPlaying()) {
+                kuriAudioManager.StopAudio();
+            }
+            kuriAudioManager.PlayAudioClip(ObjectToPickUpManager_.CurrentlyPickedUpObject.OptionBAudioClipName);
+        }
+        void BHoverExit() {
+            if (AudioIsPlaying()) {
+                kuriAudioManager.StopAudio();
+            }
+        }
+        void SetUpHoverOptionEvents() {
+            OnHoverButton hoverA = optionAButton.GetComponent<OnHoverButton>();
+            hoverA.OnHoverEnter.AddListener(AHoverEnter);
+            hoverA.OnHoverExit.AddListener(AHoverExit);
+            OnHoverButton hoverB = optionBButton.GetComponent<OnHoverButton>();
+            hoverB.OnHoverEnter.AddListener(BHoverEnter);
+            hoverB.OnHoverExit.AddListener(BHoverExit);
         }
         #endregion
     }
