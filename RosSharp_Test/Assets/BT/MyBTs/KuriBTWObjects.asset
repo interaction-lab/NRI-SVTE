@@ -772,10 +772,10 @@ MonoBehaviour:
   description: 
   drawGizmos: 0
   speed: 0.5
-  stoppingDistance: 0.3
+  stoppingDistance: 0.2
   updateRotation: 1
   acceleration: 40
-  tolerance: 0.3
+  tolerance: 0.1
 --- !u!114 &2208462964222728920
 MonoBehaviour:
   m_ObjectHideFlags: 0
