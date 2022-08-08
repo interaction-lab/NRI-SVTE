@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace NRISVTE {
-    public class StartButtonManager : MonoBehaviour {
+    public class StartButtonManager : Singleton<StartButtonManager> {
         KuriBTEventRouter _kuriBTEventRouter;
         KuriBTEventRouter kuriBTEventRouter {
             get {
@@ -17,7 +17,7 @@ namespace NRISVTE {
         }
 
         Button _startButton;
-        Button startButton {
+        public Button StartButton {
             get {
                 if (_startButton == null) {
                     _startButton = GetComponent<Button>();
@@ -26,7 +26,7 @@ namespace NRISVTE {
             }
         }
         private void Awake() {
-            kuriBTEventRouter.AddEvent(EventNames.StartButtonPressed, startButton.onClick);
+            kuriBTEventRouter.AddEvent(EventNames.StartButtonPressed, StartButton.onClick);
         }
     }
 }

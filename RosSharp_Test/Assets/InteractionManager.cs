@@ -26,6 +26,7 @@ namespace NRISVTE {
         #region unity
         private void Start() {
             loggingManager.AddLogColumn(sampleTypeLogColumn, CurrentSampleType.ToString());
+            // this is where we can randomize or set somehow the way we want to sample the data
             StartCoroutine(SwitchSampleTypeAtTime());
         }
         #endregion

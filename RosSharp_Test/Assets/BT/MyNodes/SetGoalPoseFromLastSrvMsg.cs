@@ -35,15 +35,8 @@ namespace NRISVTE {
             Vector3 newGoal;
             List<float> kuriCordList = new List<float>();
             string lastMsg = ConnectionManager_.LatestMsg;
-            ServerPointResponseJSON serverPointResponseJSONjunk = new ServerPointResponseJSON();
-            serverPointResponseJSONjunk.point = new List<float>();
-            serverPointResponseJSONjunk.point.Add(-10);
-            serverPointResponseJSONjunk.point.Add(-11);
-            Debug.Log(lastMsg);
-            Debug.Log(JsonConvert.SerializeObject(serverPointResponseJSONjunk));
             if (lastMsg != null) {
                 ServerPointResponseJSON serverPointResponseJSON = JsonConvert.DeserializeObject<ServerPointResponseJSON>(lastMsg);
-
                 kuriCordList = serverPointResponseJSON.point;
                 newGoal = new Vector3(kuriCordList[0], 0, kuriCordList[1]);
                 // transform back into meters from cm
