@@ -22,7 +22,7 @@ namespace NRISVTE {
         #region unity
         void Awake() {
             inputField.onValueChanged.AddListener(OnValueChanged);
-            HostNumber = inputField.text;
+            inputField.text = HostNumber;
         }
 
         void OnDestroy() {

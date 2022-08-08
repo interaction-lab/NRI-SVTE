@@ -22,7 +22,7 @@ namespace NRISVTE {
         #region unity
         void Awake() {
             inputField.onValueChanged.AddListener(OnValueChanged);
-            PortNumber = inputField.text;
+            inputField.text = PortNumber;
         }
 
         void OnDestroy() {
