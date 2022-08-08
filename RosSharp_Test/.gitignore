@@ -129,5 +129,5 @@ M2C_MobileTest/
 Recordings/
 
 # Bigger assets free to download from unity store
-Assets/Kitchen*
-Assets/PropsToHold/*
+#Assets/Kitchen*
+#Assets/PropsToHold/*
