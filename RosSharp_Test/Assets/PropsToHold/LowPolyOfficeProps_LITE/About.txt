@@ -1,7 +1,3 @@
-Low Poly Office Props - Lite
-
-An introductory set designed for the Low Poly Business People pack.
-
-For help and further instructions please contact me@robertramsay.co.uk before reviewing
-I normally respond within 3 days.
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:ed1708b69c7fc2d1c02f88bff4146ec5f38fc219aa5c74417caa5c1b1e84a879
+size 229

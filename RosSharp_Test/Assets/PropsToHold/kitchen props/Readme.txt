@@ -1,12 +1,3 @@
-Hi there! Thanks so much for downloading. I hope this free package is helpful for you.
-If you really like the models please consider buying the paid version. It helps me create
-more content and more free packs. Thanks again. Happy Developing. :)
-
-Update 1.1
-Added a breakfast bar style support pole
-Added an adjustable stool because I love you guys and want you to have nice things.
-
-Update 2
-Added new content from an upcoming asset pack.
-Updated the texture on the counter top.
-Optimized the mug handle.
+version https://git-lfs.github.com/spec/v1
+oid sha256:f9e55b6cfbad83aee9e289180120205d6d1b473ed7d980b1aa3170de610778ed
+size 516
