@@ -24,6 +24,11 @@ namespace NRISVTE {
         void OnDestroy() {
             button.onClick.RemoveListener(OnClick);
         }
+
+        public void ToggleStop(bool stopOn){
+            inGameMenu.SetActive(stopOn);
+            optionsMenu.SetActive(!stopOn);
+        }
         #endregion
         #region private
         private void OnClick() {
@@ -31,6 +36,7 @@ namespace NRISVTE {
             inGameMenu.SetActive(optionsOn);
             optionsMenu.SetActive(!optionsOn);
         }
+
         #endregion
     }
 }

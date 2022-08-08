@@ -6,5 +6,6 @@ namespace NRISVTE {
         public static string KuriEnterViewPort = "KuriEnterViewPort";
         public static string OnUserOptionSelected = "OnUserOptionSelected";
         public static string ReceivedMessage = "ReceivedMessage";
+        public static string OnServerConnected = "OnServerConnected";
     }
 }

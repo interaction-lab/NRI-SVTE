@@ -24,9 +24,10 @@ namespace NRISVTE {
         }
 
         string closeCode = "";
+        bool internalIsConnected;
         public bool IsConnected {
             get {
-                return ws != null && ws.ReadyState == WebSocketState.Open;
+                return internalIsConnected;//ws != null && ws.ReadyState == WebSocketState.Open;
             }
         }
         UnityEvent receivedMessageEvent;
@@ -38,17 +39,32 @@ namespace NRISVTE {
                 return receivedMessageEvent;
             }
         }
+
+        UnityEvent _OnServerConnected;
+        public UnityEvent OnServerConnected {
+            get {
+                if (_OnServerConnected == null) {
+                    _OnServerConnected = new UnityEvent();
+                }
+                return _OnServerConnected;
+            }
+        }
         public string LatestMsg = "";
         float lastMsgTime = 0;
 
         #endregion
 
         #region unity
+        void Awake() {
+            internalIsConnected = false;
+        }
+
         void Start() {
             loggingManager.AddLogColumn(msgSendColName, "");
             loggingManager.AddLogColumn(msgRecvColName, "");
             DebugTextM = DebugTextManager.instance;
             KuriManager.instance.GetComponent<KuriBTEventRouter>().AddEvent(EventNames.ReceivedMessage, ReceivedMessageEvent);
+            KuriManager.instance.GetComponent<KuriBTEventRouter>().AddEvent(EventNames.OnServerConnected, OnServerConnected);
         }
         #endregion
 
@@ -73,13 +89,15 @@ namespace NRISVTE {
         #endregion
 
         #region private
-        IEnumerator ConnectCoroutine(){
+        IEnumerator ConnectCoroutine() {
             ws = new WebSocket("ws://" +
                 HostInputFieldManager.instance.HostNumber +
                 ":" +
                 PortInputFieldManager.instance.PortNumber);
             ws.OnOpen += (sender, e) => {
-                Debug.Log("Connected");
+                Debug.Log("Connected to server");
+                internalIsConnected = true;
+                OnServerConnected.Invoke();
             };
             ws.OnMessage += (sender, e) => {
                 try {
@@ -104,7 +122,7 @@ namespace NRISVTE {
             };
             ws.ConnectAsync();
             //ws.Connect();
-            while(!IsConnected && numErrors < 3) {
+            while (!IsConnected && numErrors < 3) {
                 yield return null;
             }
         }

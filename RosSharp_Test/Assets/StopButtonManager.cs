@@ -16,7 +16,7 @@ namespace NRISVTE {
                 return _kuriStateManager;
             }
         }
-        Button _stopButton;
+        Button _stopButton = null;
         public Button StopButton {
             get {
                 if (_stopButton == null) {
@@ -58,7 +58,7 @@ namespace NRISVTE {
                 //StopButton.interactable = true;
             }
             else {
-               // StopButton.interactable = false;
+                // StopButton.interactable = false;
             }
         }
         void OnStopButtonPressed() {
