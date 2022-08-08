@@ -91,7 +91,13 @@ namespace NRISVTE {
         }
         private void ResetObjectSets() {
             UsedObjects.Clear();
-            UnUsedObjects.AddRange(GetComponentsInChildren<ObjectToPickUp>(true));
+            foreach (Transform t in transform) {
+                ObjectToPickUp objectToPickUp = t.GetComponent<ObjectToPickUp>();
+                if (objectToPickUp == null) {
+                    objectToPickUp = t.gameObject.AddComponent<ObjectToPickUp>();
+                }
+                UnUsedObjects.Add(objectToPickUp);
+            }
             UnUsedObjects.Shuffle();
         }
         private void DisableAllObjects() {
