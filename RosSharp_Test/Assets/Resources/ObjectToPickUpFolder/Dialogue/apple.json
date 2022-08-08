@@ -1,7 +1,1 @@
-{
-    "Question" : "Do you like red or green apples?",
-    "OptionA" : "Red",
-    "OptionB" : "Green",
-    "ResponseA" : "Me too! I like honey crisp.",
-    "ResponseB" : "I wish there was a green apple around here for you!"
-}
+{"Question": "Do you like red or green apples?", "OptionA": "Red", "OptionB": "Green", "ResponseA": "Me too! I like honey crisp.", "ResponseB": "I wish there was a green apple around here for you!"}
