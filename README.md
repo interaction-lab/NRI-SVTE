@@ -1,3 +1,5 @@
+# DEPRECATED - due to an lfs issue, this repo has been more [here](https://github.com/interaction-lab/NRI-SVTE-ACTIVE-PROXEMICS)
+
 # Kuri RVIZ
  NRI SVTE Signal Design for Non-Expert Users
  
